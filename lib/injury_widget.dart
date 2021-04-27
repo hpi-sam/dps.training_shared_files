@@ -1,5 +1,5 @@
 import 'package:api_service/model/patient.dart';
-import 'package:bpmanv_app_widgets/l10n/localizedstrings.dart';
+import 'l10n/localizedstrings.dart';
 import 'package:bpmanv_app_widgets/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

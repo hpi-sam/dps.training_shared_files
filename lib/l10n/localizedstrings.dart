@@ -49,7 +49,7 @@ abstract class LocalizedStrings {
 
 
   /// initializes fields with German strings
-  static void buildDefaultGermanOptions() {
+  static void buildDefaultGermanStrings() {
     {
       languageCode = "de";
       biometryWidget_address = "Adresse: ";

@@ -9,23 +9,24 @@ import 'package:flutter/cupertino.dart';
 
 import 'l10n/localizedstrings.dart';
 
-class PV extends StatefulWidget {
+class PatientInformationWidget extends StatefulWidget {
   final Patient patient;
-  final Widget? triageChooser;
-  final Widget? appliedMeasures;
-  final Widget? availableMeasures;
+  final Widget? triageChooserWidget;
+  final Widget? appliedMeasureWidget;
+  final Widget? availableMeasureWidget;
 
-  PV(
+  PatientInformationWidget(
       {required this.patient,
-      this.triageChooser,
-      this.appliedMeasures,
-      this.availableMeasures});
+      this.triageChooserWidget,
+      this.appliedMeasureWidget,
+      this.availableMeasureWidget});
 
   @override
-  _PVState createState() => _PVState();
+  _PatientInformationWidgetState createState() =>
+      _PatientInformationWidgetState();
 }
 
-class _PVState extends State<PV> {
+class _PatientInformationWidgetState extends State<PatientInformationWidget> {
   @override
   initState() {
     super.initState();
@@ -34,7 +35,7 @@ class _PVState extends State<PV> {
 
   /// this is an simplified version of the implementation used in : https:github.com/jhomlala/catcher/blob/master/lib/core/catcher.dart
   Future<void> _initializeLocalization() async {
-    LocalizedStrings.buildDefaultGermanOptions();
+    LocalizedStrings.buildDefaultGermanStrings();
   }
 
   @override
@@ -87,22 +88,22 @@ class _PVState extends State<PV> {
             Padding(
               padding: EdgeInsets.only(top: 10),
             ),
-            (widget.appliedMeasures != null)
+            (widget.appliedMeasureWidget != null)
                 ? Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: widget.appliedMeasures,
+                    child: widget.appliedMeasureWidget,
                   )
                 : Container(),
-            (widget.triageChooser != null)
+            (widget.triageChooserWidget != null)
                 ? Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: widget.triageChooser,
+                    child: widget.triageChooserWidget,
                   )
                 : Container(),
-            (widget.availableMeasures != null)
+            (widget.availableMeasureWidget != null)
                 ? Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: widget.availableMeasures)
+                    child: widget.availableMeasureWidget)
                 : Container(),
             PhaseInformation(
               patientPhase: widget.patient.currentPhase,

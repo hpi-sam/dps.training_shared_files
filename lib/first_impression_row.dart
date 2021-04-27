@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'first_impression_field_widget.dart';
 import 'l10n/localizedstrings.dart';
 
+
 /// Draws a row of the four first impression fields of a patient.
 ///
 /// Each [FirstImpressionField] displays a character (as in the analog DPS simulation) and is
