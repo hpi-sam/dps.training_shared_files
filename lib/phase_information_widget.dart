@@ -260,15 +260,15 @@ class PhaseInformation extends StatelessWidget {
   }
 
   Widget _buildLungsInformation(BuildContext context) {
-    var pulmonary_auscultation = patientPhase.pulmonary_auscultation;
+    var pulmonaryAuscultation = patientPhase.pulmonary_auscultation;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildInformationTitle(
             LocalizedStrings.phaseInformationWidget_lungsInformation_title),
-        pulmonary_auscultation == "hidden"
+        pulmonaryAuscultation == "hidden"
             ? _buildHiddenInformation(context)
-            : Text(pulmonary_auscultation),
+            : Text(pulmonaryAuscultation),
       ],
     );
   }

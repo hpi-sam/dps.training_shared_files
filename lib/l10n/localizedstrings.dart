@@ -1,7 +1,8 @@
+// ignore_for_file: non_constant_identifier_names
+
+
 /// This class provides the Strings used in this package. Note that fields need
 /// to be initialized by calling buildDefaultGermanOptions(), before using them.
-///
-
 abstract class LocalizedStrings {
   static late String languageCode;
 
