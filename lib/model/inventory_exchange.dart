@@ -30,24 +30,49 @@ class InventoryExchange with _$InventoryExchange {
   factory InventoryExchange.fromInventories(
       Inventory ownInventory, Inventory foreignInventory) {
     List<InventoryExchangeCategory> categoryList = [];
-
     assert(ownInventory.categories.length == foreignInventory.categories.length,
-        "Categories of inventories are not identical!");
+    "Categories of inventories are not identical!");
     for (int i = 0; i < ownInventory.categories.length; i++) {
-      List<InventoryExchangeMaterial> materialList = [];
-      for (int j = 0; j < ownInventory.categories[i].items.length; j++) {
-        DPSMaterial ownMaterial = ownInventory.categories[i].items[j];
-        DPSMaterial foreignMaterial = foreignInventory.categories[i].items[j];
-        materialList.add(InventoryExchangeMaterial(
-          name: ownMaterial.name,
-          image_small: ownMaterial.image_small,
-          image_original: ownMaterial.image_original,
-          ownAmount: ownMaterial.amount,
-          foreignAmount: foreignMaterial.amount,
-        ));
-      }
+      List<InventoryExchangeMaterial> exchangeMaterialList = [];
+
+      // Get all materialNames that are in either ownInventory or foreignInventory.
+      Set<String> materialNameSet = Set();
+      ownInventory.categories[i].items.forEach((material) {
+        materialNameSet.add(material.name);
+      });
+      foreignInventory.categories[i].items.forEach((material) {
+        materialNameSet.add(material.name);
+      });
+
+      // Add each found materialName to the exchangeMaterialList with the respective
+      // own and foreign amounts.
+      materialNameSet.forEach((String materialName) {
+        DPSMaterial? ownMaterial =
+        ownInventory.categories[i].getMaterial(materialName: materialName);
+        DPSMaterial? foreignMaterial = foreignInventory.categories[i]
+            .getMaterial(materialName: materialName);
+        if (ownMaterial != null) {
+          exchangeMaterialList.add(InventoryExchangeMaterial(
+            name: materialName,
+            image_small: ownMaterial.image_small,
+            image_original: ownMaterial.image_original,
+            ownAmount: ownMaterial.amount,
+            foreignAmount: (foreignMaterial?.amount) ?? 0,
+          ));
+        } else {
+          // we know that if ownMaterial is null, foreignMaterial has to be non-null,
+          // because otherwise the materialName would not be in the materialNameSet.
+          exchangeMaterialList.add(InventoryExchangeMaterial(
+            name: materialName,
+            image_small: foreignMaterial!.image_small,
+            image_original: foreignMaterial.image_original,
+            ownAmount: (ownMaterial?.amount) ?? 0,
+            foreignAmount: foreignMaterial.amount,
+          ));
+        }
+      });
       categoryList.add(InventoryExchangeCategory(
-          name: ownInventory.categories[i].name, items: materialList));
+          name: ownInventory.categories[i].name, items: exchangeMaterialList));
     }
     return InventoryExchange(categories: categoryList);
   }

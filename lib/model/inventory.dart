@@ -51,6 +51,15 @@ class DPSMaterialCategory with _$DPSMaterialCategory {
     return DPSMaterialCategory(
         name: json["name"], items: parseDPSMaterialForCategory(json));
   }
+
+  /// Returns the [DPSMaterial] with name [materialName] from this category.
+  /// Returns null if no such [DPSMaterial] exists.
+  DPSMaterial? getMaterial({required String materialName}) {
+    for (int i = 0; i < items.length; i++) {
+      if (items[i].name == materialName) return items[i];
+    }
+    return null;
+  }
 }
 
 /// Parses multiple materials in the given [json] into a list of [DPSMaterial].
