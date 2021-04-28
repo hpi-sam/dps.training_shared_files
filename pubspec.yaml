@@ -1,5 +1,5 @@
-name: bpmanv_app_widgets
-description: A new Flutter package project.
+name: bpmanv_app_sharedFiles
+description: This package provides functionality shared across both the trainee and trainer App of the digital dPS.
 version: 0.0.8
 author:
 homepage:
@@ -12,14 +12,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  api_service:
-    git:
-      url: git@github.com:hpi-sam/BPMANV-App-ApiService.git
   font_awesome_flutter: ^9.0.0
+  intl:
+  http: ^0.13.1
+  shared_preferences: ^2.0.5
+  freezed_annotation: ^0.14.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: ^1.12.2
+  freezed: ^0.14.1+1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

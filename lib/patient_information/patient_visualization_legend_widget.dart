@@ -1,9 +1,7 @@
+import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'l10n/localizedstrings.dart';
-
 
 /// Displays a legend of the icons used for injuries in the patient visualization
 class PatientVisualizationLegend extends StatelessWidget {

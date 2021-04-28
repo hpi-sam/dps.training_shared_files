@@ -1,4 +1,4 @@
-import 'package:api_service/model/patient.dart';
+import 'package:bpmanv_app_sharedFiles/model/patient.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,6 @@ import 'body_part_widget.dart';
 /// these widgets can display a list of different injuries, where each injury
 /// type (bleeding, fracture, ...) has its own icon.
 class PatientVisualization extends StatelessWidget {
-
   final PatientInjuries patientInjuries;
 
   PatientVisualization({required this.patientInjuries});

@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 
-
 /// This class provides the Strings used in this package. Note that fields need
 /// to be initialized by calling buildDefaultGermanOptions(), before using them.
 abstract class LocalizedStrings {
@@ -47,7 +46,6 @@ abstract class LocalizedStrings {
   static late String phaseInformationWidget_spcoInformation_title;
   static late String phaseInformationWidget_spo2Information_title;
   static late String phaseInformationWidget_notMeasurableInformation_title;
-
 
   /// initializes fields with German strings
   static void buildDefaultGermanStrings() {

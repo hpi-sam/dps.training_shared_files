@@ -1,13 +1,13 @@
-import 'package:api_service/model/patient.dart';
-import 'package:bpmanv_app_widgets/biometry_widget.dart';
-import 'package:bpmanv_app_widgets/first_impression_row.dart';
-import 'package:bpmanv_app_widgets/injury_widget.dart';
-import 'package:bpmanv_app_widgets/patient_visualization_legend_widget.dart';
-import 'package:bpmanv_app_widgets/patient_visualization_widget.dart';
-import 'package:bpmanv_app_widgets/phase_information_widget.dart';
+import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
+import 'package:bpmanv_app_sharedFiles/model/patient.dart';
+import 'package:bpmanv_app_sharedFiles/patient_information/biometry_widget.dart';
+import 'package:bpmanv_app_sharedFiles/patient_information/first_impression_row.dart';
+import 'package:bpmanv_app_sharedFiles/patient_information/patient_visualization_legend_widget.dart';
+import 'package:bpmanv_app_sharedFiles/patient_information/patient_visualization_widget.dart';
+import 'package:bpmanv_app_sharedFiles/patient_information/phase_information_widget.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'l10n/localizedstrings.dart';
+import 'injury_widget.dart';
 
 class PatientInformationWidget extends StatefulWidget {
   final Patient patient;

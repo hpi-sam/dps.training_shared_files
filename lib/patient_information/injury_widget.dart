@@ -1,6 +1,6 @@
-import 'package:api_service/model/patient.dart';
-import 'l10n/localizedstrings.dart';
-import 'package:bpmanv_app_widgets/util.dart';
+import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
+import 'package:bpmanv_app_sharedFiles/model/patient.dart';
+import 'package:bpmanv_app_sharedFiles/patient_information/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

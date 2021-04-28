@@ -1,8 +1,8 @@
-import 'package:api_service/model/patient.dart';
+import 'package:bpmanv_app_sharedFiles/model/patient.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'l10n/localizedstrings.dart';
+import '../l10n/localizedstrings.dart';
 
 /// Displays the information of the current phase of a patient.
 class PhaseInformation extends StatelessWidget {

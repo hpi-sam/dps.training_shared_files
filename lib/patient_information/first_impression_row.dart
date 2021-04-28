@@ -1,10 +1,9 @@
-import 'package:api_service/model/patient.dart';
+import 'package:bpmanv_app_sharedFiles/model/patient.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../l10n/localizedstrings.dart';
 import 'first_impression_field_widget.dart';
-import 'l10n/localizedstrings.dart';
-
 
 /// Draws a row of the four first impression fields of a patient.
 ///
