@@ -1,5 +1,7 @@
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+// Project imports:
 import 'inventory.dart';
 
 part 'inventory_exchange.freezed.dart';

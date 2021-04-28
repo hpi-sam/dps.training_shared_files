@@ -1,6 +1,11 @@
-import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
+// Flutter imports:
 import 'package:flutter/foundation.dart';
+
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
+import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
 
 part 'applied_measures.freezed.dart';
 

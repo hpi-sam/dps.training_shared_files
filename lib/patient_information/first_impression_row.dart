@@ -1,7 +1,11 @@
-import 'package:bpmanv_app_sharedFiles/model/patient.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+// Project imports:
+import 'package:bpmanv_app_sharedFiles/model/patient.dart';
 import '../l10n/localizedstrings.dart';
 import 'first_impression_field_widget.dart';
 

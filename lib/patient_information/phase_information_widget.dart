@@ -1,7 +1,9 @@
-import 'package:bpmanv_app_sharedFiles/model/patient.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// Project imports:
+import 'package:bpmanv_app_sharedFiles/model/patient.dart';
 import '../l10n/localizedstrings.dart';
 
 /// Displays the information of the current phase of a patient.

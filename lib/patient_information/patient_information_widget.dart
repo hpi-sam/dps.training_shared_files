@@ -1,3 +1,7 @@
+// Flutter imports:
+import 'package:flutter/cupertino.dart';
+
+// Project imports:
 import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
 import 'package:bpmanv_app_sharedFiles/model/patient.dart';
 import 'package:bpmanv_app_sharedFiles/patient_information/biometry_widget.dart';
@@ -5,8 +9,6 @@ import 'package:bpmanv_app_sharedFiles/patient_information/first_impression_row.
 import 'package:bpmanv_app_sharedFiles/patient_information/patient_visualization_legend_widget.dart';
 import 'package:bpmanv_app_sharedFiles/patient_information/patient_visualization_widget.dart';
 import 'package:bpmanv_app_sharedFiles/patient_information/phase_information_widget.dart';
-import 'package:flutter/cupertino.dart';
-
 import 'injury_widget.dart';
 
 class PatientInformationWidget extends StatefulWidget {
