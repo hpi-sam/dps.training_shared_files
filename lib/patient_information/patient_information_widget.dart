@@ -14,14 +14,14 @@ import 'injury_widget.dart';
 class PatientInformationWidget extends StatefulWidget {
   final Patient patient;
   final Widget? triageChooserWidget;
-  final Widget? appliedMeasureWidget;
-  final Widget? availableMeasureWidget;
+  final Widget? appliedMeasuresWidget;
+  final Widget? availableMeasuresWidget;
 
   PatientInformationWidget(
       {required this.patient,
       this.triageChooserWidget,
-      this.appliedMeasureWidget,
-      this.availableMeasureWidget});
+      this.appliedMeasuresWidget,
+      this.availableMeasuresWidget});
 
   @override
   _PatientInformationWidgetState createState() =>
@@ -90,10 +90,10 @@ class _PatientInformationWidgetState extends State<PatientInformationWidget> {
             Padding(
               padding: EdgeInsets.only(top: 10),
             ),
-            (widget.appliedMeasureWidget != null)
+            (widget.appliedMeasuresWidget != null)
                 ? Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: widget.appliedMeasureWidget,
+                    child: widget.appliedMeasuresWidget,
                   )
                 : Container(),
             (widget.triageChooserWidget != null)
@@ -102,10 +102,10 @@ class _PatientInformationWidgetState extends State<PatientInformationWidget> {
                     child: widget.triageChooserWidget,
                   )
                 : Container(),
-            (widget.availableMeasureWidget != null)
+            (widget.availableMeasuresWidget != null)
                 ? Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: widget.availableMeasureWidget)
+                    child: widget.availableMeasuresWidget)
                 : Container(),
             PhaseInformation(
               patientPhase: widget.patient.currentPhase,
