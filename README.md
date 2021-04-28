@@ -1,12 +1,11 @@
-# BPMANV-App-Widgets
+# BPMANV-App-SharedFiles
 
-This package provides Widgets for both the trainee and trainer App of the digital dPS.
+This package provides Widgets, data models and API-Routes for both the trainee and trainer App of the digital dPS.
 
 Right now, the package provides the following widgets:
 
 - PatientInformtationWidget consisting serveraly internal widgets
 
-This package depends on the BPMANV-App-ApiService package (https://github.com/hpi-sam/BPMANV-App-ApiService).
 
 # Usage
 
