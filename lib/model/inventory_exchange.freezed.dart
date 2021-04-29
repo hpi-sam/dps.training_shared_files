@@ -311,13 +311,15 @@ class _$InventoryExchangeMaterialTearOff {
   const _$InventoryExchangeMaterialTearOff();
 
   _InventoryExchangeMaterial call(
-      {required String name,
+      {required String id,
+      required String name,
       required String image_small,
       required String image_original,
       required int ownAmount,
       required int foreignAmount,
       int changedAmount = 0}) {
     return _InventoryExchangeMaterial(
+      id: id,
       name: name,
       image_small: image_small,
       image_original: image_original,
@@ -333,6 +335,7 @@ const $InventoryExchangeMaterial = _$InventoryExchangeMaterialTearOff();
 
 /// @nodoc
 mixin _$InventoryExchangeMaterial {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get image_small => throw _privateConstructorUsedError;
   String get image_original => throw _privateConstructorUsedError;
@@ -351,7 +354,8 @@ abstract class $InventoryExchangeMaterialCopyWith<$Res> {
           $Res Function(InventoryExchangeMaterial) then) =
       _$InventoryExchangeMaterialCopyWithImpl<$Res>;
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String image_small,
       String image_original,
       int ownAmount,
@@ -370,6 +374,7 @@ class _$InventoryExchangeMaterialCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? image_small = freezed,
     Object? image_original = freezed,
@@ -378,6 +383,10 @@ class _$InventoryExchangeMaterialCopyWithImpl<$Res>
     Object? changedAmount = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -414,7 +423,8 @@ abstract class _$InventoryExchangeMaterialCopyWith<$Res>
       __$InventoryExchangeMaterialCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String image_small,
       String image_original,
       int ownAmount,
@@ -436,6 +446,7 @@ class __$InventoryExchangeMaterialCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? image_small = freezed,
     Object? image_original = freezed,
@@ -444,6 +455,10 @@ class __$InventoryExchangeMaterialCopyWithImpl<$Res>
     Object? changedAmount = freezed,
   }) {
     return _then(_InventoryExchangeMaterial(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -475,7 +490,8 @@ class __$InventoryExchangeMaterialCopyWithImpl<$Res>
 /// @nodoc
 class _$_InventoryExchangeMaterial extends _InventoryExchangeMaterial {
   const _$_InventoryExchangeMaterial(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.image_small,
       required this.image_original,
       required this.ownAmount,
@@ -483,6 +499,8 @@ class _$_InventoryExchangeMaterial extends _InventoryExchangeMaterial {
       this.changedAmount = 0})
       : super._();
 
+  @override
+  final String id;
   @override
   final String name;
   @override
@@ -499,13 +517,15 @@ class _$_InventoryExchangeMaterial extends _InventoryExchangeMaterial {
 
   @override
   String toString() {
-    return 'InventoryExchangeMaterial(name: $name, image_small: $image_small, image_original: $image_original, ownAmount: $ownAmount, foreignAmount: $foreignAmount, changedAmount: $changedAmount)';
+    return 'InventoryExchangeMaterial(id: $id, name: $name, image_small: $image_small, image_original: $image_original, ownAmount: $ownAmount, foreignAmount: $foreignAmount, changedAmount: $changedAmount)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _InventoryExchangeMaterial &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.image_small, image_small) ||
@@ -528,6 +548,7 @@ class _$_InventoryExchangeMaterial extends _InventoryExchangeMaterial {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(image_small) ^
       const DeepCollectionEquality().hash(image_original) ^
@@ -545,7 +566,8 @@ class _$_InventoryExchangeMaterial extends _InventoryExchangeMaterial {
 
 abstract class _InventoryExchangeMaterial extends InventoryExchangeMaterial {
   const factory _InventoryExchangeMaterial(
-      {required String name,
+      {required String id,
+      required String name,
       required String image_small,
       required String image_original,
       required int ownAmount,
@@ -553,6 +575,8 @@ abstract class _InventoryExchangeMaterial extends InventoryExchangeMaterial {
       int changedAmount}) = _$_InventoryExchangeMaterial;
   const _InventoryExchangeMaterial._() : super._();
 
+  @override
+  String get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override

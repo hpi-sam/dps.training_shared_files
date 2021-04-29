@@ -35,25 +35,26 @@ class InventoryExchange with _$InventoryExchange {
     for (int i = 0; i < ownInventory.categories.length; i++) {
       List<InventoryExchangeMaterial> exchangeMaterialList = [];
 
-      // Get all materialNames that are in either ownInventory or foreignInventory.
-      Set<String> materialNameSet = Set();
+      // Get all materialIDs that are in either ownInventory or foreignInventory.
+      Set<String> materialIDSet = Set();
       ownInventory.categories[i].items.forEach((material) {
-        materialNameSet.add(material.name);
+        materialIDSet.add(material.id);
       });
       foreignInventory.categories[i].items.forEach((material) {
-        materialNameSet.add(material.name);
+        materialIDSet.add(material.id);
       });
 
-      // Add each found materialName to the exchangeMaterialList with the respective
+      // Add each found materialID to the exchangeMaterialList with the respective
       // own and foreign amounts.
-      materialNameSet.forEach((String materialName) {
+      materialIDSet.forEach((String materialID) {
         DPSMaterial? ownMaterial =
-        ownInventory.categories[i].getMaterial(materialName: materialName);
+        ownInventory.categories[i].getMaterial(materialID: materialID);
         DPSMaterial? foreignMaterial = foreignInventory.categories[i]
-            .getMaterial(materialName: materialName);
+            .getMaterial(materialID: materialID);
         if (ownMaterial != null) {
           exchangeMaterialList.add(InventoryExchangeMaterial(
-            name: materialName,
+            id: materialID,
+            name: ownMaterial.name,
             image_small: ownMaterial.image_small,
             image_original: ownMaterial.image_original,
             ownAmount: ownMaterial.amount,
@@ -61,10 +62,11 @@ class InventoryExchange with _$InventoryExchange {
           ));
         } else {
           // we know that if ownMaterial is null, foreignMaterial has to be non-null,
-          // because otherwise the materialName would not be in the materialNameSet.
+          // because otherwise the materialID would not be in the materialIDSet.
           exchangeMaterialList.add(InventoryExchangeMaterial(
-            name: materialName,
-            image_small: foreignMaterial!.image_small,
+            id: materialID,
+            name: foreignMaterial!.name,
+            image_small: foreignMaterial.image_small,
             image_original: foreignMaterial.image_original,
             ownAmount: (ownMaterial?.amount) ?? 0,
             foreignAmount: foreignMaterial.amount,
@@ -96,6 +98,7 @@ class InventoryExchange with _$InventoryExchange {
         InventoryExchangeMaterial exchangeMaterial =
             inventoryExchange.categories[i].items[j];
         materialList.add(InventoryExchangeMaterial(
+            id: ownMaterial.id,
             name: ownMaterial.name,
             image_small: ownMaterial.image_small,
             image_original: ownMaterial.image_original,
@@ -124,26 +127,26 @@ class InventoryExchange with _$InventoryExchange {
     };
   }
 
-  /// Returns the item with [dpsMaterialName] in this InventoryExchange.
+  /// Returns the item with [materialID] in this InventoryExchange.
   ///
-  /// Returns null if no item with this name exists.
-  InventoryExchangeMaterial? getItem(String dpsMaterialName) {
+  /// Returns null if no item with this [materialID] exists.
+  InventoryExchangeMaterial? getItem(String materialID) {
     for (InventoryExchangeCategory category in categories) {
       for (InventoryExchangeMaterial item in category.items) {
-        if (item.name == dpsMaterialName) return item;
+        if (item.id == materialID) return item;
       }
     }
     return null;
   }
 
-  /// Returns a copy [InventoryExchange] with the amount of material given in [dpsMaterialName]
+  /// Returns a copy [InventoryExchange] with the amount of material [materialID]
   /// by value given in [amount].
-  InventoryExchange copyWithMaterialAmount(String dpsMaterialName, int amount) {
+  InventoryExchange copyWithMaterialAmount(String materialID, int amount) {
     List<InventoryExchangeCategory> categories = [];
     for (InventoryExchangeCategory category in this.categories) {
       List<InventoryExchangeMaterial> items = [];
       for (InventoryExchangeMaterial item in category.items) {
-        if (item.name == dpsMaterialName) {
+        if (item.id == materialID) {
           items.add(item.copyWith(changedAmount: amount));
         } else {
           items.add(item);
@@ -198,6 +201,7 @@ class InventoryExchangeMaterial with _$InventoryExchangeMaterial {
   const InventoryExchangeMaterial._();
 
   const factory InventoryExchangeMaterial({
+    required String id,
     required String name,
     required String image_small,
     required String image_original,
@@ -208,7 +212,7 @@ class InventoryExchangeMaterial with _$InventoryExchangeMaterial {
 
   Map<String, dynamic> toJson() {
     return {
-      "name": this.name,
+      "id": this.id,
       "amount": this.changedAmount,
     };
   }
