@@ -29,11 +29,12 @@ class InventoryExchange with _$InventoryExchange {
   /// the amount of both inventories. If an [oldExchange] is given, it copies
   /// the changedAmount of this [oldExchange] in the new [InventoryExchange].
   factory InventoryExchange.fromInventories(
-      {required Inventory ownInventory, required Inventory foreignInventory, InventoryExchange? oldExchange}) {
-
+      {required Inventory ownInventory,
+      required Inventory foreignInventory,
+      InventoryExchange? oldExchange}) {
     List<InventoryExchangeCategory> categoryList = [];
     assert(ownInventory.categories.length == foreignInventory.categories.length,
-    "Categories of inventories are not identical!");
+        "Categories of inventories are not identical!");
     for (int i = 0; i < ownInventory.categories.length; i++) {
       List<InventoryExchangeMaterial> exchangeMaterialList = [];
 
@@ -50,10 +51,11 @@ class InventoryExchange with _$InventoryExchange {
       // own and foreign amounts.
       materialIDSet.forEach((String materialID) {
         DPSMaterial? ownMaterial =
-        ownInventory.categories[i].getMaterial(materialID: materialID);
-        DPSMaterial? foreignMaterial = foreignInventory.categories[i]
-            .getMaterial(materialID: materialID);
-        InventoryExchangeMaterial? exchangeMaterial = oldExchange?.getItem(materialID: materialID);
+            ownInventory.categories[i].getMaterial(materialID: materialID);
+        DPSMaterial? foreignMaterial =
+            foreignInventory.categories[i].getMaterial(materialID: materialID);
+        InventoryExchangeMaterial? exchangeMaterial =
+            oldExchange?.getItem(materialID: materialID);
 
         if (ownMaterial != null) {
           exchangeMaterialList.add(InventoryExchangeMaterial(
