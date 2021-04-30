@@ -52,11 +52,11 @@ class DPSMaterialCategory with _$DPSMaterialCategory {
         name: json["name"], items: parseDPSMaterialForCategory(json));
   }
 
-  /// Returns the [DPSMaterial] with name [materialName] from this category.
+  /// Returns the [DPSMaterial] with id [materialID] from this category.
   /// Returns null if no such [DPSMaterial] exists.
-  DPSMaterial? getMaterial({required String materialName}) {
+  DPSMaterial? getMaterial({required String materialID}) {
     for (int i = 0; i < items.length; i++) {
-      if (items[i].name == materialName) return items[i];
+      if (items[i].id == materialID) return items[i];
     }
     return null;
   }
@@ -74,6 +74,7 @@ List<DPSMaterial> parseDPSMaterialForCategory(Map<String, dynamic> json) {
 class DPSMaterial with _$DPSMaterial {
   const DPSMaterial._();
   const factory DPSMaterial({
+    required String id,
     required String name,
     required String image_small,
     required String image_original,
@@ -83,6 +84,7 @@ class DPSMaterial with _$DPSMaterial {
 
   factory DPSMaterial.fromJson(Map<String, dynamic> json) {
     return DPSMaterial(
+      id: json["id"],
       name: json["name"],
       image_small: serverURL + json["image"]["small"],
       image_original: serverURL + json["image"]["original"],

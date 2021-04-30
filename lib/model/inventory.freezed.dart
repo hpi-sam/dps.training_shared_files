@@ -299,12 +299,14 @@ class _$DPSMaterialTearOff {
   const _$DPSMaterialTearOff();
 
   _DPSMaterial call(
-      {required String name,
+      {required String id,
+      required String name,
       required String image_small,
       required String image_original,
       required int amount,
       required int duration}) {
     return _DPSMaterial(
+      id: id,
       name: name,
       image_small: image_small,
       image_original: image_original,
@@ -319,6 +321,7 @@ const $DPSMaterial = _$DPSMaterialTearOff();
 
 /// @nodoc
 mixin _$DPSMaterial {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get image_small => throw _privateConstructorUsedError;
   String get image_original => throw _privateConstructorUsedError;
@@ -336,7 +339,8 @@ abstract class $DPSMaterialCopyWith<$Res> {
           DPSMaterial value, $Res Function(DPSMaterial) then) =
       _$DPSMaterialCopyWithImpl<$Res>;
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String image_small,
       String image_original,
       int amount,
@@ -353,6 +357,7 @@ class _$DPSMaterialCopyWithImpl<$Res> implements $DPSMaterialCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? image_small = freezed,
     Object? image_original = freezed,
@@ -360,6 +365,10 @@ class _$DPSMaterialCopyWithImpl<$Res> implements $DPSMaterialCopyWith<$Res> {
     Object? duration = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -392,7 +401,8 @@ abstract class _$DPSMaterialCopyWith<$Res>
       __$DPSMaterialCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String image_small,
       String image_original,
       int amount,
@@ -411,6 +421,7 @@ class __$DPSMaterialCopyWithImpl<$Res> extends _$DPSMaterialCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? image_small = freezed,
     Object? image_original = freezed,
@@ -418,6 +429,10 @@ class __$DPSMaterialCopyWithImpl<$Res> extends _$DPSMaterialCopyWithImpl<$Res>
     Object? duration = freezed,
   }) {
     return _then(_DPSMaterial(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -445,13 +460,16 @@ class __$DPSMaterialCopyWithImpl<$Res> extends _$DPSMaterialCopyWithImpl<$Res>
 /// @nodoc
 class _$_DPSMaterial extends _DPSMaterial {
   const _$_DPSMaterial(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.image_small,
       required this.image_original,
       required this.amount,
       required this.duration})
       : super._();
 
+  @override
+  final String id;
   @override
   final String name;
   @override
@@ -465,13 +483,15 @@ class _$_DPSMaterial extends _DPSMaterial {
 
   @override
   String toString() {
-    return 'DPSMaterial(name: $name, image_small: $image_small, image_original: $image_original, amount: $amount, duration: $duration)';
+    return 'DPSMaterial(id: $id, name: $name, image_small: $image_small, image_original: $image_original, amount: $amount, duration: $duration)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _DPSMaterial &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.image_small, image_small) ||
@@ -490,6 +510,7 @@ class _$_DPSMaterial extends _DPSMaterial {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(image_small) ^
       const DeepCollectionEquality().hash(image_original) ^
@@ -504,13 +525,16 @@ class _$_DPSMaterial extends _DPSMaterial {
 
 abstract class _DPSMaterial extends DPSMaterial {
   const factory _DPSMaterial(
-      {required String name,
+      {required String id,
+      required String name,
       required String image_small,
       required String image_original,
       required int amount,
       required int duration}) = _$_DPSMaterial;
   const _DPSMaterial._() : super._();
 
+  @override
+  String get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override
