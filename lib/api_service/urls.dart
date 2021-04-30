@@ -6,17 +6,15 @@ const Map<String, String> PREDEFINED_URLS = {
         "Localhost": "http://127.0.0.1:8000"
 };
 
-String serverURL = PREDEFINED_URLS["Lehrstuhl-Server"]!;
+String selectedServer = "Lehrstuhl-Server";
+String serverURL = PREDEFINED_URLS[selectedServer]!;
 
 /// Sets the severURL to the server with name [serverName]. The [serverName] must
-/// be defined in [PREDEFINED_URLS].
-void setActiveServerName({required String serverName}) {
-        serverURL = PREDEFINED_URLS[serverName] ?? PREDEFINED_URLS["Localhost"]!;
-}
-
-/// Sets the serverURL to [url].
-void setActiveServerURL({required String url}) {
-        serverURL = url;
+/// be defined in [PREDEFINED_URLS]. Otherwise the Lehrstuhl-Server is chosen as a
+/// default.
+void selectServer({required String serverName}) {
+        selectedServer = serverName;
+        serverURL = PREDEFINED_URLS[serverName] ?? PREDEFINED_URLS["Lehrstuhl-Server"]!;
 }
 
 // configuration of routes to use for server requests.
