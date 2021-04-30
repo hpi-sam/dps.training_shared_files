@@ -1,7 +1,7 @@
 /// Defines a map of predefined urls of the backend server, solely for development
 /// purposes.
 const Map<String, String> PREDEFINED_URLS = {
-        "Deployment-Server": "https://mcisim.eu.pythonanywhere.com/",
+        "Deployment-Server": "http://mcisim.eu.pythonanywhere.com/",
         "Lehrstuhl-Server": "http://fb14srv8.hpi.uni-potsdam.de:8000",
         "Localhost": "http://127.0.0.1:8000"
 };
