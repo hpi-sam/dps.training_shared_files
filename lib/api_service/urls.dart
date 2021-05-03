@@ -53,3 +53,4 @@ String helperIDUrl({required int helperNr}) =>
 String checkHelperBusyUrl({required int helperNr}) =>
     serverURL + '/own/busy/helper_$helperNr/';
 String helperCountUrl() => serverURL + '/own/helpercount/';
+String getRoomUrl({required int roomID}) => serverURL + '/rooms/$roomID/';

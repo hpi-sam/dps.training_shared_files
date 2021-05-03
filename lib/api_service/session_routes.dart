@@ -6,6 +6,17 @@ import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
 import 'package:bpmanv_app_sharedFiles/model/available_measures.dart';
 
+Future<bool> doesRoomExistRoute({required int roomID}) async{
+  try {
+    final response = await Session.get(
+        getRoomUrl(roomID: roomID));
+    if (response.statusCode == 200) return true;
+    return false;
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
+
 Future<void> joinRoomRoute(
     {required int roomID, required int helperAmount}) async {
   try {
@@ -23,7 +34,6 @@ Future<void> signUpRoute({String? name}) async {
   try {
     final response =
         await Session.postLogin(signUpUrl(), jsonEncode({"username": name}));
-    print(response.statusCode);
     if (response.statusCode != 201) {
       throw Exception("Error signing up ${response.statusCode}");
     }

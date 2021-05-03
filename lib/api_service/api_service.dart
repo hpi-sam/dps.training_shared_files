@@ -204,6 +204,12 @@ class BackendRoute {
     Map<Symbol, dynamic> p = {};
     return BackendRoute(helperCountUrl(), f, p);
   }
+
+  factory BackendRoute.doesRoomExist({required int roomID}) {
+    Function f = doesRoomExistRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(getRoomUrl(roomID: roomID), f, p);
+  }
 }
 
 /// This class contains a [Queue] which stores all [BackendRoute] that are called
