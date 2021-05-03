@@ -9,7 +9,7 @@ import 'package:bpmanv_app_sharedFiles/model/simulation_time.dart';
 
 Future<bool> doesRoomExistRoute({required int roomID}) async{
   try {
-    final response = await Session.get(
+    final response = await Session.getWithoutAuth(
         getRoomUrl(roomID: roomID));
     if (response.statusCode == 200) return true;
     return false;
