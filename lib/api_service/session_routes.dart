@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
 import 'package:bpmanv_app_sharedFiles/model/available_measures.dart';
+import 'package:bpmanv_app_sharedFiles/model/simulation_time.dart';
 
 Future<bool> doesRoomExistRoute({required int roomID}) async{
   try {
@@ -42,13 +43,12 @@ Future<void> signUpRoute({String? name}) async {
   }
 }
 
-Future<int> simulationTimeRoute() async {
-  //TODO: parse simulation speed once it is implemented
+Future<SimulationTime> simulationTimeRoute() async {
   try {
     final response = await Session.get(simulationTimeUrl());
     final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
     if (response.statusCode == 200) {
-      return responseJson["time"];
+      return SimulationTime.fromJson(responseJson);
     } else {
       throw Exception(
           "Error ${response.statusCode} - Could not fetch SimulationTime.");
