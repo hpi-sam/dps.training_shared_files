@@ -155,6 +155,18 @@ class InventoryExchange with _$InventoryExchange {
     }
     return true;
   }
+
+  /// Returns true if this [InventoryExchange] has all the items that [inventory]
+  /// has. Returns false if [inventory] has an item, that this [InventoryExchange]
+  /// doesn't have.
+  bool hasAllItemsOf({required Inventory inventory}) {
+    for(DPSMaterialCategory category in inventory.categories){
+      for (DPSMaterial item in category.items) {
+        if (getItem(materialID: item.id) == null) return false;
+      }
+    }
+    return true;
+  }
 }
 
 /// Model that represents a single category of materials in the context of an [InventoryExchange].
