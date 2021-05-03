@@ -4,6 +4,7 @@ import 'dart:convert';
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
+import 'package:bpmanv_app_sharedFiles/model/available_measures.dart';
 
 Future<void> joinRoomRoute(
     {required int roomID, required int helperAmount}) async {
@@ -76,13 +77,13 @@ Future<void> leaveRoomRoute() async {
   }
 }
 
-Future<bool> checkHelperBusyRoute({required int helperNr}) async {
+Future<RunningMeasure?> checkHelperBusyRoute({required int helperNr}) async {
   try {
     final response = await Session.get(checkHelperBusyUrl(helperNr: helperNr));
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseJson =
           jsonDecode(utf8.decode(response.bodyBytes));
-      return responseJson["is_busy"]!;
+      return responseJson["current_measure"]!;
     } else {
       throw Exception(
           "Error ${response.statusCode} - Could not check if the helper $helperNr is currently busy.");
