@@ -2,6 +2,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'simulation_time.freezed.dart';
+part 'simulation_time.g.dart';
 
 /// Defines the time data model.
 /// The package freezed is used to auto-generate the code for the immutable data classes annotated
