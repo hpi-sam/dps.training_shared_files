@@ -83,7 +83,7 @@ Future<RunningMeasure?> checkHelperBusyRoute({required int helperNr}) async {
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseJson =
           jsonDecode(utf8.decode(response.bodyBytes));
-      return responseJson["current_measure"]!;
+      return responseJson["current_measure"];
     } else {
       throw Exception(
           "Error ${response.statusCode} - Could not check if the helper $helperNr is currently busy.");
