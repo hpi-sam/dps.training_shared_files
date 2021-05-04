@@ -2,6 +2,7 @@
 import 'dart:collection';
 
 // Package imports:
+import 'package:bpmanv_app_sharedFiles/api_service/trainer_routes.dart';
 import 'package:intl/intl.dart';
 
 // Project imports:
@@ -209,6 +210,48 @@ class BackendRoute {
     Function f = doesRoomExistRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
     return BackendRoute(getRoomUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.getPlayerList({required int roomID}) {
+    Function f = getPlayerListsRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(getPlayerListUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.getPatientList({required int roomID}) {
+    Function f = getPatientListsRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(getPatientListUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.pauseRoom({required int roomID}) {
+    Function f = pauseRoomRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(pauseRoomUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.resumeRoom({required int roomID}) {
+    Function f = resumeRoomRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(resumeRoomUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.startRoom({required int roomID}) {
+    Function f = startRoomRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(startRoomUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.finishRoom({required int roomID}) {
+    Function f = pauseRoomRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(finishRoomUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.changePhase({required int roomID}) {
+    Function f = changePhaseRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(changePhaseUrl(roomID: roomID), f, p);
   }
 }
 
