@@ -34,6 +34,12 @@ abstract class Session {
     return false;
   }
 
+  /// GET request without session information in its header.
+  static Future<http.Response> getWithoutAuth(String url) async {
+    http.Response response = await http.get(Uri.parse(url));
+    return response;
+  }
+
   /// GET request that includes session information in its header.
   static Future<http.Response> get(String url) async {
     http.Response response =
