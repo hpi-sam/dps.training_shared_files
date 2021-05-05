@@ -5,7 +5,7 @@ import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
 import 'package:bpmanv_app_sharedFiles/model/players.dart';
 import 'package:bpmanv_app_sharedFiles/model/simplified_patients.dart';
 
-Future<PlayerList> getPlayerListsRoute({required int roomID}) async {
+Future<PlayerList> getPlayerListRoute({required int roomID}) async {
   try {
     final response = await Session.get(getPlayerListUrl(roomID: roomID));
     if (response.statusCode == 200) {
@@ -19,7 +19,7 @@ Future<PlayerList> getPlayerListsRoute({required int roomID}) async {
   }
 }
 
-Future<SimplifiedPatientList> getPatientListsRoute({required int roomID}) async {
+Future<SimplifiedPatientList> getPatientListRoute({required int roomID}) async {
   try {
     final response = await Session.get(getPatientListUrl(roomID: roomID));
     if (response.statusCode == 200) {

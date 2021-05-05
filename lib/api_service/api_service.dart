@@ -213,13 +213,13 @@ class BackendRoute {
   }
 
   factory BackendRoute.getPlayerList({required int roomID}) {
-    Function f = getPlayerListsRoute;
+    Function f = getPlayerListRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
     return BackendRoute(getPlayerListUrl(roomID: roomID), f, p);
   }
 
   factory BackendRoute.getPatientList({required int roomID}) {
-    Function f = getPatientListsRoute;
+    Function f = getPatientListRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
     return BackendRoute(getPatientListUrl(roomID: roomID), f, p);
   }
