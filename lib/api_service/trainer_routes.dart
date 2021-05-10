@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
-import 'package:bpmanv_app_sharedFiles/model/players.dart';
-import 'package:bpmanv_app_sharedFiles/model/simplified_patients.dart';
+import 'package:bpmanv_app_sharedFiles/model/players/players.dart';
+import 'package:bpmanv_app_sharedFiles/model/simplified_patients/simplified_patients.dart';
 
 // TODO: Change getWithoutAuth to get again when the trainer can authenticate.
 

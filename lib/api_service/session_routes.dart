@@ -4,8 +4,8 @@ import 'dart:convert';
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
-import 'package:bpmanv_app_sharedFiles/model/available_measures.dart';
-import 'package:bpmanv_app_sharedFiles/model/simulation_time.dart';
+import 'package:bpmanv_app_sharedFiles/model/available_measures/available_measures.dart';
+import 'package:bpmanv_app_sharedFiles/model/simulation_time/simulation_time.dart';
 
 Future<bool> doesRoomExistRoute({required int roomID}) async{
   try {
