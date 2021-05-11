@@ -4,8 +4,8 @@ import 'dart:convert';
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
-import 'package:bpmanv_app_sharedFiles/model/inventory.dart';
-import 'package:bpmanv_app_sharedFiles/model/inventory_exchange.dart';
+import 'package:bpmanv_app_sharedFiles/model/inventory/inventory.dart';
+import 'package:bpmanv_app_sharedFiles/model/inventory_exchange/inventory_exchange.dart';
 
 final own_inventory_mock = {
   "entitytype": "Helfer",
