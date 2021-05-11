@@ -10,6 +10,7 @@ class FirstImpressionField extends StatelessWidget {
   final Color textColor;
   final String description;
   final bool isActive;
+  final double width;
   late final String? character;
   late final IconData? icon;
   late final IconData? alternateIcon;
@@ -25,6 +26,7 @@ class FirstImpressionField extends StatelessWidget {
     required this.isActive,
     required this.textColor,
     required this.backgroundColor,
+    required this.width,
   }) {
     this._isIcon = false;
     this.icon = null;
@@ -39,6 +41,7 @@ class FirstImpressionField extends StatelessWidget {
     required this.isActive,
     required this.textColor,
     required this.backgroundColor,
+    required this.width,
     this.useAlternateIcon = false,
     this.alternateIcon,
   }) {
@@ -48,7 +51,6 @@ class FirstImpressionField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
     var inactiveDecoration = BoxDecoration(
         border: Border.all(width: 3),
         borderRadius: BorderRadius.all(Radius.circular(10)),

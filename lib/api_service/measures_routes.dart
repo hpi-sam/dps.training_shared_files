@@ -197,7 +197,7 @@ Future<AppliedMeasures> fetchAppliedMeasuresRoute(
     {required int patientID}) async {
   try {
     final response =
-        await Session.get(appliedMeasuresUrl(patientID: patientID));
+        await Session.getWithoutAuth(appliedMeasuresUrl(patientID: patientID));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
       return AppliedMeasures.fromJson(responseJson);

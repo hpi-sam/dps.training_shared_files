@@ -17,12 +17,14 @@ class BodyPart extends StatelessWidget {
   final radius;
   final List<InjuryType> injuries;
   final transformation;
+  final double width;
 
   BodyPart({
     required this.heightFactor,
     required this.widthFactor,
     required this.radius,
     required this.injuries,
+    required this.width,
     this.transformation,
   });
 
@@ -59,13 +61,12 @@ class BodyPart extends StatelessWidget {
           break;
       }
     });
-    var screenWidth = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         Container(
           transform: transformation,
-          height: heightFactor * screenWidth,
-          width: widthFactor * screenWidth,
+          height: heightFactor * this.width,
+          width: widthFactor * this.width,
           child: Column(
             children: markers,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -82,8 +83,9 @@ class BodyPart extends StatelessWidget {
 }
 
 class Head extends BodyPart {
-  Head({@required injuries})
+  Head({required List<InjuryType> injuries, required double width})
       : super(
+            width: width,
             heightFactor: 0.17,
             widthFactor: 0.17,
             radius: BorderRadius.all(Radius.circular(100)),
@@ -91,8 +93,9 @@ class Head extends BodyPart {
 }
 
 class Thorax extends BodyPart {
-  Thorax({@required injuries})
+  Thorax({required List<InjuryType> injuries, required double width})
       : super(
+            width: width,
             heightFactor: 0.15,
             widthFactor: 0.25,
             radius: BorderRadius.only(
@@ -101,8 +104,9 @@ class Thorax extends BodyPart {
 }
 
 class Abdomen extends BodyPart {
-  Abdomen({@required injuries})
+  Abdomen({required List<InjuryType> injuries, required double width})
       : super(
+            width: width,
             heightFactor: 0.15,
             widthFactor: 0.25,
             radius: BorderRadius.all(Radius.circular(0)),
@@ -110,8 +114,9 @@ class Abdomen extends BodyPart {
 }
 
 class Pelvis extends BodyPart {
-  Pelvis({@required injuries})
+  Pelvis({required List<InjuryType> injuries, required double width})
       : super(
+            width: width,
             heightFactor: 0.15,
             widthFactor: 0.25,
             radius: BorderRadius.only(
@@ -121,8 +126,9 @@ class Pelvis extends BodyPart {
 }
 
 class Leg extends BodyPart {
-  Leg({@required injuries})
+  Leg({required List<InjuryType> injuries, required double width})
       : super(
+            width: width,
             heightFactor: 0.35,
             widthFactor: 0.08,
             radius: BorderRadius.all(Radius.circular(20)),
@@ -130,8 +136,12 @@ class Leg extends BodyPart {
 }
 
 class Arm extends BodyPart {
-  Arm({@required injuries, transformation})
+  Arm(
+      {required List<InjuryType> injuries,
+      required double width,
+      transformation})
       : super(
+            width: width,
             heightFactor: 0.4,
             widthFactor: 0.08,
             radius: BorderRadius.all(Radius.circular(20)),
