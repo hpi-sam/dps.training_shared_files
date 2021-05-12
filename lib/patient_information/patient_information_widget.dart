@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
 import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import 'package:bpmanv_app_sharedFiles/patient_information/biometry_widget.dart';
-import 'package:bpmanv_app_sharedFiles/patient_information/first_impression_row.dart';
+import 'package:bpmanv_app_sharedFiles/patient_information/first_impression_widget.dart';
 import 'package:bpmanv_app_sharedFiles/patient_information/patient_visualization_legend_widget.dart';
 import 'package:bpmanv_app_sharedFiles/patient_information/patient_visualization_widget.dart';
 import 'package:bpmanv_app_sharedFiles/patient_information/phase_information_widget.dart';
@@ -65,7 +65,7 @@ class _PatientInformationWidgetState extends State<PatientInformationWidget> {
                       Expanded(flex: 3, child: Container()),
                       Expanded(
                           flex: 5,
-                          child: FirstImpressionRow(
+                          child: FirstImpressionWidget(
                             patientFirstImpression:
                                 widget.patient.firstImpression,
                             width: constraints.maxWidth,

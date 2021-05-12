@@ -9,14 +9,14 @@ import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import '../l10n/localizedstrings.dart';
 import 'first_impression_field_widget.dart';
 
-/// Draws a row of the four first impression fields of a patient.
+/// Draws the four first impression fields of a patient.
 ///
 /// Each [FirstImpressionField] displays a character (as in the analog DPS simulation) and is
 /// colored when applicable to the patient.
-class FirstImpressionRow extends StatelessWidget {
+class FirstImpressionWidget extends StatelessWidget {
   final PatientFirstImpression patientFirstImpression;
   final double width;
-  FirstImpressionRow(
+  FirstImpressionWidget(
       {required this.patientFirstImpression, required this.width});
 
   @override
