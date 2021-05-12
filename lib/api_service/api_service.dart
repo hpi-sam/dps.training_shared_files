@@ -72,8 +72,10 @@ class BackendRoute {
     return BackendRoute(ownInventoryDataUrl(helperNr: helperNr), f, p);
   }
 
-  factory BackendRoute.fetchForeignInventory({required int entityID}) {
-    Function f = fetchForeignInventoryRoute;
+  factory BackendRoute.fetchForeignInventory(
+      {required int entityID, bool useMockData = false}) {
+    Function f =
+        useMockData ? fetchForeignInventoryMock : fetchForeignInventoryRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"entityID": entityID});
     return BackendRoute(foreignInventoryDataUrl(entityID: entityID), f, p);
   }
