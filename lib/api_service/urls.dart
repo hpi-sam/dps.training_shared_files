@@ -45,6 +45,8 @@ String removeAppliedMeasureUrl(
 String triageUrl({required int patientID, required int helperNr}) =>
     serverURL + '/patients/$patientID/triage/helper/$helperNr/';
 String playersSignUpUrl() => serverURL + '/players/signup/';
+String trainerSignUpUrl() => serverURL + '/trainers/signup/';
+String trainerLogInUrl() => serverURL + '/trainers/login/';
 String joinRoomUrl({required int roomID, required int helperAmount}) =>
     serverURL + '/rooms/$roomID/join/helpercount_$helperAmount/';
 String leaveRoomUrl() => serverURL + '/rooms/leave/';

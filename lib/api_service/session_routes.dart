@@ -7,10 +7,9 @@ import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
 import 'package:bpmanv_app_sharedFiles/model/available_measures.dart';
 import 'package:bpmanv_app_sharedFiles/model/simulation_time.dart';
 
-Future<bool> doesRoomExistRoute({required int roomID}) async{
+Future<bool> doesRoomExistRoute({required int roomID}) async {
   try {
-    final response = await Session.getWithoutAuth(
-        getRoomUrl(roomID: roomID));
+    final response = await Session.getWithoutAuth(getRoomUrl(roomID: roomID));
     if (response.statusCode == 200) return true;
     return false;
   } on Exception catch (e) {
@@ -35,6 +34,40 @@ Future<void> playerSignUpRoute({String? name}) async {
   try {
     final response =
         await Session.postLogin(playersSignUpUrl(), jsonEncode({"name": name}));
+    if (response.statusCode != 201) {
+      throw Exception("Error signing up ${response.statusCode}");
+    }
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
+
+Future<void> trainerSignUpRoute(
+    {String? username,
+    String? password1,
+    String? password2,
+    String? email}) async {
+  try {
+    final response = await Session.postLogin(
+        trainerSignUpUrl(),
+        jsonEncode({
+          "username": username,
+          "password1": password1,
+          "password2": password2,
+          "email": email
+        }));
+    if (response.statusCode != 201) {
+      throw Exception("Error signing up ${response.statusCode}");
+    }
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
+
+Future<void> trainerLogInRoute({String? username, String? password}) async {
+  try {
+    final response = await Session.postLogin(trainerLogInUrl(),
+        jsonEncode({"username": username, "password": password}));
     if (response.statusCode != 201) {
       throw Exception("Error signing up ${response.statusCode}");
     }
@@ -95,7 +128,8 @@ Future<RunningMeasure?> checkHelperBusyRoute({required int helperNr}) async {
           jsonDecode(utf8.decode(response.bodyBytes));
       if (responseJson["is_busy"]) {
         return RunningMeasure.fromJson(responseJson["current_measure"]);
-      } else return null;
+      } else
+        return null;
     } else {
       throw Exception(
           "Error ${response.statusCode} - Could not check if the helper $helperNr is currently busy.");

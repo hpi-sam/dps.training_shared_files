@@ -193,6 +193,29 @@ class BackendRoute {
     return BackendRoute(playersSignUpUrl(), f, p);
   }
 
+  factory BackendRoute.trainersSignUp(
+      {required String username,
+      required String password1,
+      required String password2,
+      required String email}) {
+    Function f = playerSignUpRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({
+      "username": username,
+      "password1": password1,
+      "password2": password2,
+      "email": email
+    });
+    return BackendRoute(playersSignUpUrl(), f, p);
+  }
+
+  factory BackendRoute.trainersLogIn(
+      {required String username, required String password}) {
+    Function f = playerSignUpRoute;
+    Map<Symbol, dynamic> p =
+        symbolizeKeys({"username": username, "password": password});
+    return BackendRoute(playersSignUpUrl(), f, p);
+  }
+
   factory BackendRoute.simulationTime() {
     Function f = simulationTimeRoute;
     Map<Symbol, dynamic> p = {};
