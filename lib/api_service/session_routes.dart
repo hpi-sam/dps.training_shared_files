@@ -31,10 +31,10 @@ Future<void> joinRoomRoute(
   }
 }
 
-Future<void> signUpRoute({String? name}) async {
+Future<void> playerSignUpRoute({String? name}) async {
   try {
     final response =
-        await Session.postLogin(signUpUrl(), jsonEncode({"username": name}));
+        await Session.postLogin(playersSignUpUrl(), jsonEncode({"name": name}));
     if (response.statusCode != 201) {
       throw Exception("Error signing up ${response.statusCode}");
     }

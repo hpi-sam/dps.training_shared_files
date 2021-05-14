@@ -187,10 +187,10 @@ class BackendRoute {
     return BackendRoute(leaveRoomUrl(), f, p);
   }
 
-  factory BackendRoute.signUp({String name = ""}) {
-    Function f = signUpRoute;
+  factory BackendRoute.playersSignUp({String name = ""}) {
+    Function f = playerSignUpRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"name": name});
-    return BackendRoute(signUpUrl(), f, p);
+    return BackendRoute(playersSignUpUrl(), f, p);
   }
 
   factory BackendRoute.simulationTime() {
