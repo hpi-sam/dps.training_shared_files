@@ -190,10 +190,33 @@ class BackendRoute {
     return BackendRoute(leaveRoomUrl(), f, p);
   }
 
-  factory BackendRoute.signUp({String name = ""}) {
-    Function f = signUpRoute;
+  factory BackendRoute.playersSignUp({String name = ""}) {
+    Function f = playerSignUpRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"name": name});
-    return BackendRoute(signUpUrl(), f, p);
+    return BackendRoute(playersSignUpUrl(), f, p);
+  }
+
+  factory BackendRoute.trainersSignUp(
+      {required String username,
+      required String password1,
+      required String password2,
+      required String email}) {
+    Function f = playerSignUpRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({
+      "username": username,
+      "password1": password1,
+      "password2": password2,
+      "email": email
+    });
+    return BackendRoute(playersSignUpUrl(), f, p);
+  }
+
+  factory BackendRoute.trainersLogIn(
+      {required String username, required String password}) {
+    Function f = playerSignUpRoute;
+    Map<Symbol, dynamic> p =
+        symbolizeKeys({"username": username, "password": password});
+    return BackendRoute(playersSignUpUrl(), f, p);
   }
 
   factory BackendRoute.simulationTime() {
@@ -283,7 +306,7 @@ class APIService {
 
   /// Returns the last [BackendRoute] in the [routeQueue]. Returns null if
   /// [routeQueue] is empty.
-  static BackendRoute? peakLast() {
+  static BackendRoute? peekLast() {
     if (routeQueue.isNotEmpty) return routeQueue.last;
   }
 

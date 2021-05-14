@@ -1,4 +1,6 @@
 // Package imports:
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,7 +14,7 @@ abstract class Session {
     "content-type": "application/json"
   };
   static String? _token;
-  static String? _session;
+  //static String? _session;
 
   static void deleteSession() async {
     final prefs = await SharedPreferences.getInstance();
@@ -25,10 +27,8 @@ abstract class Session {
   static Future<bool> restore() async {
     final prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString("token");
-    String? session = prefs.getString("session");
-    if (token != null && session != null) {
+    if (token != null) {
       _token = token;
-      _session = session;
       return true;
     }
     return false;
@@ -69,34 +69,28 @@ abstract class Session {
   static Map<String, String> _buildHeaders() {
     Map<String, String> headers = _baseHeaders;
     String? token = _token;
-    String? session = _session;
-    if (token == null || session == null) {
+    if (token == null) {
       throw Exception(
           "Unauthorized request - fetch authorization cookies by calling a postLogin request once before calling any post requests");
     } else {
-      headers['Cookie'] = token + ";" + session;
-      headers['X-CSRFToken'] = token.split("=")[1];
+      headers['Authorization'] = 'Token ' + _token!;
+      print(headers.toString());
       return headers;
     }
   }
 
   /// Parses token and session from the cookie included in [response] header.
   static void _updateCookie(http.Response response) async {
-    String? rawCookie = response.headers['set-cookie'];
+    var rawCookie = jsonDecode(utf8.decode(response.bodyBytes));
     if (rawCookie != null) {
-      int cookieIndex = rawCookie.indexOf('csrftoken');
-      int index = rawCookie.indexOf(';');
-      _token =
-          (cookieIndex > -1) ? rawCookie.substring(cookieIndex, index) : "";
-
-      int sessionIndex = rawCookie.indexOf('sessionid');
-      index = rawCookie.indexOf(';', sessionIndex);
-      _session = rawCookie.substring(sessionIndex, index);
+      String _token = rawCookie["token"];
+      print("Token: " + _token);
 
       // save token and session on disk
       final prefs = await SharedPreferences.getInstance();
-      if (_token != null) prefs.setString("token", _token!);
-      if (_session != null) prefs.setString("session", _session!);
+      prefs.setString("token", _token);
+    } else {
+      print("No cookie given");
     }
   }
 }
