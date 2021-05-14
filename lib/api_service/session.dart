@@ -68,13 +68,11 @@ abstract class Session {
   static Map<String, String> _buildHeaders() {
     Map<String, String> headers = _baseHeaders;
     String? token = _token;
-    print("token: " + token.toString());
     if (token == null) {
       throw Exception(
           "Unauthorized request - fetch authorization cookies by calling a postLogin request once before calling any post requests");
     } else {
       headers['Authorization'] = 'Token ' + _token!;
-      print(headers.toString());
       return headers;
     }
   }
@@ -84,7 +82,6 @@ abstract class Session {
     var rawCookie = jsonDecode(utf8.decode(response.bodyBytes));
     if (rawCookie != null) {
       _token = rawCookie["token"];
-      print("Token: " + _token.toString());
 
       // save token and session on disk
       final prefs = await SharedPreferences.getInstance();
