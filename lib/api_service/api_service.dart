@@ -201,7 +201,7 @@ class BackendRoute {
       required String password1,
       required String password2,
       required String email}) {
-    Function f = playerSignUpRoute;
+    Function f = trainerSignUpRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({
       "username": username,
       "password1": password1,
@@ -213,7 +213,7 @@ class BackendRoute {
 
   factory BackendRoute.trainersLogIn(
       {required String username, required String password}) {
-    Function f = playerSignUpRoute;
+    Function f = trainerLogInRoute;
     Map<Symbol, dynamic> p =
         symbolizeKeys({"username": username, "password": password});
     return BackendRoute(playersSignUpUrl(), f, p);

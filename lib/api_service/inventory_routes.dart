@@ -280,7 +280,7 @@ Future<Inventory> fetchOwnInventoryRoute({required int helperNr}) async {
 Future<Inventory> fetchForeignInventoryRoute({required int entityID}) async {
   try {
     final response =
-        await Session.getWithoutAuth(foreignInventoryDataUrl(entityID: entityID));
+        await Session.get(foreignInventoryDataUrl(entityID: entityID));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
       return Inventory.fromJson(responseJson);

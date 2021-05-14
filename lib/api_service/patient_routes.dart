@@ -82,7 +82,7 @@ Future<Patient> fetchPatientMock({required int patientID}) async {
 
 Future<Patient> fetchPatientRoute({required int patientID}) async {
   try {
-    final response = await Session.getWithoutAuth(patientDataUrl(patientID: patientID));
+    final response = await Session.get(patientDataUrl(patientID: patientID));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
       return Patient.fromJson(responseJson, patientID);
