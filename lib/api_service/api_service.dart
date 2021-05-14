@@ -238,7 +238,7 @@ class APIService {
 
   /// Returns the last [BackendRoute] in the [routeQueue]. Returns null if
   /// [routeQueue] is empty.
-  static BackendRoute? peakLast() {
+  static BackendRoute? peekLast() {
     if (routeQueue.isNotEmpty) return routeQueue.last;
   }
 
