@@ -1,8 +1,11 @@
-import 'package:api_service/model/patient.dart';
-import 'l10n/localizedstrings.dart';
-import 'package:bpmanv_app_widgets/util.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
+import 'package:bpmanv_app_sharedFiles/model/patient.dart';
+import 'package:bpmanv_app_sharedFiles/patient_information/util.dart';
 
 /// Builds an injury description of a patient.
 ///

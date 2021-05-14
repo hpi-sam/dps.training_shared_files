@@ -1,8 +1,10 @@
-import 'package:api_service/model/patient.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'l10n/localizedstrings.dart';
+// Project imports:
+import 'package:bpmanv_app_sharedFiles/model/patient.dart';
+import '../l10n/localizedstrings.dart';
 
 /// Displays the information of the current phase of a patient.
 class PhaseInformation extends StatelessWidget {
@@ -99,6 +101,13 @@ class PhaseInformation extends StatelessWidget {
   Widget _buildNotMeasurableInformation(BuildContext context) {
     return Text(
       LocalizedStrings.phaseInformationWidget_notMeasurableInformation_title,
+      style: TextStyle(color: Colors.redAccent),
+    );
+  }
+
+  Widget _buildNoValueInformation(BuildContext context) {
+    return Text(
+      LocalizedStrings.phaseInformationWidget_noValueInformation_title,
       style: TextStyle(color: Colors.redAccent),
     );
   }
@@ -240,7 +249,7 @@ class PhaseInformation extends StatelessWidget {
       children: [
         _buildInformationTitle(
             LocalizedStrings.phaseInformationWidget_ekgInformation_title),
-        ekg == "hidden" ? _buildHiddenInformation(context) : Text(ekg),
+        _buildFormattedRaisedInformation(context: context, value: ekg)
       ],
     );
   }
@@ -252,9 +261,7 @@ class PhaseInformation extends StatelessWidget {
       children: [
         _buildInformationTitle(LocalizedStrings
             .phaseInformationWidget_bloodPressureInformation_title),
-        bloodPressure == "hidden"
-            ? _buildHiddenInformation(context)
-            : Text(bloodPressure),
+        _buildFormattedRaisedInformation(context: context, value: bloodPressure)
       ],
     );
   }
@@ -266,9 +273,7 @@ class PhaseInformation extends StatelessWidget {
       children: [
         _buildInformationTitle(
             LocalizedStrings.phaseInformationWidget_lungsInformation_title),
-        pulmonaryAuscultation == "hidden"
-            ? _buildHiddenInformation(context)
-            : Text(pulmonaryAuscultation),
+        _buildFormattedRaisedInformation(context: context, value: pulmonaryAuscultation)
       ],
     );
   }
@@ -280,11 +285,7 @@ class PhaseInformation extends StatelessWidget {
       children: [
         _buildInformationTitle(
             LocalizedStrings.phaseInformationWidget_spo2Information_title),
-        spo2 == "hidden" //Todo : change to -2 as specified
-            ? _buildHiddenInformation(context)
-            : spo2 == "-1"
-                ? _buildNotMeasurableInformation(context)
-                : Text(spo2.toString()),
+        _buildFormattedRaisedInformation(context: context, value: spo2)
       ],
     );
   }
@@ -296,12 +297,22 @@ class PhaseInformation extends StatelessWidget {
       children: [
         _buildInformationTitle(
             LocalizedStrings.phaseInformationWidget_spcoInformation_title),
-        spco == "hidden" //Todo : change to -2 as specified
-            ? _buildHiddenInformation(context)
-            : spco == "-1"
-                ? _buildNotMeasurableInformation(context)
-                : Text(spco.toString()),
+        _buildFormattedRaisedInformation(context: context, value: spco)
       ],
     );
+  }
+
+  /// Build a Text Widget containing [value] if it is not "hidden", "not measurable" or
+  /// "no value". Otherwise build according other Widgets.
+  Widget _buildFormattedRaisedInformation({required BuildContext context, required String value}) {
+    switch (value) {
+      case "hidden":
+        return _buildHiddenInformation(context);
+      case "not measurable":
+        return _buildNotMeasurableInformation(context);
+      case "no value":
+        return _buildNoValueInformation(context);
+    }
+    return Text(value);
   }
 }

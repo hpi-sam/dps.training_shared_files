@@ -1,12 +1,13 @@
 name: Continuous Integration
-    
+
 on:
   push:
-
+  
 jobs:
   build:
     # This job will run on ubuntu virtual machine
     runs-on: ubuntu-latest
+    timeout-minutes: 4
     steps:
     
     # Setup Java environment in order to build the Android app.
@@ -14,7 +15,13 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
-    
+        
+    # Use SSH-Agent to get access to private package repositories
+    - uses: webfactory/ssh-agent@v0.5.2
+      with:
+          ssh-private-key:
+              ${{ secrets.SSH_PRIVATE_KEY_WIDGETS }}
+              
     # Setup the flutter environment.
     - uses: subosito/flutter-action@v1
       with:
@@ -30,7 +37,4 @@ jobs:
     # Run widget tests for our flutter project.
     - run: flutter test
     
-    # Build apk.
-    - run: flutter build apk
-  
 
