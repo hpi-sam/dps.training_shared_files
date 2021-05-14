@@ -268,7 +268,7 @@ class BackendRoute {
   }
 
   factory BackendRoute.finishRoom({required int roomID}) {
-    Function f = pauseRoomRoute;
+    Function f = finishRoomRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
     return BackendRoute(finishRoomUrl(roomID: roomID), f, p);
   }
