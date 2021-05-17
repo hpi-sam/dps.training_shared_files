@@ -18,7 +18,6 @@ abstract class Session {
   static void deleteSession() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.remove("token");
-    prefs.remove("session");
   }
 
   /// Tries to restore the token and session by loading them from the [SharedPreferences].

@@ -18,7 +18,8 @@ enum AppliedMeasureState {
   finished,
   aborted,
   removed,
-  expired
+  expired,
+  waiting_for_second_helper
 }
 
 ///  Defines the applied measures data model.
