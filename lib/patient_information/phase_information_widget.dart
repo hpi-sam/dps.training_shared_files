@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:bpmanv_app_sharedFiles/model/patient.dart';
+import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import '../l10n/localizedstrings.dart';
 
 /// Displays the information of the current phase of a patient.
@@ -13,74 +13,81 @@ class PhaseInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _screenWidth = MediaQuery.of(context).size.width;
-    return Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: _screenWidth / 2,
-              padding: EdgeInsets.symmetric(horizontal: _screenWidth / 40),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildExsangInformation(context),
-                  Padding(padding: EdgeInsets.only(top: 5)),
-                  _buildAirwayInformation(context),
-                  Padding(padding: EdgeInsets.only(top: 5)),
-                  _buildBreathingInformation(context),
-                  Padding(padding: EdgeInsets.only(top: 5)),
-                  _buildCirculationInformation(context),
-                ],
+    return LayoutBuilder(builder: (context, constraints) {
+      return Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: constraints.maxWidth / 2,
+                padding:
+                    EdgeInsets.symmetric(horizontal: constraints.maxWidth / 40),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildExsangInformation(context),
+                    Padding(padding: EdgeInsets.only(top: 5)),
+                    _buildAirwayInformation(context),
+                    Padding(padding: EdgeInsets.only(top: 5)),
+                    _buildBreathingInformation(context),
+                    Padding(padding: EdgeInsets.only(top: 5)),
+                    _buildCirculationInformation(context),
+                  ],
+                ),
               ),
-            ),
-            Container(
-              width: _screenWidth / 2,
-              padding: EdgeInsets.symmetric(horizontal: _screenWidth / 40),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildDisabilityInformation(context),
-                  Padding(padding: EdgeInsets.only(top: 5)),
-                  _buildExposureInformation(context),
-                  Padding(padding: EdgeInsets.only(top: 5)),
-                  _buildPsycheInformation(context),
-                ],
+              Container(
+                width: constraints.maxWidth / 2,
+                padding:
+                    EdgeInsets.symmetric(horizontal: constraints.maxWidth / 40),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildDisabilityInformation(context),
+                    Padding(padding: EdgeInsets.only(top: 5)),
+                    _buildExposureInformation(context),
+                    Padding(padding: EdgeInsets.only(top: 5)),
+                    _buildPsycheInformation(context),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: _screenWidth / 40),
-          child: Divider(color: Colors.black),
-        ),
-        Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Container(
-            width: _screenWidth / 2,
-            padding: EdgeInsets.symmetric(horizontal: _screenWidth / 40),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              _buildEKGInformation(context),
-              Padding(padding: EdgeInsets.only(top: 5)),
-              _buildBloodPressureInformation(context),
-              Padding(padding: EdgeInsets.only(top: 5)),
-              _buildSPO2Information(context),
-            ]),
+            ],
           ),
-          Container(
-              width: _screenWidth / 2,
-              padding: EdgeInsets.symmetric(horizontal: _screenWidth / 40),
+          Padding(
+            padding:
+                EdgeInsets.symmetric(horizontal: constraints.maxWidth / 40),
+            child: Divider(color: Colors.black),
+          ),
+          Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Container(
+              width: constraints.maxWidth / 2,
+              padding:
+                  EdgeInsets.symmetric(horizontal: constraints.maxWidth / 40),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildLungsInformation(context),
+                    _buildEKGInformation(context),
                     Padding(padding: EdgeInsets.only(top: 5)),
-                    _buildSPCOInformation(context),
-                  ])),
-        ])
-      ],
-    );
+                    _buildBloodPressureInformation(context),
+                    Padding(padding: EdgeInsets.only(top: 5)),
+                    _buildSPO2Information(context),
+                  ]),
+            ),
+            Container(
+                width: constraints.maxWidth / 2,
+                padding:
+                    EdgeInsets.symmetric(horizontal: constraints.maxWidth / 40),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildLungsInformation(context),
+                      Padding(padding: EdgeInsets.only(top: 5)),
+                      _buildSPCOInformation(context),
+                    ])),
+          ])
+        ],
+      );
+    });
   }
 
   Widget _buildInformationTitle(String title) {
@@ -273,7 +280,8 @@ class PhaseInformation extends StatelessWidget {
       children: [
         _buildInformationTitle(
             LocalizedStrings.phaseInformationWidget_lungsInformation_title),
-        _buildFormattedRaisedInformation(context: context, value: pulmonaryAuscultation)
+        _buildFormattedRaisedInformation(
+            context: context, value: pulmonaryAuscultation)
       ],
     );
   }
@@ -304,7 +312,8 @@ class PhaseInformation extends StatelessWidget {
 
   /// Build a Text Widget containing [value] if it is not "hidden", "not measurable" or
   /// "no value". Otherwise build according other Widgets.
-  Widget _buildFormattedRaisedInformation({required BuildContext context, required String value}) {
+  Widget _buildFormattedRaisedInformation(
+      {required BuildContext context, required String value}) {
     switch (value) {
       case "hidden":
         return _buildHiddenInformation(context);

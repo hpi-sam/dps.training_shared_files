@@ -4,12 +4,12 @@ import 'dart:convert';
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
-import 'package:bpmanv_app_sharedFiles/model/available_measures.dart';
-import 'package:bpmanv_app_sharedFiles/model/simulation_time.dart';
+import 'package:bpmanv_app_sharedFiles/model/available_measures/available_measures.dart';
+import 'package:bpmanv_app_sharedFiles/model/simulation_time/simulation_time.dart';
 
 Future<bool> doesRoomExistRoute({required int roomID}) async {
   try {
-    final response = await Session.getWithoutAuth(getRoomUrl(roomID: roomID));
+    final response = await Session.get(getRoomUrl(roomID: roomID));
     if (response.statusCode == 200) return true;
     return false;
   } on Exception catch (e) {
@@ -68,8 +68,8 @@ Future<void> trainerLogInRoute({String? username, String? password}) async {
   try {
     final response = await Session.postLogin(trainerLogInUrl(),
         jsonEncode({"username": username, "password": password}));
-    if (response.statusCode != 201) {
-      throw Exception("Error signing up ${response.statusCode}");
+    if (response.statusCode != 200) {
+      throw Exception("Error logging in ${response.statusCode}");
     }
   } on Exception catch (e) {
     throw (e);

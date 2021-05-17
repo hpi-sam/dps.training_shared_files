@@ -3,7 +3,7 @@
 const Map<String, String> PREDEFINED_URLS = {
   "Deployment-Server": "http://mcisim.eu.pythonanywhere.com/",
   "Lehrstuhl-Server": "http://fb14srv8.hpi.uni-potsdam.de:8000",
-  "Localhost": "http://127.0.0.1:8000"
+  "Localhost": "http://127.0.0.1:8000",
 };
 
 String selectedServer = "Lehrstuhl-Server";
@@ -57,3 +57,17 @@ String checkHelperBusyUrl({required int helperNr}) =>
     serverURL + '/own/busy/helper/$helperNr/';
 String helperCountUrl() => serverURL + '/own/helpercount/';
 String getRoomUrl({required int roomID}) => serverURL + '/rooms/$roomID/';
+String getPatientListUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/patients/';
+String getPlayerListUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/players/';
+String pauseRoomUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/pause/';
+String resumeRoomUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/resume/';
+String startRoomUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/start/';
+String finishRoomUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/finish/';
+String changePhaseUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/changephase/';

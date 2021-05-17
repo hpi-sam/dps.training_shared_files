@@ -2,14 +2,15 @@
 import 'dart:collection';
 
 // Package imports:
+import 'package:bpmanv_app_sharedFiles/api_service/trainer_routes.dart';
 import 'package:intl/intl.dart';
 
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/api_service/patient_routes.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/session_routes.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
-import 'package:bpmanv_app_sharedFiles/model/available_measures.dart';
-import 'package:bpmanv_app_sharedFiles/model/inventory_exchange.dart';
+import 'package:bpmanv_app_sharedFiles/model/available_measures/available_measures.dart';
+import 'package:bpmanv_app_sharedFiles/model/inventory_exchange/inventory_exchange.dart';
 import 'inventory_routes.dart';
 import 'measures_routes.dart';
 
@@ -71,8 +72,10 @@ class BackendRoute {
     return BackendRoute(ownInventoryDataUrl(helperNr: helperNr), f, p);
   }
 
-  factory BackendRoute.fetchForeignInventory({required int entityID}) {
-    Function f = fetchForeignInventoryRoute;
+  factory BackendRoute.fetchForeignInventory(
+      {required int entityID, bool useMockData = false}) {
+    Function f =
+        useMockData ? fetchForeignInventoryMock : fetchForeignInventoryRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"entityID": entityID});
     return BackendRoute(foreignInventoryDataUrl(entityID: entityID), f, p);
   }
@@ -198,7 +201,7 @@ class BackendRoute {
       required String password1,
       required String password2,
       required String email}) {
-    Function f = playerSignUpRoute;
+    Function f = trainerSignUpRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({
       "username": username,
       "password1": password1,
@@ -210,7 +213,7 @@ class BackendRoute {
 
   factory BackendRoute.trainersLogIn(
       {required String username, required String password}) {
-    Function f = playerSignUpRoute;
+    Function f = trainerLogInRoute;
     Map<Symbol, dynamic> p =
         symbolizeKeys({"username": username, "password": password});
     return BackendRoute(playersSignUpUrl(), f, p);
@@ -232,6 +235,48 @@ class BackendRoute {
     Function f = doesRoomExistRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
     return BackendRoute(getRoomUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.getPlayerList({required int roomID}) {
+    Function f = getPlayerListRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(getPlayerListUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.getPatientList({required int roomID}) {
+    Function f = getPatientListRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(getPatientListUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.pauseRoom({required int roomID}) {
+    Function f = pauseRoomRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(pauseRoomUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.resumeRoom({required int roomID}) {
+    Function f = resumeRoomRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(resumeRoomUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.startRoom({required int roomID}) {
+    Function f = startRoomRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(startRoomUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.finishRoom({required int roomID}) {
+    Function f = finishRoomRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(finishRoomUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.changePhase({required int roomID}) {
+    Function f = changePhaseRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(changePhaseUrl(roomID: roomID), f, p);
   }
 }
 

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 // Project imports:
-import 'package:bpmanv_app_sharedFiles/model/patient.dart';
+import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import 'package:bpmanv_app_sharedFiles/patient_information/util.dart';
 import '../l10n/localizedstrings.dart';
 

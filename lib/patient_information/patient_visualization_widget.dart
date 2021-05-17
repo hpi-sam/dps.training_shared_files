@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:bpmanv_app_sharedFiles/model/patient.dart';
+import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import 'body_part_widget.dart';
 
 //Todo: Add neck injuries
@@ -15,47 +15,54 @@ import 'body_part_widget.dart';
 /// type (bleeding, fracture, ...) has its own icon.
 class PatientVisualization extends StatelessWidget {
   final PatientInjuries patientInjuries;
+  final double width;
 
-  PatientVisualization({required this.patientInjuries});
+  PatientVisualization({required this.patientInjuries, required this.width});
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
-    return Column(
-      children: [
-        Head(injuries: patientInjuries.head),
-        Padding(padding: EdgeInsets.only(top: screenWidth * 0.01)),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Arm(
-              injuries: patientInjuries.left_arm,
-              transformation: Matrix4.skewX(3),
-            ),
-            Column(
-              children: [
-                Thorax(injuries: patientInjuries.thorax),
-                Abdomen(injuries: patientInjuries.abdomen),
-                Pelvis(injuries: patientInjuries.pelvis),
-              ],
-            ),
-            // BodyCenter
-            Arm(
-              injuries: patientInjuries.right_arm,
-              transformation: Matrix4.skewX(-3),
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Leg(injuries: patientInjuries.left_leg),
-            Padding(padding: EdgeInsets.only(left: screenWidth * 0.03)),
-            Leg(injuries: patientInjuries.right_leg),
-          ],
-        )
-      ],
+    return SizedBox(
+      child: Column(
+        children: [
+          Head(
+            injuries: patientInjuries.head,
+            width: this.width,
+          ),
+          Padding(padding: EdgeInsets.only(top: this.width * 0.01)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Arm(
+                injuries: patientInjuries.left_arm,
+                width: this.width,
+                transformation: Matrix4.skewX(3),
+              ),
+              Column(
+                children: [
+                  Thorax(injuries: patientInjuries.thorax, width: this.width),
+                  Abdomen(injuries: patientInjuries.abdomen, width: this.width),
+                  Pelvis(injuries: patientInjuries.pelvis, width: this.width),
+                ],
+              ),
+              // BodyCenter
+              Arm(
+                injuries: patientInjuries.right_arm,
+                width: this.width,
+                transformation: Matrix4.skewX(-3),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Leg(injuries: patientInjuries.left_leg, width: this.width),
+              Padding(padding: EdgeInsets.only(left: this.width * 0.03)),
+              Leg(injuries: patientInjuries.right_leg, width: this.width),
+            ],
+          )
+        ],
+      ),
     );
   }
 }

@@ -14,7 +14,6 @@ abstract class Session {
     "content-type": "application/json"
   };
   static String? _token;
-  //static String? _session;
 
   static void deleteSession() async {
     final prefs = await SharedPreferences.getInstance();
@@ -74,7 +73,6 @@ abstract class Session {
           "Unauthorized request - fetch authorization cookies by calling a postLogin request once before calling any post requests");
     } else {
       headers['Authorization'] = 'Token ' + _token!;
-      print(headers.toString());
       return headers;
     }
   }
@@ -83,14 +81,13 @@ abstract class Session {
   static void _updateCookie(http.Response response) async {
     var rawCookie = jsonDecode(utf8.decode(response.bodyBytes));
     if (rawCookie != null) {
-      String _token = rawCookie["token"];
-      print("Token: " + _token);
+      _token = rawCookie["token"];
 
       // save token and session on disk
       final prefs = await SharedPreferences.getInstance();
-      prefs.setString("token", _token);
+      prefs.setString("token", _token!);
     } else {
-      print("No cookie given");
+      throw Exception("No token given in Login body");
     }
   }
 }
