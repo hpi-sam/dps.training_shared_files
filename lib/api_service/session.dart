@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// All of our server requests should use the get & post methods provided by
 /// this class instead of the default [http] methods.
 abstract class Session {
-  static Map<String, String> _baseHeaders = {
+  static final Map<String, String> _baseHeaders = {
     "Accept": "application/json",
     "content-type": "application/json"
   };
@@ -18,7 +18,6 @@ abstract class Session {
   static void deleteSession() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.remove("token");
-    prefs.remove("session");
   }
 
   /// Tries to restore the token and session by loading them from the [SharedPreferences].
@@ -66,7 +65,8 @@ abstract class Session {
   /// Parses token and session data to a Map that can be sent in the header of
   /// a Request.
   static Map<String, String> _buildHeaders() {
-    Map<String, String> headers = _baseHeaders;
+    Map<String, String> headers = {};
+    headers.addAll(_baseHeaders);
     String? token = _token;
     if (token == null) {
       throw Exception(
@@ -84,8 +84,10 @@ abstract class Session {
       _token = rawCookie["token"];
 
       // save token and session on disk
-      final prefs = await SharedPreferences.getInstance();
-      prefs.setString("token", _token!);
+      if (_token != null) {
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setString("token", _token!);
+      }
     } else {
       throw Exception("No token given in Login body");
     }

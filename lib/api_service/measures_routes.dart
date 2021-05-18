@@ -6,6 +6,7 @@ import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
 import 'package:bpmanv_app_sharedFiles/model/applied_measures/applied_measures.dart';
 import 'package:bpmanv_app_sharedFiles/model/available_measures/available_measures.dart';
+import 'package:bpmanv_app_sharedFiles/model/running_measure/running_measure.dart';
 
 var mock_data_applied = {
   "applied_measures": [
@@ -220,7 +221,8 @@ Future<RunningMeasure> startNewMeasureMock(
       start_time: 0,
       finish_time: 60,
       image_small: serverURL + "/static/01.jpg/",
-      image_original: serverURL + "/static/01.jpg/");
+      image_original: serverURL + "/static/01.jpg/",
+      requires_two_helpers: false);
 }
 
 Future<RunningMeasure> startNewMeasureRoute(
@@ -251,15 +253,15 @@ Future<bool> cancelCurrentMeasureMock(
 }
 
 Future<bool> cancelCurrentMeasureRoute(
-    {required int patientID, required int helperNr}) async {
+    {required int helperNr}) async {
   try {
     final response = await Session.get(
-        cancelCurrentMeasureUrl(patientID: patientID, helperNr: helperNr));
+        cancelCurrentMeasureUrl(helperNr: helperNr));
     if (response.statusCode == 200) {
       return true;
     } else {
       throw Exception(
-          "Error ${response.statusCode} - Could not cancel running measure of patient ${patientID}.");
+          "Error ${response.statusCode} - Could not cancel running measure.");
     }
   } on Exception catch (e) {
     print("ERROR CANCELING RUNNING MEASURE: " + e.toString());

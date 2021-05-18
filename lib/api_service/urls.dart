@@ -32,8 +32,8 @@ String availableMeasuresUrl({required int patientID, required int helperNr}) =>
 String startNewMeasureUrl({required int patientID, required int helperNr}) =>
     serverURL + '/patients/$patientID/measures/start/helper/$helperNr/';
 String cancelCurrentMeasureUrl(
-        {required int patientID, required int helperNr}) =>
-    serverURL + '/patients/$patientID/measures/cancel/helper/$helperNr/';
+        {required int helperNr}) =>
+    serverURL + '/own/currentmeasure/cancel/helper/$helperNr/';
 String appliedMeasuresUrl({required int patientID}) =>
     serverURL + '/patients/$patientID/measures/applied/';
 String removeAppliedMeasureUrl(

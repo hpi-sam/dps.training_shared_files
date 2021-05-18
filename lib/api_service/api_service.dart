@@ -134,15 +134,10 @@ class BackendRoute {
         startNewMeasureUrl(patientID: patientID, helperNr: helperNr), f, p);
   }
 
-  factory BackendRoute.cancelCurrentMeasure(
-      {required int patientID, required int helperNr}) {
+  factory BackendRoute.cancelCurrentMeasure({required int helperNr}) {
     Function f = cancelCurrentMeasureRoute;
-    Map<Symbol, dynamic> p =
-        symbolizeKeys({"patientID": patientID, "helperNr": helperNr});
-    return BackendRoute(
-        cancelCurrentMeasureUrl(patientID: patientID, helperNr: helperNr),
-        f,
-        p);
+    Map<Symbol, dynamic> p = symbolizeKeys({"helperNr": helperNr});
+    return BackendRoute(cancelCurrentMeasureUrl(helperNr: helperNr), f, p);
   }
 
   factory BackendRoute.checkIfHelperBusy({required int helperNr}) {

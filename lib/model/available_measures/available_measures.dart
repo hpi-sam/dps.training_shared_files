@@ -79,6 +79,7 @@ class AvailableMeasure with _$AvailableMeasure {
     required int available_amount,
     required int duration,
     required bool is_applicable,
+    required bool requires_two_helpers,
     required List<AvailableMeasurePrerequisite> prerequisites,
   }) = _AvailableMeasure;
 
@@ -90,6 +91,7 @@ class AvailableMeasure with _$AvailableMeasure {
         available_amount: json["available_amount"],
         duration: json["running_duration"],
         is_applicable: json["is_applicable"],
+        requires_two_helpers: json["requires_two_helpers"],
         prerequisites: parseAvailableMeasuresPrerequisites(
             json) //parseAvailableMeasuresPrerequisites(json),
         );
@@ -122,23 +124,4 @@ class AvailableMeasurePrerequisite with _$AvailableMeasurePrerequisite {
   }
 }
 
-/// Model that contains all relevant information about a currently running measure.
-@freezed
-class RunningMeasure with _$RunningMeasure {
-  const RunningMeasure._();
-  const factory RunningMeasure({
-    required String name,
-    required String image_small,
-    required String image_original,
-    required int start_time,
-    required int finish_time,
-  }) = _RunningMeasure;
-  factory RunningMeasure.fromJson(Map<String, dynamic> json) {
-    return RunningMeasure(
-        name: json["name"],
-        image_small: serverURL + json["image"]["small"],
-        image_original: serverURL + json["image"]["original"],
-        start_time: json["start_time"],
-        finish_time: json["finish_time"]);
-  }
-}
+
