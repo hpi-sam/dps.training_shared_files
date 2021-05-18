@@ -21,7 +21,7 @@ Future<void> joinRoomRoute(
     {required int roomID, required int helperAmount}) async {
   try {
     final response = await Session.get(
-        joinRoomUrl(roomID: roomID, helperAmount: helperAmount));
+        joinRoomUrl(invitationCode: roomID, helperAmount: helperAmount));
     if (response.statusCode != 201) {
       throw Exception("Error joining room ${response.statusCode}");
     }

@@ -176,7 +176,7 @@ class BackendRoute {
     Map<Symbol, dynamic> p =
         symbolizeKeys({"roomID": roomID, "helperAmount": helperAmount});
     return BackendRoute(
-        joinRoomUrl(roomID: roomID, helperAmount: helperAmount), f, p);
+        joinRoomUrl(invitationCode: roomID, helperAmount: helperAmount), f, p);
   }
 
   factory BackendRoute.leaveRoom() {
@@ -244,16 +244,16 @@ class BackendRoute {
     return BackendRoute(getPatientListUrl(roomID: roomID), f, p);
   }
 
-  factory BackendRoute.pauseRoom({required int roomID}) {
+  factory BackendRoute.pauseRoom() {
     Function f = pauseRoomRoute;
-    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
-    return BackendRoute(pauseRoomUrl(roomID: roomID), f, p);
+    Map<Symbol, dynamic> p = {};
+    return BackendRoute(pauseRoomUrl(), f, p);
   }
 
-  factory BackendRoute.resumeRoom({required int roomID}) {
+  factory BackendRoute.resumeRoom() {
     Function f = resumeRoomRoute;
-    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
-    return BackendRoute(resumeRoomUrl(roomID: roomID), f, p);
+    Map<Symbol, dynamic> p = {};
+    return BackendRoute(resumeRoomUrl(), f, p);
   }
 
   factory BackendRoute.startRoom({required int roomID}) {
@@ -262,16 +262,51 @@ class BackendRoute {
     return BackendRoute(startRoomUrl(roomID: roomID), f, p);
   }
 
-  factory BackendRoute.finishRoom({required int roomID}) {
+  factory BackendRoute.finishRoom() {
     Function f = finishRoomRoute;
-    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
-    return BackendRoute(finishRoomUrl(roomID: roomID), f, p);
+    Map<Symbol, dynamic> p = {};
+    return BackendRoute(finishRoomUrl(), f, p);
   }
 
-  factory BackendRoute.changePhase({required int roomID}) {
+  factory BackendRoute.changePhase() {
     Function f = changePhaseRoute;
-    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
-    return BackendRoute(changePhaseUrl(roomID: roomID), f, p);
+    Map<Symbol, dynamic> p = {};
+    return BackendRoute(changePhaseUrl(), f, p);
+  }
+
+  factory BackendRoute.createRoom() {
+    Function f = createRoomRoute;
+    Map<Symbol, dynamic> p = {};
+    return BackendRoute(createRoomUrl(), f, p);
+  }
+
+  factory BackendRoute.nextPhaseChange() {
+    Function f = nextPhaseChangeRoute;
+    Map<Symbol, dynamic> p = {};
+    return BackendRoute(nextPhaseChangeUrl(), f, p);
+  }
+
+  factory BackendRoute.modifyPhaseChange(
+      {required int seconds}) {
+    Function f = modifyPhaseChangeRoute;
+    Map<Symbol, dynamic> p =
+        symbolizeKeys({"seconds": seconds});
+    return BackendRoute(modifyPhaseChangeUrl(), f, p);
+  }
+
+  factory BackendRoute.changeRoomConfig(
+      {required int roomID,
+      required int phaseChangeTime,
+      required int waitingTimePatient,
+      required int expiringTimePatient}) {
+    Function f = changeRoomConfigRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({
+      "roomID": roomID,
+      "phaseChangeTime": phaseChangeTime,
+      "waitingTimePatient": waitingTimePatient,
+      "expiringTimePatient": expiringTimePatient,
+    });
+    return BackendRoute(changeRoomConfigUrl(roomID: roomID), f, p);
   }
 }
 

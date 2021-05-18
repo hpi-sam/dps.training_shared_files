@@ -31,8 +31,7 @@ String availableMeasuresUrl({required int patientID, required int helperNr}) =>
     serverURL + '/patients/$patientID/measures/available/helper/$helperNr/';
 String startNewMeasureUrl({required int patientID, required int helperNr}) =>
     serverURL + '/patients/$patientID/measures/start/helper/$helperNr/';
-String cancelCurrentMeasureUrl(
-        {required int helperNr}) =>
+String cancelCurrentMeasureUrl({required int helperNr}) =>
     serverURL + '/own/currentmeasure/cancel/helper/$helperNr/';
 String appliedMeasuresUrl({required int patientID}) =>
     serverURL + '/patients/$patientID/measures/applied/';
@@ -47,8 +46,8 @@ String triageUrl({required int patientID, required int helperNr}) =>
 String playersSignUpUrl() => serverURL + '/players/signup/';
 String trainerSignUpUrl() => serverURL + '/trainers/signup/';
 String trainerLogInUrl() => serverURL + '/trainers/login/';
-String joinRoomUrl({required int roomID, required int helperAmount}) =>
-    serverURL + '/rooms/$roomID/join/helpercount_$helperAmount/';
+String joinRoomUrl({required int invitationCode, required int helperAmount}) =>
+    serverURL + '/rooms/$invitationCode/join/helpercount_$helperAmount/';
 String leaveRoomUrl() => serverURL + '/rooms/leave/';
 String simulationTimeUrl() => serverURL + '/rooms/time/';
 String helperIDUrl({required int helperNr}) =>
@@ -61,13 +60,21 @@ String getPatientListUrl({required int roomID}) =>
     serverURL + '/rooms/$roomID/patients/';
 String getPlayerListUrl({required int roomID}) =>
     serverURL + '/rooms/$roomID/players/';
-String pauseRoomUrl({required int roomID}) =>
-    serverURL + '/rooms/$roomID/pause/';
-String resumeRoomUrl({required int roomID}) =>
-    serverURL + '/rooms/$roomID/resume/';
+String pauseRoomUrl() =>
+    serverURL + '/rooms/pause/';
+String resumeRoomUrl() =>
+    serverURL + '/rooms/resume/';
 String startRoomUrl({required int roomID}) =>
     serverURL + '/rooms/$roomID/start/';
-String finishRoomUrl({required int roomID}) =>
-    serverURL + '/rooms/$roomID/finish/';
-String changePhaseUrl({required int roomID}) =>
-    serverURL + '/rooms/$roomID/changephase/';
+String finishRoomUrl() =>
+    serverURL + '/rooms/finish/';
+String changePhaseUrl() =>
+    serverURL + '/rooms/changephase/';
+String changeRoomConfigUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/change_configuration/';
+String createRoomUrl() =>
+    serverURL + '/rooms/create/';
+String nextPhaseChangeUrl() =>
+    serverURL + '/rooms/phasechange/';
+String modifyPhaseChangeUrl() =>
+    serverURL + '/rooms/phasechange/modify/';
