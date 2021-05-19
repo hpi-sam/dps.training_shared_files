@@ -20,8 +20,8 @@ Future<bool> doesRoomExistRoute({required int roomID}) async {
 Future<void> joinRoomRoute(
     {required String invitationCode, required int helperAmount}) async {
   try {
-    final response = await Session.get(
-        joinRoomUrl(invitationCode: invitationCode, helperAmount: helperAmount));
+    final response = await Session.get(joinRoomUrl(
+        invitationCode: invitationCode, helperAmount: helperAmount));
     if (response.statusCode != 201) {
       throw Exception("Error joining room ${response.statusCode}");
     }
@@ -76,7 +76,7 @@ Future<void> trainerLogInRoute({String? username, String? password}) async {
   }
 }
 
-Future<SimulationTime> simulationTimePlayerRoute() async {
+Future<SimulationTime> simulationTimeRoute() async {
   try {
     final response = await Session.get(simulationTimeUrl());
     final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
@@ -92,18 +92,15 @@ Future<SimulationTime> simulationTimePlayerRoute() async {
   }
 }
 
-Future<SimulationTime> simulationTimeTrainerRoute({required int roomID}) async {
+Future<String> roomStateRoute({required int roomID}) async {
   try {
-    final timeResponse = await Session.get(simulationTimeUrl());
     final stateResponse = await Session.get(roomStateUrl(roomID: roomID));
-    final timeResponseJson = jsonDecode(utf8.decode(timeResponse.bodyBytes));
     final stateResponseJson = jsonDecode(utf8.decode(stateResponse.bodyBytes));
-    if (timeResponse.statusCode == 200 && stateResponse.statusCode == 200) {
-      return SimulationTime(
-          state: stateResponseJson["state"], time: timeResponseJson["time"]);
+    if (stateResponse.statusCode == 200) {
+      return stateResponseJson["state"];
     } else {
-      throw Exception("Error - Could not fetch SimulationTime. Time response: "
-          "${timeResponse.statusCode} , State response: ${stateResponse.statusCode} ");
+      throw Exception(
+          "Error ${stateResponse.statusCode} : - Could not fetch SimulationTime.   ");
     }
   } on Exception catch (e) {
     print("ERROR FETCHING TIME: " + e.toString());

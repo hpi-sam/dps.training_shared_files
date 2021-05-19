@@ -173,10 +173,12 @@ class BackendRoute {
   factory BackendRoute.joinRoom(
       {required String invitationCode, required int helperAmount}) {
     Function f = joinRoomRoute;
-    Map<Symbol, dynamic> p =
-        symbolizeKeys({"invitationCode": invitationCode, "helperAmount": helperAmount});
+    Map<Symbol, dynamic> p = symbolizeKeys(
+        {"invitationCode": invitationCode, "helperAmount": helperAmount});
     return BackendRoute(
-        joinRoomUrl(invitationCode: invitationCode, helperAmount: helperAmount), f, p);
+        joinRoomUrl(invitationCode: invitationCode, helperAmount: helperAmount),
+        f,
+        p);
   }
 
   factory BackendRoute.leaveRoom() {
@@ -214,16 +216,16 @@ class BackendRoute {
     return BackendRoute(playersSignUpUrl(), f, p);
   }
 
-  factory BackendRoute.simulationTimePlayer() {
-    Function f = simulationTimePlayerRoute;
+  factory BackendRoute.simulationTime() {
+    Function f = simulationTimeRoute;
     Map<Symbol, dynamic> p = {};
     return BackendRoute(simulationTimeUrl(), f, p);
   }
 
-  factory BackendRoute.simulationTimeTrainer({required int roomID}) {
-    Function f = simulationTimeTrainerRoute;
+  factory BackendRoute.roomState({required int roomID}) {
+    Function f = roomStateRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
-    return BackendRoute(simulationTimeUrl(), f, p);
+    return BackendRoute(roomStateUrl(roomID: roomID), f, p);
   }
 
   factory BackendRoute.getHelperCount() {
