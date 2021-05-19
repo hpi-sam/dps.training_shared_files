@@ -214,9 +214,15 @@ class BackendRoute {
     return BackendRoute(playersSignUpUrl(), f, p);
   }
 
-  factory BackendRoute.simulationTime() {
-    Function f = simulationTimeRoute;
+  factory BackendRoute.simulationTimePlayer() {
+    Function f = simulationTimePlayerRoute;
     Map<Symbol, dynamic> p = {};
+    return BackendRoute(simulationTimeUrl(), f, p);
+  }
+
+  factory BackendRoute.simulationTimeTrainer({required int roomID}) {
+    Function f = simulationTimeTrainerRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
     return BackendRoute(simulationTimeUrl(), f, p);
   }
 
@@ -286,11 +292,9 @@ class BackendRoute {
     return BackendRoute(nextPhaseChangeUrl(), f, p);
   }
 
-  factory BackendRoute.modifyPhaseChange(
-      {required int seconds}) {
+  factory BackendRoute.modifyPhaseChange({required int seconds}) {
     Function f = modifyPhaseChangeRoute;
-    Map<Symbol, dynamic> p =
-        symbolizeKeys({"seconds": seconds});
+    Map<Symbol, dynamic> p = symbolizeKeys({"seconds": seconds});
     return BackendRoute(modifyPhaseChangeUrl(), f, p);
   }
 

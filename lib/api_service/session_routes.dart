@@ -76,7 +76,7 @@ Future<void> trainerLogInRoute({String? username, String? password}) async {
   }
 }
 
-Future<SimulationTime> simulationTimeRoute() async {
+Future<SimulationTime> simulationTimePlayerRoute() async {
   try {
     final response = await Session.get(simulationTimeUrl());
     final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
@@ -85,6 +85,25 @@ Future<SimulationTime> simulationTimeRoute() async {
     } else {
       throw Exception(
           "Error ${response.statusCode} - Could not fetch SimulationTime.");
+    }
+  } on Exception catch (e) {
+    print("ERROR FETCHING TIME: " + e.toString());
+    throw (e);
+  }
+}
+
+Future<SimulationTime> simulationTimeTrainerRoute({required int roomID}) async {
+  try {
+    final timeResponse = await Session.get(simulationTimeUrl());
+    final stateResponse = await Session.get(roomStateUrl(roomID: roomID));
+    final timeResponseJson = jsonDecode(utf8.decode(timeResponse.bodyBytes));
+    final stateResponseJson = jsonDecode(utf8.decode(stateResponse.bodyBytes));
+    if (timeResponse.statusCode == 200 && stateResponse.statusCode == 200) {
+      return SimulationTime(
+          state: stateResponseJson["state"], time: timeResponseJson["time"]);
+    } else {
+      throw Exception("Error - Could not fetch SimulationTime. Time response: "
+          "${timeResponse.statusCode} , State response: ${stateResponse.statusCode} ");
     }
   } on Exception catch (e) {
     print("ERROR FETCHING TIME: " + e.toString());
