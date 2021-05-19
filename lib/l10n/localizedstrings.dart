@@ -5,6 +5,7 @@
 abstract class LocalizedStrings {
   static late String languageCode;
 
+  static late String biometryWidget_title;
   static late String biometryWidget_address;
   static late String biometryWidget_biometrics;
   static late String biometryWidget_birthDate;
@@ -20,7 +21,9 @@ abstract class LocalizedStrings {
   static late String firstImpressionRow_firstImpressionfields_canWalk;
   static late String firstImpressionRow_firstImpressionfields_cyanosis;
   static late String firstImpressionRow_firstImpressionfields_motionless;
-  static late String injuryWidget_title;
+  static late String generalInformationWidget_title;
+  static late String generalInformationWidget_injuries_title;
+  static late String generalInformationWidget_situationOfDiscovery_title;
   static late String patientVisualizationLegendWidget_bleeding;
   static late String patientVisualizationLegendWidget_bleedingSplattering;
   static late String patientVisualizationLegendWidget_fracture;
@@ -47,12 +50,14 @@ abstract class LocalizedStrings {
   static late String phaseInformationWidget_spo2Information_title;
   static late String phaseInformationWidget_notMeasurableInformation_title;
   static late String phaseInformationWidget_noValueInformation_title;
+  static late String phaseInformationWidget_bodyCheckInformation_title;
 
 
   /// initializes fields with German strings
   static void buildDefaultGermanStrings() {
     {
       languageCode = "de";
+      biometryWidget_title = "Persönliche Daten";
       biometryWidget_address = "Adresse: ";
       biometryWidget_biometrics = "Biometrie: ";
       biometryWidget_birthDate = "Geburtsdatum: ";
@@ -68,7 +73,9 @@ abstract class LocalizedStrings {
       firstImpressionRow_firstImpressionfields_canWalk = "Gehfähig";
       firstImpressionRow_firstImpressionfields_cyanosis = "Zyanose";
       firstImpressionRow_firstImpressionfields_motionless = "Regungslos";
-      injuryWidget_title = "Verletzungen";
+      generalInformationWidget_title = "Auffindesituation";
+      generalInformationWidget_injuries_title = "Verletzungen";
+      generalInformationWidget_situationOfDiscovery_title = "Auffinde-Situation";
       patientVisualizationLegendWidget_bleeding = "Blutung";
       patientVisualizationLegendWidget_bleedingSplattering = "spritzende Blu.";
       patientVisualizationLegendWidget_fracture = "Fraktur";
@@ -96,6 +103,7 @@ abstract class LocalizedStrings {
       phaseInformationWidget_notMeasurableInformation_title =
           "Wert nicht messbar";
       phaseInformationWidget_noValueInformation_title = "Keine Daten";
+      phaseInformationWidget_bodyCheckInformation_title = "Body-Check";
     }
   }
 }

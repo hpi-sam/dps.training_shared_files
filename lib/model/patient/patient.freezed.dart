@@ -23,6 +23,8 @@ class _$PatientTearOff {
       required PatientPersonalData personalData,
       required PatientInjuries injuries,
       required String injuryDescription,
+      required String bodyCheckInformation,
+      required String situationOfDiscovery,
       required String triageCategory}) {
     return _Patient(
       id: id,
@@ -31,6 +33,8 @@ class _$PatientTearOff {
       personalData: personalData,
       injuries: injuries,
       injuryDescription: injuryDescription,
+      bodyCheckInformation: bodyCheckInformation,
+      situationOfDiscovery: situationOfDiscovery,
       triageCategory: triageCategory,
     );
   }
@@ -48,6 +52,8 @@ mixin _$Patient {
   PatientPersonalData get personalData => throw _privateConstructorUsedError;
   PatientInjuries get injuries => throw _privateConstructorUsedError;
   String get injuryDescription => throw _privateConstructorUsedError;
+  String get bodyCheckInformation => throw _privateConstructorUsedError;
+  String get situationOfDiscovery => throw _privateConstructorUsedError;
   String get triageCategory => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -65,6 +71,8 @@ abstract class $PatientCopyWith<$Res> {
       PatientPersonalData personalData,
       PatientInjuries injuries,
       String injuryDescription,
+      String bodyCheckInformation,
+      String situationOfDiscovery,
       String triageCategory});
 
   $PatientCurrentPhaseCopyWith<$Res> get currentPhase;
@@ -89,6 +97,8 @@ class _$PatientCopyWithImpl<$Res> implements $PatientCopyWith<$Res> {
     Object? personalData = freezed,
     Object? injuries = freezed,
     Object? injuryDescription = freezed,
+    Object? bodyCheckInformation = freezed,
+    Object? situationOfDiscovery = freezed,
     Object? triageCategory = freezed,
   }) {
     return _then(_value.copyWith(
@@ -115,6 +125,14 @@ class _$PatientCopyWithImpl<$Res> implements $PatientCopyWith<$Res> {
       injuryDescription: injuryDescription == freezed
           ? _value.injuryDescription
           : injuryDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      bodyCheckInformation: bodyCheckInformation == freezed
+          ? _value.bodyCheckInformation
+          : bodyCheckInformation // ignore: cast_nullable_to_non_nullable
+              as String,
+      situationOfDiscovery: situationOfDiscovery == freezed
+          ? _value.situationOfDiscovery
+          : situationOfDiscovery // ignore: cast_nullable_to_non_nullable
               as String,
       triageCategory: triageCategory == freezed
           ? _value.triageCategory
@@ -165,6 +183,8 @@ abstract class _$PatientCopyWith<$Res> implements $PatientCopyWith<$Res> {
       PatientPersonalData personalData,
       PatientInjuries injuries,
       String injuryDescription,
+      String bodyCheckInformation,
+      String situationOfDiscovery,
       String triageCategory});
 
   @override
@@ -194,6 +214,8 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
     Object? personalData = freezed,
     Object? injuries = freezed,
     Object? injuryDescription = freezed,
+    Object? bodyCheckInformation = freezed,
+    Object? situationOfDiscovery = freezed,
     Object? triageCategory = freezed,
   }) {
     return _then(_Patient(
@@ -221,6 +243,14 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
           ? _value.injuryDescription
           : injuryDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      bodyCheckInformation: bodyCheckInformation == freezed
+          ? _value.bodyCheckInformation
+          : bodyCheckInformation // ignore: cast_nullable_to_non_nullable
+              as String,
+      situationOfDiscovery: situationOfDiscovery == freezed
+          ? _value.situationOfDiscovery
+          : situationOfDiscovery // ignore: cast_nullable_to_non_nullable
+              as String,
       triageCategory: triageCategory == freezed
           ? _value.triageCategory
           : triageCategory // ignore: cast_nullable_to_non_nullable
@@ -238,6 +268,8 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
       required this.personalData,
       required this.injuries,
       required this.injuryDescription,
+      required this.bodyCheckInformation,
+      required this.situationOfDiscovery,
       required this.triageCategory})
       : super._();
 
@@ -254,11 +286,15 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
   @override
   final String injuryDescription;
   @override
+  final String bodyCheckInformation;
+  @override
+  final String situationOfDiscovery;
+  @override
   final String triageCategory;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Patient(id: $id, currentPhase: $currentPhase, firstImpression: $firstImpression, personalData: $personalData, injuries: $injuries, injuryDescription: $injuryDescription, triageCategory: $triageCategory)';
+    return 'Patient(id: $id, currentPhase: $currentPhase, firstImpression: $firstImpression, personalData: $personalData, injuries: $injuries, injuryDescription: $injuryDescription, bodyCheckInformation: $bodyCheckInformation, situationOfDiscovery: $situationOfDiscovery, triageCategory: $triageCategory)';
   }
 
   @override
@@ -272,6 +308,8 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('personalData', personalData))
       ..add(DiagnosticsProperty('injuries', injuries))
       ..add(DiagnosticsProperty('injuryDescription', injuryDescription))
+      ..add(DiagnosticsProperty('bodyCheckInformation', bodyCheckInformation))
+      ..add(DiagnosticsProperty('situationOfDiscovery', situationOfDiscovery))
       ..add(DiagnosticsProperty('triageCategory', triageCategory));
   }
 
@@ -296,6 +334,12 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
             (identical(other.injuryDescription, injuryDescription) ||
                 const DeepCollectionEquality()
                     .equals(other.injuryDescription, injuryDescription)) &&
+            (identical(other.bodyCheckInformation, bodyCheckInformation) ||
+                const DeepCollectionEquality().equals(
+                    other.bodyCheckInformation, bodyCheckInformation)) &&
+            (identical(other.situationOfDiscovery, situationOfDiscovery) ||
+                const DeepCollectionEquality().equals(
+                    other.situationOfDiscovery, situationOfDiscovery)) &&
             (identical(other.triageCategory, triageCategory) ||
                 const DeepCollectionEquality()
                     .equals(other.triageCategory, triageCategory)));
@@ -310,6 +354,8 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(personalData) ^
       const DeepCollectionEquality().hash(injuries) ^
       const DeepCollectionEquality().hash(injuryDescription) ^
+      const DeepCollectionEquality().hash(bodyCheckInformation) ^
+      const DeepCollectionEquality().hash(situationOfDiscovery) ^
       const DeepCollectionEquality().hash(triageCategory);
 
   @JsonKey(ignore: true)
@@ -326,6 +372,8 @@ abstract class _Patient extends Patient {
       required PatientPersonalData personalData,
       required PatientInjuries injuries,
       required String injuryDescription,
+      required String bodyCheckInformation,
+      required String situationOfDiscovery,
       required String triageCategory}) = _$_Patient;
   const _Patient._() : super._();
 
@@ -342,6 +390,10 @@ abstract class _Patient extends Patient {
   PatientInjuries get injuries => throw _privateConstructorUsedError;
   @override
   String get injuryDescription => throw _privateConstructorUsedError;
+  @override
+  String get bodyCheckInformation => throw _privateConstructorUsedError;
+  @override
+  String get situationOfDiscovery => throw _privateConstructorUsedError;
   @override
   String get triageCategory => throw _privateConstructorUsedError;
   @override

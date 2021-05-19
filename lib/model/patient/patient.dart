@@ -36,6 +36,8 @@ class Patient with _$Patient {
     required PatientPersonalData personalData,
     required PatientInjuries injuries,
     required String injuryDescription,
+    required String bodyCheckInformation,
+    required String situationOfDiscovery,
     required String triageCategory,
   }) = _Patient;
 
@@ -60,6 +62,8 @@ class Patient with _$Patient {
             // a bit hacky to work with lists, see: https://github.com/rrousselGit/freezed/issues/173
             {'injuries': json["static_data"]["injuries"]}),
         injuryDescription: json["static_data"]["injury_description"],
+        bodyCheckInformation: json["static_data"]["body_check_information"],
+        situationOfDiscovery: json["static_data"]["situation_of_discovery"],
         triageCategory: json["triage"]);
   }
 }

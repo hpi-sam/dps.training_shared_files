@@ -9,7 +9,8 @@ import 'package:bpmanv_app_sharedFiles/patient_information/first_impression_widg
 import 'package:bpmanv_app_sharedFiles/patient_information/patient_visualization_legend_widget.dart';
 import 'package:bpmanv_app_sharedFiles/patient_information/patient_visualization_widget.dart';
 import 'package:bpmanv_app_sharedFiles/patient_information/phase_information_widget.dart';
-import 'injury_widget.dart';
+import 'package:flutter/material.dart';
+import 'general_information_widget.dart';
 
 class PatientInformationWidget extends StatefulWidget {
   final Patient patient;
@@ -79,7 +80,9 @@ class _PatientInformationWidgetState extends State<PatientInformationWidget> {
                           SizedBox(
                             width: constraints.maxWidth / 9 * 4,
                           ),
-                          PatientVisualizationLegend(width: constraints.maxWidth /  4,),
+                          PatientVisualizationLegend(
+                            width: constraints.maxWidth / 4,
+                          ),
                         ],
                       ),
                       SizedBox(height: constraints.maxWidth / 6),
@@ -110,12 +113,12 @@ class _PatientInformationWidgetState extends State<PatientInformationWidget> {
                   child: widget.availableMeasuresWidget)
               : Container(),
           PhaseInformation(
-            patientPhase: widget.patient.currentPhase,
-          ),
-          Biometry(patient: widget.patient),
-          Injury(
             patient: widget.patient,
           ),
+          GeneralInformationWidget(
+            patient: widget.patient,
+          ),
+          Biometry(patient: widget.patient),
         ],
       )),
     );
