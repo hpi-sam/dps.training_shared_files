@@ -46,7 +46,7 @@ String triageUrl({required int patientID, required int helperNr}) =>
 String playersSignUpUrl() => serverURL + '/players/signup/';
 String trainerSignUpUrl() => serverURL + '/trainers/signup/';
 String trainerLogInUrl() => serverURL + '/trainers/login/';
-String joinRoomUrl({required int invitationCode, required int helperAmount}) =>
+String joinRoomUrl({required String invitationCode, required int helperAmount}) =>
     serverURL + '/rooms/$invitationCode/join/helpercount_$helperAmount/';
 String leaveRoomUrl() => serverURL + '/rooms/leave/';
 String simulationTimeUrl() => serverURL + '/rooms/time/';

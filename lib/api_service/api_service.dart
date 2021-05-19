@@ -171,12 +171,12 @@ class BackendRoute {
   }
 
   factory BackendRoute.joinRoom(
-      {required int roomID, required int helperAmount}) {
+      {required String invitationCode, required int helperAmount}) {
     Function f = joinRoomRoute;
     Map<Symbol, dynamic> p =
-        symbolizeKeys({"roomID": roomID, "helperAmount": helperAmount});
+        symbolizeKeys({"invitationCode": invitationCode, "helperAmount": helperAmount});
     return BackendRoute(
-        joinRoomUrl(invitationCode: roomID, helperAmount: helperAmount), f, p);
+        joinRoomUrl(invitationCode: invitationCode, helperAmount: helperAmount), f, p);
   }
 
   factory BackendRoute.leaveRoom() {

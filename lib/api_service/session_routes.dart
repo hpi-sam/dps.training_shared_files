@@ -18,10 +18,10 @@ Future<bool> doesRoomExistRoute({required int roomID}) async {
 }
 
 Future<void> joinRoomRoute(
-    {required int roomID, required int helperAmount}) async {
+    {required String invitationCode, required int helperAmount}) async {
   try {
     final response = await Session.get(
-        joinRoomUrl(invitationCode: roomID, helperAmount: helperAmount));
+        joinRoomUrl(invitationCode: invitationCode, helperAmount: helperAmount));
     if (response.statusCode != 201) {
       throw Exception("Error joining room ${response.statusCode}");
     }
