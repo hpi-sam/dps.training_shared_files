@@ -330,7 +330,7 @@ class BackendRoute {
   }
 
   factory BackendRoute.fetchPatientTrainer({required int patientID}) {
-    Function f = fetchPatientRoute;
+    Function f = fetchPatientTrainerRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"patientID": patientID});
     return BackendRoute(patientDataTrainerUrl(patientID: patientID), f, p);
   }
