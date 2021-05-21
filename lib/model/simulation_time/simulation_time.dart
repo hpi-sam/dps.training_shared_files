@@ -23,7 +23,6 @@ class SimulationTime with _$SimulationTime {
     required int time,
     required String state,
   }) = _SimulationTime;
-
   factory SimulationTime.fromJson(Map<String, dynamic> json) =>
       _$SimulationTimeFromJson(json);
 }

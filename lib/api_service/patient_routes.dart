@@ -4,7 +4,8 @@ import 'dart:convert';
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
-import 'package:bpmanv_app_sharedFiles/model/patient.dart';
+import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
+import 'package:bpmanv_app_sharedFiles/model/running_measure/running_measure.dart';
 
 Future<Patient> fetchPatientMock({required int patientID}) async {
   Map<String, dynamic> patientJson = {
@@ -80,9 +81,11 @@ Future<Patient> fetchPatientMock({required int patientID}) async {
   return Patient.fromJson(patientJson, patientID);
 }
 
-Future<Patient> fetchPatientRoute({required int patientID}) async {
+Future<Patient> fetchPatientRoute(
+    {required int patientID, required int helperNr}) async {
   try {
-    final response = await Session.get(patientDataUrl(patientID: patientID));
+    final response = await Session.get(
+        patientDataUrl(patientID: patientID, helperNr: helperNr));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
       return Patient.fromJson(responseJson, patientID);
@@ -99,6 +102,24 @@ Future<Patient> fetchPatientRoute({required int patientID}) async {
     }
   } on Exception catch (e) {
     print("ERROR FETCHING PATIENT: " + e.toString());
+    throw (e);
+  }
+}
+
+Future<RunningMeasure> uncoverPatientRoute(
+    {required int patientID, required int helperNr}) async {
+  try {
+    final response = await Session.get(
+        uncoverPatientUrl(patientID: patientID, helperNr: helperNr));
+    if (response.statusCode == 200) {
+      final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+      return RunningMeasure.fromJson(json: responseJson, patientID: patientID);
+    } else {
+      throw Exception(
+          "Error ${response.statusCode} - Could not uncover patient $patientID.");
+    }
+  } on Exception catch (e) {
+    print("ERROR UNCOVERING PATIENT: $e");
     throw (e);
   }
 }

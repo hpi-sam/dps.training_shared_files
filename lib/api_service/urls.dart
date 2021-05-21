@@ -3,7 +3,7 @@
 const Map<String, String> PREDEFINED_URLS = {
   "Deployment-Server": "http://mcisim.eu.pythonanywhere.com/",
   "Lehrstuhl-Server": "http://fb14srv8.hpi.uni-potsdam.de:8000",
-  "Localhost": "http://127.0.0.1:8000"
+  "Localhost": "http://127.0.0.1:8000",
 };
 
 String selectedServer = "Lehrstuhl-Server";
@@ -19,8 +19,10 @@ void selectServer({required String serverName}) {
 }
 
 // configuration of routes to use for server requests.
-String patientDataUrl({required int patientID}) =>
-    serverURL + '/patients/$patientID/';
+String uncoverPatientUrl({required int patientID, required int helperNr}) =>
+    serverURL + '/patients/$patientID/uncover/helper/$helperNr/';
+String patientDataUrl({required int patientID, required int helperNr}) =>
+    serverURL + '/patients/$patientID/helper/$helperNr/';
 String foreignInventoryDataUrl({required int entityID}) =>
     serverURL + '/entities/$entityID/inventory/';
 String ownInventoryDataUrl({required int helperNr}) =>
@@ -31,9 +33,8 @@ String availableMeasuresUrl({required int patientID, required int helperNr}) =>
     serverURL + '/patients/$patientID/measures/available/helper/$helperNr/';
 String startNewMeasureUrl({required int patientID, required int helperNr}) =>
     serverURL + '/patients/$patientID/measures/start/helper/$helperNr/';
-String cancelCurrentMeasureUrl(
-        {required int patientID, required int helperNr}) =>
-    serverURL + '/patients/$patientID/measures/cancel/helper/$helperNr/';
+String cancelCurrentMeasureUrl({required int helperNr}) =>
+    serverURL + '/own/currentmeasure/cancel/helper/$helperNr/';
 String appliedMeasuresUrl({required int patientID}) =>
     serverURL + '/patients/$patientID/measures/applied/';
 String removeAppliedMeasureUrl(
@@ -47,8 +48,9 @@ String triageUrl({required int patientID, required int helperNr}) =>
 String playersSignUpUrl() => serverURL + '/players/signup/';
 String trainerSignUpUrl() => serverURL + '/trainers/signup/';
 String trainerLogInUrl() => serverURL + '/trainers/login/';
-String joinRoomUrl({required int roomID, required int helperAmount}) =>
-    serverURL + '/rooms/$roomID/join/helpercount_$helperAmount/';
+String joinRoomUrl(
+        {required String invitationCode, required int helperAmount}) =>
+    serverURL + '/rooms/$invitationCode/join/helpercount_$helperAmount/';
 String leaveRoomUrl() => serverURL + '/rooms/leave/';
 String simulationTimeUrl() => serverURL + '/rooms/time/';
 String helperIDUrl({required int helperNr}) =>
@@ -57,3 +59,22 @@ String checkHelperBusyUrl({required int helperNr}) =>
     serverURL + '/own/busy/helper/$helperNr/';
 String helperCountUrl() => serverURL + '/own/helpercount/';
 String getRoomUrl({required int roomID}) => serverURL + '/rooms/$roomID/';
+String getPatientListUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/patients/';
+String getPlayerListUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/players/';
+String pauseRoomUrl() => serverURL + '/rooms/pause/';
+String resumeRoomUrl() => serverURL + '/rooms/resume/';
+String startRoomUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/start/';
+String finishRoomUrl() => serverURL + '/rooms/finish/';
+String changePhaseUrl() => serverURL + '/rooms/changephase/';
+String changeRoomConfigUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/change_configuration/';
+String createRoomUrl() => serverURL + '/rooms/create/';
+String nextPhaseChangeUrl() => serverURL + '/rooms/phasechange/';
+String modifyPhaseChangeUrl() => serverURL + '/rooms/phasechange/modify/';
+String roomStateUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/state/';
+String patientDataTrainerUrl({required int patientID}) =>
+    serverURL + '/patients/$patientID/';

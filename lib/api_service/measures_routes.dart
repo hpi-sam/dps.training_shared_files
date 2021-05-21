@@ -4,8 +4,9 @@ import 'dart:convert';
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
-import 'package:bpmanv_app_sharedFiles/model/applied_measures.dart';
-import 'package:bpmanv_app_sharedFiles/model/available_measures.dart';
+import 'package:bpmanv_app_sharedFiles/model/applied_measures/applied_measures.dart';
+import 'package:bpmanv_app_sharedFiles/model/available_measures/available_measures.dart';
+import 'package:bpmanv_app_sharedFiles/model/running_measure/running_measure.dart';
 
 var mock_data_applied = {
   "applied_measures": [
@@ -142,7 +143,7 @@ Future<RunningMeasure> removeAppliedMeasureRoute(
 
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      return RunningMeasure.fromJson(responseJson);
+      return RunningMeasure.fromJson(json: responseJson, patientID: patientID);
     } else {
       throw Exception("Error ${response.statusCode}");
     }
@@ -216,11 +217,13 @@ Future<RunningMeasure> startNewMeasureMock(
     required int helperNr,
     required AvailableMeasure measure}) async {
   return RunningMeasure(
+      patientID: patientID,
       name: "Test Maßnahme",
       start_time: 0,
       finish_time: 60,
       image_small: serverURL + "/static/01.jpg/",
-      image_original: serverURL + "/static/01.jpg/");
+      image_original: serverURL + "/static/01.jpg/",
+      requires_two_helpers: false);
 }
 
 Future<RunningMeasure> startNewMeasureRoute(
@@ -237,7 +240,7 @@ Future<RunningMeasure> startNewMeasureRoute(
     if (response.statusCode != 200) {
       throw Exception("Error ${response.statusCode}");
     } else {
-      return RunningMeasure.fromJson(responseJson);
+      return RunningMeasure.fromJson(json: responseJson, patientID: patientID);
     }
   } on Exception catch (e) {
     print("Couldn't start new Measure of patient $patientID : " + e.toString());
@@ -250,16 +253,15 @@ Future<bool> cancelCurrentMeasureMock(
   return true;
 }
 
-Future<bool> cancelCurrentMeasureRoute(
-    {required int patientID, required int helperNr}) async {
+Future<bool> cancelCurrentMeasureRoute({required int helperNr}) async {
   try {
-    final response = await Session.get(
-        cancelCurrentMeasureUrl(patientID: patientID, helperNr: helperNr));
+    final response =
+        await Session.get(cancelCurrentMeasureUrl(helperNr: helperNr));
     if (response.statusCode == 200) {
       return true;
     } else {
       throw Exception(
-          "Error ${response.statusCode} - Could not cancel running measure of patient ${patientID}.");
+          "Error ${response.statusCode} - Could not cancel running measure.");
     }
   } on Exception catch (e) {
     print("ERROR CANCELING RUNNING MEASURE: " + e.toString());
