@@ -57,6 +57,7 @@ class SimplifiedPatient with _$SimplifiedPatient {
     required String triage,
     required String current_phase_nr,
     required String next_phase_nr,
+    required int patient_id
   }) = _SimplifiedPatient;
 
   factory SimplifiedPatient.fromJson(Map<String, dynamic> json) =>

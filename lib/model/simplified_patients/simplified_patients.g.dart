@@ -12,6 +12,7 @@ _$_SimplifiedPatient _$_$_SimplifiedPatientFromJson(Map<String, dynamic> json) {
     triage: json['triage'] as String,
     current_phase_nr: json['current_phase_nr'] as String,
     next_phase_nr: json['next_phase_nr'] as String,
+    patient_id: json['patient_id'] as int,
   );
 }
 
@@ -22,4 +23,5 @@ Map<String, dynamic> _$_$_SimplifiedPatientToJson(
       'triage': instance.triage,
       'current_phase_nr': instance.current_phase_nr,
       'next_phase_nr': instance.next_phase_nr,
+      'patient_id': instance.patient_id,
     };
