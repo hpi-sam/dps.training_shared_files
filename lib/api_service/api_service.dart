@@ -94,10 +94,22 @@ class BackendRoute {
         inventoryExchangeUrl(entityID: entityID, helperNr: helperNr), f, p);
   }
 
-  factory BackendRoute.fetchPatient({required int patientID}) {
+  factory BackendRoute.fetchPatient(
+      {required int patientID, required int helperNr}) {
     Function f = fetchPatientRoute;
-    Map<Symbol, dynamic> p = symbolizeKeys({"patientID": patientID});
-    return BackendRoute(patientDataUrl(patientID: patientID), f, p);
+    Map<Symbol, dynamic> p =
+        symbolizeKeys({"patientID": patientID, "helperNr": helperNr});
+    return BackendRoute(
+        patientDataUrl(patientID: patientID, helperNr: helperNr), f, p);
+  }
+
+  factory BackendRoute.uncoverPatient(
+      {required int patientID, required int helperNr}) {
+    Function f = uncoverPatientRoute;
+    Map<Symbol, dynamic> p =
+        symbolizeKeys({"patientID": patientID, "helperNr": helperNr});
+    return BackendRoute(
+        uncoverPatientUrl(patientID: patientID, helperNr: helperNr), f, p);
   }
 
   factory BackendRoute.updateTriage(
@@ -140,9 +152,11 @@ class BackendRoute {
     return BackendRoute(cancelCurrentMeasureUrl(helperNr: helperNr), f, p);
   }
 
-  factory BackendRoute.checkIfHelperBusy({required int helperNr}) {
+  factory BackendRoute.checkIfHelperBusy(
+      {required int helperNr, int? patientID}) {
     Function f = checkHelperBusyRoute;
-    Map<Symbol, dynamic> p = symbolizeKeys({"helperNr": helperNr});
+    Map<Symbol, dynamic> p =
+        symbolizeKeys({"helperNr": helperNr, "patientID": patientID});
     return BackendRoute(checkHelperBusyUrl(helperNr: helperNr), f, p);
   }
 
@@ -313,6 +327,12 @@ class BackendRoute {
       "expiringTimePatient": expiringTimePatient,
     });
     return BackendRoute(changeRoomConfigUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.fetchPatientTrainer({required int patientID}) {
+    Function f = fetchPatientRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"patientID": patientID});
+    return BackendRoute(patientDataTrainerUrl(patientID: patientID), f, p);
   }
 }
 

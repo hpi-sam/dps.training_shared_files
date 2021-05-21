@@ -22,6 +22,7 @@ part 'running_measure.freezed.dart';
 class RunningMeasure with _$RunningMeasure {
   const RunningMeasure._();
   const factory RunningMeasure({
+    required int patientID,
     required String name,
     required String image_small,
     required String image_original,
@@ -29,8 +30,10 @@ class RunningMeasure with _$RunningMeasure {
     required int finish_time,
     required bool requires_two_helpers,
   }) = _RunningMeasure;
-  factory RunningMeasure.fromJson(Map<String, dynamic> json) {
+  factory RunningMeasure.fromJson(
+      {required Map<String, dynamic> json, required int patientID}) {
     return RunningMeasure(
+        patientID: patientID,
         name: json["name"],
         image_small: serverURL + json["image"]["small"],
         image_original: serverURL + json["image"]["original"],

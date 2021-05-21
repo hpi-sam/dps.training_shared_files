@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
+import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import 'package:bpmanv_app_sharedFiles/model/players/players.dart';
 import 'package:bpmanv_app_sharedFiles/model/simplified_patients/simplified_patients.dart';
 
@@ -153,6 +154,29 @@ Future<void> changeRoomConfigRoute(
           "Error changing room configuration: ${response.statusCode}");
     }
   } on Exception catch (e) {
+    throw (e);
+  }
+}
+
+Future<Patient> fetchPatientTrainerRoute({required int patientID}) async {
+  try {
+    final response = await Session.get(patientDataTrainerUrl(patientID: patientID));
+    if (response.statusCode == 200) {
+      final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+      return Patient.fromJson(responseJson, patientID);
+    } else {
+      if (response.statusCode == 404) {
+        // error is in German because it might be relevant to the player.
+        throw Exception(
+            "Error ${response.statusCode} - Der Patient ${patientID} kann nicht geladen werden. "
+                "Womöglich ist dieser Patient nicht in der Datenbank vorhanden. Bitte"
+                " stelle sicher, dass der gescannte QR-Code korrekt ist.");
+      }
+      throw Exception(
+          "Error ${response.statusCode} - Could not load patient ${patientID}.");
+    }
+  } on Exception catch (e) {
+    print("ERROR FETCHING PATIENT: " + e.toString());
     throw (e);
   }
 }

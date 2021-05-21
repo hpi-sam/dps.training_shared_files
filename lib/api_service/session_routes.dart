@@ -136,14 +136,16 @@ Future<void> leaveRoomRoute() async {
   }
 }
 
-Future<RunningMeasure?> checkHelperBusyRoute({required int helperNr}) async {
+Future<RunningMeasure?> checkHelperBusyRoute(
+    {required int helperNr, int? patientID}) async {
   try {
     final response = await Session.get(checkHelperBusyUrl(helperNr: helperNr));
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseJson =
           jsonDecode(utf8.decode(response.bodyBytes));
       if (responseJson["is_busy"]) {
-        return RunningMeasure.fromJson(responseJson["current_measure"]);
+        return RunningMeasure.fromJson(
+            json: responseJson["current_measure"], patientID: patientID ?? -1);
       } else
         return null;
     } else {

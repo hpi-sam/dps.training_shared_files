@@ -19,8 +19,10 @@ void selectServer({required String serverName}) {
 }
 
 // configuration of routes to use for server requests.
-String patientDataUrl({required int patientID}) =>
-    serverURL + '/patients/$patientID/';
+String uncoverPatientUrl({required int patientID, required int helperNr}) =>
+    serverURL + '/patients/$patientID/uncover/helper/$helperNr/';
+String patientDataUrl({required int patientID, required int helperNr}) =>
+    serverURL + '/patients/$patientID/helper/$helperNr/';
 String foreignInventoryDataUrl({required int entityID}) =>
     serverURL + '/entities/$entityID/inventory/';
 String ownInventoryDataUrl({required int helperNr}) =>
@@ -46,7 +48,8 @@ String triageUrl({required int patientID, required int helperNr}) =>
 String playersSignUpUrl() => serverURL + '/players/signup/';
 String trainerSignUpUrl() => serverURL + '/trainers/signup/';
 String trainerLogInUrl() => serverURL + '/trainers/login/';
-String joinRoomUrl({required String invitationCode, required int helperAmount}) =>
+String joinRoomUrl(
+        {required String invitationCode, required int helperAmount}) =>
     serverURL + '/rooms/$invitationCode/join/helpercount_$helperAmount/';
 String leaveRoomUrl() => serverURL + '/rooms/leave/';
 String simulationTimeUrl() => serverURL + '/rooms/time/';
@@ -73,3 +76,5 @@ String nextPhaseChangeUrl() => serverURL + '/rooms/phasechange/';
 String modifyPhaseChangeUrl() => serverURL + '/rooms/phasechange/modify/';
 String roomStateUrl({required int roomID}) =>
     serverURL + '/rooms/$roomID/state/';
+String patientDataTrainerUrl({required int patientID}) =>
+    serverURL + '/patients/$patientID/';
