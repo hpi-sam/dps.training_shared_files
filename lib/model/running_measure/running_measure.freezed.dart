@@ -17,7 +17,7 @@ class _$RunningMeasureTearOff {
   const _$RunningMeasureTearOff();
 
   _RunningMeasure call(
-      {required int patientID,
+      {required String dpsCode,
       required String name,
       required String image_small,
       required String image_original,
@@ -25,7 +25,7 @@ class _$RunningMeasureTearOff {
       required int finish_time,
       required bool requires_two_helpers}) {
     return _RunningMeasure(
-      patientID: patientID,
+      dpsCode: dpsCode,
       name: name,
       image_small: image_small,
       image_original: image_original,
@@ -41,7 +41,7 @@ const $RunningMeasure = _$RunningMeasureTearOff();
 
 /// @nodoc
 mixin _$RunningMeasure {
-  int get patientID => throw _privateConstructorUsedError;
+  String get dpsCode => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get image_small => throw _privateConstructorUsedError;
   String get image_original => throw _privateConstructorUsedError;
@@ -60,7 +60,7 @@ abstract class $RunningMeasureCopyWith<$Res> {
           RunningMeasure value, $Res Function(RunningMeasure) then) =
       _$RunningMeasureCopyWithImpl<$Res>;
   $Res call(
-      {int patientID,
+      {String dpsCode,
       String name,
       String image_small,
       String image_original,
@@ -80,7 +80,7 @@ class _$RunningMeasureCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? patientID = freezed,
+    Object? dpsCode = freezed,
     Object? name = freezed,
     Object? image_small = freezed,
     Object? image_original = freezed,
@@ -89,10 +89,10 @@ class _$RunningMeasureCopyWithImpl<$Res>
     Object? requires_two_helpers = freezed,
   }) {
     return _then(_value.copyWith(
-      patientID: patientID == freezed
-          ? _value.patientID
-          : patientID // ignore: cast_nullable_to_non_nullable
-              as int,
+      dpsCode: dpsCode == freezed
+          ? _value.dpsCode
+          : dpsCode // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -129,7 +129,7 @@ abstract class _$RunningMeasureCopyWith<$Res>
       __$RunningMeasureCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int patientID,
+      {String dpsCode,
       String name,
       String image_small,
       String image_original,
@@ -151,7 +151,7 @@ class __$RunningMeasureCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? patientID = freezed,
+    Object? dpsCode = freezed,
     Object? name = freezed,
     Object? image_small = freezed,
     Object? image_original = freezed,
@@ -160,10 +160,10 @@ class __$RunningMeasureCopyWithImpl<$Res>
     Object? requires_two_helpers = freezed,
   }) {
     return _then(_RunningMeasure(
-      patientID: patientID == freezed
-          ? _value.patientID
-          : patientID // ignore: cast_nullable_to_non_nullable
-              as int,
+      dpsCode: dpsCode == freezed
+          ? _value.dpsCode
+          : dpsCode // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -195,7 +195,7 @@ class __$RunningMeasureCopyWithImpl<$Res>
 /// @nodoc
 class _$_RunningMeasure extends _RunningMeasure {
   const _$_RunningMeasure(
-      {required this.patientID,
+      {required this.dpsCode,
       required this.name,
       required this.image_small,
       required this.image_original,
@@ -205,7 +205,7 @@ class _$_RunningMeasure extends _RunningMeasure {
       : super._();
 
   @override
-  final int patientID;
+  final String dpsCode;
   @override
   final String name;
   @override
@@ -221,16 +221,16 @@ class _$_RunningMeasure extends _RunningMeasure {
 
   @override
   String toString() {
-    return 'RunningMeasure(patientID: $patientID, name: $name, image_small: $image_small, image_original: $image_original, start_time: $start_time, finish_time: $finish_time, requires_two_helpers: $requires_two_helpers)';
+    return 'RunningMeasure(dpsCode: $dpsCode, name: $name, image_small: $image_small, image_original: $image_original, start_time: $start_time, finish_time: $finish_time, requires_two_helpers: $requires_two_helpers)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _RunningMeasure &&
-            (identical(other.patientID, patientID) ||
+            (identical(other.dpsCode, dpsCode) ||
                 const DeepCollectionEquality()
-                    .equals(other.patientID, patientID)) &&
+                    .equals(other.dpsCode, dpsCode)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.image_small, image_small) ||
@@ -253,7 +253,7 @@ class _$_RunningMeasure extends _RunningMeasure {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(patientID) ^
+      const DeepCollectionEquality().hash(dpsCode) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(image_small) ^
       const DeepCollectionEquality().hash(image_original) ^
@@ -269,7 +269,7 @@ class _$_RunningMeasure extends _RunningMeasure {
 
 abstract class _RunningMeasure extends RunningMeasure {
   const factory _RunningMeasure(
-      {required int patientID,
+      {required String dpsCode,
       required String name,
       required String image_small,
       required String image_original,
@@ -279,7 +279,7 @@ abstract class _RunningMeasure extends RunningMeasure {
   const _RunningMeasure._() : super._();
 
   @override
-  int get patientID => throw _privateConstructorUsedError;
+  String get dpsCode => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override

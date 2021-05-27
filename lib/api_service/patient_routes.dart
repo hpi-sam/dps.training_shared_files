@@ -7,7 +7,7 @@ import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
 import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import 'package:bpmanv_app_sharedFiles/model/running_measure/running_measure.dart';
 
-Future<Patient> fetchPatientMock({required int patientID}) async {
+Future<Patient> fetchPatientMock({required String dpsCode}) async {
   Map<String, dynamic> patientJson = {
     "static_data": {
       "injuries": [
@@ -78,27 +78,27 @@ Future<Patient> fetchPatientMock({required int patientID}) async {
       "spco": "-2"
     }
   };
-  return Patient.fromJson(patientJson, patientID);
+  return Patient.fromJson(patientJson, dpsCode);
 }
 
 Future<Patient> fetchPatientRoute(
-    {required int patientID, required int helperNr}) async {
+    {required String dpsCode, required int helperNr}) async {
   try {
     final response = await Session.get(
-        patientDataUrl(patientID: patientID, helperNr: helperNr));
+        patientDataUrl(dpsCode: dpsCode, helperNr: helperNr));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      return Patient.fromJson(responseJson, patientID);
+      return Patient.fromJson(responseJson, dpsCode);
     } else {
       if (response.statusCode == 404) {
         // error is in German because it might be relevant to the player.
         throw Exception(
-            "Error ${response.statusCode} - Der Patient ${patientID} kann nicht geladen werden. "
+            "Error ${response.statusCode} - Der Patient ${dpsCode} kann nicht geladen werden. "
             "Womöglich ist dieser Patient nicht in der Datenbank vorhanden. Bitte"
             " stelle sicher, dass der gescannte QR-Code korrekt ist.");
       }
       throw Exception(
-          "Error ${response.statusCode} - Could not load patient ${patientID}.");
+          "Error ${response.statusCode} - Could not load patient ${dpsCode}.");
     }
   } on Exception catch (e) {
     print("ERROR FETCHING PATIENT: " + e.toString());
@@ -107,16 +107,16 @@ Future<Patient> fetchPatientRoute(
 }
 
 Future<RunningMeasure> uncoverPatientRoute(
-    {required int patientID, required int helperNr}) async {
+    {required String dpsCode, required int helperNr}) async {
   try {
     final response = await Session.get(
-        uncoverPatientUrl(patientID: patientID, helperNr: helperNr));
+        uncoverPatientUrl(dpsCode: dpsCode, helperNr: helperNr));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      return RunningMeasure.fromJson(json: responseJson, patientID: patientID);
+      return RunningMeasure.fromJson(json: responseJson, dpsCode: dpsCode);
     } else {
       throw Exception(
-          "Error ${response.statusCode} - Could not uncover patient $patientID.");
+          "Error ${response.statusCode} - Could not uncover patient $dpsCode.");
     }
   } on Exception catch (e) {
     print("ERROR UNCOVERING PATIENT: $e");
@@ -129,12 +129,12 @@ Future<int> fetchOwnEntityIdMock() async {
 }
 
 Future<void> updateTriageRoute(
-    {required int patientID,
+    {required String dpsCode,
     required int helperNr,
     required String triageCategory}) async {
   try {
     final response = await Session.post(
-        triageUrl(patientID: patientID, helperNr: helperNr),
+        triageUrl(dpsCode: dpsCode, helperNr: helperNr),
         jsonEncode({"category": triageCategory}));
     if (response.statusCode != 200) {}
   } on Exception catch (e) {

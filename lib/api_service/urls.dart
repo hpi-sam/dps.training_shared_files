@@ -19,32 +19,32 @@ void selectServer({required String serverName}) {
 }
 
 // configuration of routes to use for server requests.
-String uncoverPatientUrl({required int patientID, required int helperNr}) =>
-    serverURL + '/patients/$patientID/uncover/helper/$helperNr/';
-String patientDataUrl({required int patientID, required int helperNr}) =>
-    serverURL + '/patients/$patientID/helper/$helperNr/';
+String uncoverPatientUrl({required String dpsCode, required int helperNr}) =>
+    serverURL + '/patients/$dpsCode/uncover/helper/$helperNr/';
+String patientDataUrl({required String dpsCode, required int helperNr}) =>
+    serverURL + '/patients/$dpsCode/helper/$helperNr/';
 String foreignInventoryDataUrl({required int entityID}) =>
     serverURL + '/entities/$entityID/inventory/';
 String ownInventoryDataUrl({required int helperNr}) =>
     serverURL + '/own/inventory/helper/$helperNr/';
 String inventoryExchangeUrl({required int entityID, required int helperNr}) =>
     serverURL + '/entities/$entityID/inventory/exchange/helper/$helperNr/';
-String availableMeasuresUrl({required int patientID, required int helperNr}) =>
-    serverURL + '/patients/$patientID/measures/available/helper/$helperNr/';
-String startNewMeasureUrl({required int patientID, required int helperNr}) =>
-    serverURL + '/patients/$patientID/measures/start/helper/$helperNr/';
+String availableMeasuresUrl({required String dpsCode, required int helperNr}) =>
+    serverURL + '/patients/$dpsCode/measures/available/helper/$helperNr/';
+String startNewMeasureUrl({required String dpsCode, required int helperNr}) =>
+    serverURL + '/patients/$dpsCode/measures/start/helper/$helperNr/';
 String cancelCurrentMeasureUrl({required int helperNr}) =>
     serverURL + '/own/currentmeasure/cancel/helper/$helperNr/';
-String appliedMeasuresUrl({required int patientID}) =>
-    serverURL + '/patients/$patientID/measures/applied/';
+String appliedMeasuresUrl({required String dpsCode}) =>
+    serverURL + '/patients/$dpsCode/measures/applied/';
 String removeAppliedMeasureUrl(
-        {required int patientID,
+        {required String dpsCode,
         required int helperNr,
         required int measureID}) =>
     serverURL +
-    '/patients/$patientID/measures/$measureID/remove/helper/$helperNr/';
-String triageUrl({required int patientID, required int helperNr}) =>
-    serverURL + '/patients/$patientID/triage/helper/$helperNr/';
+    '/patients/$dpsCode/measures/$measureID/remove/helper/$helperNr/';
+String triageUrl({required String dpsCode, required int helperNr}) =>
+    serverURL + '/patients/$dpsCode/triage/helper/$helperNr/';
 String playersSignUpUrl() => serverURL + '/players/signup/';
 String trainerSignUpUrl() => serverURL + '/trainers/signup/';
 String trainerLogInUrl() => serverURL + '/trainers/login/';
@@ -76,5 +76,5 @@ String nextPhaseChangeUrl() => serverURL + '/rooms/phasechange/';
 String modifyPhaseChangeUrl() => serverURL + '/rooms/phasechange/modify/';
 String roomStateUrl({required int roomID}) =>
     serverURL + '/rooms/$roomID/state/';
-String patientDataTrainerUrl({required int patientID}) =>
-    serverURL + '/patients/$patientID/';
+String patientDataTrainerUrl({required String dpsCode}) =>
+    serverURL + '/patients/$dpsCode/';

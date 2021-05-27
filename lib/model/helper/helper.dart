@@ -16,7 +16,7 @@ class Helper with _$Helper {
   const factory Helper({
     /// The ID of the patient a helper has most recently scanned. Null if no patient
     /// has been scanned by the helper yet.
-    @Default(null) int? patientID,
+    @Default(null) String? dpsCode,
 
     /// The measure a helper is currently implementing. Null if the helper is currently
     /// not implementing a measure.

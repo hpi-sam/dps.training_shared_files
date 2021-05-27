@@ -30,7 +30,7 @@ InjuryType injuryTypeFromString(String str) {
 class Patient with _$Patient {
   const Patient._();
   const factory Patient({
-    required int id,
+    required String dpsCode,
     required PatientCurrentPhase currentPhase,
     required PatientFirstImpression firstImpression,
     required PatientPersonalData personalData,
@@ -50,9 +50,9 @@ class Patient with _$Patient {
 
   /// Creates a [Patient] from the given [json]. The [json] must conform to our
   /// API specification (Todo: link API specification document)
-  factory Patient.fromJson(Map<String, dynamic> json, int patientID) {
+  factory Patient.fromJson(Map<String, dynamic> json, String dpsCode) {
     return Patient(
-        id: patientID,
+        dpsCode: dpsCode,
         currentPhase: PatientCurrentPhase.fromJson(json["current_phase"]),
         firstImpression: PatientFirstImpression.fromJson(
             json["static_data"]["first_impression"]),
