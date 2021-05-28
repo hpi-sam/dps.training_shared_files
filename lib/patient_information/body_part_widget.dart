@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-// Project imports:
-import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 
 /// Builds a container with rounded corners to represent a body part.
 ///
@@ -15,7 +13,7 @@ class BodyPart extends StatelessWidget {
   final double heightFactor;
   final double widthFactor;
   final radius;
-  final List<InjuryType> injuries;
+  final List<String> injuries;
   final transformation;
   final double width;
 
@@ -33,7 +31,7 @@ class BodyPart extends StatelessWidget {
     List<Widget> markers = [];
     injuries.forEach((element) {
       switch (element) {
-        case InjuryType.BLEEDING:
+        case "bleeding":
           markers.addAll([
             Icon(
               FontAwesomeIcons.tint,
@@ -42,7 +40,7 @@ class BodyPart extends StatelessWidget {
           ]); // alternative: fire, or map-marker if we can rotate it
           break;
 
-        case InjuryType.CRITICAL_BLEEDING:
+        case "critical bleeding":
           markers.addAll([
             Icon(
               FontAwesomeIcons.wind,
@@ -51,7 +49,7 @@ class BodyPart extends StatelessWidget {
           ]);
           break;
 
-        case InjuryType.FRACTURE:
+        case "fracture":
           markers.addAll([
             Icon(
               FontAwesomeIcons.bone,
@@ -83,7 +81,7 @@ class BodyPart extends StatelessWidget {
 }
 
 class Head extends BodyPart {
-  Head({required List<InjuryType> injuries, required double width})
+  Head({required List<String> injuries, required double width})
       : super(
             width: width,
             heightFactor: 0.17,
@@ -93,7 +91,7 @@ class Head extends BodyPart {
 }
 
 class Thorax extends BodyPart {
-  Thorax({required List<InjuryType> injuries, required double width})
+  Thorax({required List<String> injuries, required double width})
       : super(
             width: width,
             heightFactor: 0.15,
@@ -104,7 +102,7 @@ class Thorax extends BodyPart {
 }
 
 class Abdomen extends BodyPart {
-  Abdomen({required List<InjuryType> injuries, required double width})
+  Abdomen({required List<String> injuries, required double width})
       : super(
             width: width,
             heightFactor: 0.15,
@@ -114,7 +112,7 @@ class Abdomen extends BodyPart {
 }
 
 class Pelvis extends BodyPart {
-  Pelvis({required List<InjuryType> injuries, required double width})
+  Pelvis({required List<String> injuries, required double width})
       : super(
             width: width,
             heightFactor: 0.15,
@@ -126,7 +124,7 @@ class Pelvis extends BodyPart {
 }
 
 class Leg extends BodyPart {
-  Leg({required List<InjuryType> injuries, required double width})
+  Leg({required List<String> injuries, required double width})
       : super(
             width: width,
             heightFactor: 0.35,
@@ -136,10 +134,7 @@ class Leg extends BodyPart {
 }
 
 class Arm extends BodyPart {
-  Arm(
-      {required List<InjuryType> injuries,
-      required double width,
-      transformation})
+  Arm({required List<String> injuries, required double width, transformation})
       : super(
             width: width,
             heightFactor: 0.4,

@@ -7,11 +7,16 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'patient.freezed.dart';
 part 'patient.g.dart';
 
-enum InjuryType { FRACTURE, BLEEDING, CRITICAL_BLEEDING }
-
 /// Returns an [InjuryType] that matches the input [str].
-InjuryType injuryTypeFromString(String str) {
-  return InjuryType.values.firstWhere((e) => describeEnum(e) == str);
+String injuryTypeFromString(String str) {
+  if (str == "fracture")
+    return "fracture";
+  else if (str == "bleeding")
+    return "bleeding";
+  else if (str == "critical bleeding")
+    return "critical bleeding";
+  else
+    throw Exception("Can't find injuryType from String: $str");
 }
 
 /// Defines the patient data model.
@@ -220,8 +225,8 @@ class PatientInjuries with _$PatientInjuries {
   factory PatientInjuries.fromJson(Map<String, dynamic> json) =>
       _$PatientInjuriesFromJson(json);
 
-  List<InjuryType> _injuriesOf(String location) {
-    List<InjuryType> result = [];
+  List<String> _injuriesOf(String location) {
+    List<String> result = [];
 
     injuries.forEach((injury) {
       if (injury["location"] == location) {
@@ -232,13 +237,13 @@ class PatientInjuries with _$PatientInjuries {
     return result;
   }
 
-  get head => _injuriesOf("HEAD");
-  get left_arm => _injuriesOf("LEFT_ARM");
-  get right_arm => _injuriesOf("RIGHT_ARM");
-  get thorax => _injuriesOf("THORAX");
-  get abdomen => _injuriesOf("ABDOMEN");
-  get pelvis => _injuriesOf("PELVIS");
-  get left_leg => _injuriesOf("LEFT_LEG");
-  get right_leg => _injuriesOf("RIGHT_LEG");
-  get neck => _injuriesOf("NECK");
+  get head => _injuriesOf("head");
+  get left_arm => _injuriesOf("left arm");
+  get right_arm => _injuriesOf("right arm");
+  get thorax => _injuriesOf("thorax");
+  get abdomen => _injuriesOf("abdomen");
+  get pelvis => _injuriesOf("pelvis");
+  get left_leg => _injuriesOf("left leg");
+  get right_leg => _injuriesOf("right leg");
+  get neck => _injuriesOf("neck");
 }
