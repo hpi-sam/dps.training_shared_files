@@ -167,6 +167,19 @@ class InventoryExchange with _$InventoryExchange {
     }
     return true;
   }
+
+  /// Returns true if the own or the foreign amount of at least one item is greater
+  /// than 0.
+  bool isNotEmpty() {
+    for (int i = 0; i < categories.length; i++) {
+      for (int j = 0; j < categories[i].items.length; j++) {
+        final material = categories[i].items[j];
+        if (material.ownAmount > 0) return true;
+        if (material.foreignAmount > 0) return true;
+      }
+    }
+    return false;
+  }
 }
 
 /// Model that represents a single category of materials in the context of an [InventoryExchange].
