@@ -53,6 +53,7 @@ class SimplifiedPatient with _$SimplifiedPatient {
   const factory SimplifiedPatient({
     required String dps_code,
     required String triage,
+    required String suggested_triage,
     required String current_phase_nr,
     required String next_phase_nr,
   }) = _SimplifiedPatient;

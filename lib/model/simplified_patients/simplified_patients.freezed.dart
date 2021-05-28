@@ -154,11 +154,13 @@ class _$SimplifiedPatientTearOff {
   _SimplifiedPatient call(
       {required String dps_code,
       required String triage,
+      required String suggested_triage,
       required String current_phase_nr,
       required String next_phase_nr}) {
     return _SimplifiedPatient(
       dps_code: dps_code,
       triage: triage,
+      suggested_triage: suggested_triage,
       current_phase_nr: current_phase_nr,
       next_phase_nr: next_phase_nr,
     );
@@ -176,6 +178,7 @@ const $SimplifiedPatient = _$SimplifiedPatientTearOff();
 mixin _$SimplifiedPatient {
   String get dps_code => throw _privateConstructorUsedError;
   String get triage => throw _privateConstructorUsedError;
+  String get suggested_triage => throw _privateConstructorUsedError;
   String get current_phase_nr => throw _privateConstructorUsedError;
   String get next_phase_nr => throw _privateConstructorUsedError;
 
@@ -193,6 +196,7 @@ abstract class $SimplifiedPatientCopyWith<$Res> {
   $Res call(
       {String dps_code,
       String triage,
+      String suggested_triage,
       String current_phase_nr,
       String next_phase_nr});
 }
@@ -210,6 +214,7 @@ class _$SimplifiedPatientCopyWithImpl<$Res>
   $Res call({
     Object? dps_code = freezed,
     Object? triage = freezed,
+    Object? suggested_triage = freezed,
     Object? current_phase_nr = freezed,
     Object? next_phase_nr = freezed,
   }) {
@@ -221,6 +226,10 @@ class _$SimplifiedPatientCopyWithImpl<$Res>
       triage: triage == freezed
           ? _value.triage
           : triage // ignore: cast_nullable_to_non_nullable
+              as String,
+      suggested_triage: suggested_triage == freezed
+          ? _value.suggested_triage
+          : suggested_triage // ignore: cast_nullable_to_non_nullable
               as String,
       current_phase_nr: current_phase_nr == freezed
           ? _value.current_phase_nr
@@ -244,6 +253,7 @@ abstract class _$SimplifiedPatientCopyWith<$Res>
   $Res call(
       {String dps_code,
       String triage,
+      String suggested_triage,
       String current_phase_nr,
       String next_phase_nr});
 }
@@ -263,6 +273,7 @@ class __$SimplifiedPatientCopyWithImpl<$Res>
   $Res call({
     Object? dps_code = freezed,
     Object? triage = freezed,
+    Object? suggested_triage = freezed,
     Object? current_phase_nr = freezed,
     Object? next_phase_nr = freezed,
   }) {
@@ -274,6 +285,10 @@ class __$SimplifiedPatientCopyWithImpl<$Res>
       triage: triage == freezed
           ? _value.triage
           : triage // ignore: cast_nullable_to_non_nullable
+              as String,
+      suggested_triage: suggested_triage == freezed
+          ? _value.suggested_triage
+          : suggested_triage // ignore: cast_nullable_to_non_nullable
               as String,
       current_phase_nr: current_phase_nr == freezed
           ? _value.current_phase_nr
@@ -294,6 +309,7 @@ class _$_SimplifiedPatient implements _SimplifiedPatient {
   const _$_SimplifiedPatient(
       {required this.dps_code,
       required this.triage,
+      required this.suggested_triage,
       required this.current_phase_nr,
       required this.next_phase_nr});
 
@@ -305,13 +321,15 @@ class _$_SimplifiedPatient implements _SimplifiedPatient {
   @override
   final String triage;
   @override
+  final String suggested_triage;
+  @override
   final String current_phase_nr;
   @override
   final String next_phase_nr;
 
   @override
   String toString() {
-    return 'SimplifiedPatient(dps_code: $dps_code, triage: $triage, current_phase_nr: $current_phase_nr, next_phase_nr: $next_phase_nr)';
+    return 'SimplifiedPatient(dps_code: $dps_code, triage: $triage, suggested_triage: $suggested_triage, current_phase_nr: $current_phase_nr, next_phase_nr: $next_phase_nr)';
   }
 
   @override
@@ -323,6 +341,9 @@ class _$_SimplifiedPatient implements _SimplifiedPatient {
                     .equals(other.dps_code, dps_code)) &&
             (identical(other.triage, triage) ||
                 const DeepCollectionEquality().equals(other.triage, triage)) &&
+            (identical(other.suggested_triage, suggested_triage) ||
+                const DeepCollectionEquality()
+                    .equals(other.suggested_triage, suggested_triage)) &&
             (identical(other.current_phase_nr, current_phase_nr) ||
                 const DeepCollectionEquality()
                     .equals(other.current_phase_nr, current_phase_nr)) &&
@@ -336,6 +357,7 @@ class _$_SimplifiedPatient implements _SimplifiedPatient {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(dps_code) ^
       const DeepCollectionEquality().hash(triage) ^
+      const DeepCollectionEquality().hash(suggested_triage) ^
       const DeepCollectionEquality().hash(current_phase_nr) ^
       const DeepCollectionEquality().hash(next_phase_nr);
 
@@ -354,6 +376,7 @@ abstract class _SimplifiedPatient implements SimplifiedPatient {
   const factory _SimplifiedPatient(
       {required String dps_code,
       required String triage,
+      required String suggested_triage,
       required String current_phase_nr,
       required String next_phase_nr}) = _$_SimplifiedPatient;
 
@@ -364,6 +387,8 @@ abstract class _SimplifiedPatient implements SimplifiedPatient {
   String get dps_code => throw _privateConstructorUsedError;
   @override
   String get triage => throw _privateConstructorUsedError;
+  @override
+  String get suggested_triage => throw _privateConstructorUsedError;
   @override
   String get current_phase_nr => throw _privateConstructorUsedError;
   @override
