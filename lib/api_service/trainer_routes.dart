@@ -189,3 +189,15 @@ Future<void> addPatientTrainerRoute({required String dpsCode}) async {
     throw (e);
   }
 }
+
+Future<void> checkoutPatientRoute({required String dpsCode}) async {
+  try {
+    final response = await Session.get(checkoutPatientUrl(dpsCode: dpsCode));
+    if (response.statusCode != 200) {
+      throw Exception(
+          "Error checking out patient $dpsCode: ${response.statusCode}");
+    }
+  } on Exception catch (e) {
+    throw (e);
+  }
+}

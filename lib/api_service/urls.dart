@@ -80,3 +80,5 @@ String patientDataTrainerUrl({required String dpsCode}) =>
     serverURL + '/patients/$dpsCode/';
 String addPatientTrainerUrl({required String dpsCode}) =>
     serverURL + '/qr-codes/add/$dpsCode/';
+String checkoutPatientUrl({required String dpsCode}) =>
+    serverURL + '/patients/$dpsCode/checkout/';

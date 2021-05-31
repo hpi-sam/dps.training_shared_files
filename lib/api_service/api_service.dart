@@ -341,6 +341,12 @@ class BackendRoute {
     Map<Symbol, dynamic> p = symbolizeKeys({"dpsCode": dpsCode});
     return BackendRoute(addPatientTrainerUrl(dpsCode: dpsCode), f, p);
   }
+
+  factory BackendRoute.checkoutPatient({required String dpsCode}) {
+    Function f = checkoutPatientRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"dpsCode": dpsCode});
+    return BackendRoute(checkoutPatientUrl(dpsCode: dpsCode), f, p);
+  }
 }
 
 /// This class contains a [Queue] which stores all [BackendRoute] that are called
