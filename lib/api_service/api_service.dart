@@ -122,8 +122,7 @@ class BackendRoute {
       "helperNr": helperNr,
       "triageCategory": triageCategory
     });
-    return BackendRoute(
-        triageUrl(dpsCode: dpsCode, helperNr: helperNr), f, p);
+    return BackendRoute(triageUrl(dpsCode: dpsCode, helperNr: helperNr), f, p);
   }
 
   factory BackendRoute.fetchAvailableMeasures(
@@ -167,7 +166,9 @@ class BackendRoute {
   }
 
   factory BackendRoute.removeAppliedMeasure(
-      {required String dpsCode, required int helperNr, required int measureID}) {
+      {required String dpsCode,
+      required int helperNr,
+      required int measureID}) {
     Function f = removeAppliedMeasureRoute;
     Map<Symbol, dynamic> p = symbolizeKeys(
         {"dpsCode": dpsCode, "helperNr": helperNr, "measureID": measureID});
@@ -333,6 +334,12 @@ class BackendRoute {
     Function f = fetchPatientTrainerRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"dpsCode": dpsCode});
     return BackendRoute(patientDataTrainerUrl(dpsCode: dpsCode), f, p);
+  }
+
+  factory BackendRoute.addPatientTrainer({required String dpsCode}) {
+    Function f = addPatientTrainerRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"dpsCode": dpsCode});
+    return BackendRoute(addPatientTrainerUrl(dpsCode: dpsCode), f, p);
   }
 }
 

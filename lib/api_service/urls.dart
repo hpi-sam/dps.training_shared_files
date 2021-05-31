@@ -78,3 +78,5 @@ String roomStateUrl({required int roomID}) =>
     serverURL + '/rooms/$roomID/state/';
 String patientDataTrainerUrl({required String dpsCode}) =>
     serverURL + '/patients/$dpsCode/';
+String addPatientTrainerUrl({required String dpsCode}) =>
+    serverURL + '/qr-codes/add/$dpsCode/';

@@ -6,7 +6,6 @@ import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import 'package:bpmanv_app_sharedFiles/model/players/players.dart';
 import 'package:bpmanv_app_sharedFiles/model/simplified_patients/simplified_patients.dart';
 
-
 Future<PlayerList> getPlayerListRoute({required int roomID}) async {
   try {
     final response = await Session.get(getPlayerListUrl(roomID: roomID));
@@ -119,8 +118,7 @@ Future<int> nextPhaseChangeRoute() async {
   }
 }
 
-Future<int> modifyPhaseChangeRoute(
-    {required int seconds}) async {
+Future<int> modifyPhaseChangeRoute({required int seconds}) async {
   try {
     final response = await Session.post(
         modifyPhaseChangeUrl(), jsonEncode({"seconds": seconds}));
@@ -169,14 +167,25 @@ Future<Patient> fetchPatientTrainerRoute({required String dpsCode}) async {
         // error is in German because it might be relevant to the player.
         throw Exception(
             "Error ${response.statusCode} - Der Patient ${dpsCode} kann nicht geladen werden. "
-                "Womöglich ist dieser Patient nicht in der Datenbank vorhanden. Bitte"
-                " stelle sicher, dass der gescannte QR-Code korrekt ist.");
+            "Womöglich ist dieser Patient nicht in der Datenbank vorhanden. Bitte"
+            " stelle sicher, dass der gescannte QR-Code korrekt ist.");
       }
       throw Exception(
           "Error ${response.statusCode} - Could not load patient ${dpsCode}.");
     }
   } on Exception catch (e) {
     print("ERROR FETCHING PATIENT: " + e.toString());
+    throw (e);
+  }
+}
+
+Future<void> addPatientTrainerRoute({required String dpsCode}) async {
+  try {
+    final response = await Session.get(addPatientTrainerUrl(dpsCode: dpsCode));
+    if (response.statusCode != 200) {
+      throw Exception("Error adding patient $dpsCode: ${response.statusCode}");
+    }
+  } on Exception catch (e) {
     throw (e);
   }
 }
