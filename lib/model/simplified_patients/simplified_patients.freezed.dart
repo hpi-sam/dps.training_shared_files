@@ -156,13 +156,15 @@ class _$SimplifiedPatientTearOff {
       required String triage,
       required String suggested_triage,
       required String current_phase_nr,
-      required String next_phase_nr}) {
+      required String next_phase_nr,
+      required bool is_checked_out}) {
     return _SimplifiedPatient(
       dps_code: dps_code,
       triage: triage,
       suggested_triage: suggested_triage,
       current_phase_nr: current_phase_nr,
       next_phase_nr: next_phase_nr,
+      is_checked_out: is_checked_out,
     );
   }
 
@@ -181,6 +183,7 @@ mixin _$SimplifiedPatient {
   String get suggested_triage => throw _privateConstructorUsedError;
   String get current_phase_nr => throw _privateConstructorUsedError;
   String get next_phase_nr => throw _privateConstructorUsedError;
+  bool get is_checked_out => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -198,7 +201,8 @@ abstract class $SimplifiedPatientCopyWith<$Res> {
       String triage,
       String suggested_triage,
       String current_phase_nr,
-      String next_phase_nr});
+      String next_phase_nr,
+      bool is_checked_out});
 }
 
 /// @nodoc
@@ -217,6 +221,7 @@ class _$SimplifiedPatientCopyWithImpl<$Res>
     Object? suggested_triage = freezed,
     Object? current_phase_nr = freezed,
     Object? next_phase_nr = freezed,
+    Object? is_checked_out = freezed,
   }) {
     return _then(_value.copyWith(
       dps_code: dps_code == freezed
@@ -239,6 +244,10 @@ class _$SimplifiedPatientCopyWithImpl<$Res>
           ? _value.next_phase_nr
           : next_phase_nr // ignore: cast_nullable_to_non_nullable
               as String,
+      is_checked_out: is_checked_out == freezed
+          ? _value.is_checked_out
+          : is_checked_out // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -255,7 +264,8 @@ abstract class _$SimplifiedPatientCopyWith<$Res>
       String triage,
       String suggested_triage,
       String current_phase_nr,
-      String next_phase_nr});
+      String next_phase_nr,
+      bool is_checked_out});
 }
 
 /// @nodoc
@@ -276,6 +286,7 @@ class __$SimplifiedPatientCopyWithImpl<$Res>
     Object? suggested_triage = freezed,
     Object? current_phase_nr = freezed,
     Object? next_phase_nr = freezed,
+    Object? is_checked_out = freezed,
   }) {
     return _then(_SimplifiedPatient(
       dps_code: dps_code == freezed
@@ -298,6 +309,10 @@ class __$SimplifiedPatientCopyWithImpl<$Res>
           ? _value.next_phase_nr
           : next_phase_nr // ignore: cast_nullable_to_non_nullable
               as String,
+      is_checked_out: is_checked_out == freezed
+          ? _value.is_checked_out
+          : is_checked_out // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -311,7 +326,8 @@ class _$_SimplifiedPatient implements _SimplifiedPatient {
       required this.triage,
       required this.suggested_triage,
       required this.current_phase_nr,
-      required this.next_phase_nr});
+      required this.next_phase_nr,
+      required this.is_checked_out});
 
   factory _$_SimplifiedPatient.fromJson(Map<String, dynamic> json) =>
       _$_$_SimplifiedPatientFromJson(json);
@@ -326,10 +342,12 @@ class _$_SimplifiedPatient implements _SimplifiedPatient {
   final String current_phase_nr;
   @override
   final String next_phase_nr;
+  @override
+  final bool is_checked_out;
 
   @override
   String toString() {
-    return 'SimplifiedPatient(dps_code: $dps_code, triage: $triage, suggested_triage: $suggested_triage, current_phase_nr: $current_phase_nr, next_phase_nr: $next_phase_nr)';
+    return 'SimplifiedPatient(dps_code: $dps_code, triage: $triage, suggested_triage: $suggested_triage, current_phase_nr: $current_phase_nr, next_phase_nr: $next_phase_nr, is_checked_out: $is_checked_out)';
   }
 
   @override
@@ -349,7 +367,10 @@ class _$_SimplifiedPatient implements _SimplifiedPatient {
                     .equals(other.current_phase_nr, current_phase_nr)) &&
             (identical(other.next_phase_nr, next_phase_nr) ||
                 const DeepCollectionEquality()
-                    .equals(other.next_phase_nr, next_phase_nr)));
+                    .equals(other.next_phase_nr, next_phase_nr)) &&
+            (identical(other.is_checked_out, is_checked_out) ||
+                const DeepCollectionEquality()
+                    .equals(other.is_checked_out, is_checked_out)));
   }
 
   @override
@@ -359,7 +380,8 @@ class _$_SimplifiedPatient implements _SimplifiedPatient {
       const DeepCollectionEquality().hash(triage) ^
       const DeepCollectionEquality().hash(suggested_triage) ^
       const DeepCollectionEquality().hash(current_phase_nr) ^
-      const DeepCollectionEquality().hash(next_phase_nr);
+      const DeepCollectionEquality().hash(next_phase_nr) ^
+      const DeepCollectionEquality().hash(is_checked_out);
 
   @JsonKey(ignore: true)
   @override
@@ -378,7 +400,8 @@ abstract class _SimplifiedPatient implements SimplifiedPatient {
       required String triage,
       required String suggested_triage,
       required String current_phase_nr,
-      required String next_phase_nr}) = _$_SimplifiedPatient;
+      required String next_phase_nr,
+      required bool is_checked_out}) = _$_SimplifiedPatient;
 
   factory _SimplifiedPatient.fromJson(Map<String, dynamic> json) =
       _$_SimplifiedPatient.fromJson;
@@ -393,6 +416,8 @@ abstract class _SimplifiedPatient implements SimplifiedPatient {
   String get current_phase_nr => throw _privateConstructorUsedError;
   @override
   String get next_phase_nr => throw _privateConstructorUsedError;
+  @override
+  bool get is_checked_out => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SimplifiedPatientCopyWith<_SimplifiedPatient> get copyWith =>

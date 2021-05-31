@@ -44,6 +44,7 @@ class Patient with _$Patient {
     required String bodyCheckInformation,
     required String situationOfDiscovery,
     required String triageCategory,
+    required bool isCheckedOut,
   }) = _Patient;
 
   get name => personalData.name;
@@ -69,7 +70,8 @@ class Patient with _$Patient {
         injuryDescription: json["static_data"]["injury_description"],
         bodyCheckInformation: json["static_data"]["body_check_information"],
         situationOfDiscovery: json["static_data"]["situation_of_discovery"],
-        triageCategory: json["triage"]);
+        triageCategory: json["triage"],
+    isCheckedOut: json["is_checked_out"]);
   }
 }
 
