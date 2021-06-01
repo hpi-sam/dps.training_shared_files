@@ -143,7 +143,7 @@ Future<void> changeRoomConfigRoute(
     final response = await Session.post(
         changeRoomConfigUrl(roomID: roomID),
         jsonEncode({
-          "phase_change_time": phaseChangeTime,
+          "default_phase_length": phaseChangeTime,
           "waiting_time_patient": waitingTimePatient,
           "expiring_time_patient": expiringTimePatient,
         }));
