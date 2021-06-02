@@ -51,27 +51,26 @@ class FirstImpressionField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var inactiveDecoration = BoxDecoration(
-        border: Border.all(width: 3),
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: Colors.black12);
     var activeDecoration = BoxDecoration(
         border: Border.all(width: 3),
         borderRadius: BorderRadius.all(Radius.circular(10)),
         color: backgroundColor);
 
-    return Column(
-      children: [
-        Container(
-          child: FittedBox(fit: BoxFit.fitWidth, child: Text(description)),
-        ),
-        Container(
-            width: width * 0.2,
-            height: width * 0.2,
-            decoration: isActive ? activeDecoration : inactiveDecoration,
-            child: Center(child: _isIcon ? _buildIcon() : _buildText())),
-      ],
-    );
+    return isActive
+        ? Column(
+            children: [
+              Container(
+                child:
+                    FittedBox(fit: BoxFit.fitWidth, child: Text(description)),
+              ),
+              Container(
+                  width: width * 0.2,
+                  height: width * 0.2,
+                  decoration: activeDecoration,
+                  child: Center(child: _isIcon ? _buildIcon() : _buildText())),
+            ],
+          )
+        : Container();
   }
 
   Icon _buildIcon() {
