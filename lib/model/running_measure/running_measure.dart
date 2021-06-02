@@ -31,9 +31,9 @@ class RunningMeasure with _$RunningMeasure {
     required bool requires_two_helpers,
   }) = _RunningMeasure;
   factory RunningMeasure.fromJson(
-      {required Map<String, dynamic> json, required String dpsCode}) {
+      {required Map<String, dynamic> json}) {
     return RunningMeasure(
-        dpsCode: dpsCode,
+        dpsCode: json["patient_dps_code"],
         name: json["name"],
         image_small: serverURL + json["image"]["small"],
         image_original: serverURL + json["image"]["original"],

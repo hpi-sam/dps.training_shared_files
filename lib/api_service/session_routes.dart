@@ -144,9 +144,8 @@ Future<RunningMeasure?> checkHelperBusyRoute(
       final Map<String, dynamic> responseJson =
           jsonDecode(utf8.decode(response.bodyBytes));
       if (responseJson["is_busy"]) {
-        // todo: remove -1
         return RunningMeasure.fromJson(
-            json: responseJson["current_measure"], dpsCode: dpsCode ?? "-1");
+            json: responseJson["current_measure"]);
       } else
         return null;
     } else {

@@ -143,7 +143,7 @@ Future<RunningMeasure> removeAppliedMeasureRoute(
 
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      return RunningMeasure.fromJson(json: responseJson, dpsCode: dpsCode);
+      return RunningMeasure.fromJson(json: responseJson);
     } else {
       throw Exception("Error ${response.statusCode}");
     }
@@ -229,18 +229,18 @@ Future<RunningMeasure> startNewMeasureMock(
 Future<RunningMeasure> startNewMeasureRoute(
     {required String dpsCode,
     required int helperNr,
-    required AvailableMeasure measure}) async {
+    required String measureTypeID}) async {
   try {
     final response = await Session.post(
       startNewMeasureUrl(dpsCode: dpsCode, helperNr: helperNr),
-      jsonEncode({"id": measure.id}),
+      jsonEncode({"id": measureTypeID}),
     );
 
     final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
     if (response.statusCode != 200) {
       throw Exception("Error ${response.statusCode}");
     } else {
-      return RunningMeasure.fromJson(json: responseJson, dpsCode: dpsCode);
+      return RunningMeasure.fromJson(json: responseJson);
     }
   } on Exception catch (e) {
     print("Couldn't start new Measure of patient $dpsCode : " + e.toString());

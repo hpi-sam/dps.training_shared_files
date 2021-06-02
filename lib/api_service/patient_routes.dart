@@ -113,7 +113,7 @@ Future<RunningMeasure> uncoverPatientRoute(
         uncoverPatientUrl(dpsCode: dpsCode, helperNr: helperNr));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      return RunningMeasure.fromJson(json: responseJson, dpsCode: dpsCode);
+      return RunningMeasure.fromJson(json: responseJson);
     } else {
       throw Exception(
           "Error ${response.statusCode} - Could not uncover patient $dpsCode.");

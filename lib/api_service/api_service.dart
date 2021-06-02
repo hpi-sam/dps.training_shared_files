@@ -137,10 +137,10 @@ class BackendRoute {
   factory BackendRoute.startNewMeasure(
       {required String dpsCode,
       required int helperNr,
-      required AvailableMeasure measure}) {
+      required String measureTypeID}) {
     Function f = startNewMeasureRoute;
     Map<Symbol, dynamic> p = symbolizeKeys(
-        {"dpsCode": dpsCode, "helperNr": helperNr, "measure": measure});
+        {"dpsCode": dpsCode, "helperNr": helperNr, "measureTypeID": measureTypeID});
     return BackendRoute(
         startNewMeasureUrl(dpsCode: dpsCode, helperNr: helperNr), f, p);
   }
