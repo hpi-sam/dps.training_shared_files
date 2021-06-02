@@ -9,7 +9,6 @@ import 'package:intl/intl.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/patient_routes.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/session_routes.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
-import 'package:bpmanv_app_sharedFiles/model/available_measures/available_measures.dart';
 import 'package:bpmanv_app_sharedFiles/model/inventory_exchange/inventory_exchange.dart';
 import 'inventory_routes.dart';
 import 'measures_routes.dart';
