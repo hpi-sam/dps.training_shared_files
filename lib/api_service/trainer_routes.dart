@@ -179,9 +179,11 @@ Future<Patient> fetchPatientTrainerRoute({required String dpsCode}) async {
   }
 }
 
-Future<void> addPatientTrainerRoute({required String dpsCode}) async {
+Future<void> addPatientTrainerRoute(
+    {required String dpsCode, required int roomID}) async {
   try {
-    final response = await Session.get(addPatientTrainerUrl(dpsCode: dpsCode));
+    final response = await Session.get(
+        addPatientTrainerUrl(dpsCode: dpsCode, roomID: roomID));
     if (response.statusCode != 200) {
       throw Exception("Error adding patient $dpsCode: ${response.statusCode}");
     }

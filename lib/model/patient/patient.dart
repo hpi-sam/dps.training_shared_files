@@ -71,7 +71,7 @@ class Patient with _$Patient {
         bodyCheckInformation: json["static_data"]["body_check_information"],
         situationOfDiscovery: json["static_data"]["situation_of_discovery"],
         triageCategory: json["triage"],
-    isCheckedOut: json["is_checked_out"]);
+        isCheckedOut: json["is_checked_out"]);
   }
 }
 

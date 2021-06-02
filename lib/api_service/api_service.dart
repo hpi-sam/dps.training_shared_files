@@ -336,10 +336,13 @@ class BackendRoute {
     return BackendRoute(patientDataTrainerUrl(dpsCode: dpsCode), f, p);
   }
 
-  factory BackendRoute.addPatientTrainer({required String dpsCode}) {
+  factory BackendRoute.addPatientTrainer(
+      {required String dpsCode, required int roomID}) {
     Function f = addPatientTrainerRoute;
-    Map<Symbol, dynamic> p = symbolizeKeys({"dpsCode": dpsCode});
-    return BackendRoute(addPatientTrainerUrl(dpsCode: dpsCode), f, p);
+    Map<Symbol, dynamic> p =
+        symbolizeKeys({"dpsCode": dpsCode, "roomID": roomID});
+    return BackendRoute(
+        addPatientTrainerUrl(dpsCode: dpsCode, roomID: roomID), f, p);
   }
 
   factory BackendRoute.checkoutPatient({required String dpsCode}) {
