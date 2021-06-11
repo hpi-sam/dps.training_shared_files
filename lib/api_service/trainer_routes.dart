@@ -205,6 +205,67 @@ Future<void> checkoutPatientRoute({required String dpsCode}) async {
   }
 }
 
+Future<void> addEventRoute({required String type, String? details}) async {
+  try {
+    final response = await Session.post(
+        addEventUrl(),
+        jsonEncode({
+          "type": type,
+          if (details != null) "details": details,
+        }));
+    if (response.statusCode != 201) {
+      throw Exception(
+          "Error adding event of type: $type with details: $details - ${response.statusCode}");
+    }
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
+
+//todo: implement and return trainer notes data model
+Future<Map<String, dynamic>> fetchTrainerNotesRoute(
+    {required int roomID}) async {
+  try {
+    final response = await Session.get(getTrainerNotesUrl(roomID: roomID));
+    if (response.statusCode != 200) {
+      throw Exception(
+          "Error fetching trainer notes for room $roomID: ${response.statusCode}");
+    }
+    return jsonDecode(utf8.decode(response.bodyBytes));
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
+
+//todo: implement and return triage accuracy data model
+Future<Map<String, dynamic>> fetchTriageAccuracyRoute(
+    {required int roomID}) async {
+  try {
+    final response = await Session.get(getTriageAccuracyUrl(roomID: roomID));
+    if (response.statusCode != 200) {
+      throw Exception(
+          "Error fetching triage accuracy for room $roomID: ${response.statusCode}");
+    }
+    return jsonDecode(utf8.decode(response.bodyBytes));
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
+
+Future<ExerciseLog> fetchExerciseLogRoute({required int roomID}) async {
+  try {
+    final response = await Session.get(getExerciseLogUrl(roomID: roomID));
+    if (response.statusCode != 200) {
+      throw Exception(
+          "Error fetching exercise evaluation log for room $roomID: ${response.statusCode}");
+    }
+    final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+    return ExerciseLog.fromJson(responseJson);
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
+
 Future<ExerciseLog> fetchExerciseLogMock({required int roomID}) async {
   final Map<String, dynamic> mockData = {
     "exercise_duration": 1205,
@@ -278,7 +339,8 @@ Future<ExerciseLog> fetchExerciseLogMock({required int roomID}) async {
         "patient": "",
         "helpers": [],
         "details": "Niemand hat Schoki!!! ☹️"
-      },{
+      },
+      {
         "type": "phase_change",
         "time": 20,
         "patient": "5AZA",
@@ -347,7 +409,8 @@ Future<ExerciseLog> fetchExerciseLogMock({required int roomID}) async {
         "patient": "",
         "helpers": [],
         "details": "Niemand hat Schoki!!! ☹️"
-      },{
+      },
+      {
         "type": "phase_change",
         "time": 20,
         "patient": "5AZA",

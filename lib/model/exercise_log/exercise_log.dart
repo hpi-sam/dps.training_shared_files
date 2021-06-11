@@ -11,9 +11,10 @@ enum LogEntryType {
   transport,
   contact,
   death,
-  internal_briefing,
-  communication_operation_center,
-  communication_other
+  eoc_internal_briefing,
+  eoc_helper_request,
+  eoc_report,
+  others
 }
 
 /// Defines the ExerciseLog data model.
@@ -38,7 +39,8 @@ class ExerciseLog with _$ExerciseLog {
   factory ExerciseLog.fromJson(Map<String, dynamic> json) {
     return ExerciseLog(
         exerciseLogEntries: parseExerciseLogEntries(json),
-        duration: json["exercise_duration"]);
+        //todo: change back to "exercise_duration" once backend fixed typo.
+        duration: json["excercise_duration"]);
   }
 }
 
