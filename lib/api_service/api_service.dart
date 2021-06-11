@@ -138,8 +138,11 @@ class BackendRoute {
       required int helperNr,
       required String measureTypeID}) {
     Function f = startNewMeasureRoute;
-    Map<Symbol, dynamic> p = symbolizeKeys(
-        {"dpsCode": dpsCode, "helperNr": helperNr, "measureTypeID": measureTypeID});
+    Map<Symbol, dynamic> p = symbolizeKeys({
+      "dpsCode": dpsCode,
+      "helperNr": helperNr,
+      "measureTypeID": measureTypeID
+    });
     return BackendRoute(
         startNewMeasureUrl(dpsCode: dpsCode, helperNr: helperNr), f, p);
   }
@@ -348,6 +351,12 @@ class BackendRoute {
     Function f = checkoutPatientRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"dpsCode": dpsCode});
     return BackendRoute(checkoutPatientUrl(dpsCode: dpsCode), f, p);
+  }
+
+  factory BackendRoute.fetchExerciseLog({required int roomID}) {
+    Function f = fetchExerciseLogMock;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute("huhu", f, p);
   }
 }
 

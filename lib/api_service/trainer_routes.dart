@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
+import 'package:bpmanv_app_sharedFiles/model/exercise_log/exercise_log.dart';
 import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import 'package:bpmanv_app_sharedFiles/model/players/players.dart';
 import 'package:bpmanv_app_sharedFiles/model/simplified_patients/simplified_patients.dart';
@@ -202,4 +203,222 @@ Future<void> checkoutPatientRoute({required String dpsCode}) async {
   } on Exception catch (e) {
     throw (e);
   }
+}
+
+Future<ExerciseLog> fetchExerciseLogMock({required int roomID}) async {
+  final Map<String, dynamic> mockData = {
+    "exercise_duration": 1205,
+    "log_entries": [
+      {
+        "type": "phase_change",
+        "time": 20,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": "2A"
+      },
+      {
+        "type": "applied_measure_begin",
+        "time": 20,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": "Sauerstoff"
+      },
+      {
+        "type": "applied_measure_end",
+        "time": 40,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": "Sauerstoff"
+      },
+      {
+        "type": "transport",
+        "time": 212,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": ""
+      },
+      {
+        "type": "contact",
+        "time": 123,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": ""
+      },
+      {
+        "type": "death",
+        "time": 420,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": "1A - Nicht beatmet"
+      },
+      {
+        "type": "pause",
+        "time": 560,
+        "patient": "",
+        "helpers": [],
+        "details": "100" //duration in seconds
+      },
+      {
+        "type": "internal_briefing",
+        "time": 69,
+        "patient": "",
+        "helpers": [],
+        "details": "Hat jemand Schoki?"
+      },
+      {
+        "type": "communication_operation_center",
+        "time": 90,
+        "patient": "",
+        "helpers": [],
+        "details": "Keiner der Helfer hat Schoki, bitte schickt was vorbei!"
+      },
+      {
+        "type": "communication_other",
+        "time": 100,
+        "patient": "",
+        "helpers": [],
+        "details": "Niemand hat Schoki!!! ☹️"
+      },{
+        "type": "phase_change",
+        "time": 20,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": "2A"
+      },
+      {
+        "type": "applied_measure_begin",
+        "time": 20,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": "Sauerstoff"
+      },
+      {
+        "type": "applied_measure_end",
+        "time": 40,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": "Sauerstoff"
+      },
+      {
+        "type": "transport",
+        "time": 212,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": ""
+      },
+      {
+        "type": "contact",
+        "time": 123,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": ""
+      },
+      {
+        "type": "death",
+        "time": 420,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": "1A - Nicht beatmet"
+      },
+      {
+        "type": "pause",
+        "time": 560,
+        "patient": "",
+        "helpers": [],
+        "details": "100" //duration in seconds
+      },
+      {
+        "type": "internal_briefing",
+        "time": 69,
+        "patient": "",
+        "helpers": [],
+        "details": "Hat jemand Schoki?"
+      },
+      {
+        "type": "communication_operation_center",
+        "time": 90,
+        "patient": "",
+        "helpers": [],
+        "details": "Keiner der Helfer hat Schoki, bitte schickt was vorbei!"
+      },
+      {
+        "type": "communication_other",
+        "time": 100,
+        "patient": "",
+        "helpers": [],
+        "details": "Niemand hat Schoki!!! ☹️"
+      },{
+        "type": "phase_change",
+        "time": 20,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": "2A"
+      },
+      {
+        "type": "applied_measure_begin",
+        "time": 20,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": "Sauerstoff"
+      },
+      {
+        "type": "applied_measure_end",
+        "time": 40,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": "Sauerstoff"
+      },
+      {
+        "type": "transport",
+        "time": 212,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": ""
+      },
+      {
+        "type": "contact",
+        "time": 123,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": ""
+      },
+      {
+        "type": "death",
+        "time": 420,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": "1A - Nicht beatmet"
+      },
+      {
+        "type": "pause",
+        "time": 560,
+        "patient": "",
+        "helpers": [],
+        "details": "100" //duration in seconds
+      },
+      {
+        "type": "internal_briefing",
+        "time": 69,
+        "patient": "",
+        "helpers": [],
+        "details": "Hat jemand Schoki?"
+      },
+      {
+        "type": "communication_operation_center",
+        "time": 90,
+        "patient": "",
+        "helpers": [],
+        "details": "Keiner der Helfer hat Schoki, bitte schickt was vorbei!"
+      },
+      {
+        "type": "communication_other",
+        "time": 100,
+        "patient": "",
+        "helpers": [],
+        "details": "Niemand hat Schoki!!! ☹️"
+      },
+    ]
+  };
+
+  return ExerciseLog.fromJson(mockData);
 }
