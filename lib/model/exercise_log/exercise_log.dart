@@ -39,8 +39,7 @@ class ExerciseLog with _$ExerciseLog {
   factory ExerciseLog.fromJson(Map<String, dynamic> json) {
     return ExerciseLog(
         exerciseLogEntries: parseExerciseLogEntries(json),
-        //todo: change back to "exercise_duration" once backend fixed typo.
-        duration: json["excercise_duration"]);
+        duration: json["exercise_duration"]);
   }
 }
 
