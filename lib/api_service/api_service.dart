@@ -72,7 +72,7 @@ class BackendRoute {
   }
 
   factory BackendRoute.fetchForeignInventory(
-      {required int entityID, bool useMockData = false}) {
+      {required String entityID, bool useMockData = false}) {
     Function f =
         useMockData ? fetchForeignInventoryMock : fetchForeignInventoryRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"entityID": entityID});
@@ -80,7 +80,7 @@ class BackendRoute {
   }
 
   factory BackendRoute.saveExchangeInventory(
-      {required int entityID,
+      {required String entityID,
       required int helperNr,
       required InventoryExchange inventoryExchange}) {
     Function f = saveExchangeInventoryRoute;

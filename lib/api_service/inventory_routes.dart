@@ -277,7 +277,7 @@ Future<Inventory> fetchOwnInventoryRoute({required int helperNr}) async {
   }
 }
 
-Future<Inventory> fetchForeignInventoryRoute({required int entityID}) async {
+Future<Inventory> fetchForeignInventoryRoute({required String entityID}) async {
   try {
     final response =
         await Session.get(foreignInventoryDataUrl(entityID: entityID));
@@ -304,7 +304,7 @@ Future<Inventory> fetchForeignInventoryRoute({required int entityID}) async {
 /// sends request for material exchange. Returns true if successful,
 /// false if the requested amount exceeds the available amount of corresponding inventory
 Future<bool> saveExchangeInventoryRoute(
-    {required int entityID,
+    {required String entityID,
     required int helperNr,
     required InventoryExchange inventoryExchange}) async {
   try {

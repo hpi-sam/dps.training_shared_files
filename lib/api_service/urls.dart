@@ -23,11 +23,12 @@ String uncoverPatientUrl({required String dpsCode, required int helperNr}) =>
     serverURL + '/patients/$dpsCode/uncover/helper/$helperNr/';
 String patientDataUrl({required String dpsCode, required int helperNr}) =>
     serverURL + '/patients/$dpsCode/helper/$helperNr/';
-String foreignInventoryDataUrl({required int entityID}) =>
+String foreignInventoryDataUrl({required String entityID}) =>
     serverURL + '/entities/$entityID/inventory/';
 String ownInventoryDataUrl({required int helperNr}) =>
     serverURL + '/own/inventory/helper/$helperNr/';
-String inventoryExchangeUrl({required int entityID, required int helperNr}) =>
+String inventoryExchangeUrl(
+        {required String entityID, required int helperNr}) =>
     serverURL + '/entities/$entityID/inventory/exchange/helper/$helperNr/';
 String availableMeasuresUrl({required String dpsCode, required int helperNr}) =>
     serverURL + '/patients/$dpsCode/measures/available/helper/$helperNr/';
