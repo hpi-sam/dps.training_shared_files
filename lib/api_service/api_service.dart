@@ -1,15 +1,15 @@
 // Dart imports:
 import 'dart:collection';
 
-// Package imports:
-import 'package:bpmanv_app_sharedFiles/api_service/trainer_routes.dart';
-import 'package:intl/intl.dart';
-
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/api_service/patient_routes.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/session_routes.dart';
+// Package imports:
+import 'package:bpmanv_app_sharedFiles/api_service/trainer_routes.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
 import 'package:bpmanv_app_sharedFiles/model/inventory_exchange/inventory_exchange.dart';
+import 'package:intl/intl.dart';
+
 import 'inventory_routes.dart';
 import 'measures_routes.dart';
 
@@ -138,8 +138,11 @@ class BackendRoute {
       required int helperNr,
       required String measureTypeID}) {
     Function f = startNewMeasureRoute;
-    Map<Symbol, dynamic> p = symbolizeKeys(
-        {"dpsCode": dpsCode, "helperNr": helperNr, "measureTypeID": measureTypeID});
+    Map<Symbol, dynamic> p = symbolizeKeys({
+      "dpsCode": dpsCode,
+      "helperNr": helperNr,
+      "measureTypeID": measureTypeID
+    });
     return BackendRoute(
         startNewMeasureUrl(dpsCode: dpsCode, helperNr: helperNr), f, p);
   }
@@ -348,6 +351,33 @@ class BackendRoute {
     Function f = checkoutPatientRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"dpsCode": dpsCode});
     return BackendRoute(checkoutPatientUrl(dpsCode: dpsCode), f, p);
+  }
+
+  factory BackendRoute.fetchExerciseLog({required int roomID}) {
+    Function f = fetchExerciseLogRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(getExerciseLogUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.addEvent({required String type, String? details}) {
+    Function f = addEventRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({
+      "type": type,
+      if (details != null) "details": details,
+    });
+    return BackendRoute(addEventUrl(), f, p);
+  }
+
+  factory BackendRoute.fetchTrainerNotes({required int roomID}) {
+    Function f = fetchTrainerNotesRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(getTrainerNotesUrl(roomID: roomID), f, p);
+  }
+
+  factory BackendRoute.fetchTriageAccuracy({required int roomID}) {
+    Function f = fetchTriageAccuracyRoute;
+    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
+    return BackendRoute(getTrainerNotesUrl(roomID: roomID), f, p);
   }
 }
 
