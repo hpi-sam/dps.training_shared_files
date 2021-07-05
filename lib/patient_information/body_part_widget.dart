@@ -2,10 +2,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-// Package imports:
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-
 /// Builds a container with rounded corners to represent a body part.
 ///
 /// Has a list of [injuries] that are drawn as Icons on top of the container.
@@ -33,28 +29,28 @@ class BodyPart extends StatelessWidget {
       switch (element) {
         case "bleeding":
           markers.addAll([
-            Icon(
-              FontAwesomeIcons.tint,
-              color: Colors.red,
-            )
+            new Image.asset('assets/icons/bleeding_icon.png',
+                package: 'bpmanv_app_sharedFiles',
+                height: IconTheme.of(context).size! * 1.5,
+                width: IconTheme.of(context).size! * 1.5)
           ]); // alternative: fire, or map-marker if we can rotate it
           break;
 
         case "critical bleeding":
           markers.addAll([
-            Icon(
-              FontAwesomeIcons.wind,
-              color: Colors.red,
-            )
+            new Image.asset('assets/icons/critical_bleeding_icon.png',
+                package: 'bpmanv_app_sharedFiles',
+                height: IconTheme.of(context).size! * 1.5,
+                width: IconTheme.of(context).size! * 1.5),
           ]);
           break;
 
         case "fracture":
           markers.addAll([
-            Icon(
-              FontAwesomeIcons.bone,
-              color: Colors.black,
-            )
+            new Image.asset('assets/icons/fracture_icon.png',
+                package: 'bpmanv_app_sharedFiles',
+                height: IconTheme.of(context).size! * 1.5,
+                width: IconTheme.of(context).size! * 1.5)
           ]);
           break;
       }

@@ -12,8 +12,8 @@ class FirstImpressionField extends StatelessWidget {
   final bool isActive;
   final double width;
   late final String? character;
-  late final IconData? icon;
-  late final IconData? alternateIcon;
+  late final Image? icon;
+  late final Image? alternateIcon;
   late final bool useAlternateIcon;
   late final bool _isIcon;
 
@@ -73,11 +73,10 @@ class FirstImpressionField extends StatelessWidget {
         : Container();
   }
 
-  Icon _buildIcon() {
+  Image? _buildIcon() {
     return useAlternateIcon
-        ? Icon(alternateIcon,
-            color: isActive ? textColor : Colors.grey, size: textSize)
-        : Icon(icon, color: isActive ? textColor : Colors.grey, size: textSize);
+        ? alternateIcon
+        : icon;
   }
 
   Text _buildText() {
@@ -85,9 +84,7 @@ class FirstImpressionField extends StatelessWidget {
       character!,
       textAlign: TextAlign.center,
       style: TextStyle(
-          fontSize: textSize,
-          color: isActive ? textColor : Colors.grey,
-          fontWeight: FontWeight.bold),
+          fontSize: textSize, color: textColor, fontWeight: FontWeight.bold),
     );
   }
 }
