@@ -90,3 +90,4 @@ String getTriageAccuracyUrl({required int roomID}) =>
     serverURL + '/evaluation/rooms/$roomID/triage/accuracy';
 String getExerciseLogUrl({required int roomID}) =>
     serverURL + '/evaluation/rooms/$roomID/logs/';
+String getActiveRoomUrl() => serverURL + '/rooms/active/';

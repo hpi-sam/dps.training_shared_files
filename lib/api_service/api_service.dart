@@ -379,6 +379,12 @@ class BackendRoute {
     Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
     return BackendRoute(getTrainerNotesUrl(roomID: roomID), f, p);
   }
+
+  factory BackendRoute.checkIfRoomActive() {
+    Function f = getActiveRoomRoute;
+    Map<Symbol, dynamic> p = {};
+    return BackendRoute(getActiveRoomUrl(), f, p);
+  }
 }
 
 /// This class contains a [Queue] which stores all [BackendRoute] that are called

@@ -1,27 +1,21 @@
 // Flutter imports:
+// Project imports:
+import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-// Package imports:
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-// Project imports:
-import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
-
 /// Displays a legend of the icons used for injuries in the patient visualization
 class PatientVisualizationLegend extends StatelessWidget {
-
   final double width;
 
-  const PatientVisualizationLegend({Key? key, required this.width}) : super(key: key);
+  const PatientVisualizationLegend({Key? key, required this.width})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final iconSize = Theme.of(context).textTheme.caption!.fontSize!*1.5;
+    final iconSize = Theme.of(context).textTheme.caption!.fontSize! * 1.5;
     final spaceBetweenIconAndLabel = 8.0;
-    final labelWidth = this.width -
-        iconSize -
-        spaceBetweenIconAndLabel;
+    final labelWidth = this.width - iconSize - spaceBetweenIconAndLabel;
     return Container(
       width: this.width,
       child: Column(
