@@ -34,8 +34,14 @@ class FirstImpressionWidget extends StatelessWidget {
           width: this.width,
         ),
         FirstImpressionField.icon(
-          icon: FontAwesomeIcons.tint,
-          alternateIcon: FontAwesomeIcons.wind,
+          icon: Image.asset('assets/icons/bleeding_icon.png',
+              package: 'bpmanv_app_sharedFiles',
+              height: 50,
+              width: 50),
+          alternateIcon: Image.asset('assets/icons/critical_bleeding_icon.png',
+              package: 'bpmanv_app_sharedFiles',
+              height: 50,
+              width: 50),
           description: LocalizedStrings
               .firstImpressionRow_firstImpressionfields_bleeding,
           isActive: patientFirstImpression.is_bleeding ||

@@ -17,7 +17,7 @@ class _$PatientTearOff {
   const _$PatientTearOff();
 
   _Patient call(
-      {required int id,
+      {required String dpsCode,
       required PatientCurrentPhase currentPhase,
       required PatientFirstImpression firstImpression,
       required PatientPersonalData personalData,
@@ -25,9 +25,10 @@ class _$PatientTearOff {
       required String injuryDescription,
       required String bodyCheckInformation,
       required String situationOfDiscovery,
-      required String triageCategory}) {
+      required String triageCategory,
+      required bool isCheckedOut}) {
     return _Patient(
-      id: id,
+      dpsCode: dpsCode,
       currentPhase: currentPhase,
       firstImpression: firstImpression,
       personalData: personalData,
@@ -36,6 +37,7 @@ class _$PatientTearOff {
       bodyCheckInformation: bodyCheckInformation,
       situationOfDiscovery: situationOfDiscovery,
       triageCategory: triageCategory,
+      isCheckedOut: isCheckedOut,
     );
   }
 }
@@ -45,7 +47,7 @@ const $Patient = _$PatientTearOff();
 
 /// @nodoc
 mixin _$Patient {
-  int get id => throw _privateConstructorUsedError;
+  String get dpsCode => throw _privateConstructorUsedError;
   PatientCurrentPhase get currentPhase => throw _privateConstructorUsedError;
   PatientFirstImpression get firstImpression =>
       throw _privateConstructorUsedError;
@@ -55,6 +57,7 @@ mixin _$Patient {
   String get bodyCheckInformation => throw _privateConstructorUsedError;
   String get situationOfDiscovery => throw _privateConstructorUsedError;
   String get triageCategory => throw _privateConstructorUsedError;
+  bool get isCheckedOut => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PatientCopyWith<Patient> get copyWith => throw _privateConstructorUsedError;
@@ -65,7 +68,7 @@ abstract class $PatientCopyWith<$Res> {
   factory $PatientCopyWith(Patient value, $Res Function(Patient) then) =
       _$PatientCopyWithImpl<$Res>;
   $Res call(
-      {int id,
+      {String dpsCode,
       PatientCurrentPhase currentPhase,
       PatientFirstImpression firstImpression,
       PatientPersonalData personalData,
@@ -73,7 +76,8 @@ abstract class $PatientCopyWith<$Res> {
       String injuryDescription,
       String bodyCheckInformation,
       String situationOfDiscovery,
-      String triageCategory});
+      String triageCategory,
+      bool isCheckedOut});
 
   $PatientCurrentPhaseCopyWith<$Res> get currentPhase;
   $PatientFirstImpressionCopyWith<$Res> get firstImpression;
@@ -91,7 +95,7 @@ class _$PatientCopyWithImpl<$Res> implements $PatientCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? id = freezed,
+    Object? dpsCode = freezed,
     Object? currentPhase = freezed,
     Object? firstImpression = freezed,
     Object? personalData = freezed,
@@ -100,12 +104,13 @@ class _$PatientCopyWithImpl<$Res> implements $PatientCopyWith<$Res> {
     Object? bodyCheckInformation = freezed,
     Object? situationOfDiscovery = freezed,
     Object? triageCategory = freezed,
+    Object? isCheckedOut = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
+      dpsCode: dpsCode == freezed
+          ? _value.dpsCode
+          : dpsCode // ignore: cast_nullable_to_non_nullable
+              as String,
       currentPhase: currentPhase == freezed
           ? _value.currentPhase
           : currentPhase // ignore: cast_nullable_to_non_nullable
@@ -138,6 +143,10 @@ class _$PatientCopyWithImpl<$Res> implements $PatientCopyWith<$Res> {
           ? _value.triageCategory
           : triageCategory // ignore: cast_nullable_to_non_nullable
               as String,
+      isCheckedOut: isCheckedOut == freezed
+          ? _value.isCheckedOut
+          : isCheckedOut // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -177,7 +186,7 @@ abstract class _$PatientCopyWith<$Res> implements $PatientCopyWith<$Res> {
       __$PatientCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int id,
+      {String dpsCode,
       PatientCurrentPhase currentPhase,
       PatientFirstImpression firstImpression,
       PatientPersonalData personalData,
@@ -185,7 +194,8 @@ abstract class _$PatientCopyWith<$Res> implements $PatientCopyWith<$Res> {
       String injuryDescription,
       String bodyCheckInformation,
       String situationOfDiscovery,
-      String triageCategory});
+      String triageCategory,
+      bool isCheckedOut});
 
   @override
   $PatientCurrentPhaseCopyWith<$Res> get currentPhase;
@@ -208,7 +218,7 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
+    Object? dpsCode = freezed,
     Object? currentPhase = freezed,
     Object? firstImpression = freezed,
     Object? personalData = freezed,
@@ -217,12 +227,13 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
     Object? bodyCheckInformation = freezed,
     Object? situationOfDiscovery = freezed,
     Object? triageCategory = freezed,
+    Object? isCheckedOut = freezed,
   }) {
     return _then(_Patient(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
+      dpsCode: dpsCode == freezed
+          ? _value.dpsCode
+          : dpsCode // ignore: cast_nullable_to_non_nullable
+              as String,
       currentPhase: currentPhase == freezed
           ? _value.currentPhase
           : currentPhase // ignore: cast_nullable_to_non_nullable
@@ -255,6 +266,10 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
           ? _value.triageCategory
           : triageCategory // ignore: cast_nullable_to_non_nullable
               as String,
+      isCheckedOut: isCheckedOut == freezed
+          ? _value.isCheckedOut
+          : isCheckedOut // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -262,7 +277,7 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
 /// @nodoc
 class _$_Patient extends _Patient with DiagnosticableTreeMixin {
   const _$_Patient(
-      {required this.id,
+      {required this.dpsCode,
       required this.currentPhase,
       required this.firstImpression,
       required this.personalData,
@@ -270,11 +285,12 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
       required this.injuryDescription,
       required this.bodyCheckInformation,
       required this.situationOfDiscovery,
-      required this.triageCategory})
+      required this.triageCategory,
+      required this.isCheckedOut})
       : super._();
 
   @override
-  final int id;
+  final String dpsCode;
   @override
   final PatientCurrentPhase currentPhase;
   @override
@@ -291,10 +307,12 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
   final String situationOfDiscovery;
   @override
   final String triageCategory;
+  @override
+  final bool isCheckedOut;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Patient(id: $id, currentPhase: $currentPhase, firstImpression: $firstImpression, personalData: $personalData, injuries: $injuries, injuryDescription: $injuryDescription, bodyCheckInformation: $bodyCheckInformation, situationOfDiscovery: $situationOfDiscovery, triageCategory: $triageCategory)';
+    return 'Patient(dpsCode: $dpsCode, currentPhase: $currentPhase, firstImpression: $firstImpression, personalData: $personalData, injuries: $injuries, injuryDescription: $injuryDescription, bodyCheckInformation: $bodyCheckInformation, situationOfDiscovery: $situationOfDiscovery, triageCategory: $triageCategory, isCheckedOut: $isCheckedOut)';
   }
 
   @override
@@ -302,7 +320,7 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Patient'))
-      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('dpsCode', dpsCode))
       ..add(DiagnosticsProperty('currentPhase', currentPhase))
       ..add(DiagnosticsProperty('firstImpression', firstImpression))
       ..add(DiagnosticsProperty('personalData', personalData))
@@ -310,15 +328,17 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('injuryDescription', injuryDescription))
       ..add(DiagnosticsProperty('bodyCheckInformation', bodyCheckInformation))
       ..add(DiagnosticsProperty('situationOfDiscovery', situationOfDiscovery))
-      ..add(DiagnosticsProperty('triageCategory', triageCategory));
+      ..add(DiagnosticsProperty('triageCategory', triageCategory))
+      ..add(DiagnosticsProperty('isCheckedOut', isCheckedOut));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Patient &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.dpsCode, dpsCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.dpsCode, dpsCode)) &&
             (identical(other.currentPhase, currentPhase) ||
                 const DeepCollectionEquality()
                     .equals(other.currentPhase, currentPhase)) &&
@@ -342,13 +362,16 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
                     other.situationOfDiscovery, situationOfDiscovery)) &&
             (identical(other.triageCategory, triageCategory) ||
                 const DeepCollectionEquality()
-                    .equals(other.triageCategory, triageCategory)));
+                    .equals(other.triageCategory, triageCategory)) &&
+            (identical(other.isCheckedOut, isCheckedOut) ||
+                const DeepCollectionEquality()
+                    .equals(other.isCheckedOut, isCheckedOut)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(dpsCode) ^
       const DeepCollectionEquality().hash(currentPhase) ^
       const DeepCollectionEquality().hash(firstImpression) ^
       const DeepCollectionEquality().hash(personalData) ^
@@ -356,7 +379,8 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(injuryDescription) ^
       const DeepCollectionEquality().hash(bodyCheckInformation) ^
       const DeepCollectionEquality().hash(situationOfDiscovery) ^
-      const DeepCollectionEquality().hash(triageCategory);
+      const DeepCollectionEquality().hash(triageCategory) ^
+      const DeepCollectionEquality().hash(isCheckedOut);
 
   @JsonKey(ignore: true)
   @override
@@ -366,7 +390,7 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
 
 abstract class _Patient extends Patient {
   const factory _Patient(
-      {required int id,
+      {required String dpsCode,
       required PatientCurrentPhase currentPhase,
       required PatientFirstImpression firstImpression,
       required PatientPersonalData personalData,
@@ -374,11 +398,12 @@ abstract class _Patient extends Patient {
       required String injuryDescription,
       required String bodyCheckInformation,
       required String situationOfDiscovery,
-      required String triageCategory}) = _$_Patient;
+      required String triageCategory,
+      required bool isCheckedOut}) = _$_Patient;
   const _Patient._() : super._();
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  String get dpsCode => throw _privateConstructorUsedError;
   @override
   PatientCurrentPhase get currentPhase => throw _privateConstructorUsedError;
   @override
@@ -396,6 +421,8 @@ abstract class _Patient extends Patient {
   String get situationOfDiscovery => throw _privateConstructorUsedError;
   @override
   String get triageCategory => throw _privateConstructorUsedError;
+  @override
+  bool get isCheckedOut => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PatientCopyWith<_Patient> get copyWith =>

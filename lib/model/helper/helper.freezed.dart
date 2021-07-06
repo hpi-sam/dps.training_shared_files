@@ -17,14 +17,14 @@ class _$HelperTearOff {
   const _$HelperTearOff();
 
   _Helper call(
-      {int? patientID = null,
+      {String? dpsCode = null,
       RunningMeasure? runningMeasure = null,
       required int activePage,
       required int helperNr,
       required HelperRole role,
       required int entityID}) {
     return _Helper(
-      patientID: patientID,
+      dpsCode: dpsCode,
       runningMeasure: runningMeasure,
       activePage: activePage,
       helperNr: helperNr,
@@ -41,7 +41,7 @@ const $Helper = _$HelperTearOff();
 mixin _$Helper {
   /// The ID of the patient a helper has most recently scanned. Null if no patient
   /// has been scanned by the helper yet.
-  int? get patientID => throw _privateConstructorUsedError;
+  String? get dpsCode => throw _privateConstructorUsedError;
 
   /// The measure a helper is currently implementing. Null if the helper is currently
   /// not implementing a measure.
@@ -70,7 +70,7 @@ abstract class $HelperCopyWith<$Res> {
   factory $HelperCopyWith(Helper value, $Res Function(Helper) then) =
       _$HelperCopyWithImpl<$Res>;
   $Res call(
-      {int? patientID,
+      {String? dpsCode,
       RunningMeasure? runningMeasure,
       int activePage,
       int helperNr,
@@ -90,7 +90,7 @@ class _$HelperCopyWithImpl<$Res> implements $HelperCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? patientID = freezed,
+    Object? dpsCode = freezed,
     Object? runningMeasure = freezed,
     Object? activePage = freezed,
     Object? helperNr = freezed,
@@ -98,10 +98,10 @@ class _$HelperCopyWithImpl<$Res> implements $HelperCopyWith<$Res> {
     Object? entityID = freezed,
   }) {
     return _then(_value.copyWith(
-      patientID: patientID == freezed
-          ? _value.patientID
-          : patientID // ignore: cast_nullable_to_non_nullable
-              as int?,
+      dpsCode: dpsCode == freezed
+          ? _value.dpsCode
+          : dpsCode // ignore: cast_nullable_to_non_nullable
+              as String?,
       runningMeasure: runningMeasure == freezed
           ? _value.runningMeasure
           : runningMeasure // ignore: cast_nullable_to_non_nullable
@@ -143,7 +143,7 @@ abstract class _$HelperCopyWith<$Res> implements $HelperCopyWith<$Res> {
       __$HelperCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int? patientID,
+      {String? dpsCode,
       RunningMeasure? runningMeasure,
       int activePage,
       int helperNr,
@@ -165,7 +165,7 @@ class __$HelperCopyWithImpl<$Res> extends _$HelperCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? patientID = freezed,
+    Object? dpsCode = freezed,
     Object? runningMeasure = freezed,
     Object? activePage = freezed,
     Object? helperNr = freezed,
@@ -173,10 +173,10 @@ class __$HelperCopyWithImpl<$Res> extends _$HelperCopyWithImpl<$Res>
     Object? entityID = freezed,
   }) {
     return _then(_Helper(
-      patientID: patientID == freezed
-          ? _value.patientID
-          : patientID // ignore: cast_nullable_to_non_nullable
-              as int?,
+      dpsCode: dpsCode == freezed
+          ? _value.dpsCode
+          : dpsCode // ignore: cast_nullable_to_non_nullable
+              as String?,
       runningMeasure: runningMeasure == freezed
           ? _value.runningMeasure
           : runningMeasure // ignore: cast_nullable_to_non_nullable
@@ -204,7 +204,7 @@ class __$HelperCopyWithImpl<$Res> extends _$HelperCopyWithImpl<$Res>
 /// @nodoc
 class _$_Helper extends _Helper {
   const _$_Helper(
-      {this.patientID = null,
+      {this.dpsCode = null,
       this.runningMeasure = null,
       required this.activePage,
       required this.helperNr,
@@ -217,7 +217,7 @@ class _$_Helper extends _Helper {
 
   /// The ID of the patient a helper has most recently scanned. Null if no patient
   /// has been scanned by the helper yet.
-  final int? patientID;
+  final String? dpsCode;
   @JsonKey(defaultValue: null)
   @override
 
@@ -245,16 +245,16 @@ class _$_Helper extends _Helper {
 
   @override
   String toString() {
-    return 'Helper(patientID: $patientID, runningMeasure: $runningMeasure, activePage: $activePage, helperNr: $helperNr, role: $role, entityID: $entityID)';
+    return 'Helper(dpsCode: $dpsCode, runningMeasure: $runningMeasure, activePage: $activePage, helperNr: $helperNr, role: $role, entityID: $entityID)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Helper &&
-            (identical(other.patientID, patientID) ||
+            (identical(other.dpsCode, dpsCode) ||
                 const DeepCollectionEquality()
-                    .equals(other.patientID, patientID)) &&
+                    .equals(other.dpsCode, dpsCode)) &&
             (identical(other.runningMeasure, runningMeasure) ||
                 const DeepCollectionEquality()
                     .equals(other.runningMeasure, runningMeasure)) &&
@@ -274,7 +274,7 @@ class _$_Helper extends _Helper {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(patientID) ^
+      const DeepCollectionEquality().hash(dpsCode) ^
       const DeepCollectionEquality().hash(runningMeasure) ^
       const DeepCollectionEquality().hash(activePage) ^
       const DeepCollectionEquality().hash(helperNr) ^
@@ -289,7 +289,7 @@ class _$_Helper extends _Helper {
 
 abstract class _Helper extends Helper {
   const factory _Helper(
-      {int? patientID,
+      {String? dpsCode,
       RunningMeasure? runningMeasure,
       required int activePage,
       required int helperNr,
@@ -301,7 +301,7 @@ abstract class _Helper extends Helper {
 
   /// The ID of the patient a helper has most recently scanned. Null if no patient
   /// has been scanned by the helper yet.
-  int? get patientID => throw _privateConstructorUsedError;
+  String? get dpsCode => throw _privateConstructorUsedError;
   @override
 
   /// The measure a helper is currently implementing. Null if the helper is currently

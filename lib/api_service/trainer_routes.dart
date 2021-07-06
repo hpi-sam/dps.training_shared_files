@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
+import 'package:bpmanv_app_sharedFiles/model/exercise_log/exercise_log.dart';
 import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import 'package:bpmanv_app_sharedFiles/model/players/players.dart';
 import 'package:bpmanv_app_sharedFiles/model/simplified_patients/simplified_patients.dart';
-
 
 Future<PlayerList> getPlayerListRoute({required int roomID}) async {
   try {
@@ -119,8 +119,7 @@ Future<int> nextPhaseChangeRoute() async {
   }
 }
 
-Future<int> modifyPhaseChangeRoute(
-    {required int seconds}) async {
+Future<int> modifyPhaseChangeRoute({required int seconds}) async {
   try {
     final response = await Session.post(
         modifyPhaseChangeUrl(), jsonEncode({"seconds": seconds}));
@@ -145,7 +144,7 @@ Future<void> changeRoomConfigRoute(
     final response = await Session.post(
         changeRoomConfigUrl(roomID: roomID),
         jsonEncode({
-          "phase_change_time": phaseChangeTime,
+          "default_phase_length": phaseChangeTime,
           "waiting_time_patient": waitingTimePatient,
           "expiring_time_patient": expiringTimePatient,
         }));
@@ -158,25 +157,331 @@ Future<void> changeRoomConfigRoute(
   }
 }
 
-Future<Patient> fetchPatientTrainerRoute({required int patientID}) async {
+Future<Patient> fetchPatientTrainerRoute({required String dpsCode}) async {
   try {
-    final response = await Session.get(patientDataTrainerUrl(patientID: patientID));
+    final response = await Session.get(patientDataTrainerUrl(dpsCode: dpsCode));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      return Patient.fromJson(responseJson, patientID);
+      return Patient.fromJson(responseJson, dpsCode);
     } else {
       if (response.statusCode == 404) {
         // error is in German because it might be relevant to the player.
         throw Exception(
-            "Error ${response.statusCode} - Der Patient ${patientID} kann nicht geladen werden. "
-                "Womöglich ist dieser Patient nicht in der Datenbank vorhanden. Bitte"
-                " stelle sicher, dass der gescannte QR-Code korrekt ist.");
+            "Error ${response.statusCode} - Der Patient ${dpsCode} kann nicht geladen werden. "
+            "Womöglich ist dieser Patient nicht in der Datenbank vorhanden. Bitte"
+            " stelle sicher, dass der gescannte QR-Code korrekt ist.");
       }
       throw Exception(
-          "Error ${response.statusCode} - Could not load patient ${patientID}.");
+          "Error ${response.statusCode} - Could not load patient ${dpsCode}.");
     }
   } on Exception catch (e) {
     print("ERROR FETCHING PATIENT: " + e.toString());
     throw (e);
   }
+}
+
+Future<void> addPatientTrainerRoute(
+    {required String dpsCode, required int roomID}) async {
+  try {
+    final response = await Session.get(
+        addPatientTrainerUrl(dpsCode: dpsCode, roomID: roomID));
+    if (response.statusCode != 200) {
+      throw Exception("Error adding patient $dpsCode: ${response.statusCode}");
+    }
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
+
+Future<void> checkoutPatientRoute({required String dpsCode}) async {
+  try {
+    final response = await Session.get(checkoutPatientUrl(dpsCode: dpsCode));
+    if (response.statusCode != 200) {
+      throw Exception(
+          "Error checking out patient $dpsCode: ${response.statusCode}");
+    }
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
+
+Future<void> addEventRoute({required String type, String? details}) async {
+  try {
+    final response = await Session.post(
+        addEventUrl(),
+        jsonEncode({
+          "type": type,
+          if (details != null) "details": details,
+        }));
+    if (response.statusCode != 201) {
+      throw Exception(
+          "Error adding event of type: $type with details: $details - ${response.statusCode}");
+    }
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
+
+//todo: implement and return trainer notes data model
+Future<Map<String, dynamic>> fetchTrainerNotesRoute(
+    {required int roomID}) async {
+  try {
+    final response = await Session.get(getTrainerNotesUrl(roomID: roomID));
+    if (response.statusCode != 200) {
+      throw Exception(
+          "Error fetching trainer notes for room $roomID: ${response.statusCode}");
+    }
+    return jsonDecode(utf8.decode(response.bodyBytes));
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
+
+//todo: implement and return triage accuracy data model
+Future<Map<String, dynamic>> fetchTriageAccuracyRoute(
+    {required int roomID}) async {
+  try {
+    final response = await Session.get(getTriageAccuracyUrl(roomID: roomID));
+    if (response.statusCode != 200) {
+      throw Exception(
+          "Error fetching triage accuracy for room $roomID: ${response.statusCode}");
+    }
+    return jsonDecode(utf8.decode(response.bodyBytes));
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
+
+Future<ExerciseLog> fetchExerciseLogRoute({required int roomID}) async {
+  try {
+    final response = await Session.get(getExerciseLogUrl(roomID: roomID));
+    if (response.statusCode != 200) {
+      throw Exception(
+          "Error fetching exercise evaluation log for room $roomID: ${response.statusCode}");
+    }
+    final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+    return ExerciseLog.fromJson(responseJson);
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
+
+Future<ExerciseLog> fetchExerciseLogMock({required int roomID}) async {
+  final Map<String, dynamic> mockData = {
+    "exercise_duration": 1205,
+    "log_entries": [
+      {
+        "type": "phase_change",
+        "time": 20,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": "2A"
+      },
+      {
+        "type": "applied_measure_begin",
+        "time": 20,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": "Sauerstoff"
+      },
+      {
+        "type": "applied_measure_end",
+        "time": 40,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": "Sauerstoff"
+      },
+      {
+        "type": "transport",
+        "time": 212,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": ""
+      },
+      {
+        "type": "contact",
+        "time": 123,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": ""
+      },
+      {
+        "type": "death",
+        "time": 420,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": "1A - Nicht beatmet"
+      },
+      {
+        "type": "pause",
+        "time": 560,
+        "patient": "",
+        "helpers": [],
+        "details": "100" //duration in seconds
+      },
+      {
+        "type": "internal_briefing",
+        "time": 69,
+        "patient": "",
+        "helpers": [],
+        "details": "Hat jemand Schoki?"
+      },
+      {
+        "type": "communication_operation_center",
+        "time": 90,
+        "patient": "",
+        "helpers": [],
+        "details": "Keiner der Helfer hat Schoki, bitte schickt was vorbei!"
+      },
+      {
+        "type": "communication_other",
+        "time": 100,
+        "patient": "",
+        "helpers": [],
+        "details": "Niemand hat Schoki!!! ☹️"
+      },
+      {
+        "type": "phase_change",
+        "time": 20,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": "2A"
+      },
+      {
+        "type": "applied_measure_begin",
+        "time": 20,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": "Sauerstoff"
+      },
+      {
+        "type": "applied_measure_end",
+        "time": 40,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": "Sauerstoff"
+      },
+      {
+        "type": "transport",
+        "time": 212,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": ""
+      },
+      {
+        "type": "contact",
+        "time": 123,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": ""
+      },
+      {
+        "type": "death",
+        "time": 420,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": "1A - Nicht beatmet"
+      },
+      {
+        "type": "pause",
+        "time": 560,
+        "patient": "",
+        "helpers": [],
+        "details": "100" //duration in seconds
+      },
+      {
+        "type": "internal_briefing",
+        "time": 69,
+        "patient": "",
+        "helpers": [],
+        "details": "Hat jemand Schoki?"
+      },
+      {
+        "type": "communication_operation_center",
+        "time": 90,
+        "patient": "",
+        "helpers": [],
+        "details": "Keiner der Helfer hat Schoki, bitte schickt was vorbei!"
+      },
+      {
+        "type": "communication_other",
+        "time": 100,
+        "patient": "",
+        "helpers": [],
+        "details": "Niemand hat Schoki!!! ☹️"
+      },
+      {
+        "type": "phase_change",
+        "time": 20,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": "2A"
+      },
+      {
+        "type": "applied_measure_begin",
+        "time": 20,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": "Sauerstoff"
+      },
+      {
+        "type": "applied_measure_end",
+        "time": 40,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": "Sauerstoff"
+      },
+      {
+        "type": "transport",
+        "time": 212,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": ""
+      },
+      {
+        "type": "contact",
+        "time": 123,
+        "patient": "5AZA",
+        "helpers": ["Nils1"],
+        "details": ""
+      },
+      {
+        "type": "death",
+        "time": 420,
+        "patient": "5AZA",
+        "helpers": [],
+        "details": "1A - Nicht beatmet"
+      },
+      {
+        "type": "pause",
+        "time": 560,
+        "patient": "",
+        "helpers": [],
+        "details": "100" //duration in seconds
+      },
+      {
+        "type": "internal_briefing",
+        "time": 69,
+        "patient": "",
+        "helpers": [],
+        "details": "Hat jemand Schoki?"
+      },
+      {
+        "type": "communication_operation_center",
+        "time": 90,
+        "patient": "",
+        "helpers": [],
+        "details": "Keiner der Helfer hat Schoki, bitte schickt was vorbei!"
+      },
+      {
+        "type": "communication_other",
+        "time": 100,
+        "patient": "",
+        "helpers": [],
+        "details": "Niemand hat Schoki!!! ☹️"
+      },
+    ]
+  };
+
+  return ExerciseLog.fromJson(mockData);
 }

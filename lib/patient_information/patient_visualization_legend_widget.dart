@@ -17,7 +17,7 @@ class PatientVisualizationLegend extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final iconSize = Theme.of(context).textTheme.caption!.fontSize!;
+    final iconSize = Theme.of(context).textTheme.caption!.fontSize!*1.5;
     final spaceBetweenIconAndLabel = 8.0;
     final labelWidth = this.width -
         iconSize -
@@ -27,11 +27,10 @@ class PatientVisualizationLegend extends StatelessWidget {
       child: Column(
         children: [
           Row(children: [
-            Icon(
-              FontAwesomeIcons.tint,
-              color: Colors.red,
-              size: iconSize,
-            ),
+            Image.asset('assets/icons/bleeding_icon.png',
+                package: 'bpmanv_app_sharedFiles',
+                height: iconSize,
+                width: iconSize),
             Container(
               padding: EdgeInsets.only(left: spaceBetweenIconAndLabel),
               width: labelWidth,
@@ -44,11 +43,10 @@ class PatientVisualizationLegend extends StatelessWidget {
           ]),
           SizedBox(height: 3.0),
           Row(children: [
-            Icon(
-              FontAwesomeIcons.wind,
-              color: Colors.red,
-              size: iconSize,
-            ),
+            Image.asset('assets/icons/critical_bleeding_icon.png',
+                package: 'bpmanv_app_sharedFiles',
+                height: iconSize,
+                width: iconSize),
             Container(
               padding: EdgeInsets.only(left: spaceBetweenIconAndLabel),
               width: labelWidth,
@@ -63,11 +61,10 @@ class PatientVisualizationLegend extends StatelessWidget {
           ]),
           SizedBox(height: 3.0),
           Row(children: [
-            Icon(
-              FontAwesomeIcons.bone,
-              color: Colors.black,
-              size: iconSize,
-            ),
+            Image.asset('assets/icons/fracture_icon.png',
+                package: 'bpmanv_app_sharedFiles',
+                height: iconSize,
+                width: iconSize),
             Container(
               padding: EdgeInsets.only(left: spaceBetweenIconAndLabel),
               width: labelWidth,

@@ -16,7 +16,6 @@ part 'simplified_patients.g.dart';
 // For more information on the freezed package see the official documentation:
 // https://pub.dev/packages/freezed
 
-
 /// Defines the [SimplifiedPatientList] data model. A [SimplifiedPatientList]
 /// consists of a List [patients] of [SimplifiedPatient].
 ///
@@ -26,7 +25,7 @@ part 'simplified_patients.g.dart';
 class SimplifiedPatientList with _$SimplifiedPatientList {
   const factory SimplifiedPatientList({
     required List<SimplifiedPatient> patients,
-  }) =_SimplifiedPatientList;
+  }) = _SimplifiedPatientList;
 
   factory SimplifiedPatientList.fromJson(Map<String, dynamic> json) {
     return SimplifiedPatientList(patients: parseSimplifiedPatientList(json));
@@ -41,7 +40,6 @@ List<SimplifiedPatient> parseSimplifiedPatientList(Map<String, dynamic> json) {
       .toList();
 }
 
-
 /// Defines the [SimplifiedPatient] data model. Not to be confused with the regular
 /// [Patient], a [SimplifiedPatient] stores only the data which is most important
 /// for a trainer to see in a list of all patients.
@@ -55,13 +53,12 @@ class SimplifiedPatient with _$SimplifiedPatient {
   const factory SimplifiedPatient({
     required String dps_code,
     required String triage,
+    required String suggested_triage,
     required String current_phase_nr,
     required String next_phase_nr,
-    required int patient_id
+    required bool is_checked_out,
   }) = _SimplifiedPatient;
 
   factory SimplifiedPatient.fromJson(Map<String, dynamic> json) =>
       _$SimplifiedPatientFromJson(json);
-
-
 }

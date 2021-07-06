@@ -12,8 +12,8 @@ class FirstImpressionField extends StatelessWidget {
   final bool isActive;
   final double width;
   late final String? character;
-  late final IconData? icon;
-  late final IconData? alternateIcon;
+  late final Image? icon;
+  late final Image? alternateIcon;
   late final bool useAlternateIcon;
   late final bool _isIcon;
 
@@ -51,34 +51,32 @@ class FirstImpressionField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var inactiveDecoration = BoxDecoration(
-        border: Border.all(width: 3),
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: Colors.black12);
     var activeDecoration = BoxDecoration(
         border: Border.all(width: 3),
         borderRadius: BorderRadius.all(Radius.circular(10)),
         color: backgroundColor);
 
-    return Column(
-      children: [
-        Container(
-          child: FittedBox(fit: BoxFit.fitWidth, child: Text(description)),
-        ),
-        Container(
-            width: width * 0.2,
-            height: width * 0.2,
-            decoration: isActive ? activeDecoration : inactiveDecoration,
-            child: Center(child: _isIcon ? _buildIcon() : _buildText())),
-      ],
-    );
+    return isActive
+        ? Column(
+            children: [
+              Container(
+                child:
+                    FittedBox(fit: BoxFit.fitWidth, child: Text(description)),
+              ),
+              Container(
+                  width: width * 0.2,
+                  height: width * 0.2,
+                  decoration: activeDecoration,
+                  child: Center(child: _isIcon ? _buildIcon() : _buildText())),
+            ],
+          )
+        : Container();
   }
 
-  Icon _buildIcon() {
+  Image? _buildIcon() {
     return useAlternateIcon
-        ? Icon(alternateIcon,
-            color: isActive ? textColor : Colors.grey, size: textSize)
-        : Icon(icon, color: isActive ? textColor : Colors.grey, size: textSize);
+        ? alternateIcon
+        : icon;
   }
 
   Text _buildText() {
@@ -86,9 +84,7 @@ class FirstImpressionField extends StatelessWidget {
       character!,
       textAlign: TextAlign.center,
       style: TextStyle(
-          fontSize: textSize,
-          color: isActive ? textColor : Colors.grey,
-          fontWeight: FontWeight.bold),
+          fontSize: textSize, color: textColor, fontWeight: FontWeight.bold),
     );
   }
 }
