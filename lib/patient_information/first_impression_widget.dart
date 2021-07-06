@@ -1,11 +1,8 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
+import 'package:flutter/material.dart';
+
 import '../l10n/localizedstrings.dart';
 import 'first_impression_field_widget.dart';
 
@@ -35,13 +32,9 @@ class FirstImpressionWidget extends StatelessWidget {
         ),
         FirstImpressionField.icon(
           icon: Image.asset('assets/icons/bleeding_icon.png',
-              package: 'bpmanv_app_sharedFiles',
-              height: 50,
-              width: 50),
+              package: 'bpmanv_app_sharedFiles', height: 50, width: 50),
           alternateIcon: Image.asset('assets/icons/critical_bleeding_icon.png',
-              package: 'bpmanv_app_sharedFiles',
-              height: 50,
-              width: 50),
+              package: 'bpmanv_app_sharedFiles', height: 50, width: 50),
           description: LocalizedStrings
               .firstImpressionRow_firstImpressionfields_bleeding,
           isActive: patientFirstImpression.is_bleeding ||

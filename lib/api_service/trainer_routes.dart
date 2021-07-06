@@ -485,3 +485,16 @@ Future<ExerciseLog> fetchExerciseLogMock({required int roomID}) async {
 
   return ExerciseLog.fromJson(mockData);
 }
+
+Future<Map<String, dynamic>> getActiveRoomRoute() async {
+  try {
+    final response = await Session.get(getActiveRoomUrl());
+    if (response.statusCode != 200) {
+      throw Exception(
+          "Error trying to check if an active room exists for this trainer: ${response.statusCode}");
+    }
+    return jsonDecode(utf8.decode(response.bodyBytes));
+  } on Exception catch (e) {
+    throw (e);
+  }
+}
