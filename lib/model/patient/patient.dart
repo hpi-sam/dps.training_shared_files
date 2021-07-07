@@ -34,18 +34,19 @@ String injuryTypeFromString(String str) {
 @freezed
 class Patient with _$Patient {
   const Patient._();
-  const factory Patient({
-    required String dpsCode,
-    required PatientCurrentPhase currentPhase,
-    required PatientFirstImpression firstImpression,
-    required PatientPersonalData personalData,
-    required PatientInjuries injuries,
-    required String injuryDescription,
-    required String bodyCheckInformation,
-    required String situationOfDiscovery,
-    required String triageCategory,
-    required bool isCheckedOut,
-  }) = _Patient;
+  const factory Patient(
+      {required String dpsCode,
+      required PatientCurrentPhase currentPhase,
+      required PatientFirstImpression firstImpression,
+      required PatientPersonalData personalData,
+      required PatientInjuries injuries,
+      required String injuryDescription,
+      required String bodyCheckInformation,
+      required String situationOfDiscovery,
+      required String triageCategory,
+      required bool isCheckedOut,
+      required bool isAlive
+      }) = _Patient;
 
   get name => personalData.name;
   get address => personalData.address;
@@ -71,7 +72,9 @@ class Patient with _$Patient {
         bodyCheckInformation: json["static_data"]["body_check_information"],
         situationOfDiscovery: json["static_data"]["situation_of_discovery"],
         triageCategory: json["triage"],
-        isCheckedOut: json["is_checked_out"]);
+        isCheckedOut: json["is_checked_out"],
+        isAlive: json["is_alive"]
+    );
   }
 }
 

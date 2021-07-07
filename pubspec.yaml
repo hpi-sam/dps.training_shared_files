@@ -36,3 +36,4 @@ flutter:
     - assets/icons/bleeding_icon.png
     - assets/icons/critical_bleeding_icon.png
     - assets/icons/fracture_icon.png
+    - assets/dead.png

@@ -45,82 +45,97 @@ class _PatientInformationWidgetState extends State<PatientInformationWidget> {
   Widget build(BuildContext context) {
     return Center(
       child: CupertinoScrollbar(
-          child: ListView(
-        shrinkWrap: false,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(top: 10),
-          ),
-          LayoutBuilder(builder: (context, constraints) {
-            return Container(
-              child: Stack(
-                alignment: Alignment.bottomLeft,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                          flex: 12,
-                          child: PatientVisualization(
-                              patientInjuries: widget.patient.injuries,
-                              width: constraints.maxWidth)),
-                      Expanded(flex: 3, child: Container()),
-                      Expanded(
-                          flex: 5,
-                          child: FirstImpressionWidget(
-                            patientFirstImpression:
-                                widget.patient.firstImpression,
-                            width: constraints.maxWidth,
-                          )),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: constraints.maxWidth / 9 * 4,
-                          ),
-                          PatientVisualizationLegend(
-                            width: constraints.maxWidth / 4,
-                          ),
-                        ],
+          child: ListView(shrinkWrap: false, children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(top: 10),
+        ),
+        LayoutBuilder(builder: (context, constraints) {
+          return Container(
+            child: Stack(
+              alignment: Alignment.bottomLeft,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                        flex: 12,
+                        child: PatientVisualization(
+                            patient: widget.patient,
+                            width: constraints.maxWidth)),
+                    Expanded(flex: 3, child: Container()),
+                    Expanded(
+                        flex: 5,
+                        child: FirstImpressionWidget(
+                          patientFirstImpression:
+                              widget.patient.firstImpression,
+                          width: constraints.maxWidth,
+                        )),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: constraints.maxWidth / 9 * 4,
+                        ),
+                        PatientVisualizationLegend(
+                          patient: widget.patient,
+                          width: constraints.maxWidth / 4,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: constraints.maxWidth / 6),
+                  ],
+                ),
+              ],
+            ),
+          );
+        }),
+        Padding(
+          padding: EdgeInsets.only(top: 10),
+        ),
+        (widget.appliedMeasuresWidget != null)
+            ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: widget.appliedMeasuresWidget,
+              )
+            : Container(),
+        widget.patient.isAlive
+            ? Column(children: [
+                (widget.triageChooserWidget != null)
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: widget.triageChooserWidget,
+                      )
+                    : Container(),
+                (widget.availableMeasuresWidget != null)
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: widget.availableMeasuresWidget)
+                    : Container(),
+                PhaseInformation(
+                  patient: widget.patient,
+                ),
+                GeneralInformationWidget(
+                  patient: widget.patient,
+                ),
+              ])
+            : Center(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        "Der Patient ist Tod",
+                        style: Theme.of(context).textTheme.headline5,
                       ),
-                      SizedBox(height: constraints.maxWidth / 6),
-                    ],
-                  ),
-                ],
+                    ),
+                    Divider()
+                  ],
+                ),
               ),
-            );
-          }),
-          Padding(
-            padding: EdgeInsets.only(top: 10),
-          ),
-          (widget.appliedMeasuresWidget != null)
-              ? Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: widget.appliedMeasuresWidget,
-                )
-              : Container(),
-          (widget.triageChooserWidget != null)
-              ? Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: widget.triageChooserWidget,
-                )
-              : Container(),
-          (widget.availableMeasuresWidget != null)
-              ? Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: widget.availableMeasuresWidget)
-              : Container(),
-          PhaseInformation(
-            patient: widget.patient,
-          ),
-          GeneralInformationWidget(
-            patient: widget.patient,
-          ),
-          Biometry(patient: widget.patient),
-        ],
-      )),
+        Biometry(patient: widget.patient),
+      ])),
     );
   }
 }

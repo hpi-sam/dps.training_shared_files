@@ -14,18 +14,42 @@ import 'body_part_widget.dart';
 /// these widgets can display a list of different injuries, where each injury
 /// type (bleeding, fracture, ...) has its own icon.
 class PatientVisualization extends StatelessWidget {
-  final PatientInjuries patientInjuries;
+  final Patient patient;
   final double width;
 
-  PatientVisualization({required this.patientInjuries, required this.width});
+  PatientVisualization({required this.patient, required this.width});
 
   @override
   Widget build(BuildContext context) {
+    return patient.isAlive
+        ? _buildPatient()
+        : Stack(
+            children: [
+              _buildPatient(),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Opacity(
+                    opacity: 0.8,
+                    child: Image.asset(
+                      'assets/dead.png',
+                      package: 'bpmanv_app_sharedFiles',
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      height: MediaQuery.of(context).size.width * 0.9,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+  }
+
+  Widget _buildPatient() {
     return SizedBox(
       child: Column(
         children: [
           Head(
-            injuries: patientInjuries.head,
+            injuries: patient.injuries.head,
             width: this.width,
           ),
           Padding(padding: EdgeInsets.only(top: this.width * 0.01)),
@@ -34,20 +58,21 @@ class PatientVisualization extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Arm(
-                injuries: patientInjuries.left_arm,
+                injuries: patient.injuries.left_arm,
                 width: this.width,
                 transformation: Matrix4.skewX(3),
               ),
               Column(
                 children: [
-                  Thorax(injuries: patientInjuries.thorax, width: this.width),
-                  Abdomen(injuries: patientInjuries.abdomen, width: this.width),
-                  Pelvis(injuries: patientInjuries.pelvis, width: this.width),
+                  Thorax(injuries: patient.injuries.thorax, width: this.width),
+                  Abdomen(
+                      injuries: patient.injuries.abdomen, width: this.width),
+                  Pelvis(injuries: patient.injuries.pelvis, width: this.width),
                 ],
               ),
               // BodyCenter
               Arm(
-                injuries: patientInjuries.right_arm,
+                injuries: patient.injuries.right_arm,
                 width: this.width,
                 transformation: Matrix4.skewX(-3),
               ),
@@ -56,9 +81,9 @@ class PatientVisualization extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Leg(injuries: patientInjuries.left_leg, width: this.width),
+              Leg(injuries: patient.injuries.left_leg, width: this.width),
               Padding(padding: EdgeInsets.only(left: this.width * 0.03)),
-              Leg(injuries: patientInjuries.right_leg, width: this.width),
+              Leg(injuries: patient.injuries.right_leg, width: this.width),
             ],
           )
         ],
