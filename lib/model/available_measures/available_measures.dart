@@ -1,8 +1,7 @@
 // Package imports:
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'available_measures.freezed.dart';
 
@@ -80,6 +79,7 @@ class AvailableMeasure with _$AvailableMeasure {
     required int duration,
     required bool is_applicable,
     required bool requires_two_helpers,
+    required bool are_required_measures_fulfilled,
     required List<AvailableMeasurePrerequisite> prerequisites,
   }) = _AvailableMeasure;
 
@@ -92,6 +92,8 @@ class AvailableMeasure with _$AvailableMeasure {
         duration: json["running_duration"],
         is_applicable: json["is_applicable"],
         requires_two_helpers: json["requires_two_helpers"],
+        are_required_measures_fulfilled:
+            json["are_required_measures_fulfilled"],
         prerequisites: parseAvailableMeasuresPrerequisites(
             json) //parseAvailableMeasuresPrerequisites(json),
         );
@@ -123,5 +125,3 @@ class AvailableMeasurePrerequisite with _$AvailableMeasurePrerequisite {
         name: json["name"], image: serverURL + json["image"]["small"]);
   }
 }
-
-
