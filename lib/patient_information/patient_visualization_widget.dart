@@ -23,24 +23,26 @@ class PatientVisualization extends StatelessWidget {
   Widget build(BuildContext context) {
     return patient.isAlive
         ? _buildPatient()
-        : Stack(
-            children: [
-              _buildPatient(),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: Opacity(
-                    opacity: 0.8,
-                    child: Image.asset(
-                      'assets/dead.png',
-                      package: 'bpmanv_app_sharedFiles',
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      height: MediaQuery.of(context).size.width * 0.9,
+        : LayoutBuilder(
+            builder: (context, constraints) => Stack(
+              children: [
+                _buildPatient(),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: Opacity(
+                      opacity: 0.8,
+                      child: Image.asset(
+                        'assets/dead.png',
+                        package: 'bpmanv_app_sharedFiles',
+                        width: constraints.maxWidth,
+                        height: constraints.maxWidth,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
   }
 

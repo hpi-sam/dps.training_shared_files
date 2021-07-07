@@ -105,7 +105,7 @@ abstract class LocalizedStrings {
           "Wert nicht messbar";
       phaseInformationWidget_noValueInformation_title = "Keine Daten";
       phaseInformationWidget_bodyCheckInformation_title = "Body-Check";
-      phaseInformationWidget_dead_patient = "Der Patient ist Tod";
+      phaseInformationWidget_dead_patient = "Der Patient ist leblos";
     }
   }
 }
