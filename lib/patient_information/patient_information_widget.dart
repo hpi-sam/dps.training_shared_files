@@ -100,40 +100,42 @@ class _PatientInformationWidgetState extends State<PatientInformationWidget> {
                 child: widget.appliedMeasuresWidget,
               )
             : Container(),
-        widget.patient.isAlive
-            ? Column(children: [
-                (widget.triageChooserWidget != null)
-                    ? Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: widget.triageChooserWidget,
-                      )
-                    : Container(),
-                (widget.availableMeasuresWidget != null)
-                    ? Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: widget.availableMeasuresWidget)
-                    : Container(),
-                PhaseInformation(
-                  patient: widget.patient,
+        if (widget.patient.isAlive)
+          (widget.triageChooserWidget != null)
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: widget.triageChooserWidget,
+                )
+              : Container(),
+        if (widget.patient.isAlive)
+          (widget.availableMeasuresWidget != null)
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: widget.availableMeasuresWidget)
+              : Container(),
+        if (widget.patient.isAlive)
+          PhaseInformation(
+            patient: widget.patient,
+          ),
+        if (widget.patient.isAlive)
+          GeneralInformationWidget(
+            patient: widget.patient,
+          )
+        else
+          Center(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Text(
+                    LocalizedStrings.phaseInformationWidget_dead_patient,
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
                 ),
-                GeneralInformationWidget(
-                  patient: widget.patient,
-                ),
-              ])
-            : Center(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Text(
-                        "Der Patient ist Tod",
-                        style: Theme.of(context).textTheme.headline5,
-                      ),
-                    ),
-                    Divider()
-                  ],
-                ),
-              ),
+                Divider()
+              ],
+            ),
+          ),
         Biometry(patient: widget.patient),
       ])),
     );

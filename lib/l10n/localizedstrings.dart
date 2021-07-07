@@ -51,7 +51,7 @@ abstract class LocalizedStrings {
   static late String phaseInformationWidget_notMeasurableInformation_title;
   static late String phaseInformationWidget_noValueInformation_title;
   static late String phaseInformationWidget_bodyCheckInformation_title;
-
+  static late String phaseInformationWidget_dead_patient;
 
   /// initializes fields with German strings
   static void buildDefaultGermanStrings() {
@@ -75,7 +75,8 @@ abstract class LocalizedStrings {
       firstImpressionRow_firstImpressionfields_motionless = "Regungslos";
       generalInformationWidget_title = "Auffindesituation";
       generalInformationWidget_injuries_title = "Verletzungen";
-      generalInformationWidget_situationOfDiscovery_title = "Auffinde-Situation";
+      generalInformationWidget_situationOfDiscovery_title =
+          "Auffinde-Situation";
       patientVisualizationLegendWidget_bleeding = "Blutung";
       patientVisualizationLegendWidget_bleedingSplattering = "spritzende Blu.";
       patientVisualizationLegendWidget_fracture = "Fraktur";
@@ -104,6 +105,7 @@ abstract class LocalizedStrings {
           "Wert nicht messbar";
       phaseInformationWidget_noValueInformation_title = "Keine Daten";
       phaseInformationWidget_bodyCheckInformation_title = "Body-Check";
+      phaseInformationWidget_dead_patient = "Der Patient ist Tod";
     }
   }
 }

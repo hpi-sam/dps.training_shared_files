@@ -19,7 +19,6 @@ class PatientVisualizationLegend extends StatelessWidget {
     final iconSize = Theme.of(context).textTheme.caption!.fontSize! * 1.5;
     final spaceBetweenIconAndLabel = 8.0;
     final labelWidth = this.width - iconSize - spaceBetweenIconAndLabel;
-    print(patient.injuries.injuries.toString());
     return Container(
       width: this.width,
       child: Column(
