@@ -16,9 +16,7 @@ part 'players.g.dart';
 // For more information on the freezed package see the official documentation:
 // https://pub.dev/packages/freezed
 
-
-/// Defines the [PlayerList] data model. A [PlayerList] consists of a List of
-/// [players].
+/// Defines the [PlayerList] data model.
 ///
 /// This class is immutable and can be created from a json which confirms to the
 /// response defined in the GET rooms/$roomID/players/ route in the API specification.
@@ -26,7 +24,7 @@ part 'players.g.dart';
 class PlayerList with _$PlayerList {
   const factory PlayerList({
     required List<Player> players,
-}) =_PlayerList;
+  }) = _PlayerList;
 
   factory PlayerList.fromJson(Map<String, dynamic> json) {
     return PlayerList(players: parsePlayerList(json));
@@ -36,11 +34,8 @@ class PlayerList with _$PlayerList {
 /// Parses multiple players in the given [json] into a list of [Player].
 List<Player> parsePlayerList(Map<String, dynamic> json) {
   final parsed = json["players"].cast<Map<String, dynamic>>();
-  return parsed
-      .map<Player>((json) => Player.fromJson(json))
-      .toList();
+  return parsed.map<Player>((json) => Player.fromJson(json)).toList();
 }
-
 
 /// Defines the [Player] data model. A [Player] consists of a [name] and a [helper_count].
 ///
@@ -53,8 +48,5 @@ class Player with _$Player {
     required int helper_count,
   }) = _Player;
 
-  factory Player.fromJson(Map<String, dynamic> json) =>
-      _$PlayerFromJson(json);
-
-
+  factory Player.fromJson(Map<String, dynamic> json) => _$PlayerFromJson(json);
 }

@@ -15,6 +15,7 @@ abstract class Session {
   };
   static String? _token;
 
+  /// Deletes the currently saved session from the [SharedPreferences]
   static void deleteSession() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.remove("token");

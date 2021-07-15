@@ -18,7 +18,8 @@ void selectServer({required String serverName}) {
       PREDEFINED_URLS[serverName] ?? PREDEFINED_URLS["Lehrstuhl-Server"]!;
 }
 
-// configuration of routes to use for server requests.
+// configuration of routes to use for server requests. API specification can be found
+// here: https://github.com/hpi-sam/BPMANV-Server/blob/dev/api_spezification.md
 String uncoverPatientUrl({required String dpsCode, required int helperNr}) =>
     serverURL + '/patients/$dpsCode/uncover/helper/$helperNr/';
 String patientDataUrl({required String dpsCode, required int helperNr}) =>

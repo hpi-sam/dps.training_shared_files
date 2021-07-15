@@ -1,9 +1,9 @@
 // Flutter imports:
+// Project imports:
+import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-// Project imports:
-import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import '../l10n/localizedstrings.dart';
 
 /// Displays the information of the current phase of a patient.
@@ -22,8 +22,8 @@ class PhaseInformation extends StatelessWidget {
               children: [
                 Container(
                   width: constraints.maxWidth / 2,
-                  padding:
-                      EdgeInsets.symmetric(horizontal: constraints.maxWidth / 40),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: constraints.maxWidth / 40),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -39,8 +39,8 @@ class PhaseInformation extends StatelessWidget {
                 ),
                 Container(
                   width: constraints.maxWidth / 2,
-                  padding:
-                      EdgeInsets.symmetric(horizontal: constraints.maxWidth / 40),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: constraints.maxWidth / 40),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -76,8 +76,8 @@ class PhaseInformation extends StatelessWidget {
               ),
               Container(
                   width: constraints.maxWidth / 2,
-                  padding:
-                      EdgeInsets.symmetric(horizontal: constraints.maxWidth / 40),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: constraints.maxWidth / 40),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -194,7 +194,6 @@ class PhaseInformation extends StatelessWidget {
                     disability.gcs_motoric_behaviour)
                 .toString()),
         Row(
-          //todo: fix alignment of children to spread out according to the available size
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,13 +1,11 @@
 // Flutter imports:
+// Project imports:
+import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-// Project imports:
-import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import 'body_part_widget.dart';
 
-//Todo: Add neck injuries
-//Todo: Add a visual legend of the used icon: https://github.com/hpi-sam/BPMANV-App/issues/15
 /// Builds a visual representation of the patient.
 ///
 /// Each body part of the patient is simulated with a BodyPartWidget. Each of

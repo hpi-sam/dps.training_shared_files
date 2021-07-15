@@ -1,17 +1,16 @@
 // Flutter imports:
-import 'package:flutter/foundation.dart';
-
-// Package imports:
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
+import 'package:flutter/foundation.dart';
+// Package imports:
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'applied_measures.freezed.dart';
 
 /// [AppliedMeasures] are either running (= another helper does them right now),
-/// active (= only effective for a given time; e.g. medication) or
-/// finished (= applied for an unlimited time)
+/// active (= only effective for a given time; e.g. medication),
+/// finished (= applied for an unlimited time) or waiting_for_second_helper (=
+/// the measure is pending before being started, because a second helper is required)
 enum AppliedMeasureState {
   running,
   active,

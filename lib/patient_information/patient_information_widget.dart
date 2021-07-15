@@ -1,6 +1,4 @@
 // Flutter imports:
-import 'package:flutter/cupertino.dart';
-
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
 import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
@@ -9,9 +7,14 @@ import 'package:bpmanv_app_sharedFiles/patient_information/first_impression_widg
 import 'package:bpmanv_app_sharedFiles/patient_information/patient_visualization_legend_widget.dart';
 import 'package:bpmanv_app_sharedFiles/patient_information/patient_visualization_widget.dart';
 import 'package:bpmanv_app_sharedFiles/patient_information/phase_information_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'general_information_widget.dart';
 
+/// Displays the patient information for the given [patient]. This always includes
+/// visualization and static and dynamic patient data. It can also optionally include
+/// interactive widgets to apply measures or triage.
 class PatientInformationWidget extends StatefulWidget {
   final Patient patient;
   final Widget? triageChooserWidget;
