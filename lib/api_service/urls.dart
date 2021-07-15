@@ -89,3 +89,4 @@ String getTriageAccuracyUrl({required int roomID}) =>
 String getExerciseLogUrl({required int roomID}) =>
     serverURL + '/evaluation/rooms/$roomID/logs/';
 String getActiveRoomUrl() => serverURL + '/rooms/active/';
+String getQrCodeUrl() => serverURL + '/static_images/patients.pdf';
