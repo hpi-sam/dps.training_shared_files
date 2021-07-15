@@ -84,10 +84,8 @@ String addPatientTrainerUrl({required String dpsCode, required int roomID}) =>
 String checkoutPatientUrl({required String dpsCode}) =>
     serverURL + '/patients/$dpsCode/checkout/';
 String addEventUrl() => serverURL + '/rooms/events/add/';
-String getTrainerNotesUrl({required int roomID}) =>
-    serverURL + '/evaluation/rooms/$roomID/notes/';
 String getTriageAccuracyUrl({required int roomID}) =>
-    serverURL + '/evaluation/rooms/$roomID/triage/accuracy';
+    serverURL + '/evaluation/rooms/$roomID/triage/accuracy/';
 String getExerciseLogUrl({required int roomID}) =>
     serverURL + '/evaluation/rooms/$roomID/logs/';
 String getActiveRoomUrl() => serverURL + '/rooms/active/';

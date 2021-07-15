@@ -222,20 +222,6 @@ Future<void> addEventRoute({required String type, String? details}) async {
   }
 }
 
-//todo: implement and return trainer notes data model
-Future<Map<String, dynamic>> fetchTrainerNotesRoute(
-    {required int roomID}) async {
-  try {
-    final response = await Session.get(getTrainerNotesUrl(roomID: roomID));
-    if (response.statusCode != 200) {
-      throw Exception(
-          "Error fetching trainer notes for room $roomID: ${response.statusCode}");
-    }
-    return jsonDecode(utf8.decode(response.bodyBytes));
-  } on Exception catch (e) {
-    throw (e);
-  }
-}
 
 //todo: implement and return triage accuracy data model
 Future<Map<String, dynamic>> fetchTriageAccuracyRoute(

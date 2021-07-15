@@ -368,16 +368,11 @@ class BackendRoute {
     return BackendRoute(addEventUrl(), f, p);
   }
 
-  factory BackendRoute.fetchTrainerNotes({required int roomID}) {
-    Function f = fetchTrainerNotesRoute;
-    Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
-    return BackendRoute(getTrainerNotesUrl(roomID: roomID), f, p);
-  }
 
   factory BackendRoute.fetchTriageAccuracy({required int roomID}) {
     Function f = fetchTriageAccuracyRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
-    return BackendRoute(getTrainerNotesUrl(roomID: roomID), f, p);
+    return BackendRoute(getTriageAccuracyUrl(roomID: roomID), f, p);
   }
 
   factory BackendRoute.checkIfRoomActive() {
