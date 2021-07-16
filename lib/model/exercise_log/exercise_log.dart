@@ -43,6 +43,8 @@ class ExerciseLog with _$ExerciseLog {
   }
 }
 
+/// Parses multiple log entries in the given [json]
+/// into a list of [ExerciseLogEntry].
 List<ExerciseLogEntry> parseExerciseLogEntries(Map<String, dynamic> json) {
   final parsed = json["log_entries"].cast<Map<String, dynamic>>();
   return parsed
@@ -50,6 +52,8 @@ List<ExerciseLogEntry> parseExerciseLogEntries(Map<String, dynamic> json) {
       .toList();
 }
 
+/// A single exercise log entry, containing time and detailed information about the
+/// event it represents.
 @freezed
 class ExerciseLogEntry with _$ExerciseLogEntry {
   const ExerciseLogEntry._();

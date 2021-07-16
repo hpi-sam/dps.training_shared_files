@@ -1,23 +1,10 @@
 // Flutter imports:
 import 'package:flutter/foundation.dart';
-
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'patient.freezed.dart';
 part 'patient.g.dart';
-
-/// Returns an [InjuryType] that matches the input [str].
-String injuryTypeFromString(String str) {
-  if (str == "fracture")
-    return "fracture";
-  else if (str == "bleeding")
-    return "bleeding";
-  else if (str == "critical bleeding")
-    return "critical bleeding";
-  else
-    throw Exception("Can't find injuryType from String: $str");
-}
 
 /// Defines the patient data model.
 /// The package freezed is used to auto-generate the code for the immutable data classes annotated
@@ -45,8 +32,7 @@ class Patient with _$Patient {
       required String situationOfDiscovery,
       required String triageCategory,
       required bool isCheckedOut,
-      required bool isAlive
-      }) = _Patient;
+      required bool isAlive}) = _Patient;
 
   get name => personalData.name;
   get address => personalData.address;
@@ -56,7 +42,7 @@ class Patient with _$Patient {
   get biometrics => personalData.biometrics;
 
   /// Creates a [Patient] from the given [json]. The [json] must conform to our
-  /// API specification (Todo: link API specification document)
+  /// API specification (https://github.com/hpi-sam/BPMANV-Server/blob/dev/api_spezification.md)
   factory Patient.fromJson(Map<String, dynamic> json, String dpsCode) {
     return Patient(
         dpsCode: dpsCode,
@@ -73,8 +59,7 @@ class Patient with _$Patient {
         situationOfDiscovery: json["static_data"]["situation_of_discovery"],
         triageCategory: json["triage"],
         isCheckedOut: json["is_checked_out"],
-        isAlive: json["is_alive"]
-    );
+        isAlive: json["is_alive"]);
   }
 }
 
@@ -235,7 +220,7 @@ class PatientInjuries with _$PatientInjuries {
 
     injuries.forEach((injury) {
       if (injury["location"] == location) {
-        result.add(injuryTypeFromString(injury["injury_type"]));
+        result.add(injury["injury_type"]);
       }
     });
 

@@ -368,7 +368,6 @@ class BackendRoute {
     return BackendRoute(addEventUrl(), f, p);
   }
 
-
   factory BackendRoute.fetchTriageAccuracy({required int roomID}) {
     Function f = fetchTriageAccuracyRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({"roomID": roomID});
@@ -388,6 +387,8 @@ class BackendRoute {
 ///
 /// All API calls to the backend server should be routed through this class, so
 /// that we have a complete list of all server interaction for debugging purposes.
+///
+/// The API is documented here: https://github.com/hpi-sam/BPMANV-Server/blob/dev/api_spezification.md
 class APIService {
   /// A Queue containing all [BackendRoute] that have been called.
   static Queue<BackendRoute> routeQueue = Queue<BackendRoute>();
