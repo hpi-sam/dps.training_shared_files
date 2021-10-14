@@ -22,7 +22,9 @@ part 'inventory_exchange.freezed.dart';
 class InventoryExchange with _$InventoryExchange {
   const InventoryExchange._();
   const factory InventoryExchange(
-          {required List<InventoryExchangeCategory> categories}) =
+          {required String foreignEntityType,
+          required String foreignEntityName,
+          required List<InventoryExchangeCategory> categories}) =
       _InventoryExchange;
 
   /// Creates a new [InventoryExchange] by copying the categories and its materials and
@@ -84,7 +86,10 @@ class InventoryExchange with _$InventoryExchange {
       categoryList.add(InventoryExchangeCategory(
           name: ownInventory.categories[i].name, items: exchangeMaterialList));
     }
-    return InventoryExchange(categories: categoryList);
+    return InventoryExchange(
+        categories: categoryList,
+        foreignEntityName: foreignInventory.entityName,
+        foreignEntityType: foreignInventory.entityType);
   }
 
   /// converts to a JSON as specified in API-Specification
@@ -129,7 +134,10 @@ class InventoryExchange with _$InventoryExchange {
       }
       categories.add(category.copyWith(items: items));
     }
-    return InventoryExchange(categories: categories);
+    return InventoryExchange(
+        categories: categories,
+        foreignEntityType: this.foreignEntityType,
+        foreignEntityName: this.foreignEntityName);
   }
 
   /// Returns true if all items in this [InventoryExchange] have a [changedAmount] of 0. Returns
@@ -160,7 +168,7 @@ class InventoryExchange with _$InventoryExchange {
   /// has. Returns false if [inventory] has an item, that this [InventoryExchange]
   /// doesn't have.
   bool hasAllItemsOf({required Inventory inventory}) {
-    for(DPSMaterialCategory category in inventory.categories){
+    for (DPSMaterialCategory category in inventory.categories) {
       for (DPSMaterial item in category.items) {
         if (getItem(materialID: item.id) == null) return false;
       }

@@ -17,7 +17,8 @@ class _$PatientTearOff {
   const _$PatientTearOff();
 
   _Patient call(
-      {required String dpsCode,
+      {required String patientDpsCode,
+      required String scannedDpsCode,
       required PatientCurrentPhase currentPhase,
       required PatientFirstImpression firstImpression,
       required PatientPersonalData personalData,
@@ -29,7 +30,8 @@ class _$PatientTearOff {
       required bool isCheckedOut,
       required bool isAlive}) {
     return _Patient(
-      dpsCode: dpsCode,
+      patientDpsCode: patientDpsCode,
+      scannedDpsCode: scannedDpsCode,
       currentPhase: currentPhase,
       firstImpression: firstImpression,
       personalData: personalData,
@@ -49,7 +51,8 @@ const $Patient = _$PatientTearOff();
 
 /// @nodoc
 mixin _$Patient {
-  String get dpsCode => throw _privateConstructorUsedError;
+  String get patientDpsCode => throw _privateConstructorUsedError;
+  String get scannedDpsCode => throw _privateConstructorUsedError;
   PatientCurrentPhase get currentPhase => throw _privateConstructorUsedError;
   PatientFirstImpression get firstImpression =>
       throw _privateConstructorUsedError;
@@ -71,7 +74,8 @@ abstract class $PatientCopyWith<$Res> {
   factory $PatientCopyWith(Patient value, $Res Function(Patient) then) =
       _$PatientCopyWithImpl<$Res>;
   $Res call(
-      {String dpsCode,
+      {String patientDpsCode,
+      String scannedDpsCode,
       PatientCurrentPhase currentPhase,
       PatientFirstImpression firstImpression,
       PatientPersonalData personalData,
@@ -99,7 +103,8 @@ class _$PatientCopyWithImpl<$Res> implements $PatientCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? dpsCode = freezed,
+    Object? patientDpsCode = freezed,
+    Object? scannedDpsCode = freezed,
     Object? currentPhase = freezed,
     Object? firstImpression = freezed,
     Object? personalData = freezed,
@@ -112,9 +117,13 @@ class _$PatientCopyWithImpl<$Res> implements $PatientCopyWith<$Res> {
     Object? isAlive = freezed,
   }) {
     return _then(_value.copyWith(
-      dpsCode: dpsCode == freezed
-          ? _value.dpsCode
-          : dpsCode // ignore: cast_nullable_to_non_nullable
+      patientDpsCode: patientDpsCode == freezed
+          ? _value.patientDpsCode
+          : patientDpsCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      scannedDpsCode: scannedDpsCode == freezed
+          ? _value.scannedDpsCode
+          : scannedDpsCode // ignore: cast_nullable_to_non_nullable
               as String,
       currentPhase: currentPhase == freezed
           ? _value.currentPhase
@@ -195,7 +204,8 @@ abstract class _$PatientCopyWith<$Res> implements $PatientCopyWith<$Res> {
       __$PatientCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String dpsCode,
+      {String patientDpsCode,
+      String scannedDpsCode,
       PatientCurrentPhase currentPhase,
       PatientFirstImpression firstImpression,
       PatientPersonalData personalData,
@@ -228,7 +238,8 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? dpsCode = freezed,
+    Object? patientDpsCode = freezed,
+    Object? scannedDpsCode = freezed,
     Object? currentPhase = freezed,
     Object? firstImpression = freezed,
     Object? personalData = freezed,
@@ -241,9 +252,13 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
     Object? isAlive = freezed,
   }) {
     return _then(_Patient(
-      dpsCode: dpsCode == freezed
-          ? _value.dpsCode
-          : dpsCode // ignore: cast_nullable_to_non_nullable
+      patientDpsCode: patientDpsCode == freezed
+          ? _value.patientDpsCode
+          : patientDpsCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      scannedDpsCode: scannedDpsCode == freezed
+          ? _value.scannedDpsCode
+          : scannedDpsCode // ignore: cast_nullable_to_non_nullable
               as String,
       currentPhase: currentPhase == freezed
           ? _value.currentPhase
@@ -292,7 +307,8 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
 /// @nodoc
 class _$_Patient extends _Patient with DiagnosticableTreeMixin {
   const _$_Patient(
-      {required this.dpsCode,
+      {required this.patientDpsCode,
+      required this.scannedDpsCode,
       required this.currentPhase,
       required this.firstImpression,
       required this.personalData,
@@ -306,7 +322,9 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
       : super._();
 
   @override
-  final String dpsCode;
+  final String patientDpsCode;
+  @override
+  final String scannedDpsCode;
   @override
   final PatientCurrentPhase currentPhase;
   @override
@@ -330,7 +348,7 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Patient(dpsCode: $dpsCode, currentPhase: $currentPhase, firstImpression: $firstImpression, personalData: $personalData, injuries: $injuries, injuryDescription: $injuryDescription, bodyCheckInformation: $bodyCheckInformation, situationOfDiscovery: $situationOfDiscovery, triageCategory: $triageCategory, isCheckedOut: $isCheckedOut, isAlive: $isAlive)';
+    return 'Patient(patientDpsCode: $patientDpsCode, scannedDpsCode: $scannedDpsCode, currentPhase: $currentPhase, firstImpression: $firstImpression, personalData: $personalData, injuries: $injuries, injuryDescription: $injuryDescription, bodyCheckInformation: $bodyCheckInformation, situationOfDiscovery: $situationOfDiscovery, triageCategory: $triageCategory, isCheckedOut: $isCheckedOut, isAlive: $isAlive)';
   }
 
   @override
@@ -338,7 +356,8 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Patient'))
-      ..add(DiagnosticsProperty('dpsCode', dpsCode))
+      ..add(DiagnosticsProperty('patientDpsCode', patientDpsCode))
+      ..add(DiagnosticsProperty('scannedDpsCode', scannedDpsCode))
       ..add(DiagnosticsProperty('currentPhase', currentPhase))
       ..add(DiagnosticsProperty('firstImpression', firstImpression))
       ..add(DiagnosticsProperty('personalData', personalData))
@@ -355,9 +374,12 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Patient &&
-            (identical(other.dpsCode, dpsCode) ||
+            (identical(other.patientDpsCode, patientDpsCode) ||
                 const DeepCollectionEquality()
-                    .equals(other.dpsCode, dpsCode)) &&
+                    .equals(other.patientDpsCode, patientDpsCode)) &&
+            (identical(other.scannedDpsCode, scannedDpsCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.scannedDpsCode, scannedDpsCode)) &&
             (identical(other.currentPhase, currentPhase) ||
                 const DeepCollectionEquality()
                     .equals(other.currentPhase, currentPhase)) &&
@@ -392,7 +414,8 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(dpsCode) ^
+      const DeepCollectionEquality().hash(patientDpsCode) ^
+      const DeepCollectionEquality().hash(scannedDpsCode) ^
       const DeepCollectionEquality().hash(currentPhase) ^
       const DeepCollectionEquality().hash(firstImpression) ^
       const DeepCollectionEquality().hash(personalData) ^
@@ -412,7 +435,8 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
 
 abstract class _Patient extends Patient {
   const factory _Patient(
-      {required String dpsCode,
+      {required String patientDpsCode,
+      required String scannedDpsCode,
       required PatientCurrentPhase currentPhase,
       required PatientFirstImpression firstImpression,
       required PatientPersonalData personalData,
@@ -426,7 +450,9 @@ abstract class _Patient extends Patient {
   const _Patient._() : super._();
 
   @override
-  String get dpsCode => throw _privateConstructorUsedError;
+  String get patientDpsCode => throw _privateConstructorUsedError;
+  @override
+  String get scannedDpsCode => throw _privateConstructorUsedError;
   @override
   PatientCurrentPhase get currentPhase => throw _privateConstructorUsedError;
   @override

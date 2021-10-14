@@ -17,8 +17,12 @@ class _$InventoryExchangeTearOff {
   const _$InventoryExchangeTearOff();
 
   _InventoryExchange call(
-      {required List<InventoryExchangeCategory> categories}) {
+      {required String foreignEntityType,
+      required String foreignEntityName,
+      required List<InventoryExchangeCategory> categories}) {
     return _InventoryExchange(
+      foreignEntityType: foreignEntityType,
+      foreignEntityName: foreignEntityName,
       categories: categories,
     );
   }
@@ -29,6 +33,8 @@ const $InventoryExchange = _$InventoryExchangeTearOff();
 
 /// @nodoc
 mixin _$InventoryExchange {
+  String get foreignEntityType => throw _privateConstructorUsedError;
+  String get foreignEntityName => throw _privateConstructorUsedError;
   List<InventoryExchangeCategory> get categories =>
       throw _privateConstructorUsedError;
 
@@ -42,7 +48,10 @@ abstract class $InventoryExchangeCopyWith<$Res> {
   factory $InventoryExchangeCopyWith(
           InventoryExchange value, $Res Function(InventoryExchange) then) =
       _$InventoryExchangeCopyWithImpl<$Res>;
-  $Res call({List<InventoryExchangeCategory> categories});
+  $Res call(
+      {String foreignEntityType,
+      String foreignEntityName,
+      List<InventoryExchangeCategory> categories});
 }
 
 /// @nodoc
@@ -56,9 +65,19 @@ class _$InventoryExchangeCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? foreignEntityType = freezed,
+    Object? foreignEntityName = freezed,
     Object? categories = freezed,
   }) {
     return _then(_value.copyWith(
+      foreignEntityType: foreignEntityType == freezed
+          ? _value.foreignEntityType
+          : foreignEntityType // ignore: cast_nullable_to_non_nullable
+              as String,
+      foreignEntityName: foreignEntityName == freezed
+          ? _value.foreignEntityName
+          : foreignEntityName // ignore: cast_nullable_to_non_nullable
+              as String,
       categories: categories == freezed
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
@@ -74,7 +93,10 @@ abstract class _$InventoryExchangeCopyWith<$Res>
           _InventoryExchange value, $Res Function(_InventoryExchange) then) =
       __$InventoryExchangeCopyWithImpl<$Res>;
   @override
-  $Res call({List<InventoryExchangeCategory> categories});
+  $Res call(
+      {String foreignEntityType,
+      String foreignEntityName,
+      List<InventoryExchangeCategory> categories});
 }
 
 /// @nodoc
@@ -90,9 +112,19 @@ class __$InventoryExchangeCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? foreignEntityType = freezed,
+    Object? foreignEntityName = freezed,
     Object? categories = freezed,
   }) {
     return _then(_InventoryExchange(
+      foreignEntityType: foreignEntityType == freezed
+          ? _value.foreignEntityType
+          : foreignEntityType // ignore: cast_nullable_to_non_nullable
+              as String,
+      foreignEntityName: foreignEntityName == freezed
+          ? _value.foreignEntityName
+          : foreignEntityName // ignore: cast_nullable_to_non_nullable
+              as String,
       categories: categories == freezed
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
@@ -103,20 +135,34 @@ class __$InventoryExchangeCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_InventoryExchange extends _InventoryExchange {
-  const _$_InventoryExchange({required this.categories}) : super._();
+  const _$_InventoryExchange(
+      {required this.foreignEntityType,
+      required this.foreignEntityName,
+      required this.categories})
+      : super._();
 
+  @override
+  final String foreignEntityType;
+  @override
+  final String foreignEntityName;
   @override
   final List<InventoryExchangeCategory> categories;
 
   @override
   String toString() {
-    return 'InventoryExchange(categories: $categories)';
+    return 'InventoryExchange(foreignEntityType: $foreignEntityType, foreignEntityName: $foreignEntityName, categories: $categories)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _InventoryExchange &&
+            (identical(other.foreignEntityType, foreignEntityType) ||
+                const DeepCollectionEquality()
+                    .equals(other.foreignEntityType, foreignEntityType)) &&
+            (identical(other.foreignEntityName, foreignEntityName) ||
+                const DeepCollectionEquality()
+                    .equals(other.foreignEntityName, foreignEntityName)) &&
             (identical(other.categories, categories) ||
                 const DeepCollectionEquality()
                     .equals(other.categories, categories)));
@@ -124,7 +170,10 @@ class _$_InventoryExchange extends _InventoryExchange {
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(categories);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(foreignEntityType) ^
+      const DeepCollectionEquality().hash(foreignEntityName) ^
+      const DeepCollectionEquality().hash(categories);
 
   @JsonKey(ignore: true)
   @override
@@ -134,10 +183,16 @@ class _$_InventoryExchange extends _InventoryExchange {
 
 abstract class _InventoryExchange extends InventoryExchange {
   const factory _InventoryExchange(
-          {required List<InventoryExchangeCategory> categories}) =
+          {required String foreignEntityType,
+          required String foreignEntityName,
+          required List<InventoryExchangeCategory> categories}) =
       _$_InventoryExchange;
   const _InventoryExchange._() : super._();
 
+  @override
+  String get foreignEntityType => throw _privateConstructorUsedError;
+  @override
+  String get foreignEntityName => throw _privateConstructorUsedError;
   @override
   List<InventoryExchangeCategory> get categories =>
       throw _privateConstructorUsedError;

@@ -16,8 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$InventoryTearOff {
   const _$InventoryTearOff();
 
-  _Inventory call({required List<DPSMaterialCategory> categories}) {
+  _Inventory call(
+      {required String entityType,
+      required String entityName,
+      required List<DPSMaterialCategory> categories}) {
     return _Inventory(
+      entityType: entityType,
+      entityName: entityName,
       categories: categories,
     );
   }
@@ -28,6 +33,8 @@ const $Inventory = _$InventoryTearOff();
 
 /// @nodoc
 mixin _$Inventory {
+  String get entityType => throw _privateConstructorUsedError;
+  String get entityName => throw _privateConstructorUsedError;
   List<DPSMaterialCategory> get categories =>
       throw _privateConstructorUsedError;
 
@@ -40,7 +47,10 @@ mixin _$Inventory {
 abstract class $InventoryCopyWith<$Res> {
   factory $InventoryCopyWith(Inventory value, $Res Function(Inventory) then) =
       _$InventoryCopyWithImpl<$Res>;
-  $Res call({List<DPSMaterialCategory> categories});
+  $Res call(
+      {String entityType,
+      String entityName,
+      List<DPSMaterialCategory> categories});
 }
 
 /// @nodoc
@@ -53,9 +63,19 @@ class _$InventoryCopyWithImpl<$Res> implements $InventoryCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? entityType = freezed,
+    Object? entityName = freezed,
     Object? categories = freezed,
   }) {
     return _then(_value.copyWith(
+      entityType: entityType == freezed
+          ? _value.entityType
+          : entityType // ignore: cast_nullable_to_non_nullable
+              as String,
+      entityName: entityName == freezed
+          ? _value.entityName
+          : entityName // ignore: cast_nullable_to_non_nullable
+              as String,
       categories: categories == freezed
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
@@ -70,7 +90,10 @@ abstract class _$InventoryCopyWith<$Res> implements $InventoryCopyWith<$Res> {
           _Inventory value, $Res Function(_Inventory) then) =
       __$InventoryCopyWithImpl<$Res>;
   @override
-  $Res call({List<DPSMaterialCategory> categories});
+  $Res call(
+      {String entityType,
+      String entityName,
+      List<DPSMaterialCategory> categories});
 }
 
 /// @nodoc
@@ -84,9 +107,19 @@ class __$InventoryCopyWithImpl<$Res> extends _$InventoryCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? entityType = freezed,
+    Object? entityName = freezed,
     Object? categories = freezed,
   }) {
     return _then(_Inventory(
+      entityType: entityType == freezed
+          ? _value.entityType
+          : entityType // ignore: cast_nullable_to_non_nullable
+              as String,
+      entityName: entityName == freezed
+          ? _value.entityName
+          : entityName // ignore: cast_nullable_to_non_nullable
+              as String,
       categories: categories == freezed
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
@@ -97,20 +130,34 @@ class __$InventoryCopyWithImpl<$Res> extends _$InventoryCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Inventory extends _Inventory {
-  const _$_Inventory({required this.categories}) : super._();
+  const _$_Inventory(
+      {required this.entityType,
+      required this.entityName,
+      required this.categories})
+      : super._();
 
+  @override
+  final String entityType;
+  @override
+  final String entityName;
   @override
   final List<DPSMaterialCategory> categories;
 
   @override
   String toString() {
-    return 'Inventory(categories: $categories)';
+    return 'Inventory(entityType: $entityType, entityName: $entityName, categories: $categories)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Inventory &&
+            (identical(other.entityType, entityType) ||
+                const DeepCollectionEquality()
+                    .equals(other.entityType, entityType)) &&
+            (identical(other.entityName, entityName) ||
+                const DeepCollectionEquality()
+                    .equals(other.entityName, entityName)) &&
             (identical(other.categories, categories) ||
                 const DeepCollectionEquality()
                     .equals(other.categories, categories)));
@@ -118,7 +165,10 @@ class _$_Inventory extends _Inventory {
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(categories);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(entityType) ^
+      const DeepCollectionEquality().hash(entityName) ^
+      const DeepCollectionEquality().hash(categories);
 
   @JsonKey(ignore: true)
   @override
@@ -127,10 +177,16 @@ class _$_Inventory extends _Inventory {
 }
 
 abstract class _Inventory extends Inventory {
-  const factory _Inventory({required List<DPSMaterialCategory> categories}) =
-      _$_Inventory;
+  const factory _Inventory(
+      {required String entityType,
+      required String entityName,
+      required List<DPSMaterialCategory> categories}) = _$_Inventory;
   const _Inventory._() : super._();
 
+  @override
+  String get entityType => throw _privateConstructorUsedError;
+  @override
+  String get entityName => throw _privateConstructorUsedError;
   @override
   List<DPSMaterialCategory> get categories =>
       throw _privateConstructorUsedError;

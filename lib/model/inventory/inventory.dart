@@ -21,11 +21,16 @@ part 'inventory.freezed.dart';
 @freezed
 class Inventory with _$Inventory {
   const Inventory._();
-  const factory Inventory({required List<DPSMaterialCategory> categories}) =
-      _Inventory;
+  const factory Inventory(
+      {required String entityType,
+      required String entityName,
+      required List<DPSMaterialCategory> categories}) = _Inventory;
 
   factory Inventory.fromJson(Map<String, dynamic> json) {
-    return Inventory(categories: parseCategories(json));
+    return Inventory(
+        categories: parseCategories(json),
+        entityType: json["entity_type"],
+        entityName: json["entity_name"]);
   }
 }
 
