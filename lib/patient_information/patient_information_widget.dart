@@ -103,13 +103,12 @@ class _PatientInformationWidgetState extends State<PatientInformationWidget> {
                 child: widget.appliedMeasuresWidget,
               )
             : Container(),
-        if (widget.patient.isAlive)
-          (widget.triageChooserWidget != null)
-              ? Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: widget.triageChooserWidget,
-                )
-              : Container(),
+        (widget.triageChooserWidget != null)
+            ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: widget.triageChooserWidget,
+              )
+            : Container(),
         if (widget.patient.isAlive)
           (widget.availableMeasuresWidget != null)
               ? Padding(

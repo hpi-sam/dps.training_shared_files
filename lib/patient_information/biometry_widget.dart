@@ -67,6 +67,7 @@ class Biometry extends StatelessWidget {
   /// better displaying purposes.
   Map<String, String> _getPatientBiometry() {
     return {
+      LocalizedStrings.biometryWidget_name: patient.name,
       LocalizedStrings.biometryWidget_address: patient.address,
       LocalizedStrings.biometryWidget_birthDate:
           _formatBirthDate(patient.birth_date, patient.age),

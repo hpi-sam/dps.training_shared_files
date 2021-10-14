@@ -6,6 +6,7 @@ abstract class LocalizedStrings {
   static late String languageCode;
 
   static late String biometryWidget_title;
+  static late String biometryWidget_name;
   static late String biometryWidget_address;
   static late String biometryWidget_biometrics;
   static late String biometryWidget_birthDate;
@@ -57,6 +58,7 @@ abstract class LocalizedStrings {
   static void buildDefaultGermanStrings() {
     {
       languageCode = "de";
+      biometryWidget_name = "Name";
       biometryWidget_title = "Persönliche Daten";
       biometryWidget_address = "Adresse: ";
       biometryWidget_biometrics = "Biometrie: ";
