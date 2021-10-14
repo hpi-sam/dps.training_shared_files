@@ -75,28 +75,18 @@ class AvailableMeasure with _$AvailableMeasure {
     required String name,
     required String id,
     required String image,
-    required int available_amount,
     required int duration,
-    required bool is_applicable,
     required bool requires_two_helpers,
-    required bool are_required_measures_fulfilled,
-    required List<AvailableMeasurePrerequisite> prerequisites,
   }) = _AvailableMeasure;
 
   factory AvailableMeasure.fromJson(Map<String, dynamic> json) {
     return AvailableMeasure(
-        name: json["name"],
-        id: json["id"],
-        image: serverURL + json["image"]["small"],
-        available_amount: json["available_amount"],
-        duration: json["running_duration"],
-        is_applicable: json["is_applicable"],
-        requires_two_helpers: json["requires_two_helpers"],
-        are_required_measures_fulfilled:
-            json["are_required_measures_fulfilled"],
-        prerequisites: parseAvailableMeasuresPrerequisites(
-            json) //parseAvailableMeasuresPrerequisites(json),
-        );
+      name: json["name"],
+      id: json["id"],
+      image: serverURL + json["image"]["small"],
+      duration: json["running_duration"],
+      requires_two_helpers: json["requires_two_helpers"],
+    );
   }
 }
 
