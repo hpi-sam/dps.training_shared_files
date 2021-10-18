@@ -56,8 +56,6 @@ class InventoryExchange with _$InventoryExchange {
             ownInventory.categories[i].getMaterial(materialID: materialID);
         DPSMaterial? foreignMaterial =
             foreignInventory.categories[i].getMaterial(materialID: materialID);
-        InventoryExchangeMaterial? exchangeMaterial =
-            oldExchange?.getItem(materialID: materialID);
 
         if (ownMaterial != null) {
           exchangeMaterialList.add(InventoryExchangeMaterial(

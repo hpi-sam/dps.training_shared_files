@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
 import 'package:bpmanv_app_sharedFiles/model/inventory/inventory.dart';
-import 'package:bpmanv_app_sharedFiles/model/inventory_exchange/inventory_exchange.dart';
 
 final own_inventory_mock = {
   "entitytype": "Helfer",
@@ -265,6 +264,7 @@ Future<Inventory> fetchOwnInventoryRoute({required int helperNr}) async {
     final response = await Session.get(ownInventoryDataUrl(helperNr: helperNr));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+      print(responseJson.toString());
       return Inventory.fromJson(responseJson);
     } else {
       throw Exception(
@@ -282,7 +282,13 @@ Future<Inventory> fetchForeignInventoryRoute({required String entityID}) async {
         await Session.get(foreignInventoryDataUrl(entityID: entityID));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      return Inventory.fromJson(responseJson);
+      if (responseJson != null)
+        return Inventory.fromJson(responseJson);
+      else
+        throw Exception(
+            "Error ${response.statusCode} - Das Inventar der Entität ${entityID} kann nicht geladen werden. "
+            "Womöglich ist diese Entität nicht in der Datenbank vorhanden. Bitte"
+            " stelle sicher, dass der gescannte QR-Code korrekt ist.");
     } else {
       if (response.statusCode == 404) {
         // error is in German because it might be relevant to the player.

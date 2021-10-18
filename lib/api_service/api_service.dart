@@ -7,7 +7,6 @@ import 'package:bpmanv_app_sharedFiles/api_service/session_routes.dart';
 // Package imports:
 import 'package:bpmanv_app_sharedFiles/api_service/trainer_routes.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
-import 'package:bpmanv_app_sharedFiles/model/inventory_exchange/inventory_exchange.dart';
 import 'package:intl/intl.dart';
 
 import 'inventory_routes.dart';
