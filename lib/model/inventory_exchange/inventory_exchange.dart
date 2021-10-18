@@ -90,21 +90,6 @@ class InventoryExchange with _$InventoryExchange {
         foreignEntityType: foreignInventory.entityType);
   }
 
-  // /// converts to a JSON as specified in API-Specification
-  // Map<String, dynamic> toJson() {
-  //   List<InventoryExchangeMaterial> changedMaterials = [];
-  //   for (int i = 0; i < categories.length; i++) {
-  //     for (int j = 0; j < categories[i].items.length; j++) {
-  //       if (categories[i].items[j].changedAmount != 0) {
-  //         changedMaterials.add(categories[i].items[j]);
-  //       }
-  //     }
-  //   }
-  //   return {
-  //     "materials": changedMaterials.map((items) => items.toJson()).toList()
-  //   };
-  // }
-
   /// Returns the item with [materialID] in this InventoryExchange.
   ///
   /// Returns null if no item with this [materialID] exists.
@@ -116,50 +101,6 @@ class InventoryExchange with _$InventoryExchange {
     }
     return null;
   }
-
-  // /// Returns a copy [InventoryExchange] with the amount of material [materialID]
-  // /// by value given in [amount].
-  // InventoryExchange copyWithMaterialAmount(String materialID, int amount) {
-  //   List<InventoryExchangeCategory> categories = [];
-  //   for (InventoryExchangeCategory category in this.categories) {
-  //     List<InventoryExchangeMaterial> items = [];
-  //     for (InventoryExchangeMaterial item in category.items) {
-  //       if (item.id == materialID) {
-  //         items.add(item.copyWith(changedAmount: amount));
-  //       } else {
-  //         items.add(item);
-  //       }
-  //     }
-  //     categories.add(category.copyWith(items: items));
-  //   }
-  //   return InventoryExchange(
-  //       categories: categories,
-  //       foreignEntityType: this.foreignEntityType,
-  //       foreignEntityName: this.foreignEntityName);}
-
-  // /// Returns true if all items in this [InventoryExchange] have a [changedAmount] of 0. Returns
-  // /// false if at least one item has a [changedAmount] less than or greater than 0.
-  // bool isUnchanged() {
-  //   for (int i = 0; i < categories.length; i++) {
-  //     for (int j = 0; j < categories[i].items.length; j++) {
-  //       if (categories[i].items[j].changedAmount != 0) return false;
-  //     }
-  //   }
-  //   return true;
-  // }
-
-  // /// Returns true if this [InventoryExchange] is valid. An [InventoryExchange] is
-  // /// valid when it will not result in a negative amount of items in both inventories.
-  // bool isValid() {
-  //   for (int i = 0; i < categories.length; i++) {
-  //     for (int j = 0; j < categories[i].items.length; j++) {
-  //       final material = categories[i].items[j];
-  //       if (material.ownAmount + material.changedAmount < 0 ||
-  //           material.foreignAmount - material.changedAmount < 0) return false;
-  //     }
-  //   }
-  //   return true;
-  // }
 
   /// Returns true if this [InventoryExchange] has all the items that [inventory]
   /// has. Returns false if [inventory] has an item, that this [InventoryExchange]
