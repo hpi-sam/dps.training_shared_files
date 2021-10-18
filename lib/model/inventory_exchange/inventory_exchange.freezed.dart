@@ -371,8 +371,7 @@ class _$InventoryExchangeMaterialTearOff {
       required String image_small,
       required String image_original,
       required int ownAmount,
-      required int foreignAmount,
-      int changedAmount = 0}) {
+      required int foreignAmount}) {
     return _InventoryExchangeMaterial(
       id: id,
       name: name,
@@ -380,7 +379,6 @@ class _$InventoryExchangeMaterialTearOff {
       image_original: image_original,
       ownAmount: ownAmount,
       foreignAmount: foreignAmount,
-      changedAmount: changedAmount,
     );
   }
 }
@@ -396,7 +394,6 @@ mixin _$InventoryExchangeMaterial {
   String get image_original => throw _privateConstructorUsedError;
   int get ownAmount => throw _privateConstructorUsedError;
   int get foreignAmount => throw _privateConstructorUsedError;
-  int get changedAmount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $InventoryExchangeMaterialCopyWith<InventoryExchangeMaterial> get copyWith =>
@@ -414,8 +411,7 @@ abstract class $InventoryExchangeMaterialCopyWith<$Res> {
       String image_small,
       String image_original,
       int ownAmount,
-      int foreignAmount,
-      int changedAmount});
+      int foreignAmount});
 }
 
 /// @nodoc
@@ -435,7 +431,6 @@ class _$InventoryExchangeMaterialCopyWithImpl<$Res>
     Object? image_original = freezed,
     Object? ownAmount = freezed,
     Object? foreignAmount = freezed,
-    Object? changedAmount = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -462,10 +457,6 @@ class _$InventoryExchangeMaterialCopyWithImpl<$Res>
           ? _value.foreignAmount
           : foreignAmount // ignore: cast_nullable_to_non_nullable
               as int,
-      changedAmount: changedAmount == freezed
-          ? _value.changedAmount
-          : changedAmount // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -483,8 +474,7 @@ abstract class _$InventoryExchangeMaterialCopyWith<$Res>
       String image_small,
       String image_original,
       int ownAmount,
-      int foreignAmount,
-      int changedAmount});
+      int foreignAmount});
 }
 
 /// @nodoc
@@ -507,7 +497,6 @@ class __$InventoryExchangeMaterialCopyWithImpl<$Res>
     Object? image_original = freezed,
     Object? ownAmount = freezed,
     Object? foreignAmount = freezed,
-    Object? changedAmount = freezed,
   }) {
     return _then(_InventoryExchangeMaterial(
       id: id == freezed
@@ -534,10 +523,6 @@ class __$InventoryExchangeMaterialCopyWithImpl<$Res>
           ? _value.foreignAmount
           : foreignAmount // ignore: cast_nullable_to_non_nullable
               as int,
-      changedAmount: changedAmount == freezed
-          ? _value.changedAmount
-          : changedAmount // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -550,8 +535,7 @@ class _$_InventoryExchangeMaterial extends _InventoryExchangeMaterial {
       required this.image_small,
       required this.image_original,
       required this.ownAmount,
-      required this.foreignAmount,
-      this.changedAmount = 0})
+      required this.foreignAmount})
       : super._();
 
   @override
@@ -566,13 +550,10 @@ class _$_InventoryExchangeMaterial extends _InventoryExchangeMaterial {
   final int ownAmount;
   @override
   final int foreignAmount;
-  @JsonKey(defaultValue: 0)
-  @override
-  final int changedAmount;
 
   @override
   String toString() {
-    return 'InventoryExchangeMaterial(id: $id, name: $name, image_small: $image_small, image_original: $image_original, ownAmount: $ownAmount, foreignAmount: $foreignAmount, changedAmount: $changedAmount)';
+    return 'InventoryExchangeMaterial(id: $id, name: $name, image_small: $image_small, image_original: $image_original, ownAmount: $ownAmount, foreignAmount: $foreignAmount)';
   }
 
   @override
@@ -594,10 +575,7 @@ class _$_InventoryExchangeMaterial extends _InventoryExchangeMaterial {
                     .equals(other.ownAmount, ownAmount)) &&
             (identical(other.foreignAmount, foreignAmount) ||
                 const DeepCollectionEquality()
-                    .equals(other.foreignAmount, foreignAmount)) &&
-            (identical(other.changedAmount, changedAmount) ||
-                const DeepCollectionEquality()
-                    .equals(other.changedAmount, changedAmount)));
+                    .equals(other.foreignAmount, foreignAmount)));
   }
 
   @override
@@ -608,8 +586,7 @@ class _$_InventoryExchangeMaterial extends _InventoryExchangeMaterial {
       const DeepCollectionEquality().hash(image_small) ^
       const DeepCollectionEquality().hash(image_original) ^
       const DeepCollectionEquality().hash(ownAmount) ^
-      const DeepCollectionEquality().hash(foreignAmount) ^
-      const DeepCollectionEquality().hash(changedAmount);
+      const DeepCollectionEquality().hash(foreignAmount);
 
   @JsonKey(ignore: true)
   @override
@@ -626,8 +603,7 @@ abstract class _InventoryExchangeMaterial extends InventoryExchangeMaterial {
       required String image_small,
       required String image_original,
       required int ownAmount,
-      required int foreignAmount,
-      int changedAmount}) = _$_InventoryExchangeMaterial;
+      required int foreignAmount}) = _$_InventoryExchangeMaterial;
   const _InventoryExchangeMaterial._() : super._();
 
   @override
@@ -642,8 +618,6 @@ abstract class _InventoryExchangeMaterial extends InventoryExchangeMaterial {
   int get ownAmount => throw _privateConstructorUsedError;
   @override
   int get foreignAmount => throw _privateConstructorUsedError;
-  @override
-  int get changedAmount => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$InventoryExchangeMaterialCopyWith<_InventoryExchangeMaterial>

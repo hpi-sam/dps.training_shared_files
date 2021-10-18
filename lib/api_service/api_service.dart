@@ -79,15 +79,17 @@ class BackendRoute {
     return BackendRoute(foreignInventoryDataUrl(entityID: entityID), f, p);
   }
 
-  factory BackendRoute.saveExchangeInventory(
+  factory BackendRoute.saveInventoryChanges(
       {required String entityID,
       required int helperNr,
-      required InventoryExchange inventoryExchange}) {
-    Function f = saveExchangeInventoryRoute;
+      required String materialID,
+      required int amount}) {
+    Function f = saveInventoryChangesRoute;
     Map<Symbol, dynamic> p = symbolizeKeys({
       "entityID": entityID,
       "helperNr": helperNr,
-      "inventoryExchange": inventoryExchange
+      "materialID": materialID,
+      "amount": amount
     });
     return BackendRoute(
         inventoryExchangeUrl(entityID: entityID, helperNr: helperNr), f, p);

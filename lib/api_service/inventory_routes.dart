@@ -91,10 +91,7 @@ final own_inventory_mock = {
 final foreign_inventory_mock = {
   "entity_type": "Materialbehältnis",
   "categories": [
-    {
-      "name": "Immobilisation",
-      "materials": []
-    },
+    {"name": "Immobilisation", "materials": []},
     {
       "name": "Atmung",
       "materials": [
@@ -203,7 +200,8 @@ final foreign_inventory_mock = {
           "name": "Wundversorgung klein",
           "image": {
             "original": "/images/initial/wundversorgung_klein.JPG",
-            "small": "/images/initial/wundversorgung_klein.JPG.256x256_q85_crop.jpg"
+            "small":
+                "/images/initial/wundversorgung_klein.JPG.256x256_q85_crop.jpg"
           },
           "amount": 3,
           "duration": 0
@@ -213,7 +211,8 @@ final foreign_inventory_mock = {
           "name": "Wundversorgung groß",
           "image": {
             "original": "/images/initial/wundversorgung_gross.JPG",
-            "small": "/images/initial/wundversorgung_gross.JPG.256x256_q85_crop.jpg"
+            "small":
+                "/images/initial/wundversorgung_gross.JPG.256x256_q85_crop.jpg"
           },
           "amount": 4,
           "duration": 0
@@ -303,15 +302,24 @@ Future<Inventory> fetchForeignInventoryRoute({required String entityID}) async {
 
 /// sends request for material exchange. Returns true if successful,
 /// false if the requested amount exceeds the available amount of corresponding inventory
-Future<bool> saveExchangeInventoryRoute(
+Future<bool> saveInventoryChangesRoute(
     {required String entityID,
     required int helperNr,
-    required InventoryExchange inventoryExchange}) async {
+    required String materialID,
+    required int amount}) async {
   try {
-    var inventory = inventoryExchange.toJson();
+    var json = {
+      "materials": [
+        {
+          "id": materialID,
+          "amount": amount,
+        }
+      ]
+    };
+    print(json.toString());
     final response = await Session.post(
         inventoryExchangeUrl(entityID: entityID, helperNr: helperNr),
-        jsonEncode(inventory));
+        jsonEncode(json));
 
     if (response.statusCode == 200)
       return true;
