@@ -315,12 +315,8 @@ Future<bool> saveInventoryChangesRoute(
     required int amount}) async {
   try {
     var json = {
-      "materials": [
-        {
-          "id": materialID,
-          "amount": amount,
-        }
-      ]
+      "id": materialID,
+      "amount": amount,
     };
     print(json.toString());
     final response = await Session.post(
