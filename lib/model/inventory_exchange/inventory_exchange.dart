@@ -79,6 +79,10 @@ class InventoryExchange with _$InventoryExchange {
           ));
         }
       });
+      exchangeMaterialList
+          .sort((InventoryExchangeMaterial a, InventoryExchangeMaterial b) {
+        return a.name.toLowerCase().compareTo(b.name.toLowerCase());
+      });
       categoryList.add(InventoryExchangeCategory(
           name: ownInventory.categories[i].name, items: exchangeMaterialList));
     }

@@ -60,10 +60,14 @@ class AvailableMeasuresCategory with _$AvailableMeasuresCategory {
 /// list of [AvailableMeasure].
 List<AvailableMeasure> parseAvailableMeasuresForCategory(
     Map<String, dynamic> json) {
-  final parsed = json["measures"].cast<Map<String, dynamic>>();
-  return parsed
+  final List parsedjson = json["measures"].cast<Map<String, dynamic>>();
+  List<AvailableMeasure> parsed = parsedjson
       .map<AvailableMeasure>((json) => AvailableMeasure.fromJson(json))
       .toList();
+  parsed.sort((AvailableMeasure a, AvailableMeasure b) {
+    return a.name.toLowerCase().compareTo(b.name.toLowerCase());
+  });
+  return parsed;
 }
 
 /// Model that contains all relevant information of a single [AvailableMeasure].

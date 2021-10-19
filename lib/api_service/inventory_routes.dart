@@ -318,7 +318,6 @@ Future<bool> saveInventoryChangesRoute(
       "id": materialID,
       "amount": amount,
     };
-    print(json.toString());
     final response = await Session.post(
         inventoryExchangeUrl(entityID: entityID, helperNr: helperNr),
         jsonEncode(json));
