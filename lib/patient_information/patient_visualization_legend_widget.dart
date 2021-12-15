@@ -1,8 +1,7 @@
 // Flutter imports:
 // Project imports:
-import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
-import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:dps_training.shared_files/l10n/localizedstrings.dart';
+import 'package:dps_training.shared_files/model/patient/patient.dart';
 import 'package:flutter/material.dart';
 
 /// Displays a legend of the icons used for injuries in the patient visualization
@@ -27,7 +26,7 @@ class PatientVisualizationLegend extends StatelessWidget {
                   .any((element) => element["injury_type"] == "bleeding")
               ? Row(children: [
                   Image.asset('assets/icons/bleeding_icon.png',
-                      package: 'bpmanv_app_sharedFiles',
+                      package: 'dps_training.shared_files',
                       height: iconSize,
                       width: iconSize),
                   Container(
@@ -47,7 +46,7 @@ class PatientVisualizationLegend extends StatelessWidget {
                   (element) => element["injury_type"] == "critical bleeding")
               ? Row(children: [
                   Image.asset('assets/icons/critical_bleeding_icon.png',
-                      package: 'bpmanv_app_sharedFiles',
+                      package: 'dps_training.shared_files',
                       height: iconSize,
                       width: iconSize),
                   Container(
@@ -68,7 +67,7 @@ class PatientVisualizationLegend extends StatelessWidget {
                   .any((element) => element["injury_type"] == "fracture")
               ? Row(children: [
                   Image.asset('assets/icons/fracture_icon.png',
-                      package: 'bpmanv_app_sharedFiles',
+                      package: 'dps_training.shared_files',
                       height: iconSize,
                       width: iconSize),
                   Container(

@@ -1,5 +1,5 @@
 // Package imports:
-import 'package:bpmanv_app_sharedFiles/model/running_measure/running_measure.dart';
+import 'package:dps_training.shared_files/model/running_measure/running_measure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'helper.freezed.dart';

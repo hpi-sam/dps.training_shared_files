@@ -2,10 +2,10 @@
 import 'dart:convert';
 
 // Project imports:
-import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
-import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
-import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
-import 'package:bpmanv_app_sharedFiles/model/running_measure/running_measure.dart';
+import 'package:dps_training.shared_files/api_service/session.dart';
+import 'package:dps_training.shared_files/api_service/urls.dart';
+import 'package:dps_training.shared_files/model/patient/patient.dart';
+import 'package:dps_training.shared_files/model/running_measure/running_measure.dart';
 
 Future<Patient> fetchPatientMock({required String dpsCode}) async {
   Map<String, dynamic> patientJson = {
@@ -84,8 +84,8 @@ Future<Patient> fetchPatientMock({required String dpsCode}) async {
 Future<Patient> fetchPatientRoute(
     {required String dpsCode, required int helperNr}) async {
   try {
-    final response = await Session.get(
-        patientDataUrl(dpsCode: dpsCode, helperNr: helperNr));
+    final response =
+        await Session.get(patientDataUrl(dpsCode: dpsCode, helperNr: helperNr));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
       return Patient.fromJson(responseJson, dpsCode);

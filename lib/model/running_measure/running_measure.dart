@@ -1,4 +1,4 @@
-import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
+import 'package:dps_training.shared_files/api_service/urls.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'running_measure.freezed.dart';
@@ -30,8 +30,7 @@ class RunningMeasure with _$RunningMeasure {
     required int finish_time,
     required bool requires_two_helpers,
   }) = _RunningMeasure;
-  factory RunningMeasure.fromJson(
-      {required Map<String, dynamic> json}) {
+  factory RunningMeasure.fromJson({required Map<String, dynamic> json}) {
     return RunningMeasure(
         dpsCode: json["patient_dps_code"],
         name: json["name"],

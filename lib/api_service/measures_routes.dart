@@ -2,11 +2,11 @@
 import 'dart:convert';
 
 // Project imports:
-import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
-import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
-import 'package:bpmanv_app_sharedFiles/model/applied_measures/applied_measures.dart';
-import 'package:bpmanv_app_sharedFiles/model/available_measures/available_measures.dart';
-import 'package:bpmanv_app_sharedFiles/model/running_measure/running_measure.dart';
+import 'package:dps_training.shared_files/api_service/session.dart';
+import 'package:dps_training.shared_files/api_service/urls.dart';
+import 'package:dps_training.shared_files/model/applied_measures/applied_measures.dart';
+import 'package:dps_training.shared_files/model/available_measures/available_measures.dart';
+import 'package:dps_training.shared_files/model/running_measure/running_measure.dart';
 
 var mock_data_applied = {
   "applied_measures": [
@@ -197,8 +197,7 @@ Future<AppliedMeasures> fetchAppliedMeasuresMock(
 Future<AppliedMeasures> fetchAppliedMeasuresRoute(
     {required String dpsCode}) async {
   try {
-    final response =
-        await Session.get(appliedMeasuresUrl(dpsCode: dpsCode));
+    final response = await Session.get(appliedMeasuresUrl(dpsCode: dpsCode));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
       return AppliedMeasures.fromJson(responseJson);

@@ -2,7 +2,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
-import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
+import 'package:dps_training.shared_files/api_service/urls.dart';
 
 part 'inventory.freezed.dart';
 
