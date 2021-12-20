@@ -1,16 +1,15 @@
 ![CI](https://github.com/hpi-sam/BPMANV-App-SharedFiles/workflows/Continuous%20Integration/badge.svg)
 
-# Digital MCI Simulation - Shared Files
+# dps.training_shared_files
 
-This repository contains Widgets, data models, API-Routes and utility functions for both the [trainer](https://github.com/hpi-sam/dps_training.trainer) and the [helper](https://github.com/hpi-sam/dps_training.player) app of our digital MCI simulation.
+This repository contains Widgets, data models, API-Routes and utility functions for both the [trainer](https://github.com/hpi-sam/dps.training_trainer) and the [helper](https://github.com/hpi-sam/dps.training_player) app of our digital MCI simulation.
 
 ## Project repositories
 This digital MCI simulation is distributed over several repositories. They are:
-- [BP2020HG1](https://github.com/hpi-sam/BP2020HG1): Documentation of processes, decisions, documents and protocols that concern both Front- and Backend from the bachelor project - not updated anymore. 
-- [dps_training.server](https://github.com/hpi-sam/dps.training-server): The backend of the MCI simulation, written in Python with the Django Framework.
-- [dps_training.player](https://github.com/hpi-sam/dps_training.player): The Frontend of the MCI simulation for helpers, written in Dart with the Flutter Framework.
-- [dps_training.trainer](https://github.com/hpi-sam/dps_training.trainer): The Frontend of the MCI simulation for trainers, written in Dart with the Flutter Framework.
-- [dps_training.shared_files](https://github.com/hpi-sam/dps_training.shared_files): Shared Widgets, data models and functions that both the trainer and the helper app use.
+- [dps.training_server](https://github.com/hpi-sam/dps.training-server): The backend of the MCI simulation, written in Python with the Django Framework.
+- [dps.training_player](https://github.com/hpi-sam/dps.training_player): The Frontend of the MCI simulation for helpers, written in Dart with the Flutter Framework.
+- [dps.training_trainer](https://github.com/hpi-sam/dps.training_trainer): The Frontend of the MCI simulation for trainers, written in Dart with the Flutter Framework.
+- [dps.training_shared_files](https://github.com/hpi-sam/dps.training_shared_files): Shared Widgets, data models and functions that both the trainer and the helper app use.
 
 ## Usage
 
@@ -36,7 +35,7 @@ This package is developed on the flutter stable channel (default channel). To sw
 
 ## Design and architectural decisions
 
-An overview of the important decisions we made during development can be found in the [wiki](https://github.com/hpi-sam/BPMANV-App/wiki). If you want to start contributing to this project, we strongly recommend getting familiar with [Cubit](https://github.com/hpi-sam/BPMANV-App/wiki/State-management-with-Cubit) for state management. 
+If you want to start contributing to this project, we strongly recommend getting familiar with [Cubit](https://github.com/hpi-sam/BPMANV-App/wiki/State-management-with-Cubit) for state management. 
 
 ### Pre-Commit Hook
 
