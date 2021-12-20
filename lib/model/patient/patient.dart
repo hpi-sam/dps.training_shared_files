@@ -1,18 +1,10 @@
 // Flutter imports:
 import 'package:flutter/foundation.dart';
-
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'patient.freezed.dart';
 part 'patient.g.dart';
-
-enum InjuryType { FRACTURE, BLEEDING, CRITICAL_BLEEDING }
-
-/// Returns an [InjuryType] that matches the input [str].
-InjuryType injuryTypeFromString(String str) {
-  return InjuryType.values.firstWhere((e) => describeEnum(e) == str);
-}
 
 /// Defines the patient data model.
 /// The package freezed is used to auto-generate the code for the immutable data classes annotated
@@ -29,15 +21,18 @@ InjuryType injuryTypeFromString(String str) {
 @freezed
 class Patient with _$Patient {
   const Patient._();
-  const factory Patient({
-    required int id,
-    required PatientCurrentPhase currentPhase,
-    required PatientFirstImpression firstImpression,
-    required PatientPersonalData personalData,
-    required PatientInjuries injuries,
-    required String injuryDescription,
-    required String triageCategory,
-  }) = _Patient;
+  const factory Patient(
+      {required String dpsCode,
+      required PatientCurrentPhase currentPhase,
+      required PatientFirstImpression firstImpression,
+      required PatientPersonalData personalData,
+      required PatientInjuries injuries,
+      required String injuryDescription,
+      required String bodyCheckInformation,
+      required String situationOfDiscovery,
+      required String triageCategory,
+      required bool isCheckedOut,
+      required bool isAlive}) = _Patient;
 
   get name => personalData.name;
   get address => personalData.address;
@@ -47,10 +42,10 @@ class Patient with _$Patient {
   get biometrics => personalData.biometrics;
 
   /// Creates a [Patient] from the given [json]. The [json] must conform to our
-  /// API specification (Todo: link API specification document)
-  factory Patient.fromJson(Map<String, dynamic> json, int patientID) {
+  /// API specification (https://github.com/hpi-sam/BPMANV-Server/blob/dev/api_spezification.md)
+  factory Patient.fromJson(Map<String, dynamic> json, String dpsCode) {
     return Patient(
-        id: patientID,
+        dpsCode: dpsCode,
         currentPhase: PatientCurrentPhase.fromJson(json["current_phase"]),
         firstImpression: PatientFirstImpression.fromJson(
             json["static_data"]["first_impression"]),
@@ -60,7 +55,11 @@ class Patient with _$Patient {
             // a bit hacky to work with lists, see: https://github.com/rrousselGit/freezed/issues/173
             {'injuries': json["static_data"]["injuries"]}),
         injuryDescription: json["static_data"]["injury_description"],
-        triageCategory: json["triage"]);
+        bodyCheckInformation: json["static_data"]["body_check_information"],
+        situationOfDiscovery: json["static_data"]["situation_of_discovery"],
+        triageCategory: json["triage"],
+        isCheckedOut: json["is_checked_out"],
+        isAlive: json["is_alive"]);
   }
 }
 
@@ -216,25 +215,25 @@ class PatientInjuries with _$PatientInjuries {
   factory PatientInjuries.fromJson(Map<String, dynamic> json) =>
       _$PatientInjuriesFromJson(json);
 
-  List<InjuryType> _injuriesOf(String location) {
-    List<InjuryType> result = [];
+  List<String> _injuriesOf(String location) {
+    List<String> result = [];
 
     injuries.forEach((injury) {
       if (injury["location"] == location) {
-        result.add(injuryTypeFromString(injury["injury_type"]));
+        result.add(injury["injury_type"]);
       }
     });
 
     return result;
   }
 
-  get head => _injuriesOf("HEAD");
-  get left_arm => _injuriesOf("LEFT_ARM");
-  get right_arm => _injuriesOf("RIGHT_ARM");
-  get thorax => _injuriesOf("THORAX");
-  get abdomen => _injuriesOf("ABDOMEN");
-  get pelvis => _injuriesOf("PELVIS");
-  get left_leg => _injuriesOf("LEFT_LEG");
-  get right_leg => _injuriesOf("RIGHT_LEG");
-  get neck => _injuriesOf("NECK");
+  get head => _injuriesOf("head");
+  get left_arm => _injuriesOf("left arm");
+  get right_arm => _injuriesOf("right arm");
+  get thorax => _injuriesOf("thorax");
+  get abdomen => _injuriesOf("abdomen");
+  get pelvis => _injuriesOf("pelvis");
+  get left_leg => _injuriesOf("left leg");
+  get right_leg => _injuriesOf("right leg");
+  get neck => _injuriesOf("neck");
 }

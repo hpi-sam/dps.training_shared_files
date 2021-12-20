@@ -316,6 +316,8 @@ class _$AvailableMeasureTearOff {
       required int available_amount,
       required int duration,
       required bool is_applicable,
+      required bool requires_two_helpers,
+      required bool are_required_measures_fulfilled,
       required List<AvailableMeasurePrerequisite> prerequisites}) {
     return _AvailableMeasure(
       name: name,
@@ -324,6 +326,8 @@ class _$AvailableMeasureTearOff {
       available_amount: available_amount,
       duration: duration,
       is_applicable: is_applicable,
+      requires_two_helpers: requires_two_helpers,
+      are_required_measures_fulfilled: are_required_measures_fulfilled,
       prerequisites: prerequisites,
     );
   }
@@ -340,6 +344,9 @@ mixin _$AvailableMeasure {
   int get available_amount => throw _privateConstructorUsedError;
   int get duration => throw _privateConstructorUsedError;
   bool get is_applicable => throw _privateConstructorUsedError;
+  bool get requires_two_helpers => throw _privateConstructorUsedError;
+  bool get are_required_measures_fulfilled =>
+      throw _privateConstructorUsedError;
   List<AvailableMeasurePrerequisite> get prerequisites =>
       throw _privateConstructorUsedError;
 
@@ -360,6 +367,8 @@ abstract class $AvailableMeasureCopyWith<$Res> {
       int available_amount,
       int duration,
       bool is_applicable,
+      bool requires_two_helpers,
+      bool are_required_measures_fulfilled,
       List<AvailableMeasurePrerequisite> prerequisites});
 }
 
@@ -380,6 +389,8 @@ class _$AvailableMeasureCopyWithImpl<$Res>
     Object? available_amount = freezed,
     Object? duration = freezed,
     Object? is_applicable = freezed,
+    Object? requires_two_helpers = freezed,
+    Object? are_required_measures_fulfilled = freezed,
     Object? prerequisites = freezed,
   }) {
     return _then(_value.copyWith(
@@ -407,6 +418,15 @@ class _$AvailableMeasureCopyWithImpl<$Res>
           ? _value.is_applicable
           : is_applicable // ignore: cast_nullable_to_non_nullable
               as bool,
+      requires_two_helpers: requires_two_helpers == freezed
+          ? _value.requires_two_helpers
+          : requires_two_helpers // ignore: cast_nullable_to_non_nullable
+              as bool,
+      are_required_measures_fulfilled: are_required_measures_fulfilled ==
+              freezed
+          ? _value.are_required_measures_fulfilled
+          : are_required_measures_fulfilled // ignore: cast_nullable_to_non_nullable
+              as bool,
       prerequisites: prerequisites == freezed
           ? _value.prerequisites
           : prerequisites // ignore: cast_nullable_to_non_nullable
@@ -429,6 +449,8 @@ abstract class _$AvailableMeasureCopyWith<$Res>
       int available_amount,
       int duration,
       bool is_applicable,
+      bool requires_two_helpers,
+      bool are_required_measures_fulfilled,
       List<AvailableMeasurePrerequisite> prerequisites});
 }
 
@@ -451,6 +473,8 @@ class __$AvailableMeasureCopyWithImpl<$Res>
     Object? available_amount = freezed,
     Object? duration = freezed,
     Object? is_applicable = freezed,
+    Object? requires_two_helpers = freezed,
+    Object? are_required_measures_fulfilled = freezed,
     Object? prerequisites = freezed,
   }) {
     return _then(_AvailableMeasure(
@@ -478,6 +502,15 @@ class __$AvailableMeasureCopyWithImpl<$Res>
           ? _value.is_applicable
           : is_applicable // ignore: cast_nullable_to_non_nullable
               as bool,
+      requires_two_helpers: requires_two_helpers == freezed
+          ? _value.requires_two_helpers
+          : requires_two_helpers // ignore: cast_nullable_to_non_nullable
+              as bool,
+      are_required_measures_fulfilled: are_required_measures_fulfilled ==
+              freezed
+          ? _value.are_required_measures_fulfilled
+          : are_required_measures_fulfilled // ignore: cast_nullable_to_non_nullable
+              as bool,
       prerequisites: prerequisites == freezed
           ? _value.prerequisites
           : prerequisites // ignore: cast_nullable_to_non_nullable
@@ -495,6 +528,8 @@ class _$_AvailableMeasure extends _AvailableMeasure {
       required this.available_amount,
       required this.duration,
       required this.is_applicable,
+      required this.requires_two_helpers,
+      required this.are_required_measures_fulfilled,
       required this.prerequisites})
       : super._();
 
@@ -511,11 +546,15 @@ class _$_AvailableMeasure extends _AvailableMeasure {
   @override
   final bool is_applicable;
   @override
+  final bool requires_two_helpers;
+  @override
+  final bool are_required_measures_fulfilled;
+  @override
   final List<AvailableMeasurePrerequisite> prerequisites;
 
   @override
   String toString() {
-    return 'AvailableMeasure(name: $name, id: $id, image: $image, available_amount: $available_amount, duration: $duration, is_applicable: $is_applicable, prerequisites: $prerequisites)';
+    return 'AvailableMeasure(name: $name, id: $id, image: $image, available_amount: $available_amount, duration: $duration, is_applicable: $is_applicable, requires_two_helpers: $requires_two_helpers, are_required_measures_fulfilled: $are_required_measures_fulfilled, prerequisites: $prerequisites)';
   }
 
   @override
@@ -537,6 +576,14 @@ class _$_AvailableMeasure extends _AvailableMeasure {
             (identical(other.is_applicable, is_applicable) ||
                 const DeepCollectionEquality()
                     .equals(other.is_applicable, is_applicable)) &&
+            (identical(other.requires_two_helpers, requires_two_helpers) ||
+                const DeepCollectionEquality().equals(
+                    other.requires_two_helpers, requires_two_helpers)) &&
+            (identical(other.are_required_measures_fulfilled,
+                    are_required_measures_fulfilled) ||
+                const DeepCollectionEquality().equals(
+                    other.are_required_measures_fulfilled,
+                    are_required_measures_fulfilled)) &&
             (identical(other.prerequisites, prerequisites) ||
                 const DeepCollectionEquality()
                     .equals(other.prerequisites, prerequisites)));
@@ -551,6 +598,8 @@ class _$_AvailableMeasure extends _AvailableMeasure {
       const DeepCollectionEquality().hash(available_amount) ^
       const DeepCollectionEquality().hash(duration) ^
       const DeepCollectionEquality().hash(is_applicable) ^
+      const DeepCollectionEquality().hash(requires_two_helpers) ^
+      const DeepCollectionEquality().hash(are_required_measures_fulfilled) ^
       const DeepCollectionEquality().hash(prerequisites);
 
   @JsonKey(ignore: true)
@@ -567,6 +616,8 @@ abstract class _AvailableMeasure extends AvailableMeasure {
           required int available_amount,
           required int duration,
           required bool is_applicable,
+          required bool requires_two_helpers,
+          required bool are_required_measures_fulfilled,
           required List<AvailableMeasurePrerequisite> prerequisites}) =
       _$_AvailableMeasure;
   const _AvailableMeasure._() : super._();
@@ -583,6 +634,11 @@ abstract class _AvailableMeasure extends AvailableMeasure {
   int get duration => throw _privateConstructorUsedError;
   @override
   bool get is_applicable => throw _privateConstructorUsedError;
+  @override
+  bool get requires_two_helpers => throw _privateConstructorUsedError;
+  @override
+  bool get are_required_measures_fulfilled =>
+      throw _privateConstructorUsedError;
   @override
   List<AvailableMeasurePrerequisite> get prerequisites =>
       throw _privateConstructorUsedError;
@@ -750,240 +806,4 @@ abstract class _AvailableMeasurePrerequisite
   @JsonKey(ignore: true)
   _$AvailableMeasurePrerequisiteCopyWith<_AvailableMeasurePrerequisite>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-class _$RunningMeasureTearOff {
-  const _$RunningMeasureTearOff();
-
-  _RunningMeasure call(
-      {required String name,
-      required String image_small,
-      required String image_original,
-      required int start_time,
-      required int finish_time}) {
-    return _RunningMeasure(
-      name: name,
-      image_small: image_small,
-      image_original: image_original,
-      start_time: start_time,
-      finish_time: finish_time,
-    );
-  }
-}
-
-/// @nodoc
-const $RunningMeasure = _$RunningMeasureTearOff();
-
-/// @nodoc
-mixin _$RunningMeasure {
-  String get name => throw _privateConstructorUsedError;
-  String get image_small => throw _privateConstructorUsedError;
-  String get image_original => throw _privateConstructorUsedError;
-  int get start_time => throw _privateConstructorUsedError;
-  int get finish_time => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $RunningMeasureCopyWith<RunningMeasure> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $RunningMeasureCopyWith<$Res> {
-  factory $RunningMeasureCopyWith(
-          RunningMeasure value, $Res Function(RunningMeasure) then) =
-      _$RunningMeasureCopyWithImpl<$Res>;
-  $Res call(
-      {String name,
-      String image_small,
-      String image_original,
-      int start_time,
-      int finish_time});
-}
-
-/// @nodoc
-class _$RunningMeasureCopyWithImpl<$Res>
-    implements $RunningMeasureCopyWith<$Res> {
-  _$RunningMeasureCopyWithImpl(this._value, this._then);
-
-  final RunningMeasure _value;
-  // ignore: unused_field
-  final $Res Function(RunningMeasure) _then;
-
-  @override
-  $Res call({
-    Object? name = freezed,
-    Object? image_small = freezed,
-    Object? image_original = freezed,
-    Object? start_time = freezed,
-    Object? finish_time = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      image_small: image_small == freezed
-          ? _value.image_small
-          : image_small // ignore: cast_nullable_to_non_nullable
-              as String,
-      image_original: image_original == freezed
-          ? _value.image_original
-          : image_original // ignore: cast_nullable_to_non_nullable
-              as String,
-      start_time: start_time == freezed
-          ? _value.start_time
-          : start_time // ignore: cast_nullable_to_non_nullable
-              as int,
-      finish_time: finish_time == freezed
-          ? _value.finish_time
-          : finish_time // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$RunningMeasureCopyWith<$Res>
-    implements $RunningMeasureCopyWith<$Res> {
-  factory _$RunningMeasureCopyWith(
-          _RunningMeasure value, $Res Function(_RunningMeasure) then) =
-      __$RunningMeasureCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {String name,
-      String image_small,
-      String image_original,
-      int start_time,
-      int finish_time});
-}
-
-/// @nodoc
-class __$RunningMeasureCopyWithImpl<$Res>
-    extends _$RunningMeasureCopyWithImpl<$Res>
-    implements _$RunningMeasureCopyWith<$Res> {
-  __$RunningMeasureCopyWithImpl(
-      _RunningMeasure _value, $Res Function(_RunningMeasure) _then)
-      : super(_value, (v) => _then(v as _RunningMeasure));
-
-  @override
-  _RunningMeasure get _value => super._value as _RunningMeasure;
-
-  @override
-  $Res call({
-    Object? name = freezed,
-    Object? image_small = freezed,
-    Object? image_original = freezed,
-    Object? start_time = freezed,
-    Object? finish_time = freezed,
-  }) {
-    return _then(_RunningMeasure(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      image_small: image_small == freezed
-          ? _value.image_small
-          : image_small // ignore: cast_nullable_to_non_nullable
-              as String,
-      image_original: image_original == freezed
-          ? _value.image_original
-          : image_original // ignore: cast_nullable_to_non_nullable
-              as String,
-      start_time: start_time == freezed
-          ? _value.start_time
-          : start_time // ignore: cast_nullable_to_non_nullable
-              as int,
-      finish_time: finish_time == freezed
-          ? _value.finish_time
-          : finish_time // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-class _$_RunningMeasure extends _RunningMeasure {
-  const _$_RunningMeasure(
-      {required this.name,
-      required this.image_small,
-      required this.image_original,
-      required this.start_time,
-      required this.finish_time})
-      : super._();
-
-  @override
-  final String name;
-  @override
-  final String image_small;
-  @override
-  final String image_original;
-  @override
-  final int start_time;
-  @override
-  final int finish_time;
-
-  @override
-  String toString() {
-    return 'RunningMeasure(name: $name, image_small: $image_small, image_original: $image_original, start_time: $start_time, finish_time: $finish_time)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _RunningMeasure &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.image_small, image_small) ||
-                const DeepCollectionEquality()
-                    .equals(other.image_small, image_small)) &&
-            (identical(other.image_original, image_original) ||
-                const DeepCollectionEquality()
-                    .equals(other.image_original, image_original)) &&
-            (identical(other.start_time, start_time) ||
-                const DeepCollectionEquality()
-                    .equals(other.start_time, start_time)) &&
-            (identical(other.finish_time, finish_time) ||
-                const DeepCollectionEquality()
-                    .equals(other.finish_time, finish_time)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(image_small) ^
-      const DeepCollectionEquality().hash(image_original) ^
-      const DeepCollectionEquality().hash(start_time) ^
-      const DeepCollectionEquality().hash(finish_time);
-
-  @JsonKey(ignore: true)
-  @override
-  _$RunningMeasureCopyWith<_RunningMeasure> get copyWith =>
-      __$RunningMeasureCopyWithImpl<_RunningMeasure>(this, _$identity);
-}
-
-abstract class _RunningMeasure extends RunningMeasure {
-  const factory _RunningMeasure(
-      {required String name,
-      required String image_small,
-      required String image_original,
-      required int start_time,
-      required int finish_time}) = _$_RunningMeasure;
-  const _RunningMeasure._() : super._();
-
-  @override
-  String get name => throw _privateConstructorUsedError;
-  @override
-  String get image_small => throw _privateConstructorUsedError;
-  @override
-  String get image_original => throw _privateConstructorUsedError;
-  @override
-  int get start_time => throw _privateConstructorUsedError;
-  @override
-  int get finish_time => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$RunningMeasureCopyWith<_RunningMeasure> get copyWith =>
-      throw _privateConstructorUsedError;
 }

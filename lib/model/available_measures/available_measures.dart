@@ -1,8 +1,7 @@
 // Package imports:
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'available_measures.freezed.dart';
 
@@ -79,6 +78,8 @@ class AvailableMeasure with _$AvailableMeasure {
     required int available_amount,
     required int duration,
     required bool is_applicable,
+    required bool requires_two_helpers,
+    required bool are_required_measures_fulfilled,
     required List<AvailableMeasurePrerequisite> prerequisites,
   }) = _AvailableMeasure;
 
@@ -90,6 +91,9 @@ class AvailableMeasure with _$AvailableMeasure {
         available_amount: json["available_amount"],
         duration: json["running_duration"],
         is_applicable: json["is_applicable"],
+        requires_two_helpers: json["requires_two_helpers"],
+        are_required_measures_fulfilled:
+            json["are_required_measures_fulfilled"],
         prerequisites: parseAvailableMeasuresPrerequisites(
             json) //parseAvailableMeasuresPrerequisites(json),
         );
@@ -119,26 +123,5 @@ class AvailableMeasurePrerequisite with _$AvailableMeasurePrerequisite {
   factory AvailableMeasurePrerequisite.fromJson(Map<String, dynamic> json) {
     return AvailableMeasurePrerequisite(
         name: json["name"], image: serverURL + json["image"]["small"]);
-  }
-}
-
-/// Model that contains all relevant information about a currently running measure.
-@freezed
-class RunningMeasure with _$RunningMeasure {
-  const RunningMeasure._();
-  const factory RunningMeasure({
-    required String name,
-    required String image_small,
-    required String image_original,
-    required int start_time,
-    required int finish_time,
-  }) = _RunningMeasure;
-  factory RunningMeasure.fromJson(Map<String, dynamic> json) {
-    return RunningMeasure(
-        name: json["name"],
-        image_small: serverURL + json["image"]["small"],
-        image_original: serverURL + json["image"]["original"],
-        start_time: json["start_time"],
-        finish_time: json["finish_time"]);
   }
 }

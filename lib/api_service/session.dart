@@ -1,4 +1,6 @@
 // Package imports:
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -7,17 +9,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// All of our server requests should use the get & post methods provided by
 /// this class instead of the default [http] methods.
 abstract class Session {
-  static Map<String, String> _baseHeaders = {
+  static final Map<String, String> _baseHeaders = {
     "Accept": "application/json",
     "content-type": "application/json"
   };
   static String? _token;
-  static String? _session;
 
+  /// Deletes the currently saved session from the [SharedPreferences]
   static void deleteSession() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.remove("token");
-    prefs.remove("session");
   }
 
   /// Tries to restore the token and session by loading them from the [SharedPreferences].
@@ -25,10 +26,8 @@ abstract class Session {
   static Future<bool> restore() async {
     final prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString("token");
-    String? session = prefs.getString("session");
-    if (token != null && session != null) {
+    if (token != null) {
       _token = token;
-      _session = session;
       return true;
     }
     return false;
@@ -67,36 +66,31 @@ abstract class Session {
   /// Parses token and session data to a Map that can be sent in the header of
   /// a Request.
   static Map<String, String> _buildHeaders() {
-    Map<String, String> headers = _baseHeaders;
+    Map<String, String> headers = {};
+    headers.addAll(_baseHeaders);
     String? token = _token;
-    String? session = _session;
-    if (token == null || session == null) {
+    if (token == null) {
       throw Exception(
           "Unauthorized request - fetch authorization cookies by calling a postLogin request once before calling any post requests");
     } else {
-      headers['Cookie'] = token + ";" + session;
-      headers['X-CSRFToken'] = token.split("=")[1];
+      headers['Authorization'] = 'Token ' + _token!;
       return headers;
     }
   }
 
   /// Parses token and session from the cookie included in [response] header.
   static void _updateCookie(http.Response response) async {
-    String? rawCookie = response.headers['set-cookie'];
+    var rawCookie = jsonDecode(utf8.decode(response.bodyBytes));
     if (rawCookie != null) {
-      int cookieIndex = rawCookie.indexOf('csrftoken');
-      int index = rawCookie.indexOf(';');
-      _token =
-          (cookieIndex > -1) ? rawCookie.substring(cookieIndex, index) : "";
-
-      int sessionIndex = rawCookie.indexOf('sessionid');
-      index = rawCookie.indexOf(';', sessionIndex);
-      _session = rawCookie.substring(sessionIndex, index);
+      _token = rawCookie["token"];
 
       // save token and session on disk
-      final prefs = await SharedPreferences.getInstance();
-      if (_token != null) prefs.setString("token", _token!);
-      if (_session != null) prefs.setString("session", _session!);
+      if (_token != null) {
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setString("token", _token!);
+      }
+    } else {
+      throw Exception("No token given in Login body");
     }
   }
 }

@@ -1,9 +1,9 @@
 /// Defines a map of predefined urls of the backend server, solely for development
 /// purposes.
 const Map<String, String> PREDEFINED_URLS = {
-        "Deployment-Server": "http://mcisim.eu.pythonanywhere.com/",
-        "Lehrstuhl-Server": "http://fb14srv8.hpi.uni-potsdam.de:8000",
-        "Localhost": "http://127.0.0.1:8000"
+  "Deployment-Server": "http://www.dps.training/",
+  "Lehrstuhl-Server": "http://fb14srv8.hpi.uni-potsdam.de:8000",
+  "Localhost": "http://127.0.0.1:8000",
 };
 
 String selectedServer = "Lehrstuhl-Server";
@@ -13,44 +13,81 @@ String serverURL = PREDEFINED_URLS[selectedServer]!;
 /// be defined in [PREDEFINED_URLS]. Otherwise the Lehrstuhl-Server is chosen as a
 /// default.
 void selectServer({required String serverName}) {
-        selectedServer = serverName;
-        serverURL = PREDEFINED_URLS[serverName] ?? PREDEFINED_URLS["Lehrstuhl-Server"]!;
+  selectedServer = serverName;
+  serverURL =
+      PREDEFINED_URLS[serverName] ?? PREDEFINED_URLS["Lehrstuhl-Server"]!;
 }
 
-// configuration of routes to use for server requests.
-String patientDataUrl({required int patientID}) =>
-    serverURL + '/patients/$patientID/';
-String foreignInventoryDataUrl({required int entityID}) =>
+// configuration of routes to use for server requests. API specification can be found
+// here: https://github.com/hpi-sam/BPMANV-Server/blob/dev/api_spezification.md
+String uncoverPatientUrl({required String dpsCode, required int helperNr}) =>
+    serverURL + '/patients/$dpsCode/uncover/helper/$helperNr/';
+String patientDataUrl({required String dpsCode, required int helperNr}) =>
+    serverURL + '/patients/$dpsCode/helper/$helperNr/';
+String foreignInventoryDataUrl({required String entityID}) =>
     serverURL + '/entities/$entityID/inventory/';
 String ownInventoryDataUrl({required int helperNr}) =>
-    serverURL + '/own/inventory/helper_$helperNr/';
-String inventoryExchangeUrl({required int entityID, required int helperNr}) =>
-    serverURL + '/entities/$entityID/inventory/exchange/helper_$helperNr/';
-String availableMeasuresUrl({required int patientID, required int helperNr}) =>
-    serverURL + '/patients/$patientID/measures/available/helper_$helperNr/';
-String startNewMeasureUrl({required int patientID, required int helperNr}) =>
-    serverURL + '/patients/$patientID/measures/start/helper_$helperNr/';
-String cancelCurrentMeasureUrl(
-        {required int patientID, required int helperNr}) =>
-    serverURL + '/patients/$patientID/measures/cancel/helper_$helperNr/';
-String appliedMeasuresUrl({required int patientID}) =>
-    serverURL + '/patients/$patientID/measures/applied/';
+    serverURL + '/own/inventory/helper/$helperNr/';
+String inventoryExchangeUrl(
+        {required String entityID, required int helperNr}) =>
+    serverURL + '/entities/$entityID/inventory/exchange/helper/$helperNr/';
+String availableMeasuresUrl({required String dpsCode, required int helperNr}) =>
+    serverURL + '/patients/$dpsCode/measures/available/helper/$helperNr/';
+String startNewMeasureUrl({required String dpsCode, required int helperNr}) =>
+    serverURL + '/patients/$dpsCode/measures/start/helper/$helperNr/';
+String cancelCurrentMeasureUrl({required int helperNr}) =>
+    serverURL + '/own/currentmeasure/cancel/helper/$helperNr/';
+String appliedMeasuresUrl({required String dpsCode}) =>
+    serverURL + '/patients/$dpsCode/measures/applied/';
 String removeAppliedMeasureUrl(
-        {required int patientID,
+        {required String dpsCode,
         required int helperNr,
         required int measureID}) =>
     serverURL +
-    '/patients/$patientID/measures/$measureID/remove/helper_$helperNr/';
-String triageUrl({required int patientID, required int helperNr}) =>
-    serverURL + '/patients/$patientID/triage/helper_$helperNr/';
-String signUpUrl() => serverURL + '/signup/';
-String joinRoomUrl({required int roomID, required int helperAmount}) =>
-    serverURL + '/rooms/$roomID/join/helpercount_$helperAmount/';
+    '/patients/$dpsCode/measures/$measureID/remove/helper/$helperNr/';
+String triageUrl({required String dpsCode, required int helperNr}) =>
+    serverURL + '/patients/$dpsCode/triage/helper/$helperNr/';
+String playersSignUpUrl() => serverURL + '/players/signup/';
+String trainerSignUpUrl() => serverURL + '/trainers/signup/';
+String trainerLogInUrl() => serverURL + '/trainers/login/';
+String joinRoomUrl(
+        {required String invitationCode, required int helperAmount}) =>
+    serverURL + '/rooms/$invitationCode/join/helpercount_$helperAmount/';
 String leaveRoomUrl() => serverURL + '/rooms/leave/';
 String simulationTimeUrl() => serverURL + '/rooms/time/';
 String helperIDUrl({required int helperNr}) =>
-    serverURL + '/own/id/helper_$helperNr/';
+    serverURL + '/own/id/helper/$helperNr/';
 String checkHelperBusyUrl({required int helperNr}) =>
-    serverURL + '/own/busy/helper_$helperNr/';
+    serverURL + '/own/busy/helper/$helperNr/';
 String helperCountUrl() => serverURL + '/own/helpercount/';
 String getRoomUrl({required int roomID}) => serverURL + '/rooms/$roomID/';
+String getPatientListUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/patients/';
+String getPlayerListUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/players/';
+String pauseRoomUrl() => serverURL + '/rooms/pause/';
+String resumeRoomUrl() => serverURL + '/rooms/resume/';
+String startRoomUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/start/';
+String finishRoomUrl() => serverURL + '/rooms/finish/';
+String changePhaseUrl() => serverURL + '/rooms/changephase/';
+String changeRoomConfigUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/change_configuration/';
+String createRoomUrl() => serverURL + '/rooms/create/';
+String nextPhaseChangeUrl() => serverURL + '/rooms/phasechange/';
+String modifyPhaseChangeUrl() => serverURL + '/rooms/phasechange/modify/';
+String roomStateUrl({required int roomID}) =>
+    serverURL + '/rooms/$roomID/state/';
+String patientDataTrainerUrl({required String dpsCode}) =>
+    serverURL + '/patients/$dpsCode/';
+String addPatientTrainerUrl({required String dpsCode, required int roomID}) =>
+    serverURL + '/qrcodes/rooms/$roomID/add/$dpsCode/';
+String checkoutPatientUrl({required String dpsCode}) =>
+    serverURL + '/patients/$dpsCode/checkout/';
+String addEventUrl() => serverURL + '/rooms/events/add/';
+String getTriageAccuracyUrl({required int roomID}) =>
+    serverURL + '/evaluation/rooms/$roomID/triage/accuracy/';
+String getExerciseLogUrl({required int roomID}) =>
+    serverURL + '/evaluation/rooms/$roomID/logs/';
+String getActiveRoomUrl() => serverURL + '/rooms/active/';
+String getQrCodeUrl() => serverURL + '/static_images/patients.pdf';

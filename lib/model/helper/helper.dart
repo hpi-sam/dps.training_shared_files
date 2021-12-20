@@ -1,8 +1,6 @@
 // Package imports:
+import 'package:bpmanv_app_sharedFiles/model/running_measure/running_measure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-// Project imports:
-import 'available_measures.dart';
 
 part 'helper.freezed.dart';
 
@@ -18,7 +16,7 @@ class Helper with _$Helper {
   const factory Helper({
     /// The ID of the patient a helper has most recently scanned. Null if no patient
     /// has been scanned by the helper yet.
-    @Default(null) int? patientID,
+    @Default(null) String? dpsCode,
 
     /// The measure a helper is currently implementing. Null if the helper is currently
     /// not implementing a measure.

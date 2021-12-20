@@ -1,85 +1,95 @@
 // Flutter imports:
-import 'package:flutter/cupertino.dart';
+// Project imports:
+import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 import 'package:flutter/material.dart';
 
-// Project imports:
-import 'package:bpmanv_app_sharedFiles/model/patient.dart';
 import '../l10n/localizedstrings.dart';
 
 /// Displays the information of the current phase of a patient.
 class PhaseInformation extends StatelessWidget {
-  final PatientCurrentPhase patientPhase;
-  PhaseInformation({required this.patientPhase});
+  final Patient patient;
+  PhaseInformation({required this.patient});
 
   @override
   Widget build(BuildContext context) {
-    final _screenWidth = MediaQuery.of(context).size.width;
-    return Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return Card(
+      child: LayoutBuilder(builder: (context, constraints) {
+        return Column(
           children: [
-            Container(
-              width: _screenWidth / 2,
-              padding: EdgeInsets.symmetric(horizontal: _screenWidth / 40),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildExsangInformation(context),
-                  Padding(padding: EdgeInsets.only(top: 5)),
-                  _buildAirwayInformation(context),
-                  Padding(padding: EdgeInsets.only(top: 5)),
-                  _buildBreathingInformation(context),
-                  Padding(padding: EdgeInsets.only(top: 5)),
-                  _buildCirculationInformation(context),
-                ],
-              ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: constraints.maxWidth / 2,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: constraints.maxWidth / 40),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildExsangInformation(context),
+                      Padding(padding: EdgeInsets.only(top: 5)),
+                      _buildAirwayInformation(context),
+                      Padding(padding: EdgeInsets.only(top: 5)),
+                      _buildBreathingInformation(context),
+                      Padding(padding: EdgeInsets.only(top: 5)),
+                      _buildCirculationInformation(context),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: constraints.maxWidth / 2,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: constraints.maxWidth / 40),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildDisabilityInformation(context),
+                      Padding(padding: EdgeInsets.only(top: 5)),
+                      _buildExposureInformation(context),
+                      Padding(padding: EdgeInsets.only(top: 5)),
+                      _buildPsycheInformation(context),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Container(
-              width: _screenWidth / 2,
-              padding: EdgeInsets.symmetric(horizontal: _screenWidth / 40),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildDisabilityInformation(context),
-                  Padding(padding: EdgeInsets.only(top: 5)),
-                  _buildExposureInformation(context),
-                  Padding(padding: EdgeInsets.only(top: 5)),
-                  _buildPsycheInformation(context),
-                ],
-              ),
+            Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: constraints.maxWidth / 40),
+              child: Divider(color: Colors.black),
             ),
+            Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Container(
+                width: constraints.maxWidth / 2,
+                padding:
+                    EdgeInsets.symmetric(horizontal: constraints.maxWidth / 40),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildEKGInformation(context),
+                      Padding(padding: EdgeInsets.only(top: 5)),
+                      _buildBloodPressureInformation(context),
+                      Padding(padding: EdgeInsets.only(top: 5)),
+                      _buildSPO2Information(context),
+                    ]),
+              ),
+              Container(
+                  width: constraints.maxWidth / 2,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: constraints.maxWidth / 40),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildLungsInformation(context),
+                        Padding(padding: EdgeInsets.only(top: 5)),
+                        _buildSPCOInformation(context),
+                        Padding(padding: EdgeInsets.only(top: 5)),
+                        _buildBodyCheckInformation(context),
+                      ])),
+            ])
           ],
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: _screenWidth / 40),
-          child: Divider(color: Colors.black),
-        ),
-        Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Container(
-            width: _screenWidth / 2,
-            padding: EdgeInsets.symmetric(horizontal: _screenWidth / 40),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              _buildEKGInformation(context),
-              Padding(padding: EdgeInsets.only(top: 5)),
-              _buildBloodPressureInformation(context),
-              Padding(padding: EdgeInsets.only(top: 5)),
-              _buildSPO2Information(context),
-            ]),
-          ),
-          Container(
-              width: _screenWidth / 2,
-              padding: EdgeInsets.symmetric(horizontal: _screenWidth / 40),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildLungsInformation(context),
-                    Padding(padding: EdgeInsets.only(top: 5)),
-                    _buildSPCOInformation(context),
-                  ])),
-        ])
-      ],
+        );
+      }),
     );
   }
 
@@ -113,7 +123,7 @@ class PhaseInformation extends StatelessWidget {
   }
 
   Widget _buildExsangInformation(BuildContext context) {
-    var exsang = patientPhase.standardDiagnosticData.exsang_hemorrhage;
+    var exsang = patient.currentPhase.standardDiagnosticData.exsang_hemorrhage;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -125,7 +135,7 @@ class PhaseInformation extends StatelessWidget {
   }
 
   Widget _buildAirwayInformation(BuildContext context) {
-    var airway = patientPhase.standardDiagnosticData.airway;
+    var airway = patient.currentPhase.standardDiagnosticData.airway;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -137,7 +147,7 @@ class PhaseInformation extends StatelessWidget {
   }
 
   Widget _buildBreathingInformation(BuildContext context) {
-    var breathing = patientPhase.standardDiagnosticData.breathing;
+    var breathing = patient.currentPhase.standardDiagnosticData.breathing;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -154,7 +164,7 @@ class PhaseInformation extends StatelessWidget {
   }
 
   Widget _buildCirculationInformation(BuildContext context) {
-    var circulation = patientPhase.standardDiagnosticData.circulation;
+    var circulation = patient.currentPhase.standardDiagnosticData.circulation;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -167,7 +177,7 @@ class PhaseInformation extends StatelessWidget {
   }
 
   Widget _buildDisabilityInformation(BuildContext context) {
-    var disability = patientPhase.standardDiagnosticData.disability;
+    var disability = patient.currentPhase.standardDiagnosticData.disability;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -183,7 +193,6 @@ class PhaseInformation extends StatelessWidget {
                     disability.gcs_motoric_behaviour)
                 .toString()),
         Row(
-          //todo: fix alignment of children to spread out according to the available size
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -216,7 +225,7 @@ class PhaseInformation extends StatelessWidget {
   }
 
   Widget _buildExposureInformation(BuildContext context) {
-    var exposure = patientPhase.standardDiagnosticData.exposure;
+    var exposure = patient.currentPhase.standardDiagnosticData.exposure;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -231,7 +240,7 @@ class PhaseInformation extends StatelessWidget {
   }
 
   Widget _buildPsycheInformation(BuildContext context) {
-    var psyche = patientPhase.standardDiagnosticData.psyche;
+    var psyche = patient.currentPhase.standardDiagnosticData.psyche;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -243,7 +252,7 @@ class PhaseInformation extends StatelessWidget {
   }
 
   Widget _buildEKGInformation(BuildContext context) {
-    var ekg = patientPhase.ekg;
+    var ekg = patient.currentPhase.ekg;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -255,7 +264,7 @@ class PhaseInformation extends StatelessWidget {
   }
 
   Widget _buildBloodPressureInformation(BuildContext context) {
-    var bloodPressure = patientPhase.blood_pressure;
+    var bloodPressure = patient.currentPhase.blood_pressure;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -267,19 +276,20 @@ class PhaseInformation extends StatelessWidget {
   }
 
   Widget _buildLungsInformation(BuildContext context) {
-    var pulmonaryAuscultation = patientPhase.pulmonary_auscultation;
+    var pulmonaryAuscultation = patient.currentPhase.pulmonary_auscultation;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildInformationTitle(
             LocalizedStrings.phaseInformationWidget_lungsInformation_title),
-        _buildFormattedRaisedInformation(context: context, value: pulmonaryAuscultation)
+        _buildFormattedRaisedInformation(
+            context: context, value: pulmonaryAuscultation)
       ],
     );
   }
 
   Widget _buildSPO2Information(BuildContext context) {
-    var spo2 = patientPhase.spo2;
+    var spo2 = patient.currentPhase.spo2;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -291,7 +301,7 @@ class PhaseInformation extends StatelessWidget {
   }
 
   Widget _buildSPCOInformation(BuildContext context) {
-    var spco = patientPhase.spco;
+    var spco = patient.currentPhase.spco;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -302,9 +312,22 @@ class PhaseInformation extends StatelessWidget {
     );
   }
 
+  Widget _buildBodyCheckInformation(BuildContext context) {
+    var bodyCheck = patient.bodyCheckInformation;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildInformationTitle(
+            LocalizedStrings.phaseInformationWidget_bodyCheckInformation_title),
+        _buildFormattedRaisedInformation(context: context, value: bodyCheck),
+      ],
+    );
+  }
+
   /// Build a Text Widget containing [value] if it is not "hidden", "not measurable" or
   /// "no value". Otherwise build according other Widgets.
-  Widget _buildFormattedRaisedInformation({required BuildContext context, required String value}) {
+  Widget _buildFormattedRaisedInformation(
+      {required BuildContext context, required String value}) {
     switch (value) {
       case "hidden":
         return _buildHiddenInformation(context);

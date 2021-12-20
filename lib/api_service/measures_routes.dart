@@ -4,8 +4,9 @@ import 'dart:convert';
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
-import 'package:bpmanv_app_sharedFiles/model/applied_measures.dart';
-import 'package:bpmanv_app_sharedFiles/model/available_measures.dart';
+import 'package:bpmanv_app_sharedFiles/model/applied_measures/applied_measures.dart';
+import 'package:bpmanv_app_sharedFiles/model/available_measures/available_measures.dart';
+import 'package:bpmanv_app_sharedFiles/model/running_measure/running_measure.dart';
 
 var mock_data_applied = {
   "applied_measures": [
@@ -133,16 +134,16 @@ var mock_data = {
 };
 
 Future<RunningMeasure> removeAppliedMeasureRoute(
-    {required int patientID,
+    {required String dpsCode,
     required int helperNr,
     required int measureID}) async {
   try {
     final response = await Session.get(removeAppliedMeasureUrl(
-        patientID: patientID, helperNr: helperNr, measureID: measureID));
+        dpsCode: dpsCode, helperNr: helperNr, measureID: measureID));
 
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      return RunningMeasure.fromJson(responseJson);
+      return RunningMeasure.fromJson(json: responseJson);
     } else {
       throw Exception("Error ${response.statusCode}");
     }
@@ -164,17 +165,17 @@ Future<AvailableMeasures> fetchAvailableMeasuresMock(
 }
 
 Future<AvailableMeasures> fetchAvailableMeasuresRoute(
-    {required int patientID, required int helperNr}) async {
+    {required String dpsCode, required int helperNr}) async {
   try {
     final response = await Session.get(
-        availableMeasuresUrl(patientID: patientID, helperNr: helperNr));
+        availableMeasuresUrl(dpsCode: dpsCode, helperNr: helperNr));
 
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
       return AvailableMeasures.fromJson(responseJson);
     } else {
       throw Exception(
-          "Error ${response.statusCode} - Could not load available measures of patient ${patientID}.");
+          "Error ${response.statusCode} - Could not load available measures of patient ${dpsCode}.");
     }
   } on Exception catch (e) {
     print("ERROR FETCHING AVAILABLE MEASURES: " + e.toString());
@@ -183,7 +184,7 @@ Future<AvailableMeasures> fetchAvailableMeasuresRoute(
 }
 
 Future<AppliedMeasures> fetchAppliedMeasuresMock(
-    {required int patientID}) async {
+    {required String dpsCode}) async {
   try {
     final responseJson = mock_data_applied;
     return AppliedMeasures.fromJson(responseJson);
@@ -194,16 +195,16 @@ Future<AppliedMeasures> fetchAppliedMeasuresMock(
 }
 
 Future<AppliedMeasures> fetchAppliedMeasuresRoute(
-    {required int patientID}) async {
+    {required String dpsCode}) async {
   try {
     final response =
-        await Session.get(appliedMeasuresUrl(patientID: patientID));
+        await Session.get(appliedMeasuresUrl(dpsCode: dpsCode));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
       return AppliedMeasures.fromJson(responseJson);
     } else {
       throw Exception(
-          "Error ${response.statusCode} - Could not load applied measures of patient ${patientID}.");
+          "Error ${response.statusCode} - Could not load applied measures of patient ${dpsCode}.");
     }
   } on Exception catch (e) {
     print("ERROR FETCHING APPLIED MEASURES: " + e.toString());
@@ -212,54 +213,55 @@ Future<AppliedMeasures> fetchAppliedMeasuresRoute(
 }
 
 Future<RunningMeasure> startNewMeasureMock(
-    {required int patientID,
+    {required String dpsCode,
     required int helperNr,
     required AvailableMeasure measure}) async {
   return RunningMeasure(
+      dpsCode: dpsCode,
       name: "Test Maßnahme",
       start_time: 0,
       finish_time: 60,
       image_small: serverURL + "/static/01.jpg/",
-      image_original: serverURL + "/static/01.jpg/");
+      image_original: serverURL + "/static/01.jpg/",
+      requires_two_helpers: false);
 }
 
 Future<RunningMeasure> startNewMeasureRoute(
-    {required int patientID,
+    {required String dpsCode,
     required int helperNr,
-    required AvailableMeasure measure}) async {
+    required String measureTypeID}) async {
   try {
     final response = await Session.post(
-      startNewMeasureUrl(patientID: patientID, helperNr: helperNr),
-      jsonEncode({"id": measure.id}),
+      startNewMeasureUrl(dpsCode: dpsCode, helperNr: helperNr),
+      jsonEncode({"id": measureTypeID}),
     );
 
     final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
     if (response.statusCode != 200) {
       throw Exception("Error ${response.statusCode}");
     } else {
-      return RunningMeasure.fromJson(responseJson);
+      return RunningMeasure.fromJson(json: responseJson);
     }
   } on Exception catch (e) {
-    print("Couldn't start new Measure of patient $patientID : " + e.toString());
+    print("Couldn't start new Measure of patient $dpsCode : " + e.toString());
     throw (e);
   }
 }
 
 Future<bool> cancelCurrentMeasureMock(
-    {required int patientID, required int helperNr}) async {
+    {required String dpsCode, required int helperNr}) async {
   return true;
 }
 
-Future<bool> cancelCurrentMeasureRoute(
-    {required int patientID, required int helperNr}) async {
+Future<bool> cancelCurrentMeasureRoute({required int helperNr}) async {
   try {
-    final response = await Session.get(
-        cancelCurrentMeasureUrl(patientID: patientID, helperNr: helperNr));
+    final response =
+        await Session.get(cancelCurrentMeasureUrl(helperNr: helperNr));
     if (response.statusCode == 200) {
       return true;
     } else {
       throw Exception(
-          "Error ${response.statusCode} - Could not cancel running measure of patient ${patientID}.");
+          "Error ${response.statusCode} - Could not cancel running measure.");
     }
   } on Exception catch (e) {
     print("ERROR CANCELING RUNNING MEASURE: " + e.toString());
@@ -268,6 +270,6 @@ Future<bool> cancelCurrentMeasureRoute(
 }
 
 Future<int> checkCurrentMeasureMock(
-    {required int patientID, required int helperNr}) async {
+    {required String dpsCode, required int helperNr}) async {
   return 0;
 }

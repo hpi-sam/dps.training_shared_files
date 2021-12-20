@@ -1,60 +1,34 @@
 // Flutter imports:
-import 'package:flutter/cupertino.dart';
+import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:intl/intl.dart';
 
 // Project imports:
-import 'package:bpmanv_app_sharedFiles/model/patient.dart';
-import 'package:bpmanv_app_sharedFiles/patient_information/util.dart';
-import '../l10n/localizedstrings.dart';
+import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
 
 /// Builds a description of the biometry data of a patient.
-///
-/// Builds an [ExpansionPanel] with the patient name as its title. When tapped,
-/// all of the biometry data is listed below.
-class Biometry extends StatefulWidget {
+class Biometry extends StatelessWidget {
   final Patient patient;
 
-  Biometry({required this.patient});
-  @override
-  BiometryState createState() => new BiometryState();
-}
-
-class BiometryState extends State<Biometry> {
-  bool isExpanded = false;
+  const Biometry({Key? key, required this.patient}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Map<String, String> biometryData;
     biometryData = _getPatientBiometry();
 
-    final Color triageColor = triageColorMap[widget.patient.triageCategory]!;
-
-    return Container(
-      child: ExpansionPanelList(
-        expansionCallback: (int index, bool isExpanded) {
-          setState(() {
-            this.isExpanded = !isExpanded;
-          });
-        },
+    return Card(
+      child: Column(
         children: [
-          ExpansionPanel(
-            headerBuilder: (BuildContext context, bool isExpanded) {
-              return Container(
-                decoration: BoxDecoration(
-                  color: triageColor,
-                ),
-                child: ListTile(
-                  title: Text(widget.patient.name,
-                      style: TextStyle(color: highContrastColor(triageColor))),
-                ),
-              );
-            },
-            body: _buildBiometryFields(biometryData),
-            isExpanded: this.isExpanded,
-            canTapOnHeader: true,
+          Text(
+            LocalizedStrings.biometryWidget_title,
+            style: Theme.of(context).textTheme.headline5,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: _buildBiometryFields(biometryData),
           ),
         ],
       ),
@@ -92,12 +66,11 @@ class BiometryState extends State<Biometry> {
   /// better displaying purposes.
   Map<String, String> _getPatientBiometry() {
     return {
-      LocalizedStrings.biometryWidget_address: widget.patient.address,
+      LocalizedStrings.biometryWidget_address: patient.address,
       LocalizedStrings.biometryWidget_birthDate:
-          _formatBirthDate(widget.patient.birth_date, widget.patient.age),
-      LocalizedStrings.biometryWidget_gender:
-          _formatGender(widget.patient.gender),
-      LocalizedStrings.biometryWidget_biometrics: widget.patient.biometrics,
+          _formatBirthDate(patient.birth_date, patient.age),
+      LocalizedStrings.biometryWidget_gender: _formatGender(patient.gender),
+      LocalizedStrings.biometryWidget_biometrics: patient.biometrics,
     };
   }
 
@@ -116,11 +89,11 @@ class BiometryState extends State<Biometry> {
     final now = DateTime.now();
     int year = now.year - age;
 
-    // if the patient has not had its birthday yet this year, then add one to the birth year
+    // if the patient has not had its birthday yet this year, then subtract one from the birth year
     if (now.month < month)
-      year++;
+      year--;
     else if (now.month == month) {
-      if (now.day < day) year++;
+      if (now.day < day) year--;
     }
 
     return formatter.format(new DateTime(year, month, day)) +

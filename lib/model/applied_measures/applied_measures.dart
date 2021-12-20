@@ -1,24 +1,24 @@
 // Flutter imports:
-import 'package:flutter/foundation.dart';
-
-// Package imports:
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
+import 'package:flutter/foundation.dart';
+// Package imports:
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'applied_measures.freezed.dart';
 
 /// [AppliedMeasures] are either running (= another helper does them right now),
-/// active (= only effective for a given time; e.g. medication) or
-/// finished (= applied for an unlimited time)
+/// active (= only effective for a given time; e.g. medication),
+/// finished (= applied for an unlimited time) or waiting_for_second_helper (=
+/// the measure is pending before being started, because a second helper is required)
 enum AppliedMeasureState {
   running,
   active,
   finished,
   aborted,
   removed,
-  expired
+  expired,
+  waiting_for_second_helper
 }
 
 ///  Defines the applied measures data model.
@@ -70,6 +70,12 @@ class AppliedMeasure with _$AppliedMeasure {
     required int start_time,
     required int finish_time,
     required AppliedMeasureState state,
+
+    /// The dps code of the patient that this measure is applied on.
+    required String dpsCode,
+
+    /// The type of measure that this [AppliedMeasure] represents.
+    required String measureTypeID,
   }) = _AppliedMeasure;
   factory AppliedMeasure.fromJson(Map<String, dynamic> json) {
     return AppliedMeasure(
@@ -82,6 +88,8 @@ class AppliedMeasure with _$AppliedMeasure {
         finish_time: json["finish_time"],
         state: AppliedMeasureState.values.firstWhere((element) {
           return describeEnum(element) == json["state"];
-        }));
+        }),
+        dpsCode: json["patient_dps_code"],
+        measureTypeID: json["measure_type_id"]);
   }
 }
