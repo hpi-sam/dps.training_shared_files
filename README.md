@@ -35,11 +35,11 @@ This package is developed on the flutter stable channel (default channel). To sw
 
 ## Design and architectural decisions
 
-If you want to start contributing to this project, we strongly recommend getting familiar with [Cubit](https://github.com/hpi-sam/BPMANV-App/wiki/State-management-with-Cubit) for state management. 
+If you want to start contributing to this project, we strongly recommend getting familiar with [Cubit](https://pub.dev/documentation/flutter_cubit/latest/) for state management. 
 
 ### Pre-Commit Hook
 
-We use a pre-commit git hook to automatically format our code with dartfmt on every commit. You need to configure this hook locally to make it work. [See this wiki page for how to do so (and more information)](https://github.com/hpi-sam/BPMANV-App/wiki/Git-Hooks).
+We use a pre-commit git hook to automatically format our code with dartfmt on every commit. You need to configure this hook locally to make it work. [See this wiki page for how to do so (and more information)](https://github.com/hpi-sam/dps.training_player/wiki/Git-Hooks).
 
 ### Use of Github Actions
 
