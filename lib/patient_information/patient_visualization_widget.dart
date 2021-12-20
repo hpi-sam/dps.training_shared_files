@@ -1,6 +1,6 @@
 // Flutter imports:
 // Project imports:
-import 'package:dps_training.shared_files/model/patient/patient.dart';
+import 'package:dps.training_shared_files/model/patient/patient.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +32,7 @@ class PatientVisualization extends StatelessWidget {
                       opacity: 0.8,
                       child: Image.asset(
                         'assets/dead.png',
-                        package: 'dps_training.shared_files',
+                        package: 'dps.training_shared_files',
                         width: constraints.maxWidth,
                         height: constraints.maxWidth,
                       ),

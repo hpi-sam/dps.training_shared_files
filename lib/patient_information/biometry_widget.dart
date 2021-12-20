@@ -1,12 +1,12 @@
 // Flutter imports:
-import 'package:dps_training.shared_files/l10n/localizedstrings.dart';
+import 'package:dps.training_shared_files/l10n/localizedstrings.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:intl/intl.dart';
 
 // Project imports:
-import 'package:dps_training.shared_files/model/patient/patient.dart';
+import 'package:dps.training_shared_files/model/patient/patient.dart';
 
 /// Builds a description of the biometry data of a patient.
 class Biometry extends StatelessWidget {
