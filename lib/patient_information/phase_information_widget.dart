@@ -1,6 +1,6 @@
 // Flutter imports:
 // Project imports:
-import 'package:dps_training.shared_files/model/patient/patient.dart';
+import 'package:dps.training_shared_files/model/patient/patient.dart';
 import 'package:flutter/material.dart';
 
 import '../l10n/localizedstrings.dart';

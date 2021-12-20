@@ -2,11 +2,11 @@
 import 'dart:collection';
 
 // Project imports:
-import 'package:dps_training.shared_files/api_service/urls.dart';
-import 'package:dps_training.shared_files/api_service/patient_routes.dart';
-import 'package:dps_training.shared_files/api_service/session_routes.dart';
+import 'package:dps.training_shared_files/api_service/urls.dart';
+import 'package:dps.training_shared_files/api_service/patient_routes.dart';
+import 'package:dps.training_shared_files/api_service/session_routes.dart';
 // Package imports:
-import 'package:dps_training.shared_files/api_service/trainer_routes.dart';
+import 'package:dps.training_shared_files/api_service/trainer_routes.dart';
 import 'package:intl/intl.dart';
 
 import 'inventory_routes.dart';

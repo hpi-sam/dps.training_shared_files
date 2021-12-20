@@ -29,7 +29,7 @@ class BodyPart extends StatelessWidget {
         case "bleeding":
           markers.addAll([
             new Image.asset('assets/icons/bleeding_icon.png',
-                package: 'dps_training.shared_files',
+                package: 'dps.training_shared_files',
                 height: IconTheme.of(context).size! * 1.5,
                 width: IconTheme.of(context).size! * 1.5)
           ]); // alternative: fire, or map-marker if we can rotate it
@@ -38,7 +38,7 @@ class BodyPart extends StatelessWidget {
         case "critical bleeding":
           markers.addAll([
             new Image.asset('assets/icons/critical_bleeding_icon.png',
-                package: 'dps_training.shared_files',
+                package: 'dps.training_shared_files',
                 height: IconTheme.of(context).size! * 1.5,
                 width: IconTheme.of(context).size! * 1.5),
           ]);
@@ -47,7 +47,7 @@ class BodyPart extends StatelessWidget {
         case "fracture":
           markers.addAll([
             new Image.asset('assets/icons/fracture_icon.png',
-                package: 'dps_training.shared_files',
+                package: 'dps.training_shared_files',
                 height: IconTheme.of(context).size! * 1.5,
                 width: IconTheme.of(context).size! * 1.5)
           ]);

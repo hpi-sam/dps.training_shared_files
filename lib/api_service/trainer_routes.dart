@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:dps_training.shared_files/api_service/session.dart';
-import 'package:dps_training.shared_files/api_service/urls.dart';
-import 'package:dps_training.shared_files/model/exercise_log/exercise_log.dart';
-import 'package:dps_training.shared_files/model/patient/patient.dart';
-import 'package:dps_training.shared_files/model/players/players.dart';
-import 'package:dps_training.shared_files/model/simplified_patients/simplified_patients.dart';
+import 'package:dps.training_shared_files/api_service/session.dart';
+import 'package:dps.training_shared_files/api_service/urls.dart';
+import 'package:dps.training_shared_files/model/exercise_log/exercise_log.dart';
+import 'package:dps.training_shared_files/model/patient/patient.dart';
+import 'package:dps.training_shared_files/model/players/players.dart';
+import 'package:dps.training_shared_files/model/simplified_patients/simplified_patients.dart';
 
 Future<PlayerList> getPlayerListRoute({required int roomID}) async {
   try {

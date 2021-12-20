@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:dps_training.shared_files/l10n/localizedstrings.dart';
-import 'package:dps_training.shared_files/model/patient/patient.dart';
+import 'package:dps.training_shared_files/l10n/localizedstrings.dart';
+import 'package:dps.training_shared_files/model/patient/patient.dart';
 
 /// Builds a widget displaying general patient data (injury and situation of discovery)
 class GeneralInformationWidget extends StatelessWidget {

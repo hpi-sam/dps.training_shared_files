@@ -2,10 +2,10 @@
 import 'dart:convert';
 
 // Project imports:
-import 'package:dps_training.shared_files/api_service/session.dart';
-import 'package:dps_training.shared_files/api_service/urls.dart';
-import 'package:dps_training.shared_files/model/patient/patient.dart';
-import 'package:dps_training.shared_files/model/running_measure/running_measure.dart';
+import 'package:dps.training_shared_files/api_service/session.dart';
+import 'package:dps.training_shared_files/api_service/urls.dart';
+import 'package:dps.training_shared_files/model/patient/patient.dart';
+import 'package:dps.training_shared_files/model/running_measure/running_measure.dart';
 
 Future<Patient> fetchPatientMock({required String dpsCode}) async {
   Map<String, dynamic> patientJson = {

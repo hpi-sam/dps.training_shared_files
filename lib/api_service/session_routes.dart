@@ -2,10 +2,10 @@
 import 'dart:convert';
 
 // Project imports:
-import 'package:dps_training.shared_files/api_service/session.dart';
-import 'package:dps_training.shared_files/api_service/urls.dart';
-import 'package:dps_training.shared_files/model/running_measure/running_measure.dart';
-import 'package:dps_training.shared_files/model/simulation_time/simulation_time.dart';
+import 'package:dps.training_shared_files/api_service/session.dart';
+import 'package:dps.training_shared_files/api_service/urls.dart';
+import 'package:dps.training_shared_files/model/running_measure/running_measure.dart';
+import 'package:dps.training_shared_files/model/simulation_time/simulation_time.dart';
 
 Future<bool> doesRoomExistRoute({required int roomID}) async {
   try {

@@ -1,6 +1,6 @@
 // Package imports:
 // Project imports:
-import 'package:dps_training.shared_files/api_service/urls.dart';
+import 'package:dps.training_shared_files/api_service/urls.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'available_measures.freezed.dart';

@@ -1,12 +1,12 @@
 // Flutter imports:
 // Project imports:
-import 'package:dps_training.shared_files/l10n/localizedstrings.dart';
-import 'package:dps_training.shared_files/model/patient/patient.dart';
-import 'package:dps_training.shared_files/patient_information/biometry_widget.dart';
-import 'package:dps_training.shared_files/patient_information/first_impression_widget.dart';
-import 'package:dps_training.shared_files/patient_information/patient_visualization_legend_widget.dart';
-import 'package:dps_training.shared_files/patient_information/patient_visualization_widget.dart';
-import 'package:dps_training.shared_files/patient_information/phase_information_widget.dart';
+import 'package:dps.training_shared_files/l10n/localizedstrings.dart';
+import 'package:dps.training_shared_files/model/patient/patient.dart';
+import 'package:dps.training_shared_files/patient_information/biometry_widget.dart';
+import 'package:dps.training_shared_files/patient_information/first_impression_widget.dart';
+import 'package:dps.training_shared_files/patient_information/patient_visualization_legend_widget.dart';
+import 'package:dps.training_shared_files/patient_information/patient_visualization_widget.dart';
+import 'package:dps.training_shared_files/patient_information/phase_information_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,4 @@
-import 'package:dps_training.shared_files/api_service/urls.dart';
+import 'package:dps.training_shared_files/api_service/urls.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'running_measure.freezed.dart';
