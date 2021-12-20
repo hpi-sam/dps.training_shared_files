@@ -2,7 +2,6 @@
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
 import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// Displays a legend of the icons used for injuries in the patient visualization

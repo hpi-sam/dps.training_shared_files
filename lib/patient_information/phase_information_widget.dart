@@ -1,7 +1,6 @@
 // Flutter imports:
 // Project imports:
 import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../l10n/localizedstrings.dart';

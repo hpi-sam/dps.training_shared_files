@@ -1,6 +1,5 @@
 // Flutter imports:
 import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
