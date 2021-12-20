@@ -17,7 +17,7 @@ You can use this package by referencing it in the pubspec.yaml of your App, e.g.
 ```
   bpmanv_app_widgets: 
     git:  
-      url: git@github.com:hpi-sam/BPMANV-App-Widgets.git
+      url: git@github.com:hpi-sam/dps.training_shared_files.git
 ```
 
 Currently all contributers have to be set as collaborators for this repository. Furthermore, to access the private repository, you'll need to add a ssh key to your github and provide the keys locally in your root directory in a .ssh folder. Now, Android Studio will be able to fetch this package. When making changes to this repository, make sure to run flutter pub upgrade in your app to fetch newest package version. 
