@@ -2,10 +2,9 @@
 import 'dart:convert';
 
 // Project imports:
-import 'package:bpmanv_app_sharedFiles/api_service/session.dart';
-import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
-import 'package:bpmanv_app_sharedFiles/model/inventory/inventory.dart';
-import 'package:bpmanv_app_sharedFiles/model/inventory_exchange/inventory_exchange.dart';
+import 'package:dps.training_shared_files/api_service/session.dart';
+import 'package:dps.training_shared_files/api_service/urls.dart';
+import 'package:dps.training_shared_files/model/inventory/inventory.dart';
 
 final own_inventory_mock = {
   "entitytype": "Helfer",
@@ -91,10 +90,7 @@ final own_inventory_mock = {
 final foreign_inventory_mock = {
   "entity_type": "Materialbehältnis",
   "categories": [
-    {
-      "name": "Immobilisation",
-      "materials": []
-    },
+    {"name": "Immobilisation", "materials": []},
     {
       "name": "Atmung",
       "materials": [
@@ -203,7 +199,8 @@ final foreign_inventory_mock = {
           "name": "Wundversorgung klein",
           "image": {
             "original": "/images/initial/wundversorgung_klein.JPG",
-            "small": "/images/initial/wundversorgung_klein.JPG.256x256_q85_crop.jpg"
+            "small":
+                "/images/initial/wundversorgung_klein.JPG.256x256_q85_crop.jpg"
           },
           "amount": 3,
           "duration": 0
@@ -213,7 +210,8 @@ final foreign_inventory_mock = {
           "name": "Wundversorgung groß",
           "image": {
             "original": "/images/initial/wundversorgung_gross.JPG",
-            "small": "/images/initial/wundversorgung_gross.JPG.256x256_q85_crop.jpg"
+            "small":
+                "/images/initial/wundversorgung_gross.JPG.256x256_q85_crop.jpg"
           },
           "amount": 4,
           "duration": 0
@@ -266,6 +264,7 @@ Future<Inventory> fetchOwnInventoryRoute({required int helperNr}) async {
     final response = await Session.get(ownInventoryDataUrl(helperNr: helperNr));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+      print(responseJson.toString());
       return Inventory.fromJson(responseJson);
     } else {
       throw Exception(
@@ -283,7 +282,13 @@ Future<Inventory> fetchForeignInventoryRoute({required String entityID}) async {
         await Session.get(foreignInventoryDataUrl(entityID: entityID));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      return Inventory.fromJson(responseJson);
+      if (responseJson != null)
+        return Inventory.fromJson(responseJson);
+      else
+        throw Exception(
+            "Error ${response.statusCode} - Das Inventar der Entität ${entityID} kann nicht geladen werden. "
+            "Womöglich ist diese Entität nicht in der Datenbank vorhanden. Bitte"
+            " stelle sicher, dass der gescannte QR-Code korrekt ist.");
     } else {
       if (response.statusCode == 404) {
         // error is in German because it might be relevant to the player.
@@ -303,15 +308,19 @@ Future<Inventory> fetchForeignInventoryRoute({required String entityID}) async {
 
 /// sends request for material exchange. Returns true if successful,
 /// false if the requested amount exceeds the available amount of corresponding inventory
-Future<bool> saveExchangeInventoryRoute(
+Future<bool> saveInventoryChangesRoute(
     {required String entityID,
     required int helperNr,
-    required InventoryExchange inventoryExchange}) async {
+    required String materialID,
+    required int amount}) async {
   try {
-    var inventory = inventoryExchange.toJson();
+    var json = {
+      "id": materialID,
+      "amount": amount,
+    };
     final response = await Session.post(
         inventoryExchangeUrl(entityID: entityID, helperNr: helperNr),
-        jsonEncode(inventory));
+        jsonEncode(json));
 
     if (response.statusCode == 200)
       return true;

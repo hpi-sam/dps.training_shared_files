@@ -22,7 +22,8 @@ part 'patient.g.dart';
 class Patient with _$Patient {
   const Patient._();
   const factory Patient(
-      {required String dpsCode,
+      {required String patientDpsCode,
+      required String scannedDpsCode,
       required PatientCurrentPhase currentPhase,
       required PatientFirstImpression firstImpression,
       required PatientPersonalData personalData,
@@ -45,7 +46,8 @@ class Patient with _$Patient {
   /// API specification (https://github.com/hpi-sam/BPMANV-Server/blob/dev/api_spezification.md)
   factory Patient.fromJson(Map<String, dynamic> json, String dpsCode) {
     return Patient(
-        dpsCode: dpsCode,
+        scannedDpsCode: dpsCode,
+        patientDpsCode: json["static_data"]["dps_code"],
         currentPhase: PatientCurrentPhase.fromJson(json["current_phase"]),
         firstImpression: PatientFirstImpression.fromJson(
             json["static_data"]["first_impression"]),

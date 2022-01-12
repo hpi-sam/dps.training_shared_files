@@ -2,7 +2,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
-import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
+import 'package:dps.training_shared_files/api_service/urls.dart';
 
 part 'inventory.freezed.dart';
 
@@ -21,11 +21,16 @@ part 'inventory.freezed.dart';
 @freezed
 class Inventory with _$Inventory {
   const Inventory._();
-  const factory Inventory({required List<DPSMaterialCategory> categories}) =
-      _Inventory;
+  const factory Inventory(
+      {required String entityType,
+      required String entityName,
+      required List<DPSMaterialCategory> categories}) = _Inventory;
 
   factory Inventory.fromJson(Map<String, dynamic> json) {
-    return Inventory(categories: parseCategories(json));
+    return Inventory(
+        categories: parseCategories(json),
+        entityType: json["entity_type"],
+        entityName: json["entity_name"]);
   }
 }
 

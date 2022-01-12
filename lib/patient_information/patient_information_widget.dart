@@ -1,12 +1,12 @@
 // Flutter imports:
 // Project imports:
-import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
-import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
-import 'package:bpmanv_app_sharedFiles/patient_information/biometry_widget.dart';
-import 'package:bpmanv_app_sharedFiles/patient_information/first_impression_widget.dart';
-import 'package:bpmanv_app_sharedFiles/patient_information/patient_visualization_legend_widget.dart';
-import 'package:bpmanv_app_sharedFiles/patient_information/patient_visualization_widget.dart';
-import 'package:bpmanv_app_sharedFiles/patient_information/phase_information_widget.dart';
+import 'package:dps.training_shared_files/l10n/localizedstrings.dart';
+import 'package:dps.training_shared_files/model/patient/patient.dart';
+import 'package:dps.training_shared_files/patient_information/biometry_widget.dart';
+import 'package:dps.training_shared_files/patient_information/first_impression_widget.dart';
+import 'package:dps.training_shared_files/patient_information/patient_visualization_legend_widget.dart';
+import 'package:dps.training_shared_files/patient_information/patient_visualization_widget.dart';
+import 'package:dps.training_shared_files/patient_information/phase_information_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -103,13 +103,12 @@ class _PatientInformationWidgetState extends State<PatientInformationWidget> {
                 child: widget.appliedMeasuresWidget,
               )
             : Container(),
-        if (widget.patient.isAlive)
-          (widget.triageChooserWidget != null)
-              ? Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: widget.triageChooserWidget,
-                )
-              : Container(),
+        (widget.triageChooserWidget != null)
+            ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: widget.triageChooserWidget,
+              )
+            : Container(),
         if (widget.patient.isAlive)
           (widget.availableMeasuresWidget != null)
               ? Padding(

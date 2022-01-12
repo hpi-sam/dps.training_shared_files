@@ -313,22 +313,14 @@ class _$AvailableMeasureTearOff {
       {required String name,
       required String id,
       required String image,
-      required int available_amount,
       required int duration,
-      required bool is_applicable,
-      required bool requires_two_helpers,
-      required bool are_required_measures_fulfilled,
-      required List<AvailableMeasurePrerequisite> prerequisites}) {
+      required bool requires_two_helpers}) {
     return _AvailableMeasure(
       name: name,
       id: id,
       image: image,
-      available_amount: available_amount,
       duration: duration,
-      is_applicable: is_applicable,
       requires_two_helpers: requires_two_helpers,
-      are_required_measures_fulfilled: are_required_measures_fulfilled,
-      prerequisites: prerequisites,
     );
   }
 }
@@ -341,14 +333,8 @@ mixin _$AvailableMeasure {
   String get name => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
-  int get available_amount => throw _privateConstructorUsedError;
   int get duration => throw _privateConstructorUsedError;
-  bool get is_applicable => throw _privateConstructorUsedError;
   bool get requires_two_helpers => throw _privateConstructorUsedError;
-  bool get are_required_measures_fulfilled =>
-      throw _privateConstructorUsedError;
-  List<AvailableMeasurePrerequisite> get prerequisites =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AvailableMeasureCopyWith<AvailableMeasure> get copyWith =>
@@ -364,12 +350,8 @@ abstract class $AvailableMeasureCopyWith<$Res> {
       {String name,
       String id,
       String image,
-      int available_amount,
       int duration,
-      bool is_applicable,
-      bool requires_two_helpers,
-      bool are_required_measures_fulfilled,
-      List<AvailableMeasurePrerequisite> prerequisites});
+      bool requires_two_helpers});
 }
 
 /// @nodoc
@@ -386,12 +368,8 @@ class _$AvailableMeasureCopyWithImpl<$Res>
     Object? name = freezed,
     Object? id = freezed,
     Object? image = freezed,
-    Object? available_amount = freezed,
     Object? duration = freezed,
-    Object? is_applicable = freezed,
     Object? requires_two_helpers = freezed,
-    Object? are_required_measures_fulfilled = freezed,
-    Object? prerequisites = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -406,31 +384,14 @@ class _$AvailableMeasureCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      available_amount: available_amount == freezed
-          ? _value.available_amount
-          : available_amount // ignore: cast_nullable_to_non_nullable
-              as int,
       duration: duration == freezed
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int,
-      is_applicable: is_applicable == freezed
-          ? _value.is_applicable
-          : is_applicable // ignore: cast_nullable_to_non_nullable
-              as bool,
       requires_two_helpers: requires_two_helpers == freezed
           ? _value.requires_two_helpers
           : requires_two_helpers // ignore: cast_nullable_to_non_nullable
               as bool,
-      are_required_measures_fulfilled: are_required_measures_fulfilled ==
-              freezed
-          ? _value.are_required_measures_fulfilled
-          : are_required_measures_fulfilled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      prerequisites: prerequisites == freezed
-          ? _value.prerequisites
-          : prerequisites // ignore: cast_nullable_to_non_nullable
-              as List<AvailableMeasurePrerequisite>,
     ));
   }
 }
@@ -446,12 +407,8 @@ abstract class _$AvailableMeasureCopyWith<$Res>
       {String name,
       String id,
       String image,
-      int available_amount,
       int duration,
-      bool is_applicable,
-      bool requires_two_helpers,
-      bool are_required_measures_fulfilled,
-      List<AvailableMeasurePrerequisite> prerequisites});
+      bool requires_two_helpers});
 }
 
 /// @nodoc
@@ -470,12 +427,8 @@ class __$AvailableMeasureCopyWithImpl<$Res>
     Object? name = freezed,
     Object? id = freezed,
     Object? image = freezed,
-    Object? available_amount = freezed,
     Object? duration = freezed,
-    Object? is_applicable = freezed,
     Object? requires_two_helpers = freezed,
-    Object? are_required_measures_fulfilled = freezed,
-    Object? prerequisites = freezed,
   }) {
     return _then(_AvailableMeasure(
       name: name == freezed
@@ -490,31 +443,14 @@ class __$AvailableMeasureCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      available_amount: available_amount == freezed
-          ? _value.available_amount
-          : available_amount // ignore: cast_nullable_to_non_nullable
-              as int,
       duration: duration == freezed
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int,
-      is_applicable: is_applicable == freezed
-          ? _value.is_applicable
-          : is_applicable // ignore: cast_nullable_to_non_nullable
-              as bool,
       requires_two_helpers: requires_two_helpers == freezed
           ? _value.requires_two_helpers
           : requires_two_helpers // ignore: cast_nullable_to_non_nullable
               as bool,
-      are_required_measures_fulfilled: are_required_measures_fulfilled ==
-              freezed
-          ? _value.are_required_measures_fulfilled
-          : are_required_measures_fulfilled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      prerequisites: prerequisites == freezed
-          ? _value.prerequisites
-          : prerequisites // ignore: cast_nullable_to_non_nullable
-              as List<AvailableMeasurePrerequisite>,
     ));
   }
 }
@@ -525,12 +461,8 @@ class _$_AvailableMeasure extends _AvailableMeasure {
       {required this.name,
       required this.id,
       required this.image,
-      required this.available_amount,
       required this.duration,
-      required this.is_applicable,
-      required this.requires_two_helpers,
-      required this.are_required_measures_fulfilled,
-      required this.prerequisites})
+      required this.requires_two_helpers})
       : super._();
 
   @override
@@ -540,21 +472,13 @@ class _$_AvailableMeasure extends _AvailableMeasure {
   @override
   final String image;
   @override
-  final int available_amount;
-  @override
   final int duration;
   @override
-  final bool is_applicable;
-  @override
   final bool requires_two_helpers;
-  @override
-  final bool are_required_measures_fulfilled;
-  @override
-  final List<AvailableMeasurePrerequisite> prerequisites;
 
   @override
   String toString() {
-    return 'AvailableMeasure(name: $name, id: $id, image: $image, available_amount: $available_amount, duration: $duration, is_applicable: $is_applicable, requires_two_helpers: $requires_two_helpers, are_required_measures_fulfilled: $are_required_measures_fulfilled, prerequisites: $prerequisites)';
+    return 'AvailableMeasure(name: $name, id: $id, image: $image, duration: $duration, requires_two_helpers: $requires_two_helpers)';
   }
 
   @override
@@ -567,26 +491,12 @@ class _$_AvailableMeasure extends _AvailableMeasure {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.image, image) ||
                 const DeepCollectionEquality().equals(other.image, image)) &&
-            (identical(other.available_amount, available_amount) ||
-                const DeepCollectionEquality()
-                    .equals(other.available_amount, available_amount)) &&
             (identical(other.duration, duration) ||
                 const DeepCollectionEquality()
                     .equals(other.duration, duration)) &&
-            (identical(other.is_applicable, is_applicable) ||
-                const DeepCollectionEquality()
-                    .equals(other.is_applicable, is_applicable)) &&
             (identical(other.requires_two_helpers, requires_two_helpers) ||
-                const DeepCollectionEquality().equals(
-                    other.requires_two_helpers, requires_two_helpers)) &&
-            (identical(other.are_required_measures_fulfilled,
-                    are_required_measures_fulfilled) ||
-                const DeepCollectionEquality().equals(
-                    other.are_required_measures_fulfilled,
-                    are_required_measures_fulfilled)) &&
-            (identical(other.prerequisites, prerequisites) ||
                 const DeepCollectionEquality()
-                    .equals(other.prerequisites, prerequisites)));
+                    .equals(other.requires_two_helpers, requires_two_helpers)));
   }
 
   @override
@@ -595,12 +505,8 @@ class _$_AvailableMeasure extends _AvailableMeasure {
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(image) ^
-      const DeepCollectionEquality().hash(available_amount) ^
       const DeepCollectionEquality().hash(duration) ^
-      const DeepCollectionEquality().hash(is_applicable) ^
-      const DeepCollectionEquality().hash(requires_two_helpers) ^
-      const DeepCollectionEquality().hash(are_required_measures_fulfilled) ^
-      const DeepCollectionEquality().hash(prerequisites);
+      const DeepCollectionEquality().hash(requires_two_helpers);
 
   @JsonKey(ignore: true)
   @override
@@ -610,16 +516,11 @@ class _$_AvailableMeasure extends _AvailableMeasure {
 
 abstract class _AvailableMeasure extends AvailableMeasure {
   const factory _AvailableMeasure(
-          {required String name,
-          required String id,
-          required String image,
-          required int available_amount,
-          required int duration,
-          required bool is_applicable,
-          required bool requires_two_helpers,
-          required bool are_required_measures_fulfilled,
-          required List<AvailableMeasurePrerequisite> prerequisites}) =
-      _$_AvailableMeasure;
+      {required String name,
+      required String id,
+      required String image,
+      required int duration,
+      required bool requires_two_helpers}) = _$_AvailableMeasure;
   const _AvailableMeasure._() : super._();
 
   @override
@@ -629,19 +530,9 @@ abstract class _AvailableMeasure extends AvailableMeasure {
   @override
   String get image => throw _privateConstructorUsedError;
   @override
-  int get available_amount => throw _privateConstructorUsedError;
-  @override
   int get duration => throw _privateConstructorUsedError;
   @override
-  bool get is_applicable => throw _privateConstructorUsedError;
-  @override
   bool get requires_two_helpers => throw _privateConstructorUsedError;
-  @override
-  bool get are_required_measures_fulfilled =>
-      throw _privateConstructorUsedError;
-  @override
-  List<AvailableMeasurePrerequisite> get prerequisites =>
-      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AvailableMeasureCopyWith<_AvailableMeasure> get copyWith =>

@@ -1,12 +1,12 @@
 // Flutter imports:
-import 'package:bpmanv_app_sharedFiles/l10n/localizedstrings.dart';
+import 'package:dps.training_shared_files/l10n/localizedstrings.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:intl/intl.dart';
 
 // Project imports:
-import 'package:bpmanv_app_sharedFiles/model/patient/patient.dart';
+import 'package:dps.training_shared_files/model/patient/patient.dart';
 
 /// Builds a description of the biometry data of a patient.
 class Biometry extends StatelessWidget {
@@ -66,6 +66,7 @@ class Biometry extends StatelessWidget {
   /// better displaying purposes.
   Map<String, String> _getPatientBiometry() {
     return {
+      LocalizedStrings.biometryWidget_name: patient.name,
       LocalizedStrings.biometryWidget_address: patient.address,
       LocalizedStrings.biometryWidget_birthDate:
           _formatBirthDate(patient.birth_date, patient.age),

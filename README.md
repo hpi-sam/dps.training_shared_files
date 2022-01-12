@@ -15,7 +15,7 @@ This digital MCI simulation is distributed over several repositories. They are:
 
 You can use this package by referencing it in the pubspec.yaml of your App, e.g.:
 ```
-  bpmanv_app_widgets: 
+  dps.training_shared_files_widgets: 
     git:  
       url: git@github.com:hpi-sam/dps.training_shared_files.git
 ```

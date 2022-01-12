@@ -22,7 +22,9 @@ part 'inventory_exchange.freezed.dart';
 class InventoryExchange with _$InventoryExchange {
   const InventoryExchange._();
   const factory InventoryExchange(
-          {required List<InventoryExchangeCategory> categories}) =
+          {required String foreignEntityType,
+          required String foreignEntityName,
+          required List<InventoryExchangeCategory> categories}) =
       _InventoryExchange;
 
   /// Creates a new [InventoryExchange] by copying the categories and its materials and
@@ -54,8 +56,6 @@ class InventoryExchange with _$InventoryExchange {
             ownInventory.categories[i].getMaterial(materialID: materialID);
         DPSMaterial? foreignMaterial =
             foreignInventory.categories[i].getMaterial(materialID: materialID);
-        InventoryExchangeMaterial? exchangeMaterial =
-            oldExchange?.getItem(materialID: materialID);
 
         if (ownMaterial != null) {
           exchangeMaterialList.add(InventoryExchangeMaterial(
@@ -65,7 +65,6 @@ class InventoryExchange with _$InventoryExchange {
             image_original: ownMaterial.image_original,
             ownAmount: ownMaterial.amount,
             foreignAmount: (foreignMaterial?.amount) ?? 0,
-            changedAmount: (exchangeMaterial?.changedAmount) ?? 0,
           ));
         } else {
           // we know that if ownMaterial is null, foreignMaterial has to be non-null,
@@ -77,29 +76,20 @@ class InventoryExchange with _$InventoryExchange {
             image_original: foreignMaterial.image_original,
             ownAmount: (ownMaterial?.amount) ?? 0,
             foreignAmount: foreignMaterial.amount,
-            changedAmount: (exchangeMaterial?.changedAmount) ?? 0,
           ));
         }
+      });
+      exchangeMaterialList
+          .sort((InventoryExchangeMaterial a, InventoryExchangeMaterial b) {
+        return a.name.toLowerCase().compareTo(b.name.toLowerCase());
       });
       categoryList.add(InventoryExchangeCategory(
           name: ownInventory.categories[i].name, items: exchangeMaterialList));
     }
-    return InventoryExchange(categories: categoryList);
-  }
-
-  /// converts to a JSON as specified in API-Specification
-  Map<String, dynamic> toJson() {
-    List<InventoryExchangeMaterial> changedMaterials = [];
-    for (int i = 0; i < categories.length; i++) {
-      for (int j = 0; j < categories[i].items.length; j++) {
-        if (categories[i].items[j].changedAmount != 0) {
-          changedMaterials.add(categories[i].items[j]);
-        }
-      }
-    }
-    return {
-      "materials": changedMaterials.map((items) => items.toJson()).toList()
-    };
+    return InventoryExchange(
+        categories: categoryList,
+        foreignEntityName: foreignInventory.entityName,
+        foreignEntityType: foreignInventory.entityType);
   }
 
   /// Returns the item with [materialID] in this InventoryExchange.
@@ -114,53 +104,11 @@ class InventoryExchange with _$InventoryExchange {
     return null;
   }
 
-  /// Returns a copy [InventoryExchange] with the amount of material [materialID]
-  /// by value given in [amount].
-  InventoryExchange copyWithMaterialAmount(String materialID, int amount) {
-    List<InventoryExchangeCategory> categories = [];
-    for (InventoryExchangeCategory category in this.categories) {
-      List<InventoryExchangeMaterial> items = [];
-      for (InventoryExchangeMaterial item in category.items) {
-        if (item.id == materialID) {
-          items.add(item.copyWith(changedAmount: amount));
-        } else {
-          items.add(item);
-        }
-      }
-      categories.add(category.copyWith(items: items));
-    }
-    return InventoryExchange(categories: categories);
-  }
-
-  /// Returns true if all items in this [InventoryExchange] have a [changedAmount] of 0. Returns
-  /// false if at least one item has a [changedAmount] less than or greater than 0.
-  bool isUnchanged() {
-    for (int i = 0; i < categories.length; i++) {
-      for (int j = 0; j < categories[i].items.length; j++) {
-        if (categories[i].items[j].changedAmount != 0) return false;
-      }
-    }
-    return true;
-  }
-
-  /// Returns true if this [InventoryExchange] is valid. An [InventoryExchange] is
-  /// valid when it will not result in a negative amount of items in both inventories.
-  bool isValid() {
-    for (int i = 0; i < categories.length; i++) {
-      for (int j = 0; j < categories[i].items.length; j++) {
-        final material = categories[i].items[j];
-        if (material.ownAmount + material.changedAmount < 0 ||
-            material.foreignAmount - material.changedAmount < 0) return false;
-      }
-    }
-    return true;
-  }
-
   /// Returns true if this [InventoryExchange] has all the items that [inventory]
   /// has. Returns false if [inventory] has an item, that this [InventoryExchange]
   /// doesn't have.
   bool hasAllItemsOf({required Inventory inventory}) {
-    for(DPSMaterialCategory category in inventory.categories){
+    for (DPSMaterialCategory category in inventory.categories) {
       for (DPSMaterial item in category.items) {
         if (getItem(materialID: item.id) == null) return false;
       }
@@ -207,13 +155,5 @@ class InventoryExchangeMaterial with _$InventoryExchangeMaterial {
     required String image_original,
     required int ownAmount,
     required int foreignAmount,
-    @Default(0) int changedAmount,
   }) = _InventoryExchangeMaterial;
-
-  Map<String, dynamic> toJson() {
-    return {
-      "id": this.id,
-      "amount": this.changedAmount,
-    };
-  }
 }

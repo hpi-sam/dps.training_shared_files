@@ -1,6 +1,6 @@
 // Flutter imports:
 // Project imports:
-import 'package:bpmanv_app_sharedFiles/api_service/urls.dart';
+import 'package:dps.training_shared_files/api_service/urls.dart';
 import 'package:flutter/foundation.dart';
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';

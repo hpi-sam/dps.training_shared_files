@@ -6,7 +6,7 @@ const Map<String, String> PREDEFINED_URLS = {
   "Localhost": "http://127.0.0.1:8000",
 };
 
-String selectedServer = "Lehrstuhl-Server";
+String selectedServer = "Deployment-Server";
 String serverURL = PREDEFINED_URLS[selectedServer]!;
 
 /// Sets the severURL to the server with name [serverName]. The [serverName] must
