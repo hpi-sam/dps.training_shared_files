@@ -42,14 +42,14 @@ abstract class Session {
   /// GET request that includes session information in its header.
   static Future<http.Response> get(String url) async {
     http.Response response =
-        await http.get(Uri.parse(url), headers: _buildHeaders());
+        await http.get(Uri.parse(url), headers: buildHeaders());
     return response;
   }
 
   /// POST request that includes session information in its header.
   static Future<http.Response> post(String url, dynamic data) async {
     http.Response response =
-        await http.post(Uri.parse(url), body: data, headers: _buildHeaders());
+        await http.post(Uri.parse(url), body: data, headers: buildHeaders());
     return response;
   }
 
@@ -65,7 +65,7 @@ abstract class Session {
 
   /// Parses token and session data to a Map that can be sent in the header of
   /// a Request.
-  static Map<String, String> _buildHeaders() {
+  static Map<String, String> buildHeaders() {
     Map<String, String> headers = {};
     headers.addAll(_baseHeaders);
     String? token = _token;
