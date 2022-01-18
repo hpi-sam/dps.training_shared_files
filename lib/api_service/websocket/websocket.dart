@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -6,10 +7,12 @@ import 'package:web_socket_channel/io.dart';
 import '../session.dart';
 import '../urls.dart';
 
+part 'websocket_service.dart';
+
 ///
 /// Application-level global variable to access the WebSockets
 ///
-WebSocketsNotifications sockets = WebSocketsNotifications();
+WebSocketsNotifications _sockets = WebSocketsNotifications();
 
 class WebSocketsNotifications {
   static final WebSocketsNotifications _sockets =
@@ -42,11 +45,11 @@ class WebSocketsNotifications {
   /// ----------------------------------------------------------
   /// Initialization the WebSockets connection with the server
   /// ----------------------------------------------------------
-  initCommunication({required invitationCode}) async {
+  initCommunication({required String invitationCode}) async {
     ///
     /// Just in case, close any previous communication
     ///
-    reset();
+    _reset();
 
     ///
     /// Open a new WebSocket communication
@@ -79,7 +82,7 @@ class WebSocketsNotifications {
   /// ----------------------------------------------------------
   /// Closes the WebSocket communication
   /// ----------------------------------------------------------
-  reset() {
+  _reset() {
     if (_channel != null) {
       _channel!.sink.close();
       _isOn = false;
@@ -89,7 +92,8 @@ class WebSocketsNotifications {
   /// ---------------------------------------------------------
   /// Sends a message to the server
   /// ---------------------------------------------------------
-  send(String message) {
+  _send(String message) {
+    print("send Message: " + message);
     if (_channel != null) {
       if (_isOn) {
         _channel!.sink.add(message);
@@ -101,11 +105,11 @@ class WebSocketsNotifications {
   /// Adds a callback to be invoked in case of incoming
   /// notification
   /// ---------------------------------------------------------
-  addListener(Function callback) {
+  _addListener(Function callback) {
     _listeners.add(callback);
   }
 
-  removeListener(Function callback) {
+  _removeListener(Function callback) {
     _listeners.remove(callback);
   }
 
@@ -114,7 +118,7 @@ class WebSocketsNotifications {
   /// a message from the server
   /// ----------------------------------------------------------
   _onReceptionOfMessageFromServer(message) {
-    print(message);
+    print(jsonDecode(message));
     _isOn = true;
     for (var callback in _listeners) {
       callback(message);
