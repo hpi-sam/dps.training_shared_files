@@ -35,6 +35,8 @@ class WebSocketsNotifications {
   ///
   bool _isOn = false;
 
+  String? invitationCode;
+
   ///
   /// Listeners
   /// List of methods to be called when a new message
@@ -50,19 +52,18 @@ class WebSocketsNotifications {
     /// Just in case, close any previous communication
     ///
     _reset();
+    this.invitationCode = invitationCode;
 
     ///
     /// Open a new WebSocket communication
     ///
 
     try {
-      final socket = await WebSocket.connect(
-          connectWebsocketUrl(invitationCode: invitationCode),
-          headers: Session.buildHeaders());
-      _channel = IOWebSocketChannel(socket);
+      await _connectWebsocket();
       print("websocket connected");
     } catch (e) {
-      print("channel not connected");
+      print("channel not connected.. trying again..");
+      _connectWebsocket();
       print(e.toString());
       return false;
 
@@ -76,10 +77,39 @@ class WebSocketsNotifications {
     /// Start listening to new notifications / messages
     ///
     if (_channel != null) {
-      _channel!.stream.listen(_onReceptionOfMessageFromServer);
+      print("channel!=null");
+      _channel!.stream.listen(
+        _onReceptionOfMessageFromServer,
+        onDone: () {
+          debugPrint(
+              'ws channel closed, trying to establish new connection...');
+          try {
+            _connectWebsocket();
+          } on Exception {
+            debugPrint(
+                'Unable to establish new connection, will try again in 5 seconds...');
+            Future.delayed(Duration(seconds: 5));
+            _connectWebsocket();
+          }
+        },
+        onError: (error) {
+          debugPrint('ws error $error');
+        },
+      );
       return Future<bool>.value(true);
     } else
       return Future<bool>.value(false);
+  }
+
+  _connectWebsocket() async {
+    if (this.invitationCode != null) {
+      final socket = await WebSocket.connect(
+          connectWebsocketUrl(invitationCode: this.invitationCode!),
+          headers: Session.buildHeaders());
+      _channel = IOWebSocketChannel(socket);
+    } else {
+      throw Exception("No invitation code was provided");
+    }
   }
 
   /// ----------------------------------------------------------
@@ -90,6 +120,7 @@ class WebSocketsNotifications {
       _channel!.sink.close();
       _isOn = false;
     }
+    this.invitationCode = null;
   }
 
   /// ---------------------------------------------------------
@@ -111,7 +142,6 @@ class WebSocketsNotifications {
   /// notification
   /// ---------------------------------------------------------
   void _addListener(Function callback) {
-    print("add callback:" + callback.toString());
     _listeners.add(callback);
   }
 
