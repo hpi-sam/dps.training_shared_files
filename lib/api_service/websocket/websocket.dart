@@ -43,9 +43,9 @@ class WebSocketsNotifications {
   final ObserverList<Function> _listeners = ObserverList<Function>();
 
   /// ----------------------------------------------------------
-  /// Initialization the WebSockets connection with the server
+  /// Initialization the WebSockets connection with the server, return true if connection was established successfully
   /// ----------------------------------------------------------
-  initCommunication({required String invitationCode}) async {
+  Future<bool> initCommunication({required String invitationCode}) async {
     ///
     /// Just in case, close any previous communication
     ///
@@ -64,6 +64,7 @@ class WebSocketsNotifications {
     } catch (e) {
       print("channel not connected");
       print(e.toString());
+      return false;
 
       ///
       /// General error handling
@@ -76,7 +77,9 @@ class WebSocketsNotifications {
     ///
     if (_channel != null) {
       _channel!.stream.listen(_onReceptionOfMessageFromServer);
-    }
+      return Future<bool>.value(true);
+    } else
+      return Future<bool>.value(false);
   }
 
   /// ----------------------------------------------------------
@@ -92,25 +95,28 @@ class WebSocketsNotifications {
   /// ---------------------------------------------------------
   /// Sends a message to the server
   /// ---------------------------------------------------------
-  _send(String message) {
+  bool _send(String message) {
     print("send Message: " + message);
     if (_channel != null) {
       if (_isOn) {
         _channel!.sink.add(message);
+        return true;
       }
     }
+    return false;
   }
 
   /// ---------------------------------------------------------
   /// Adds a callback to be invoked in case of incoming
   /// notification
   /// ---------------------------------------------------------
-  _addListener(Function callback) {
+  void _addListener(Function callback) {
+    print("add callback:" + callback.toString());
     _listeners.add(callback);
   }
 
-  _removeListener(Function callback) {
-    _listeners.remove(callback);
+  bool _removeListener(Function callback) {
+    return _listeners.remove(callback);
   }
 
   /// ----------------------------------------------------------
