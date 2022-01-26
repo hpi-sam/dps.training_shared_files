@@ -1,6 +1,9 @@
 part of 'websocket.dart';
 
+/// Manages access to websocket
+
 class WebsocketService {
+  /// tries connecting websocket to server. If no [invitationCode] is provided, it tries restoring the previous session to allow the user to rejoin a room.
   static Future<bool> initializeWebsocket({String? invitationCode}) async {
     if (invitationCode != null) {
       return _sockets.initCommunication(invitationCode: invitationCode);

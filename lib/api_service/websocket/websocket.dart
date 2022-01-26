@@ -59,10 +59,10 @@ class WebSocketsNotifications {
     ///
 
     try {
-      await _connectWebsocket();
+      await _connect();
     } catch (e) {
       print("channel not connected.. trying again..");
-      _connectWebsocket();
+      _connect();
       print(e.toString());
       return false;
 
@@ -78,26 +78,12 @@ class WebSocketsNotifications {
     if (_channel != null) {
       _channel!.stream.listen(
         _onReceptionOfMessageFromServer,
-        onDone: () async {
-          debugPrint(
-              'ws channel closed, trying to establish new connection...');
-          try {
-            await _connectWebsocket();
-          } catch (e) {
-            try {
-              debugPrint(
-                  'Unable to establish new connection, will try again in 5 seconds...');
-              await Future.delayed(Duration(seconds: 5));
-              await _connectWebsocket();
-            } catch (e) {
-              debugPrint("Wasn't able to establish connection: $e");
-            }
-          }
-        },
+        onDone: _reconnect(),
         onError: (error) {
           debugPrint('ws error $error');
         },
       );
+      // stores new invitation code in Session, to be able to reconnect to room
       Session.updateInvitationCode(invitationCode);
 
       return Future<bool>.value(true);
@@ -107,7 +93,7 @@ class WebSocketsNotifications {
     }
   }
 
-  Future<bool> _connectWebsocket() async {
+  Future<bool> _connect() async {
     if (this.invitationCode != null) {
       try {
         final socket = await WebSocket.connect(
@@ -122,6 +108,22 @@ class WebSocketsNotifications {
       }
     } else {
       throw Exception("No invitation code was provided");
+    }
+  }
+
+  _reconnect() async {
+    debugPrint('ws channel closed, trying to establish new connection...');
+    try {
+      await _connect();
+    } catch (e) {
+      try {
+        debugPrint(
+            'Unable to establish new connection, will try again in 5 seconds...');
+        await Future.delayed(Duration(seconds: 5));
+        await _connect();
+      } catch (e) {
+        debugPrint("Wasn't able to establish connection: $e");
+      }
     }
   }
 
