@@ -32,7 +32,6 @@ abstract class Session {
     if (token != null && invitationCode != null) {
       _token = token;
       _invitationCode = invitationCode;
-
       return Future.value(true);
     }
     return Future.value(false);

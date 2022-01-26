@@ -101,17 +101,25 @@ class WebSocketsNotifications {
       Session.updateInvitationCode(invitationCode);
 
       return Future<bool>.value(true);
-    } else
+    } else {
+      Session.deleteSession();
       return Future<bool>.value(false);
+    }
   }
 
-  _connectWebsocket() async {
+  Future<bool> _connectWebsocket() async {
     if (this.invitationCode != null) {
-      final socket = await WebSocket.connect(
-          connectWebsocketUrl(invitationCode: this.invitationCode!),
-          headers: Session.buildHeaders());
-      _channel = IOWebSocketChannel(socket);
-      debugPrint("websocket connected");
+      try {
+        final socket = await WebSocket.connect(
+            connectWebsocketUrl(invitationCode: this.invitationCode!),
+            headers: Session.buildHeaders());
+        _channel = IOWebSocketChannel(socket);
+        debugPrint("websocket connected");
+        return Future.value(true);
+      } on Exception catch (e) {
+        print(e.toString());
+        return Future.value(false);
+      }
     } else {
       throw Exception("No invitation code was provided");
     }
