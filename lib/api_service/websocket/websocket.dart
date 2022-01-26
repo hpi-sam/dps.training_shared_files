@@ -60,7 +60,6 @@ class WebSocketsNotifications {
 
     try {
       await _connectWebsocket();
-      print("websocket connected");
     } catch (e) {
       print("channel not connected.. trying again..");
       _connectWebsocket();
@@ -77,25 +76,30 @@ class WebSocketsNotifications {
     /// Start listening to new notifications / messages
     ///
     if (_channel != null) {
-      print("channel!=null");
       _channel!.stream.listen(
         _onReceptionOfMessageFromServer,
-        onDone: () {
+        onDone: () async {
           debugPrint(
               'ws channel closed, trying to establish new connection...');
           try {
-            _connectWebsocket();
-          } on Exception {
-            debugPrint(
-                'Unable to establish new connection, will try again in 5 seconds...');
-            Future.delayed(Duration(seconds: 5));
-            _connectWebsocket();
+            await _connectWebsocket();
+          } catch (e) {
+            try {
+              debugPrint(
+                  'Unable to establish new connection, will try again in 5 seconds...');
+              await Future.delayed(Duration(seconds: 5));
+              await _connectWebsocket();
+            } catch (e) {
+              debugPrint("Wasn't able to establish connection: $e");
+            }
           }
         },
         onError: (error) {
           debugPrint('ws error $error');
         },
       );
+      Session.updateInvitationCode(invitationCode);
+
       return Future<bool>.value(true);
     } else
       return Future<bool>.value(false);
@@ -107,6 +111,7 @@ class WebSocketsNotifications {
           connectWebsocketUrl(invitationCode: this.invitationCode!),
           headers: Session.buildHeaders());
       _channel = IOWebSocketChannel(socket);
+      debugPrint("websocket connected");
     } else {
       throw Exception("No invitation code was provided");
     }
@@ -127,7 +132,7 @@ class WebSocketsNotifications {
   /// Sends a message to the server
   /// ---------------------------------------------------------
   bool _send(String message) {
-    print("send Message: " + message);
+    debugPrint("send Message: " + message);
     if (_channel != null) {
       if (_isOn) {
         _channel!.sink.add(message);
@@ -154,7 +159,7 @@ class WebSocketsNotifications {
   /// a message from the server
   /// ----------------------------------------------------------
   _onReceptionOfMessageFromServer(message) {
-    print(jsonDecode(message));
+    debugPrint("received Message: " + jsonDecode(message).toString());
     _isOn = true;
     for (var callback in _listeners) {
       callback(message);

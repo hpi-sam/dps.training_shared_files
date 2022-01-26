@@ -1,13 +1,18 @@
 part of 'websocket.dart';
 
 class WebsocketService {
-  static Future<bool> initializeWebsocket(
-      {required String invitationCode}) async {
-    return _sockets.initCommunication(invitationCode: invitationCode);
+  static Future<bool> initializeWebsocket({String? invitationCode}) async {
+    if (invitationCode != null) {
+      return _sockets.initCommunication(invitationCode: invitationCode);
+    }
+    invitationCode = Session.getInvitationCode();
+    if (invitationCode != null) {
+      return _sockets.initCommunication(invitationCode: invitationCode);
+    } else
+      throw Exception("Cannot fetch saved invitationCode");
   }
 
   static void addListener(Function callback) {
-    print(callback.toString());
     return _sockets._addListener(callback);
   }
 

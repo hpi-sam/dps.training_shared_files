@@ -14,11 +14,13 @@ abstract class Session {
     "content-type": "application/json"
   };
   static String? _token;
+  static String? _invitationCode;
 
   /// Deletes the currently saved session from the [SharedPreferences]
   static void deleteSession() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.remove("token");
+    prefs.remove("invitationCode");
   }
 
   /// Tries to restore the token and session by loading them from the [SharedPreferences].
@@ -26,11 +28,14 @@ abstract class Session {
   static Future<bool> restore() async {
     final prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString("token");
-    if (token != null) {
+    String? invitationCode = prefs.getString("invitationCode");
+    if (token != null && invitationCode != null) {
       _token = token;
-      return true;
+      _invitationCode = invitationCode;
+
+      return Future.value(true);
     }
-    return false;
+    return Future.value(false);
   }
 
   /// GET request without session information in its header.
@@ -76,6 +81,22 @@ abstract class Session {
       headers['Authorization'] = 'Token ' + _token!;
       return headers;
     }
+  }
+
+  ///Saves invitationCode. Needed for reconnecting Websocket
+  static Future<void> updateInvitationCode(String? invitationCode) async {
+    if (invitationCode != null) {
+      final prefs = await SharedPreferences.getInstance();
+      _invitationCode = invitationCode;
+      prefs.setString("invitationCode", _invitationCode!);
+      print("Updated Invitationcode: " + invitationCode);
+    } else {
+      throw Exception("No invitationCode given");
+    }
+  }
+
+  static String? getInvitationCode() {
+    return _invitationCode;
   }
 
   /// Parses token and session from the cookie included in [response] header.
