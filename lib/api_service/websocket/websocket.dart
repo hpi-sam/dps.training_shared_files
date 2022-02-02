@@ -9,9 +9,6 @@ import '../urls.dart';
 
 part 'websocket_service.dart';
 
-///
-/// Application-level global variable to access the WebSockets
-///
 WebSocketsNotifications _sockets = WebSocketsNotifications();
 
 class WebSocketsNotifications {
@@ -78,7 +75,7 @@ class WebSocketsNotifications {
     if (_channel != null) {
       _channel!.stream.listen(
         _onReceptionOfMessageFromServer,
-        onDone: _reconnect(),
+        onDone: _reconnect,
         onError: (error) {
           debugPrint('ws error $error');
         },
@@ -111,7 +108,7 @@ class WebSocketsNotifications {
     }
   }
 
-  _reconnect() async {
+  void _reconnect() async {
     debugPrint('ws channel closed, trying to establish new connection...');
     try {
       await _connect();
@@ -171,8 +168,23 @@ class WebSocketsNotifications {
   _onReceptionOfMessageFromServer(message) {
     debugPrint("received Message: " + jsonDecode(message).toString());
     _isOn = true;
-    for (var callback in _listeners) {
-      callback(message);
+    Map serverMessage;
+    try {
+      serverMessage = json.decode(message);
+    } on Exception {
+      throw Exception("Cannot decode received message:" + message.toString());
+      return;
     }
+    if (serverMessage["type"] == "failure") {
+      _handleErrorCode(serverMessage);
+      return;
+    }
+    for (var callback in _listeners) {
+      callback(serverMessage);
+    }
+  }
+
+  _handleErrorCode(Map serverMessage) {
+    throw Exception("Request failure: " + serverMessage);
   }
 }
