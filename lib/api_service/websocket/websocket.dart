@@ -185,6 +185,7 @@ class WebSocketsNotifications {
   }
 
   _handleErrorCode(Map serverMessage) {
-    throw Exception("Request failure: " + serverMessage);
+    throw Exception("Request failure: " + serverMessage.toString());
+    // TODO: Improve error handling
   }
 }
