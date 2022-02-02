@@ -1,4 +1,5 @@
 // Package imports:
+import 'package:dps.training_shared_files/model/inventory/inventory.dart';
 import 'package:dps.training_shared_files/model/running_measure/running_measure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -22,6 +23,9 @@ class Helper with _$Helper {
     /// not implementing a measure.
     @Default(null) RunningMeasure? runningMeasure,
 
+    /// The inventory of the helper
+    @Default(null) Inventory? inventory,
+
     /// The page of the bottom navigation bar a helper has viewed last.
     required int activePage,
 
@@ -34,6 +38,7 @@ class Helper with _$Helper {
 
     /// The entityID of this helper. **Caution:** This is **not** the ID used in helper-specific
     /// API calls. For that, see [helperNr].
+
     required int entityID,
   }) = _Helper;
 }

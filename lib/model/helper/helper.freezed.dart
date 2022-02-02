@@ -19,6 +19,7 @@ class _$HelperTearOff {
   _Helper call(
       {String? dpsCode = null,
       RunningMeasure? runningMeasure = null,
+      Inventory? inventory = null,
       required int activePage,
       required int helperNr,
       required HelperRole role,
@@ -26,6 +27,7 @@ class _$HelperTearOff {
     return _Helper(
       dpsCode: dpsCode,
       runningMeasure: runningMeasure,
+      inventory: inventory,
       activePage: activePage,
       helperNr: helperNr,
       role: role,
@@ -46,6 +48,9 @@ mixin _$Helper {
   /// The measure a helper is currently implementing. Null if the helper is currently
   /// not implementing a measure.
   RunningMeasure? get runningMeasure => throw _privateConstructorUsedError;
+
+  /// The inventory of the helper
+  Inventory? get inventory => throw _privateConstructorUsedError;
 
   /// The page of the bottom navigation bar a helper has viewed last.
   int get activePage => throw _privateConstructorUsedError;
@@ -72,12 +77,14 @@ abstract class $HelperCopyWith<$Res> {
   $Res call(
       {String? dpsCode,
       RunningMeasure? runningMeasure,
+      Inventory? inventory,
       int activePage,
       int helperNr,
       HelperRole role,
       int entityID});
 
   $RunningMeasureCopyWith<$Res>? get runningMeasure;
+  $InventoryCopyWith<$Res>? get inventory;
 }
 
 /// @nodoc
@@ -92,6 +99,7 @@ class _$HelperCopyWithImpl<$Res> implements $HelperCopyWith<$Res> {
   $Res call({
     Object? dpsCode = freezed,
     Object? runningMeasure = freezed,
+    Object? inventory = freezed,
     Object? activePage = freezed,
     Object? helperNr = freezed,
     Object? role = freezed,
@@ -106,6 +114,10 @@ class _$HelperCopyWithImpl<$Res> implements $HelperCopyWith<$Res> {
           ? _value.runningMeasure
           : runningMeasure // ignore: cast_nullable_to_non_nullable
               as RunningMeasure?,
+      inventory: inventory == freezed
+          ? _value.inventory
+          : inventory // ignore: cast_nullable_to_non_nullable
+              as Inventory?,
       activePage: activePage == freezed
           ? _value.activePage
           : activePage // ignore: cast_nullable_to_non_nullable
@@ -135,6 +147,17 @@ class _$HelperCopyWithImpl<$Res> implements $HelperCopyWith<$Res> {
       return _then(_value.copyWith(runningMeasure: value));
     });
   }
+
+  @override
+  $InventoryCopyWith<$Res>? get inventory {
+    if (_value.inventory == null) {
+      return null;
+    }
+
+    return $InventoryCopyWith<$Res>(_value.inventory!, (value) {
+      return _then(_value.copyWith(inventory: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -145,6 +168,7 @@ abstract class _$HelperCopyWith<$Res> implements $HelperCopyWith<$Res> {
   $Res call(
       {String? dpsCode,
       RunningMeasure? runningMeasure,
+      Inventory? inventory,
       int activePage,
       int helperNr,
       HelperRole role,
@@ -152,6 +176,8 @@ abstract class _$HelperCopyWith<$Res> implements $HelperCopyWith<$Res> {
 
   @override
   $RunningMeasureCopyWith<$Res>? get runningMeasure;
+  @override
+  $InventoryCopyWith<$Res>? get inventory;
 }
 
 /// @nodoc
@@ -167,6 +193,7 @@ class __$HelperCopyWithImpl<$Res> extends _$HelperCopyWithImpl<$Res>
   $Res call({
     Object? dpsCode = freezed,
     Object? runningMeasure = freezed,
+    Object? inventory = freezed,
     Object? activePage = freezed,
     Object? helperNr = freezed,
     Object? role = freezed,
@@ -181,6 +208,10 @@ class __$HelperCopyWithImpl<$Res> extends _$HelperCopyWithImpl<$Res>
           ? _value.runningMeasure
           : runningMeasure // ignore: cast_nullable_to_non_nullable
               as RunningMeasure?,
+      inventory: inventory == freezed
+          ? _value.inventory
+          : inventory // ignore: cast_nullable_to_non_nullable
+              as Inventory?,
       activePage: activePage == freezed
           ? _value.activePage
           : activePage // ignore: cast_nullable_to_non_nullable
@@ -206,6 +237,7 @@ class _$_Helper extends _Helper {
   const _$_Helper(
       {this.dpsCode = null,
       this.runningMeasure = null,
+      this.inventory = null,
       required this.activePage,
       required this.helperNr,
       required this.role,
@@ -224,6 +256,11 @@ class _$_Helper extends _Helper {
   /// The measure a helper is currently implementing. Null if the helper is currently
   /// not implementing a measure.
   final RunningMeasure? runningMeasure;
+  @JsonKey(defaultValue: null)
+  @override
+
+  /// The inventory of the helper
+  final Inventory? inventory;
   @override
 
   /// The page of the bottom navigation bar a helper has viewed last.
@@ -245,7 +282,7 @@ class _$_Helper extends _Helper {
 
   @override
   String toString() {
-    return 'Helper(dpsCode: $dpsCode, runningMeasure: $runningMeasure, activePage: $activePage, helperNr: $helperNr, role: $role, entityID: $entityID)';
+    return 'Helper(dpsCode: $dpsCode, runningMeasure: $runningMeasure, inventory: $inventory, activePage: $activePage, helperNr: $helperNr, role: $role, entityID: $entityID)';
   }
 
   @override
@@ -258,6 +295,9 @@ class _$_Helper extends _Helper {
             (identical(other.runningMeasure, runningMeasure) ||
                 const DeepCollectionEquality()
                     .equals(other.runningMeasure, runningMeasure)) &&
+            (identical(other.inventory, inventory) ||
+                const DeepCollectionEquality()
+                    .equals(other.inventory, inventory)) &&
             (identical(other.activePage, activePage) ||
                 const DeepCollectionEquality()
                     .equals(other.activePage, activePage)) &&
@@ -276,6 +316,7 @@ class _$_Helper extends _Helper {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(dpsCode) ^
       const DeepCollectionEquality().hash(runningMeasure) ^
+      const DeepCollectionEquality().hash(inventory) ^
       const DeepCollectionEquality().hash(activePage) ^
       const DeepCollectionEquality().hash(helperNr) ^
       const DeepCollectionEquality().hash(role) ^
@@ -291,6 +332,7 @@ abstract class _Helper extends Helper {
   const factory _Helper(
       {String? dpsCode,
       RunningMeasure? runningMeasure,
+      Inventory? inventory,
       required int activePage,
       required int helperNr,
       required HelperRole role,
@@ -307,6 +349,10 @@ abstract class _Helper extends Helper {
   /// The measure a helper is currently implementing. Null if the helper is currently
   /// not implementing a measure.
   RunningMeasure? get runningMeasure => throw _privateConstructorUsedError;
+  @override
+
+  /// The inventory of the helper
+  Inventory? get inventory => throw _privateConstructorUsedError;
   @override
 
   /// The page of the bottom navigation bar a helper has viewed last.

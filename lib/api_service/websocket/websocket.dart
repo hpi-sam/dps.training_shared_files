@@ -109,7 +109,9 @@ class WebSocketsNotifications {
   }
 
   void _reconnect() async {
-    debugPrint('ws channel closed, trying to establish new connection...');
+    debugPrint(
+        "ws channel closed, trying to establish new connection... closecode: " +
+            _channel!.closeCode.toString());
     try {
       await _connect();
     } catch (e) {
@@ -173,7 +175,6 @@ class WebSocketsNotifications {
       serverMessage = json.decode(message);
     } on Exception {
       throw Exception("Cannot decode received message:" + message.toString());
-      return;
     }
     if (serverMessage["type"] == "failure") {
       _handleErrorCode(serverMessage);
