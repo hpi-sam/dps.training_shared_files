@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:dps.training_shared_files/model/applied_measures/applied_measures.dart';
 import 'package:flutter/foundation.dart';
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -23,7 +24,6 @@ class Patient with _$Patient {
   const Patient._();
   const factory Patient(
       {required String patientDpsCode,
-      required String scannedDpsCode,
       required PatientCurrentPhase currentPhase,
       required PatientFirstImpression firstImpression,
       required PatientPersonalData personalData,
@@ -32,6 +32,7 @@ class Patient with _$Patient {
       required String bodyCheckInformation,
       required String situationOfDiscovery,
       required String triageCategory,
+      required AppliedMeasures appliedMeasures,
       required bool isCheckedOut,
       required bool isAlive}) = _Patient;
 
@@ -42,26 +43,31 @@ class Patient with _$Patient {
   get gender => personalData.gender;
   get biometrics => personalData.biometrics;
 
-  /// Creates a [Patient] from the given [json]. The [json] must conform to our
+  /// Creates a [Patient] from the given [patientJson]. The [patientJson] must conform to our
   /// API specification (https://github.com/hpi-sam/BPMANV-Server/blob/dev/api_spezification.md)
-  factory Patient.fromJson(Map<String, dynamic> json, String dpsCode) {
+  factory Patient.fromJson(
+      {required Map<String, dynamic> patientJson,
+      required Map<String, dynamic> appliesMeasuresJson}) {
     return Patient(
-        scannedDpsCode: dpsCode,
-        patientDpsCode: json["static_data"]["dps_code"],
-        currentPhase: PatientCurrentPhase.fromJson(json["current_phase"]),
+        patientDpsCode: patientJson["static_data"]["dps_code"],
+        currentPhase:
+            PatientCurrentPhase.fromJson(patientJson["current_phase"]),
         firstImpression: PatientFirstImpression.fromJson(
-            json["static_data"]["first_impression"]),
-        personalData:
-            PatientPersonalData.fromJson(json["static_data"]["personal_data"]),
+            patientJson["static_data"]["first_impression"]),
+        personalData: PatientPersonalData.fromJson(
+            patientJson["static_data"]["personal_data"]),
         injuries: PatientInjuries.fromJson(
             // a bit hacky to work with lists, see: https://github.com/rrousselGit/freezed/issues/173
-            {'injuries': json["static_data"]["injuries"]}),
-        injuryDescription: json["static_data"]["injury_description"],
-        bodyCheckInformation: json["static_data"]["body_check_information"],
-        situationOfDiscovery: json["static_data"]["situation_of_discovery"],
-        triageCategory: json["triage"],
-        isCheckedOut: json["is_checked_out"],
-        isAlive: json["is_alive"]);
+            {'injuries': patientJson["static_data"]["injuries"]}),
+        injuryDescription: patientJson["static_data"]["injury_description"],
+        bodyCheckInformation: patientJson["static_data"]
+            ["body_check_information"],
+        situationOfDiscovery: patientJson["static_data"]
+            ["situation_of_discovery"],
+        triageCategory: patientJson["triage"],
+        appliedMeasures: AppliedMeasures.fromJson(appliesMeasuresJson),
+        isCheckedOut: patientJson["is_checked_out"],
+        isAlive: patientJson["is_alive"]);
   }
 }
 

@@ -17,18 +17,18 @@ class _$HelperTearOff {
   const _$HelperTearOff();
 
   _Helper call(
-      {String? dpsCode = null,
+      {String? patientDpsCode = null,
       RunningMeasure? runningMeasure = null,
       Inventory? inventory = null,
-      required int activePage,
+      Patient? patient = null,
       required int helperNr,
       required HelperRole role,
-      required int entityID}) {
+      int? entityID = null}) {
     return _Helper(
-      dpsCode: dpsCode,
+      patientDpsCode: patientDpsCode,
       runningMeasure: runningMeasure,
       inventory: inventory,
-      activePage: activePage,
+      patient: patient,
       helperNr: helperNr,
       role: role,
       entityID: entityID,
@@ -43,7 +43,7 @@ const $Helper = _$HelperTearOff();
 mixin _$Helper {
   /// The ID of the patient a helper has most recently scanned. Null if no patient
   /// has been scanned by the helper yet.
-  String? get dpsCode => throw _privateConstructorUsedError;
+  String? get patientDpsCode => throw _privateConstructorUsedError;
 
   /// The measure a helper is currently implementing. Null if the helper is currently
   /// not implementing a measure.
@@ -52,8 +52,8 @@ mixin _$Helper {
   /// The inventory of the helper
   Inventory? get inventory => throw _privateConstructorUsedError;
 
-  /// The page of the bottom navigation bar a helper has viewed last.
-  int get activePage => throw _privateConstructorUsedError;
+  /// The instance of the last scanned patient
+  Patient? get patient => throw _privateConstructorUsedError;
 
   /// The identifying number of this helper that is used for any helper-specific
   /// API calls.
@@ -62,9 +62,9 @@ mixin _$Helper {
   /// The role of this helper.
   HelperRole get role => throw _privateConstructorUsedError;
 
-  /// The entityID of this helper. **Caution:** This is **not** the ID used in helper-specific
+  /// The entityID of this helper that is displayed in its QR-Code. **Caution:** This is **not** the ID used in helper-specific
   /// API calls. For that, see [helperNr].
-  int get entityID => throw _privateConstructorUsedError;
+  int? get entityID => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HelperCopyWith<Helper> get copyWith => throw _privateConstructorUsedError;
@@ -75,16 +75,17 @@ abstract class $HelperCopyWith<$Res> {
   factory $HelperCopyWith(Helper value, $Res Function(Helper) then) =
       _$HelperCopyWithImpl<$Res>;
   $Res call(
-      {String? dpsCode,
+      {String? patientDpsCode,
       RunningMeasure? runningMeasure,
       Inventory? inventory,
-      int activePage,
+      Patient? patient,
       int helperNr,
       HelperRole role,
-      int entityID});
+      int? entityID});
 
   $RunningMeasureCopyWith<$Res>? get runningMeasure;
   $InventoryCopyWith<$Res>? get inventory;
+  $PatientCopyWith<$Res>? get patient;
 }
 
 /// @nodoc
@@ -97,18 +98,18 @@ class _$HelperCopyWithImpl<$Res> implements $HelperCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? dpsCode = freezed,
+    Object? patientDpsCode = freezed,
     Object? runningMeasure = freezed,
     Object? inventory = freezed,
-    Object? activePage = freezed,
+    Object? patient = freezed,
     Object? helperNr = freezed,
     Object? role = freezed,
     Object? entityID = freezed,
   }) {
     return _then(_value.copyWith(
-      dpsCode: dpsCode == freezed
-          ? _value.dpsCode
-          : dpsCode // ignore: cast_nullable_to_non_nullable
+      patientDpsCode: patientDpsCode == freezed
+          ? _value.patientDpsCode
+          : patientDpsCode // ignore: cast_nullable_to_non_nullable
               as String?,
       runningMeasure: runningMeasure == freezed
           ? _value.runningMeasure
@@ -118,10 +119,10 @@ class _$HelperCopyWithImpl<$Res> implements $HelperCopyWith<$Res> {
           ? _value.inventory
           : inventory // ignore: cast_nullable_to_non_nullable
               as Inventory?,
-      activePage: activePage == freezed
-          ? _value.activePage
-          : activePage // ignore: cast_nullable_to_non_nullable
-              as int,
+      patient: patient == freezed
+          ? _value.patient
+          : patient // ignore: cast_nullable_to_non_nullable
+              as Patient?,
       helperNr: helperNr == freezed
           ? _value.helperNr
           : helperNr // ignore: cast_nullable_to_non_nullable
@@ -133,7 +134,7 @@ class _$HelperCopyWithImpl<$Res> implements $HelperCopyWith<$Res> {
       entityID: entityID == freezed
           ? _value.entityID
           : entityID // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 
@@ -158,6 +159,17 @@ class _$HelperCopyWithImpl<$Res> implements $HelperCopyWith<$Res> {
       return _then(_value.copyWith(inventory: value));
     });
   }
+
+  @override
+  $PatientCopyWith<$Res>? get patient {
+    if (_value.patient == null) {
+      return null;
+    }
+
+    return $PatientCopyWith<$Res>(_value.patient!, (value) {
+      return _then(_value.copyWith(patient: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -166,18 +178,20 @@ abstract class _$HelperCopyWith<$Res> implements $HelperCopyWith<$Res> {
       __$HelperCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? dpsCode,
+      {String? patientDpsCode,
       RunningMeasure? runningMeasure,
       Inventory? inventory,
-      int activePage,
+      Patient? patient,
       int helperNr,
       HelperRole role,
-      int entityID});
+      int? entityID});
 
   @override
   $RunningMeasureCopyWith<$Res>? get runningMeasure;
   @override
   $InventoryCopyWith<$Res>? get inventory;
+  @override
+  $PatientCopyWith<$Res>? get patient;
 }
 
 /// @nodoc
@@ -191,18 +205,18 @@ class __$HelperCopyWithImpl<$Res> extends _$HelperCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? dpsCode = freezed,
+    Object? patientDpsCode = freezed,
     Object? runningMeasure = freezed,
     Object? inventory = freezed,
-    Object? activePage = freezed,
+    Object? patient = freezed,
     Object? helperNr = freezed,
     Object? role = freezed,
     Object? entityID = freezed,
   }) {
     return _then(_Helper(
-      dpsCode: dpsCode == freezed
-          ? _value.dpsCode
-          : dpsCode // ignore: cast_nullable_to_non_nullable
+      patientDpsCode: patientDpsCode == freezed
+          ? _value.patientDpsCode
+          : patientDpsCode // ignore: cast_nullable_to_non_nullable
               as String?,
       runningMeasure: runningMeasure == freezed
           ? _value.runningMeasure
@@ -212,10 +226,10 @@ class __$HelperCopyWithImpl<$Res> extends _$HelperCopyWithImpl<$Res>
           ? _value.inventory
           : inventory // ignore: cast_nullable_to_non_nullable
               as Inventory?,
-      activePage: activePage == freezed
-          ? _value.activePage
-          : activePage // ignore: cast_nullable_to_non_nullable
-              as int,
+      patient: patient == freezed
+          ? _value.patient
+          : patient // ignore: cast_nullable_to_non_nullable
+              as Patient?,
       helperNr: helperNr == freezed
           ? _value.helperNr
           : helperNr // ignore: cast_nullable_to_non_nullable
@@ -227,7 +241,7 @@ class __$HelperCopyWithImpl<$Res> extends _$HelperCopyWithImpl<$Res>
       entityID: entityID == freezed
           ? _value.entityID
           : entityID // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -235,13 +249,13 @@ class __$HelperCopyWithImpl<$Res> extends _$HelperCopyWithImpl<$Res>
 /// @nodoc
 class _$_Helper extends _Helper {
   const _$_Helper(
-      {this.dpsCode = null,
+      {this.patientDpsCode = null,
       this.runningMeasure = null,
       this.inventory = null,
-      required this.activePage,
+      this.patient = null,
       required this.helperNr,
       required this.role,
-      required this.entityID})
+      this.entityID = null})
       : super._();
 
   @JsonKey(defaultValue: null)
@@ -249,7 +263,7 @@ class _$_Helper extends _Helper {
 
   /// The ID of the patient a helper has most recently scanned. Null if no patient
   /// has been scanned by the helper yet.
-  final String? dpsCode;
+  final String? patientDpsCode;
   @JsonKey(defaultValue: null)
   @override
 
@@ -261,10 +275,11 @@ class _$_Helper extends _Helper {
 
   /// The inventory of the helper
   final Inventory? inventory;
+  @JsonKey(defaultValue: null)
   @override
 
-  /// The page of the bottom navigation bar a helper has viewed last.
-  final int activePage;
+  /// The instance of the last scanned patient
+  final Patient? patient;
   @override
 
   /// The identifying number of this helper that is used for any helper-specific
@@ -274,33 +289,34 @@ class _$_Helper extends _Helper {
 
   /// The role of this helper.
   final HelperRole role;
+  @JsonKey(defaultValue: null)
   @override
 
-  /// The entityID of this helper. **Caution:** This is **not** the ID used in helper-specific
+  /// The entityID of this helper that is displayed in its QR-Code. **Caution:** This is **not** the ID used in helper-specific
   /// API calls. For that, see [helperNr].
-  final int entityID;
+  final int? entityID;
 
   @override
   String toString() {
-    return 'Helper(dpsCode: $dpsCode, runningMeasure: $runningMeasure, inventory: $inventory, activePage: $activePage, helperNr: $helperNr, role: $role, entityID: $entityID)';
+    return 'Helper(patientDpsCode: $patientDpsCode, runningMeasure: $runningMeasure, inventory: $inventory, patient: $patient, helperNr: $helperNr, role: $role, entityID: $entityID)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Helper &&
-            (identical(other.dpsCode, dpsCode) ||
+            (identical(other.patientDpsCode, patientDpsCode) ||
                 const DeepCollectionEquality()
-                    .equals(other.dpsCode, dpsCode)) &&
+                    .equals(other.patientDpsCode, patientDpsCode)) &&
             (identical(other.runningMeasure, runningMeasure) ||
                 const DeepCollectionEquality()
                     .equals(other.runningMeasure, runningMeasure)) &&
             (identical(other.inventory, inventory) ||
                 const DeepCollectionEquality()
                     .equals(other.inventory, inventory)) &&
-            (identical(other.activePage, activePage) ||
+            (identical(other.patient, patient) ||
                 const DeepCollectionEquality()
-                    .equals(other.activePage, activePage)) &&
+                    .equals(other.patient, patient)) &&
             (identical(other.helperNr, helperNr) ||
                 const DeepCollectionEquality()
                     .equals(other.helperNr, helperNr)) &&
@@ -314,10 +330,10 @@ class _$_Helper extends _Helper {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(dpsCode) ^
+      const DeepCollectionEquality().hash(patientDpsCode) ^
       const DeepCollectionEquality().hash(runningMeasure) ^
       const DeepCollectionEquality().hash(inventory) ^
-      const DeepCollectionEquality().hash(activePage) ^
+      const DeepCollectionEquality().hash(patient) ^
       const DeepCollectionEquality().hash(helperNr) ^
       const DeepCollectionEquality().hash(role) ^
       const DeepCollectionEquality().hash(entityID);
@@ -330,20 +346,20 @@ class _$_Helper extends _Helper {
 
 abstract class _Helper extends Helper {
   const factory _Helper(
-      {String? dpsCode,
+      {String? patientDpsCode,
       RunningMeasure? runningMeasure,
       Inventory? inventory,
-      required int activePage,
+      Patient? patient,
       required int helperNr,
       required HelperRole role,
-      required int entityID}) = _$_Helper;
+      int? entityID}) = _$_Helper;
   const _Helper._() : super._();
 
   @override
 
   /// The ID of the patient a helper has most recently scanned. Null if no patient
   /// has been scanned by the helper yet.
-  String? get dpsCode => throw _privateConstructorUsedError;
+  String? get patientDpsCode => throw _privateConstructorUsedError;
   @override
 
   /// The measure a helper is currently implementing. Null if the helper is currently
@@ -355,8 +371,8 @@ abstract class _Helper extends Helper {
   Inventory? get inventory => throw _privateConstructorUsedError;
   @override
 
-  /// The page of the bottom navigation bar a helper has viewed last.
-  int get activePage => throw _privateConstructorUsedError;
+  /// The instance of the last scanned patient
+  Patient? get patient => throw _privateConstructorUsedError;
   @override
 
   /// The identifying number of this helper that is used for any helper-specific
@@ -368,9 +384,9 @@ abstract class _Helper extends Helper {
   HelperRole get role => throw _privateConstructorUsedError;
   @override
 
-  /// The entityID of this helper. **Caution:** This is **not** the ID used in helper-specific
+  /// The entityID of this helper that is displayed in its QR-Code. **Caution:** This is **not** the ID used in helper-specific
   /// API calls. For that, see [helperNr].
-  int get entityID => throw _privateConstructorUsedError;
+  int? get entityID => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$HelperCopyWith<_Helper> get copyWith => throw _privateConstructorUsedError;

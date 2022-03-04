@@ -157,28 +157,28 @@ Future<void> changeRoomConfigRoute(
   }
 }
 
-Future<Patient> fetchPatientTrainerRoute({required String dpsCode}) async {
-  try {
-    final response = await Session.get(patientDataTrainerUrl(dpsCode: dpsCode));
-    if (response.statusCode == 200) {
-      final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      return Patient.fromJson(responseJson, dpsCode);
-    } else {
-      if (response.statusCode == 404) {
-        // error is in German because it might be relevant to the player.
-        throw Exception(
-            "Error ${response.statusCode} - Der Patient ${dpsCode} kann nicht geladen werden. "
-            "Womöglich ist dieser Patient nicht in der Datenbank vorhanden. Bitte"
-            " stelle sicher, dass der gescannte QR-Code korrekt ist.");
-      }
-      throw Exception(
-          "Error ${response.statusCode} - Could not load patient ${dpsCode}.");
-    }
-  } on Exception catch (e) {
-    print("ERROR FETCHING PATIENT: " + e.toString());
-    throw (e);
-  }
-}
+// Future<Patient> fetchPatientTrainerRoute({required String dpsCode}) async {
+//   try {
+//     final response = await Session.get(patientDataTrainerUrl(dpsCode: dpsCode));
+//     if (response.statusCode == 200) {
+//       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+//       return Patient.fromJson(responseJson, dpsCode);
+//     } else {
+//       if (response.statusCode == 404) {
+//         // error is in German because it might be relevant to the player.
+//         throw Exception(
+//             "Error ${response.statusCode} - Der Patient ${dpsCode} kann nicht geladen werden. "
+//             "Womöglich ist dieser Patient nicht in der Datenbank vorhanden. Bitte"
+//             " stelle sicher, dass der gescannte QR-Code korrekt ist.");
+//       }
+//       throw Exception(
+//           "Error ${response.statusCode} - Could not load patient ${dpsCode}.");
+//     }
+//   } on Exception catch (e) {
+//     print("ERROR FETCHING PATIENT: " + e.toString());
+//     throw (e);
+//   }
+// }
 
 Future<void> addPatientTrainerRoute(
     {required String dpsCode, required int roomID}) async {

@@ -94,14 +94,14 @@ class BackendRoute {
         inventoryExchangeUrl(entityID: entityID, helperNr: helperNr), f, p);
   }
 
-  factory BackendRoute.fetchPatient(
-      {required String dpsCode, required int helperNr}) {
-    Function f = fetchPatientRoute;
-    Map<Symbol, dynamic> p =
-        symbolizeKeys({"dpsCode": dpsCode, "helperNr": helperNr});
-    return BackendRoute(
-        patientDataUrl(dpsCode: dpsCode, helperNr: helperNr), f, p);
-  }
+  // factory BackendRoute.fetchPatient(
+  //     {required String dpsCode, required int helperNr}) {
+  //   Function f = fetchPatientRoute;
+  //   Map<Symbol, dynamic> p =
+  //       symbolizeKeys({"dpsCode": dpsCode, "helperNr": helperNr});
+  //   return BackendRoute(
+  //       patientDataUrl(dpsCode: dpsCode, helperNr: helperNr), f, p);
+  // }
 
   factory BackendRoute.uncoverPatient(
       {required String dpsCode, required int helperNr}) {
@@ -333,11 +333,11 @@ class BackendRoute {
     return BackendRoute(changeRoomConfigUrl(roomID: roomID), f, p);
   }
 
-  factory BackendRoute.fetchPatientTrainer({required String dpsCode}) {
-    Function f = fetchPatientTrainerRoute;
-    Map<Symbol, dynamic> p = symbolizeKeys({"dpsCode": dpsCode});
-    return BackendRoute(patientDataTrainerUrl(dpsCode: dpsCode), f, p);
-  }
+  // factory BackendRoute.fetchPatientTrainer({required String dpsCode}) {
+  //   Function f = fetchPatientTrainerRoute;
+  //   Map<Symbol, dynamic> p = symbolizeKeys({"dpsCode": dpsCode});
+  //   return BackendRoute(patientDataTrainerUrl(dpsCode: dpsCode), f, p);
+  // }
 
   factory BackendRoute.addPatientTrainer(
       {required String dpsCode, required int roomID}) {

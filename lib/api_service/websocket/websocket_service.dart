@@ -27,4 +27,13 @@ class WebsocketService {
     return _sockets._send(
         jsonEncode({"type": "room.join", "amount_of_helpers": helperAmount}));
   }
+
+  static bool subscribeToPatient(
+      {required int helperNr, required String dpsCode}) {
+    return _sockets._send(jsonEncode({
+      "type": "patient.subscribe",
+      "helper_nr": helperNr,
+      "dps_code": dpsCode
+    }));
+  }
 }

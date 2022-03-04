@@ -111,7 +111,9 @@ Future<String> roomStateRoute({required int roomID}) async {
 Future<int> fetchOwnEntityIDRoute({required int helperNr}) async {
   try {
     final response = await Session.get(helperIDUrl(helperNr: helperNr));
+    print(response.statusCode.toString());
     final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+    print(responseJson.toString());
     if (response.statusCode == 200) {
       return responseJson["id"];
     } else {
