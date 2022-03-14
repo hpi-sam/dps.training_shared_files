@@ -59,6 +59,11 @@ class WebsocketService {
     })));
   }
 
+  static bool cancelMeasure({required int helperNr}) {
+    return _sockets
+        ._send(jsonEncode(({"type": "cancel.measure", "helper_nr": helperNr})));
+  }
+
   static bool removeMeasure({required int helperNr, required int measureID}) {
     return _sockets._send(jsonEncode(({
       "type": "remove.material",
