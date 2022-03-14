@@ -36,4 +36,34 @@ class WebsocketService {
       "dps_code": dpsCode
     }));
   }
+
+  static bool applyTriage(
+      {required int helperNr, required String triageCategory}) {
+    return _sockets._send(jsonEncode({
+      "type": "patient.triage",
+      "helper_nr": helperNr,
+      "triage_color": triageCategory
+    }));
+  }
+
+  static bool getAvailableMeasures({required int helperNr}) {
+    return _sockets._send(
+        jsonEncode({"type": "available.measures", "helper_nr": helperNr}));
+  }
+
+  static bool applyMeasure({required int helperNr, required String measureID}) {
+    return _sockets._send(jsonEncode(({
+      "type": "patient.apply",
+      "helper_nr": helperNr,
+      "measure_id": measureID
+    })));
+  }
+
+  static bool removeMeasure({required int helperNr, required int measureID}) {
+    return _sockets._send(jsonEncode(({
+      "type": "remove.material",
+      "helper_nr": helperNr,
+      "measure_id": measureID
+    })));
+  }
 }

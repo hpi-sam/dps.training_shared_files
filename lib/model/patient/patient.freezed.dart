@@ -17,7 +17,8 @@ class _$PatientTearOff {
   const _$PatientTearOff();
 
   _Patient call(
-      {required String patientDpsCode,
+      {required String completeDpsCode,
+      required String patientDpsCode,
       required PatientCurrentPhase currentPhase,
       required PatientFirstImpression firstImpression,
       required PatientPersonalData personalData,
@@ -28,8 +29,10 @@ class _$PatientTearOff {
       required String triageCategory,
       required AppliedMeasures appliedMeasures,
       required bool isCheckedOut,
-      required bool isAlive}) {
+      required bool isAlive,
+      AvailableMeasures? availableMeasures = null}) {
     return _Patient(
+      completeDpsCode: completeDpsCode,
       patientDpsCode: patientDpsCode,
       currentPhase: currentPhase,
       firstImpression: firstImpression,
@@ -42,6 +45,7 @@ class _$PatientTearOff {
       appliedMeasures: appliedMeasures,
       isCheckedOut: isCheckedOut,
       isAlive: isAlive,
+      availableMeasures: availableMeasures,
     );
   }
 }
@@ -51,6 +55,9 @@ const $Patient = _$PatientTearOff();
 
 /// @nodoc
 mixin _$Patient {
+// This is the full DPSCode as provided by the dps naming system.
+  String get completeDpsCode =>
+      throw _privateConstructorUsedError; // Short version of dps code, used internally by frontend to identify patient
   String get patientDpsCode => throw _privateConstructorUsedError;
   PatientCurrentPhase get currentPhase => throw _privateConstructorUsedError;
   PatientFirstImpression get firstImpression =>
@@ -64,6 +71,8 @@ mixin _$Patient {
   AppliedMeasures get appliedMeasures => throw _privateConstructorUsedError;
   bool get isCheckedOut => throw _privateConstructorUsedError;
   bool get isAlive => throw _privateConstructorUsedError;
+  AvailableMeasures? get availableMeasures =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PatientCopyWith<Patient> get copyWith => throw _privateConstructorUsedError;
@@ -74,7 +83,8 @@ abstract class $PatientCopyWith<$Res> {
   factory $PatientCopyWith(Patient value, $Res Function(Patient) then) =
       _$PatientCopyWithImpl<$Res>;
   $Res call(
-      {String patientDpsCode,
+      {String completeDpsCode,
+      String patientDpsCode,
       PatientCurrentPhase currentPhase,
       PatientFirstImpression firstImpression,
       PatientPersonalData personalData,
@@ -85,13 +95,15 @@ abstract class $PatientCopyWith<$Res> {
       String triageCategory,
       AppliedMeasures appliedMeasures,
       bool isCheckedOut,
-      bool isAlive});
+      bool isAlive,
+      AvailableMeasures? availableMeasures});
 
   $PatientCurrentPhaseCopyWith<$Res> get currentPhase;
   $PatientFirstImpressionCopyWith<$Res> get firstImpression;
   $PatientPersonalDataCopyWith<$Res> get personalData;
   $PatientInjuriesCopyWith<$Res> get injuries;
   $AppliedMeasuresCopyWith<$Res> get appliedMeasures;
+  $AvailableMeasuresCopyWith<$Res>? get availableMeasures;
 }
 
 /// @nodoc
@@ -104,6 +116,7 @@ class _$PatientCopyWithImpl<$Res> implements $PatientCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? completeDpsCode = freezed,
     Object? patientDpsCode = freezed,
     Object? currentPhase = freezed,
     Object? firstImpression = freezed,
@@ -116,8 +129,13 @@ class _$PatientCopyWithImpl<$Res> implements $PatientCopyWith<$Res> {
     Object? appliedMeasures = freezed,
     Object? isCheckedOut = freezed,
     Object? isAlive = freezed,
+    Object? availableMeasures = freezed,
   }) {
     return _then(_value.copyWith(
+      completeDpsCode: completeDpsCode == freezed
+          ? _value.completeDpsCode
+          : completeDpsCode // ignore: cast_nullable_to_non_nullable
+              as String,
       patientDpsCode: patientDpsCode == freezed
           ? _value.patientDpsCode
           : patientDpsCode // ignore: cast_nullable_to_non_nullable
@@ -166,6 +184,10 @@ class _$PatientCopyWithImpl<$Res> implements $PatientCopyWith<$Res> {
           ? _value.isAlive
           : isAlive // ignore: cast_nullable_to_non_nullable
               as bool,
+      availableMeasures: availableMeasures == freezed
+          ? _value.availableMeasures
+          : availableMeasures // ignore: cast_nullable_to_non_nullable
+              as AvailableMeasures?,
     ));
   }
 
@@ -204,6 +226,17 @@ class _$PatientCopyWithImpl<$Res> implements $PatientCopyWith<$Res> {
       return _then(_value.copyWith(appliedMeasures: value));
     });
   }
+
+  @override
+  $AvailableMeasuresCopyWith<$Res>? get availableMeasures {
+    if (_value.availableMeasures == null) {
+      return null;
+    }
+
+    return $AvailableMeasuresCopyWith<$Res>(_value.availableMeasures!, (value) {
+      return _then(_value.copyWith(availableMeasures: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -212,7 +245,8 @@ abstract class _$PatientCopyWith<$Res> implements $PatientCopyWith<$Res> {
       __$PatientCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String patientDpsCode,
+      {String completeDpsCode,
+      String patientDpsCode,
       PatientCurrentPhase currentPhase,
       PatientFirstImpression firstImpression,
       PatientPersonalData personalData,
@@ -223,7 +257,8 @@ abstract class _$PatientCopyWith<$Res> implements $PatientCopyWith<$Res> {
       String triageCategory,
       AppliedMeasures appliedMeasures,
       bool isCheckedOut,
-      bool isAlive});
+      bool isAlive,
+      AvailableMeasures? availableMeasures});
 
   @override
   $PatientCurrentPhaseCopyWith<$Res> get currentPhase;
@@ -235,6 +270,8 @@ abstract class _$PatientCopyWith<$Res> implements $PatientCopyWith<$Res> {
   $PatientInjuriesCopyWith<$Res> get injuries;
   @override
   $AppliedMeasuresCopyWith<$Res> get appliedMeasures;
+  @override
+  $AvailableMeasuresCopyWith<$Res>? get availableMeasures;
 }
 
 /// @nodoc
@@ -248,6 +285,7 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? completeDpsCode = freezed,
     Object? patientDpsCode = freezed,
     Object? currentPhase = freezed,
     Object? firstImpression = freezed,
@@ -260,8 +298,13 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
     Object? appliedMeasures = freezed,
     Object? isCheckedOut = freezed,
     Object? isAlive = freezed,
+    Object? availableMeasures = freezed,
   }) {
     return _then(_Patient(
+      completeDpsCode: completeDpsCode == freezed
+          ? _value.completeDpsCode
+          : completeDpsCode // ignore: cast_nullable_to_non_nullable
+              as String,
       patientDpsCode: patientDpsCode == freezed
           ? _value.patientDpsCode
           : patientDpsCode // ignore: cast_nullable_to_non_nullable
@@ -310,6 +353,10 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
           ? _value.isAlive
           : isAlive // ignore: cast_nullable_to_non_nullable
               as bool,
+      availableMeasures: availableMeasures == freezed
+          ? _value.availableMeasures
+          : availableMeasures // ignore: cast_nullable_to_non_nullable
+              as AvailableMeasures?,
     ));
   }
 }
@@ -317,7 +364,8 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
 /// @nodoc
 class _$_Patient extends _Patient with DiagnosticableTreeMixin {
   const _$_Patient(
-      {required this.patientDpsCode,
+      {required this.completeDpsCode,
+      required this.patientDpsCode,
       required this.currentPhase,
       required this.firstImpression,
       required this.personalData,
@@ -328,10 +376,13 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
       required this.triageCategory,
       required this.appliedMeasures,
       required this.isCheckedOut,
-      required this.isAlive})
+      required this.isAlive,
+      this.availableMeasures = null})
       : super._();
 
-  @override
+  @override // This is the full DPSCode as provided by the dps naming system.
+  final String completeDpsCode;
+  @override // Short version of dps code, used internally by frontend to identify patient
   final String patientDpsCode;
   @override
   final PatientCurrentPhase currentPhase;
@@ -355,10 +406,13 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
   final bool isCheckedOut;
   @override
   final bool isAlive;
+  @JsonKey(defaultValue: null)
+  @override
+  final AvailableMeasures? availableMeasures;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Patient(patientDpsCode: $patientDpsCode, currentPhase: $currentPhase, firstImpression: $firstImpression, personalData: $personalData, injuries: $injuries, injuryDescription: $injuryDescription, bodyCheckInformation: $bodyCheckInformation, situationOfDiscovery: $situationOfDiscovery, triageCategory: $triageCategory, appliedMeasures: $appliedMeasures, isCheckedOut: $isCheckedOut, isAlive: $isAlive)';
+    return 'Patient(completeDpsCode: $completeDpsCode, patientDpsCode: $patientDpsCode, currentPhase: $currentPhase, firstImpression: $firstImpression, personalData: $personalData, injuries: $injuries, injuryDescription: $injuryDescription, bodyCheckInformation: $bodyCheckInformation, situationOfDiscovery: $situationOfDiscovery, triageCategory: $triageCategory, appliedMeasures: $appliedMeasures, isCheckedOut: $isCheckedOut, isAlive: $isAlive, availableMeasures: $availableMeasures)';
   }
 
   @override
@@ -366,6 +420,7 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Patient'))
+      ..add(DiagnosticsProperty('completeDpsCode', completeDpsCode))
       ..add(DiagnosticsProperty('patientDpsCode', patientDpsCode))
       ..add(DiagnosticsProperty('currentPhase', currentPhase))
       ..add(DiagnosticsProperty('firstImpression', firstImpression))
@@ -377,13 +432,17 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('triageCategory', triageCategory))
       ..add(DiagnosticsProperty('appliedMeasures', appliedMeasures))
       ..add(DiagnosticsProperty('isCheckedOut', isCheckedOut))
-      ..add(DiagnosticsProperty('isAlive', isAlive));
+      ..add(DiagnosticsProperty('isAlive', isAlive))
+      ..add(DiagnosticsProperty('availableMeasures', availableMeasures));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Patient &&
+            (identical(other.completeDpsCode, completeDpsCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.completeDpsCode, completeDpsCode)) &&
             (identical(other.patientDpsCode, patientDpsCode) ||
                 const DeepCollectionEquality()
                     .equals(other.patientDpsCode, patientDpsCode)) &&
@@ -418,12 +477,17 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
                 const DeepCollectionEquality()
                     .equals(other.isCheckedOut, isCheckedOut)) &&
             (identical(other.isAlive, isAlive) ||
-                const DeepCollectionEquality().equals(other.isAlive, isAlive)));
+                const DeepCollectionEquality()
+                    .equals(other.isAlive, isAlive)) &&
+            (identical(other.availableMeasures, availableMeasures) ||
+                const DeepCollectionEquality()
+                    .equals(other.availableMeasures, availableMeasures)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(completeDpsCode) ^
       const DeepCollectionEquality().hash(patientDpsCode) ^
       const DeepCollectionEquality().hash(currentPhase) ^
       const DeepCollectionEquality().hash(firstImpression) ^
@@ -435,7 +499,8 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(triageCategory) ^
       const DeepCollectionEquality().hash(appliedMeasures) ^
       const DeepCollectionEquality().hash(isCheckedOut) ^
-      const DeepCollectionEquality().hash(isAlive);
+      const DeepCollectionEquality().hash(isAlive) ^
+      const DeepCollectionEquality().hash(availableMeasures);
 
   @JsonKey(ignore: true)
   @override
@@ -445,7 +510,8 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
 
 abstract class _Patient extends Patient {
   const factory _Patient(
-      {required String patientDpsCode,
+      {required String completeDpsCode,
+      required String patientDpsCode,
       required PatientCurrentPhase currentPhase,
       required PatientFirstImpression firstImpression,
       required PatientPersonalData personalData,
@@ -456,10 +522,13 @@ abstract class _Patient extends Patient {
       required String triageCategory,
       required AppliedMeasures appliedMeasures,
       required bool isCheckedOut,
-      required bool isAlive}) = _$_Patient;
+      required bool isAlive,
+      AvailableMeasures? availableMeasures}) = _$_Patient;
   const _Patient._() : super._();
 
-  @override
+  @override // This is the full DPSCode as provided by the dps naming system.
+  String get completeDpsCode => throw _privateConstructorUsedError;
+  @override // Short version of dps code, used internally by frontend to identify patient
   String get patientDpsCode => throw _privateConstructorUsedError;
   @override
   PatientCurrentPhase get currentPhase => throw _privateConstructorUsedError;
@@ -484,6 +553,9 @@ abstract class _Patient extends Patient {
   bool get isCheckedOut => throw _privateConstructorUsedError;
   @override
   bool get isAlive => throw _privateConstructorUsedError;
+  @override
+  AvailableMeasures? get availableMeasures =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PatientCopyWith<_Patient> get copyWith =>

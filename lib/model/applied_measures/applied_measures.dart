@@ -18,6 +18,7 @@ enum AppliedMeasureState {
   aborted,
   removed,
   expired,
+  removing,
   waiting_for_second_helper
 }
 
@@ -40,7 +41,7 @@ class AppliedMeasures with _$AppliedMeasures {
       {required List<AppliedMeasure> appliedMeasures}) = _AppliedMeasures;
 
   factory AppliedMeasures.fromJson(Map<String, dynamic> json) {
-    if (json.isNotEmpty) {
+    if ((json["appliedMeasures"] as List).isNotEmpty) {
       return AppliedMeasures(appliedMeasures: parseAppliedMeasures(json));
     } else
       return AppliedMeasures(appliedMeasures: []);
@@ -49,7 +50,8 @@ class AppliedMeasures with _$AppliedMeasures {
 
 /// Parses multiple applied measures in the given [json] into a list of [AppliedMeasure].
 List<AppliedMeasure> parseAppliedMeasures(Map<String, dynamic> json) {
-  final parsed = json["applied_measures"].cast<Map<String, dynamic>>();
+  print(json);
+  final parsed = json["appliedMeasures"].cast<Map<String, dynamic>>();
   return parsed
       .map<AppliedMeasure>((json) => AppliedMeasure.fromJson(json))
       .toList();

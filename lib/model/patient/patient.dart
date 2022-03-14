@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:dps.training_shared_files/model/applied_measures/applied_measures.dart';
+import 'package:dps.training_shared_files/model/available_measures/available_measures.dart';
 import 'package:flutter/foundation.dart';
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -22,19 +23,24 @@ part 'patient.g.dart';
 @freezed
 class Patient with _$Patient {
   const Patient._();
-  const factory Patient(
-      {required String patientDpsCode,
-      required PatientCurrentPhase currentPhase,
-      required PatientFirstImpression firstImpression,
-      required PatientPersonalData personalData,
-      required PatientInjuries injuries,
-      required String injuryDescription,
-      required String bodyCheckInformation,
-      required String situationOfDiscovery,
-      required String triageCategory,
-      required AppliedMeasures appliedMeasures,
-      required bool isCheckedOut,
-      required bool isAlive}) = _Patient;
+  const factory Patient({
+    // This is the full DPSCode as provided by the dps naming system.
+    required String completeDpsCode,
+    // Short version of dps code, used internally by frontend to identify patient
+    required String patientDpsCode,
+    required PatientCurrentPhase currentPhase,
+    required PatientFirstImpression firstImpression,
+    required PatientPersonalData personalData,
+    required PatientInjuries injuries,
+    required String injuryDescription,
+    required String bodyCheckInformation,
+    required String situationOfDiscovery,
+    required String triageCategory,
+    required AppliedMeasures appliedMeasures,
+    required bool isCheckedOut,
+    required bool isAlive,
+    @Default(null) AvailableMeasures? availableMeasures,
+  }) = _Patient;
 
   get name => personalData.name;
   get address => personalData.address;
@@ -47,9 +53,11 @@ class Patient with _$Patient {
   /// API specification (https://github.com/hpi-sam/BPMANV-Server/blob/dev/api_spezification.md)
   factory Patient.fromJson(
       {required Map<String, dynamic> patientJson,
-      required Map<String, dynamic> appliesMeasuresJson}) {
+      required Map<String, dynamic> appliedMeasuresJson,
+      required String patientDpsCode}) {
     return Patient(
-        patientDpsCode: patientJson["static_data"]["dps_code"],
+        completeDpsCode: patientJson["static_data"]["dps_code"],
+        patientDpsCode: patientDpsCode,
         currentPhase:
             PatientCurrentPhase.fromJson(patientJson["current_phase"]),
         firstImpression: PatientFirstImpression.fromJson(
@@ -65,7 +73,7 @@ class Patient with _$Patient {
         situationOfDiscovery: patientJson["static_data"]
             ["situation_of_discovery"],
         triageCategory: patientJson["triage"],
-        appliedMeasures: AppliedMeasures.fromJson(appliesMeasuresJson),
+        appliedMeasures: AppliedMeasures.fromJson(appliedMeasuresJson),
         isCheckedOut: patientJson["is_checked_out"],
         isAlive: patientJson["is_alive"]);
   }

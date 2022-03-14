@@ -45,6 +45,8 @@ class WebSocketsNotifications {
   /// Initialization the WebSockets connection with the server, return true if connection was established successfully
   /// ----------------------------------------------------------
   Future<bool> initCommunication({required String invitationCode}) async {
+    print("initializing connection...");
+
     ///
     /// Just in case, close any previous communication
     ///
@@ -130,6 +132,7 @@ class WebSocketsNotifications {
   /// Closes the WebSocket communication
   /// ----------------------------------------------------------
   _reset() {
+    print("resetting websocket...");
     if (_channel != null) {
       _channel!.sink.close();
       _isOn = false;
