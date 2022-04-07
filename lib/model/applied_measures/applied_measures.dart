@@ -73,9 +73,6 @@ class AppliedMeasure with _$AppliedMeasure {
     required int finish_time,
     required AppliedMeasureState state,
 
-    /// The dps code of the patient that this measure is applied on.
-    required String dpsCode,
-
     /// The type of measure that this [AppliedMeasure] represents.
     required String measureTypeID,
   }) = _AppliedMeasure;
@@ -91,7 +88,6 @@ class AppliedMeasure with _$AppliedMeasure {
         state: AppliedMeasureState.values.firstWhere((element) {
           return describeEnum(element) == json["state"];
         }),
-        dpsCode: json["patient_dps_code"],
         measureTypeID: json["measure_type_id"]);
   }
 }

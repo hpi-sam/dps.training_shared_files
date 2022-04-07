@@ -216,7 +216,6 @@ Future<RunningMeasure> startNewMeasureMock(
     required int helperNr,
     required AvailableMeasure measure}) async {
   return RunningMeasure(
-      dpsCode: dpsCode,
       name: "Test Maßnahme",
       start_time: 0,
       finish_time: 60,

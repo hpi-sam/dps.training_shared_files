@@ -167,7 +167,6 @@ class _$AppliedMeasureTearOff {
       required int start_time,
       required int finish_time,
       required AppliedMeasureState state,
-      required String dpsCode,
       required String measureTypeID}) {
     return _AppliedMeasure(
       name: name,
@@ -178,7 +177,6 @@ class _$AppliedMeasureTearOff {
       start_time: start_time,
       finish_time: finish_time,
       state: state,
-      dpsCode: dpsCode,
       measureTypeID: measureTypeID,
     );
   }
@@ -199,9 +197,6 @@ mixin _$AppliedMeasure {
   int get start_time => throw _privateConstructorUsedError;
   int get finish_time => throw _privateConstructorUsedError;
   AppliedMeasureState get state => throw _privateConstructorUsedError;
-
-  /// The dps code of the patient that this measure is applied on.
-  String get dpsCode => throw _privateConstructorUsedError;
 
   /// The type of measure that this [AppliedMeasure] represents.
   String get measureTypeID => throw _privateConstructorUsedError;
@@ -225,7 +220,6 @@ abstract class $AppliedMeasureCopyWith<$Res> {
       int start_time,
       int finish_time,
       AppliedMeasureState state,
-      String dpsCode,
       String measureTypeID});
 }
 
@@ -248,7 +242,6 @@ class _$AppliedMeasureCopyWithImpl<$Res>
     Object? start_time = freezed,
     Object? finish_time = freezed,
     Object? state = freezed,
-    Object? dpsCode = freezed,
     Object? measureTypeID = freezed,
   }) {
     return _then(_value.copyWith(
@@ -284,10 +277,6 @@ class _$AppliedMeasureCopyWithImpl<$Res>
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as AppliedMeasureState,
-      dpsCode: dpsCode == freezed
-          ? _value.dpsCode
-          : dpsCode // ignore: cast_nullable_to_non_nullable
-              as String,
       measureTypeID: measureTypeID == freezed
           ? _value.measureTypeID
           : measureTypeID // ignore: cast_nullable_to_non_nullable
@@ -312,7 +301,6 @@ abstract class _$AppliedMeasureCopyWith<$Res>
       int start_time,
       int finish_time,
       AppliedMeasureState state,
-      String dpsCode,
       String measureTypeID});
 }
 
@@ -337,7 +325,6 @@ class __$AppliedMeasureCopyWithImpl<$Res>
     Object? start_time = freezed,
     Object? finish_time = freezed,
     Object? state = freezed,
-    Object? dpsCode = freezed,
     Object? measureTypeID = freezed,
   }) {
     return _then(_AppliedMeasure(
@@ -373,10 +360,6 @@ class __$AppliedMeasureCopyWithImpl<$Res>
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as AppliedMeasureState,
-      dpsCode: dpsCode == freezed
-          ? _value.dpsCode
-          : dpsCode // ignore: cast_nullable_to_non_nullable
-              as String,
       measureTypeID: measureTypeID == freezed
           ? _value.measureTypeID
           : measureTypeID // ignore: cast_nullable_to_non_nullable
@@ -396,7 +379,6 @@ class _$_AppliedMeasure extends _AppliedMeasure with DiagnosticableTreeMixin {
       required this.start_time,
       required this.finish_time,
       required this.state,
-      required this.dpsCode,
       required this.measureTypeID})
       : super._();
 
@@ -420,16 +402,12 @@ class _$_AppliedMeasure extends _AppliedMeasure with DiagnosticableTreeMixin {
   final AppliedMeasureState state;
   @override
 
-  /// The dps code of the patient that this measure is applied on.
-  final String dpsCode;
-  @override
-
   /// The type of measure that this [AppliedMeasure] represents.
   final String measureTypeID;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppliedMeasure(name: $name, id: $id, image_small: $image_small, image_original: $image_original, duration_for_removal: $duration_for_removal, start_time: $start_time, finish_time: $finish_time, state: $state, dpsCode: $dpsCode, measureTypeID: $measureTypeID)';
+    return 'AppliedMeasure(name: $name, id: $id, image_small: $image_small, image_original: $image_original, duration_for_removal: $duration_for_removal, start_time: $start_time, finish_time: $finish_time, state: $state, measureTypeID: $measureTypeID)';
   }
 
   @override
@@ -445,7 +423,6 @@ class _$_AppliedMeasure extends _AppliedMeasure with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('start_time', start_time))
       ..add(DiagnosticsProperty('finish_time', finish_time))
       ..add(DiagnosticsProperty('state', state))
-      ..add(DiagnosticsProperty('dpsCode', dpsCode))
       ..add(DiagnosticsProperty('measureTypeID', measureTypeID));
   }
 
@@ -474,9 +451,6 @@ class _$_AppliedMeasure extends _AppliedMeasure with DiagnosticableTreeMixin {
                     .equals(other.finish_time, finish_time)) &&
             (identical(other.state, state) ||
                 const DeepCollectionEquality().equals(other.state, state)) &&
-            (identical(other.dpsCode, dpsCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.dpsCode, dpsCode)) &&
             (identical(other.measureTypeID, measureTypeID) ||
                 const DeepCollectionEquality()
                     .equals(other.measureTypeID, measureTypeID)));
@@ -493,7 +467,6 @@ class _$_AppliedMeasure extends _AppliedMeasure with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(start_time) ^
       const DeepCollectionEquality().hash(finish_time) ^
       const DeepCollectionEquality().hash(state) ^
-      const DeepCollectionEquality().hash(dpsCode) ^
       const DeepCollectionEquality().hash(measureTypeID);
 
   @JsonKey(ignore: true)
@@ -512,7 +485,6 @@ abstract class _AppliedMeasure extends AppliedMeasure {
       required int start_time,
       required int finish_time,
       required AppliedMeasureState state,
-      required String dpsCode,
       required String measureTypeID}) = _$_AppliedMeasure;
   const _AppliedMeasure._() : super._();
 
@@ -534,10 +506,6 @@ abstract class _AppliedMeasure extends AppliedMeasure {
   int get finish_time => throw _privateConstructorUsedError;
   @override
   AppliedMeasureState get state => throw _privateConstructorUsedError;
-  @override
-
-  /// The dps code of the patient that this measure is applied on.
-  String get dpsCode => throw _privateConstructorUsedError;
   @override
 
   /// The type of measure that this [AppliedMeasure] represents.

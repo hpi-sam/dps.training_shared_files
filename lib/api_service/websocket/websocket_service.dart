@@ -52,23 +52,51 @@ class WebsocketService {
   }
 
   static bool applyMeasure({required int helperNr, required String measureID}) {
-    return _sockets._send(jsonEncode(({
+    return _sockets._send(jsonEncode({
       "type": "patient.apply",
       "helper_nr": helperNr,
       "measure_id": measureID
-    })));
+    }));
   }
 
   static bool cancelMeasure({required int helperNr}) {
     return _sockets
-        ._send(jsonEncode(({"type": "cancel.measure", "helper_nr": helperNr})));
+        ._send(jsonEncode({"type": "cancel.measure", "helper_nr": helperNr}));
   }
 
   static bool removeMeasure({required int helperNr, required int measureID}) {
-    return _sockets._send(jsonEncode(({
+    return _sockets._send(jsonEncode({
       "type": "remove.material",
       "helper_nr": helperNr,
       "measure_id": measureID
-    })));
+    }));
+  }
+
+  static bool openInventory(
+      {required int helperNr, required String inventoryID}) {
+    return _sockets._send(jsonEncode({
+      "type": "inventory.open",
+      "helper_nr": helperNr,
+      "other_entity_key": inventoryID
+    }));
+  }
+
+  static bool exchangeMaterial(
+      {required int helperNr,
+      required String materialID,
+      required int amount}) {
+    return _sockets._send(jsonEncode({
+      "type": "inventory.exchange",
+      "helper_nr": helperNr,
+      "material_id": materialID,
+      "amount": amount
+    }));
+  }
+
+  static bool resendOwnInventory({
+    required int helperNr,
+  }) {
+    return _sockets
+        ._send(jsonEncode({"type": "resend.inventory", "helper_nr": helperNr}));
   }
 }
