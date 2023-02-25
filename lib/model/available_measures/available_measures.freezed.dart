@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'available_measures.dart';
 
@@ -10,22 +12,7 @@ part of 'available_measures.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AvailableMeasuresTearOff {
-  const _$AvailableMeasuresTearOff();
-
-  _AvailableMeasures call(
-      {required List<AvailableMeasuresCategory> categories}) {
-    return _AvailableMeasures(
-      categories: categories,
-    );
-  }
-}
-
-/// @nodoc
-const $AvailableMeasures = _$AvailableMeasuresTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AvailableMeasures {
@@ -41,60 +28,62 @@ mixin _$AvailableMeasures {
 abstract class $AvailableMeasuresCopyWith<$Res> {
   factory $AvailableMeasuresCopyWith(
           AvailableMeasures value, $Res Function(AvailableMeasures) then) =
-      _$AvailableMeasuresCopyWithImpl<$Res>;
+      _$AvailableMeasuresCopyWithImpl<$Res, AvailableMeasures>;
+  @useResult
   $Res call({List<AvailableMeasuresCategory> categories});
 }
 
 /// @nodoc
-class _$AvailableMeasuresCopyWithImpl<$Res>
+class _$AvailableMeasuresCopyWithImpl<$Res, $Val extends AvailableMeasures>
     implements $AvailableMeasuresCopyWith<$Res> {
   _$AvailableMeasuresCopyWithImpl(this._value, this._then);
 
-  final AvailableMeasures _value;
   // ignore: unused_field
-  final $Res Function(AvailableMeasures) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? categories = freezed,
+    Object? categories = null,
   }) {
     return _then(_value.copyWith(
-      categories: categories == freezed
+      categories: null == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<AvailableMeasuresCategory>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$AvailableMeasuresCopyWith<$Res>
+abstract class _$$_AvailableMeasuresCopyWith<$Res>
     implements $AvailableMeasuresCopyWith<$Res> {
-  factory _$AvailableMeasuresCopyWith(
-          _AvailableMeasures value, $Res Function(_AvailableMeasures) then) =
-      __$AvailableMeasuresCopyWithImpl<$Res>;
+  factory _$$_AvailableMeasuresCopyWith(_$_AvailableMeasures value,
+          $Res Function(_$_AvailableMeasures) then) =
+      __$$_AvailableMeasuresCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<AvailableMeasuresCategory> categories});
 }
 
 /// @nodoc
-class __$AvailableMeasuresCopyWithImpl<$Res>
-    extends _$AvailableMeasuresCopyWithImpl<$Res>
-    implements _$AvailableMeasuresCopyWith<$Res> {
-  __$AvailableMeasuresCopyWithImpl(
-      _AvailableMeasures _value, $Res Function(_AvailableMeasures) _then)
-      : super(_value, (v) => _then(v as _AvailableMeasures));
+class __$$_AvailableMeasuresCopyWithImpl<$Res>
+    extends _$AvailableMeasuresCopyWithImpl<$Res, _$_AvailableMeasures>
+    implements _$$_AvailableMeasuresCopyWith<$Res> {
+  __$$_AvailableMeasuresCopyWithImpl(
+      _$_AvailableMeasures _value, $Res Function(_$_AvailableMeasures) _then)
+      : super(_value, _then);
 
-  @override
-  _AvailableMeasures get _value => super._value as _AvailableMeasures;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? categories = freezed,
+    Object? categories = null,
   }) {
-    return _then(_AvailableMeasures(
-      categories: categories == freezed
-          ? _value.categories
+    return _then(_$_AvailableMeasures(
+      categories: null == categories
+          ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<AvailableMeasuresCategory>,
     ));
@@ -102,11 +91,20 @@ class __$AvailableMeasuresCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_AvailableMeasures extends _AvailableMeasures {
-  const _$_AvailableMeasures({required this.categories}) : super._();
 
+class _$_AvailableMeasures extends _AvailableMeasures {
+  const _$_AvailableMeasures(
+      {required final List<AvailableMeasuresCategory> categories})
+      : _categories = categories,
+        super._();
+
+  final List<AvailableMeasuresCategory> _categories;
   @override
-  final List<AvailableMeasuresCategory> categories;
+  List<AvailableMeasuresCategory> get categories {
+    if (_categories is EqualUnmodifiableListView) return _categories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categories);
+  }
 
   @override
   String toString() {
@@ -116,52 +114,37 @@ class _$_AvailableMeasures extends _AvailableMeasures {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AvailableMeasures &&
-            (identical(other.categories, categories) ||
-                const DeepCollectionEquality()
-                    .equals(other.categories, categories)));
+        (other.runtimeType == runtimeType &&
+            other is _$_AvailableMeasures &&
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(categories);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_categories));
 
   @JsonKey(ignore: true)
   @override
-  _$AvailableMeasuresCopyWith<_AvailableMeasures> get copyWith =>
-      __$AvailableMeasuresCopyWithImpl<_AvailableMeasures>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_AvailableMeasuresCopyWith<_$_AvailableMeasures> get copyWith =>
+      __$$_AvailableMeasuresCopyWithImpl<_$_AvailableMeasures>(
+          this, _$identity);
 }
 
 abstract class _AvailableMeasures extends AvailableMeasures {
   const factory _AvailableMeasures(
-          {required List<AvailableMeasuresCategory> categories}) =
+          {required final List<AvailableMeasuresCategory> categories}) =
       _$_AvailableMeasures;
   const _AvailableMeasures._() : super._();
 
   @override
-  List<AvailableMeasuresCategory> get categories =>
-      throw _privateConstructorUsedError;
+  List<AvailableMeasuresCategory> get categories;
   @override
   @JsonKey(ignore: true)
-  _$AvailableMeasuresCopyWith<_AvailableMeasures> get copyWith =>
+  _$$_AvailableMeasuresCopyWith<_$_AvailableMeasures> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$AvailableMeasuresCategoryTearOff {
-  const _$AvailableMeasuresCategoryTearOff();
-
-  _AvailableMeasuresCategory call(
-      {required String name, required List<AvailableMeasure> measures}) {
-    return _AvailableMeasuresCategory(
-      name: name,
-      measures: measures,
-    );
-  }
-}
-
-/// @nodoc
-const $AvailableMeasuresCategory = _$AvailableMeasuresCategoryTearOff();
 
 /// @nodoc
 mixin _$AvailableMeasuresCategory {
@@ -177,71 +160,76 @@ mixin _$AvailableMeasuresCategory {
 abstract class $AvailableMeasuresCategoryCopyWith<$Res> {
   factory $AvailableMeasuresCategoryCopyWith(AvailableMeasuresCategory value,
           $Res Function(AvailableMeasuresCategory) then) =
-      _$AvailableMeasuresCategoryCopyWithImpl<$Res>;
+      _$AvailableMeasuresCategoryCopyWithImpl<$Res, AvailableMeasuresCategory>;
+  @useResult
   $Res call({String name, List<AvailableMeasure> measures});
 }
 
 /// @nodoc
-class _$AvailableMeasuresCategoryCopyWithImpl<$Res>
+class _$AvailableMeasuresCategoryCopyWithImpl<$Res,
+        $Val extends AvailableMeasuresCategory>
     implements $AvailableMeasuresCategoryCopyWith<$Res> {
   _$AvailableMeasuresCategoryCopyWithImpl(this._value, this._then);
 
-  final AvailableMeasuresCategory _value;
   // ignore: unused_field
-  final $Res Function(AvailableMeasuresCategory) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? measures = freezed,
+    Object? name = null,
+    Object? measures = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      measures: measures == freezed
+      measures: null == measures
           ? _value.measures
           : measures // ignore: cast_nullable_to_non_nullable
               as List<AvailableMeasure>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$AvailableMeasuresCategoryCopyWith<$Res>
+abstract class _$$_AvailableMeasuresCategoryCopyWith<$Res>
     implements $AvailableMeasuresCategoryCopyWith<$Res> {
-  factory _$AvailableMeasuresCategoryCopyWith(_AvailableMeasuresCategory value,
-          $Res Function(_AvailableMeasuresCategory) then) =
-      __$AvailableMeasuresCategoryCopyWithImpl<$Res>;
+  factory _$$_AvailableMeasuresCategoryCopyWith(
+          _$_AvailableMeasuresCategory value,
+          $Res Function(_$_AvailableMeasuresCategory) then) =
+      __$$_AvailableMeasuresCategoryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String name, List<AvailableMeasure> measures});
 }
 
 /// @nodoc
-class __$AvailableMeasuresCategoryCopyWithImpl<$Res>
-    extends _$AvailableMeasuresCategoryCopyWithImpl<$Res>
-    implements _$AvailableMeasuresCategoryCopyWith<$Res> {
-  __$AvailableMeasuresCategoryCopyWithImpl(_AvailableMeasuresCategory _value,
-      $Res Function(_AvailableMeasuresCategory) _then)
-      : super(_value, (v) => _then(v as _AvailableMeasuresCategory));
+class __$$_AvailableMeasuresCategoryCopyWithImpl<$Res>
+    extends _$AvailableMeasuresCategoryCopyWithImpl<$Res,
+        _$_AvailableMeasuresCategory>
+    implements _$$_AvailableMeasuresCategoryCopyWith<$Res> {
+  __$$_AvailableMeasuresCategoryCopyWithImpl(
+      _$_AvailableMeasuresCategory _value,
+      $Res Function(_$_AvailableMeasuresCategory) _then)
+      : super(_value, _then);
 
-  @override
-  _AvailableMeasuresCategory get _value =>
-      super._value as _AvailableMeasuresCategory;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? measures = freezed,
+    Object? name = null,
+    Object? measures = null,
   }) {
-    return _then(_AvailableMeasuresCategory(
-      name: name == freezed
+    return _then(_$_AvailableMeasuresCategory(
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      measures: measures == freezed
-          ? _value.measures
+      measures: null == measures
+          ? _value._measures
           : measures // ignore: cast_nullable_to_non_nullable
               as List<AvailableMeasure>,
     ));
@@ -249,15 +237,22 @@ class __$AvailableMeasuresCategoryCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_AvailableMeasuresCategory extends _AvailableMeasuresCategory {
   const _$_AvailableMeasuresCategory(
-      {required this.name, required this.measures})
-      : super._();
+      {required this.name, required final List<AvailableMeasure> measures})
+      : _measures = measures,
+        super._();
 
   @override
   final String name;
+  final List<AvailableMeasure> _measures;
   @override
-  final List<AvailableMeasure> measures;
+  List<AvailableMeasure> get measures {
+    if (_measures is EqualUnmodifiableListView) return _measures;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_measures);
+  }
 
   @override
   String toString() {
@@ -267,66 +262,40 @@ class _$_AvailableMeasuresCategory extends _AvailableMeasuresCategory {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AvailableMeasuresCategory &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.measures, measures) ||
-                const DeepCollectionEquality()
-                    .equals(other.measures, measures)));
+        (other.runtimeType == runtimeType &&
+            other is _$_AvailableMeasuresCategory &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality().equals(other._measures, _measures));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(measures);
+  int get hashCode => Object.hash(
+      runtimeType, name, const DeepCollectionEquality().hash(_measures));
 
   @JsonKey(ignore: true)
   @override
-  _$AvailableMeasuresCategoryCopyWith<_AvailableMeasuresCategory>
-      get copyWith =>
-          __$AvailableMeasuresCategoryCopyWithImpl<_AvailableMeasuresCategory>(
-              this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_AvailableMeasuresCategoryCopyWith<_$_AvailableMeasuresCategory>
+      get copyWith => __$$_AvailableMeasuresCategoryCopyWithImpl<
+          _$_AvailableMeasuresCategory>(this, _$identity);
 }
 
 abstract class _AvailableMeasuresCategory extends AvailableMeasuresCategory {
   const factory _AvailableMeasuresCategory(
-      {required String name,
-      required List<AvailableMeasure> measures}) = _$_AvailableMeasuresCategory;
+          {required final String name,
+          required final List<AvailableMeasure> measures}) =
+      _$_AvailableMeasuresCategory;
   const _AvailableMeasuresCategory._() : super._();
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  List<AvailableMeasure> get measures => throw _privateConstructorUsedError;
+  List<AvailableMeasure> get measures;
   @override
   @JsonKey(ignore: true)
-  _$AvailableMeasuresCategoryCopyWith<_AvailableMeasuresCategory>
+  _$$_AvailableMeasuresCategoryCopyWith<_$_AvailableMeasuresCategory>
       get copyWith => throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$AvailableMeasureTearOff {
-  const _$AvailableMeasureTearOff();
-
-  _AvailableMeasure call(
-      {required String name,
-      required String id,
-      required String image,
-      required int duration,
-      required bool requires_two_helpers}) {
-    return _AvailableMeasure(
-      name: name,
-      id: id,
-      image: image,
-      duration: duration,
-      requires_two_helpers: requires_two_helpers,
-    );
-  }
-}
-
-/// @nodoc
-const $AvailableMeasure = _$AvailableMeasureTearOff();
 
 /// @nodoc
 mixin _$AvailableMeasure {
@@ -345,7 +314,8 @@ mixin _$AvailableMeasure {
 abstract class $AvailableMeasureCopyWith<$Res> {
   factory $AvailableMeasureCopyWith(
           AvailableMeasure value, $Res Function(AvailableMeasure) then) =
-      _$AvailableMeasureCopyWithImpl<$Res>;
+      _$AvailableMeasureCopyWithImpl<$Res, AvailableMeasure>;
+  @useResult
   $Res call(
       {String name,
       String id,
@@ -355,54 +325,57 @@ abstract class $AvailableMeasureCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AvailableMeasureCopyWithImpl<$Res>
+class _$AvailableMeasureCopyWithImpl<$Res, $Val extends AvailableMeasure>
     implements $AvailableMeasureCopyWith<$Res> {
   _$AvailableMeasureCopyWithImpl(this._value, this._then);
 
-  final AvailableMeasure _value;
   // ignore: unused_field
-  final $Res Function(AvailableMeasure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? id = freezed,
-    Object? image = freezed,
-    Object? duration = freezed,
-    Object? requires_two_helpers = freezed,
+    Object? name = null,
+    Object? id = null,
+    Object? image = null,
+    Object? duration = null,
+    Object? requires_two_helpers = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      image: image == freezed
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      duration: duration == freezed
+      duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int,
-      requires_two_helpers: requires_two_helpers == freezed
+      requires_two_helpers: null == requires_two_helpers
           ? _value.requires_two_helpers
           : requires_two_helpers // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$AvailableMeasureCopyWith<$Res>
+abstract class _$$_AvailableMeasureCopyWith<$Res>
     implements $AvailableMeasureCopyWith<$Res> {
-  factory _$AvailableMeasureCopyWith(
-          _AvailableMeasure value, $Res Function(_AvailableMeasure) then) =
-      __$AvailableMeasureCopyWithImpl<$Res>;
+  factory _$$_AvailableMeasureCopyWith(
+          _$_AvailableMeasure value, $Res Function(_$_AvailableMeasure) then) =
+      __$$_AvailableMeasureCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String name,
       String id,
@@ -412,42 +385,40 @@ abstract class _$AvailableMeasureCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AvailableMeasureCopyWithImpl<$Res>
-    extends _$AvailableMeasureCopyWithImpl<$Res>
-    implements _$AvailableMeasureCopyWith<$Res> {
-  __$AvailableMeasureCopyWithImpl(
-      _AvailableMeasure _value, $Res Function(_AvailableMeasure) _then)
-      : super(_value, (v) => _then(v as _AvailableMeasure));
+class __$$_AvailableMeasureCopyWithImpl<$Res>
+    extends _$AvailableMeasureCopyWithImpl<$Res, _$_AvailableMeasure>
+    implements _$$_AvailableMeasureCopyWith<$Res> {
+  __$$_AvailableMeasureCopyWithImpl(
+      _$_AvailableMeasure _value, $Res Function(_$_AvailableMeasure) _then)
+      : super(_value, _then);
 
-  @override
-  _AvailableMeasure get _value => super._value as _AvailableMeasure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? id = freezed,
-    Object? image = freezed,
-    Object? duration = freezed,
-    Object? requires_two_helpers = freezed,
+    Object? name = null,
+    Object? id = null,
+    Object? image = null,
+    Object? duration = null,
+    Object? requires_two_helpers = null,
   }) {
-    return _then(_AvailableMeasure(
-      name: name == freezed
+    return _then(_$_AvailableMeasure(
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      image: image == freezed
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      duration: duration == freezed
+      duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int,
-      requires_two_helpers: requires_two_helpers == freezed
+      requires_two_helpers: null == requires_two_helpers
           ? _value.requires_two_helpers
           : requires_two_helpers // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -456,6 +427,7 @@ class __$AvailableMeasureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_AvailableMeasure extends _AvailableMeasure {
   const _$_AvailableMeasure(
       {required this.name,
@@ -484,76 +456,52 @@ class _$_AvailableMeasure extends _AvailableMeasure {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AvailableMeasure &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$_AvailableMeasure &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.duration, duration) ||
-                const DeepCollectionEquality()
-                    .equals(other.duration, duration)) &&
+                other.duration == duration) &&
             (identical(other.requires_two_helpers, requires_two_helpers) ||
-                const DeepCollectionEquality()
-                    .equals(other.requires_two_helpers, requires_two_helpers)));
+                other.requires_two_helpers == requires_two_helpers));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(image) ^
-      const DeepCollectionEquality().hash(duration) ^
-      const DeepCollectionEquality().hash(requires_two_helpers);
+      Object.hash(runtimeType, name, id, image, duration, requires_two_helpers);
 
   @JsonKey(ignore: true)
   @override
-  _$AvailableMeasureCopyWith<_AvailableMeasure> get copyWith =>
-      __$AvailableMeasureCopyWithImpl<_AvailableMeasure>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_AvailableMeasureCopyWith<_$_AvailableMeasure> get copyWith =>
+      __$$_AvailableMeasureCopyWithImpl<_$_AvailableMeasure>(this, _$identity);
 }
 
 abstract class _AvailableMeasure extends AvailableMeasure {
   const factory _AvailableMeasure(
-      {required String name,
-      required String id,
-      required String image,
-      required int duration,
-      required bool requires_two_helpers}) = _$_AvailableMeasure;
+      {required final String name,
+      required final String id,
+      required final String image,
+      required final int duration,
+      required final bool requires_two_helpers}) = _$_AvailableMeasure;
   const _AvailableMeasure._() : super._();
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get image => throw _privateConstructorUsedError;
+  String get image;
   @override
-  int get duration => throw _privateConstructorUsedError;
+  int get duration;
   @override
-  bool get requires_two_helpers => throw _privateConstructorUsedError;
+  bool get requires_two_helpers;
   @override
   @JsonKey(ignore: true)
-  _$AvailableMeasureCopyWith<_AvailableMeasure> get copyWith =>
+  _$$_AvailableMeasureCopyWith<_$_AvailableMeasure> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$AvailableMeasurePrerequisiteTearOff {
-  const _$AvailableMeasurePrerequisiteTearOff();
-
-  _AvailableMeasurePrerequisite call(
-      {required String name, required String image}) {
-    return _AvailableMeasurePrerequisite(
-      name: name,
-      image: image,
-    );
-  }
-}
-
-/// @nodoc
-const $AvailableMeasurePrerequisite = _$AvailableMeasurePrerequisiteTearOff();
 
 /// @nodoc
 mixin _$AvailableMeasurePrerequisite {
@@ -570,72 +518,76 @@ abstract class $AvailableMeasurePrerequisiteCopyWith<$Res> {
   factory $AvailableMeasurePrerequisiteCopyWith(
           AvailableMeasurePrerequisite value,
           $Res Function(AvailableMeasurePrerequisite) then) =
-      _$AvailableMeasurePrerequisiteCopyWithImpl<$Res>;
+      _$AvailableMeasurePrerequisiteCopyWithImpl<$Res,
+          AvailableMeasurePrerequisite>;
+  @useResult
   $Res call({String name, String image});
 }
 
 /// @nodoc
-class _$AvailableMeasurePrerequisiteCopyWithImpl<$Res>
+class _$AvailableMeasurePrerequisiteCopyWithImpl<$Res,
+        $Val extends AvailableMeasurePrerequisite>
     implements $AvailableMeasurePrerequisiteCopyWith<$Res> {
   _$AvailableMeasurePrerequisiteCopyWithImpl(this._value, this._then);
 
-  final AvailableMeasurePrerequisite _value;
   // ignore: unused_field
-  final $Res Function(AvailableMeasurePrerequisite) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? image = freezed,
+    Object? name = null,
+    Object? image = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      image: image == freezed
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$AvailableMeasurePrerequisiteCopyWith<$Res>
+abstract class _$$_AvailableMeasurePrerequisiteCopyWith<$Res>
     implements $AvailableMeasurePrerequisiteCopyWith<$Res> {
-  factory _$AvailableMeasurePrerequisiteCopyWith(
-          _AvailableMeasurePrerequisite value,
-          $Res Function(_AvailableMeasurePrerequisite) then) =
-      __$AvailableMeasurePrerequisiteCopyWithImpl<$Res>;
+  factory _$$_AvailableMeasurePrerequisiteCopyWith(
+          _$_AvailableMeasurePrerequisite value,
+          $Res Function(_$_AvailableMeasurePrerequisite) then) =
+      __$$_AvailableMeasurePrerequisiteCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String name, String image});
 }
 
 /// @nodoc
-class __$AvailableMeasurePrerequisiteCopyWithImpl<$Res>
-    extends _$AvailableMeasurePrerequisiteCopyWithImpl<$Res>
-    implements _$AvailableMeasurePrerequisiteCopyWith<$Res> {
-  __$AvailableMeasurePrerequisiteCopyWithImpl(
-      _AvailableMeasurePrerequisite _value,
-      $Res Function(_AvailableMeasurePrerequisite) _then)
-      : super(_value, (v) => _then(v as _AvailableMeasurePrerequisite));
+class __$$_AvailableMeasurePrerequisiteCopyWithImpl<$Res>
+    extends _$AvailableMeasurePrerequisiteCopyWithImpl<$Res,
+        _$_AvailableMeasurePrerequisite>
+    implements _$$_AvailableMeasurePrerequisiteCopyWith<$Res> {
+  __$$_AvailableMeasurePrerequisiteCopyWithImpl(
+      _$_AvailableMeasurePrerequisite _value,
+      $Res Function(_$_AvailableMeasurePrerequisite) _then)
+      : super(_value, _then);
 
-  @override
-  _AvailableMeasurePrerequisite get _value =>
-      super._value as _AvailableMeasurePrerequisite;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? image = freezed,
+    Object? name = null,
+    Object? image = null,
   }) {
-    return _then(_AvailableMeasurePrerequisite(
-      name: name == freezed
+    return _then(_$_AvailableMeasurePrerequisite(
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      image: image == freezed
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
@@ -644,6 +596,7 @@ class __$AvailableMeasurePrerequisiteCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_AvailableMeasurePrerequisite extends _AvailableMeasurePrerequisite {
   const _$_AvailableMeasurePrerequisite(
       {required this.name, required this.image})
@@ -662,39 +615,36 @@ class _$_AvailableMeasurePrerequisite extends _AvailableMeasurePrerequisite {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AvailableMeasurePrerequisite &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)));
+        (other.runtimeType == runtimeType &&
+            other is _$_AvailableMeasurePrerequisite &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(image);
+  int get hashCode => Object.hash(runtimeType, name, image);
 
   @JsonKey(ignore: true)
   @override
-  _$AvailableMeasurePrerequisiteCopyWith<_AvailableMeasurePrerequisite>
-      get copyWith => __$AvailableMeasurePrerequisiteCopyWithImpl<
-          _AvailableMeasurePrerequisite>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_AvailableMeasurePrerequisiteCopyWith<_$_AvailableMeasurePrerequisite>
+      get copyWith => __$$_AvailableMeasurePrerequisiteCopyWithImpl<
+          _$_AvailableMeasurePrerequisite>(this, _$identity);
 }
 
 abstract class _AvailableMeasurePrerequisite
     extends AvailableMeasurePrerequisite {
   const factory _AvailableMeasurePrerequisite(
-      {required String name,
-      required String image}) = _$_AvailableMeasurePrerequisite;
+      {required final String name,
+      required final String image}) = _$_AvailableMeasurePrerequisite;
   const _AvailableMeasurePrerequisite._() : super._();
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get image => throw _privateConstructorUsedError;
+  String get image;
   @override
   @JsonKey(ignore: true)
-  _$AvailableMeasurePrerequisiteCopyWith<_AvailableMeasurePrerequisite>
+  _$$_AvailableMeasurePrerequisiteCopyWith<_$_AvailableMeasurePrerequisite>
       get copyWith => throw _privateConstructorUsedError;
 }

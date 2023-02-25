@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'inventory_exchange.dart';
 
@@ -10,26 +12,7 @@ part of 'inventory_exchange.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$InventoryExchangeTearOff {
-  const _$InventoryExchangeTearOff();
-
-  _InventoryExchange call(
-      {required String foreignEntityType,
-      required String foreignEntityName,
-      required List<InventoryExchangeCategory> categories}) {
-    return _InventoryExchange(
-      foreignEntityType: foreignEntityType,
-      foreignEntityName: foreignEntityName,
-      categories: categories,
-    );
-  }
-}
-
-/// @nodoc
-const $InventoryExchange = _$InventoryExchangeTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$InventoryExchange {
@@ -47,7 +30,8 @@ mixin _$InventoryExchange {
 abstract class $InventoryExchangeCopyWith<$Res> {
   factory $InventoryExchangeCopyWith(
           InventoryExchange value, $Res Function(InventoryExchange) then) =
-      _$InventoryExchangeCopyWithImpl<$Res>;
+      _$InventoryExchangeCopyWithImpl<$Res, InventoryExchange>;
+  @useResult
   $Res call(
       {String foreignEntityType,
       String foreignEntityName,
@@ -55,44 +39,47 @@ abstract class $InventoryExchangeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InventoryExchangeCopyWithImpl<$Res>
+class _$InventoryExchangeCopyWithImpl<$Res, $Val extends InventoryExchange>
     implements $InventoryExchangeCopyWith<$Res> {
   _$InventoryExchangeCopyWithImpl(this._value, this._then);
 
-  final InventoryExchange _value;
   // ignore: unused_field
-  final $Res Function(InventoryExchange) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? foreignEntityType = freezed,
-    Object? foreignEntityName = freezed,
-    Object? categories = freezed,
+    Object? foreignEntityType = null,
+    Object? foreignEntityName = null,
+    Object? categories = null,
   }) {
     return _then(_value.copyWith(
-      foreignEntityType: foreignEntityType == freezed
+      foreignEntityType: null == foreignEntityType
           ? _value.foreignEntityType
           : foreignEntityType // ignore: cast_nullable_to_non_nullable
               as String,
-      foreignEntityName: foreignEntityName == freezed
+      foreignEntityName: null == foreignEntityName
           ? _value.foreignEntityName
           : foreignEntityName // ignore: cast_nullable_to_non_nullable
               as String,
-      categories: categories == freezed
+      categories: null == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<InventoryExchangeCategory>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$InventoryExchangeCopyWith<$Res>
+abstract class _$$_InventoryExchangeCopyWith<$Res>
     implements $InventoryExchangeCopyWith<$Res> {
-  factory _$InventoryExchangeCopyWith(
-          _InventoryExchange value, $Res Function(_InventoryExchange) then) =
-      __$InventoryExchangeCopyWithImpl<$Res>;
+  factory _$$_InventoryExchangeCopyWith(_$_InventoryExchange value,
+          $Res Function(_$_InventoryExchange) then) =
+      __$$_InventoryExchangeCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String foreignEntityType,
       String foreignEntityName,
@@ -100,33 +87,31 @@ abstract class _$InventoryExchangeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$InventoryExchangeCopyWithImpl<$Res>
-    extends _$InventoryExchangeCopyWithImpl<$Res>
-    implements _$InventoryExchangeCopyWith<$Res> {
-  __$InventoryExchangeCopyWithImpl(
-      _InventoryExchange _value, $Res Function(_InventoryExchange) _then)
-      : super(_value, (v) => _then(v as _InventoryExchange));
+class __$$_InventoryExchangeCopyWithImpl<$Res>
+    extends _$InventoryExchangeCopyWithImpl<$Res, _$_InventoryExchange>
+    implements _$$_InventoryExchangeCopyWith<$Res> {
+  __$$_InventoryExchangeCopyWithImpl(
+      _$_InventoryExchange _value, $Res Function(_$_InventoryExchange) _then)
+      : super(_value, _then);
 
-  @override
-  _InventoryExchange get _value => super._value as _InventoryExchange;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? foreignEntityType = freezed,
-    Object? foreignEntityName = freezed,
-    Object? categories = freezed,
+    Object? foreignEntityType = null,
+    Object? foreignEntityName = null,
+    Object? categories = null,
   }) {
-    return _then(_InventoryExchange(
-      foreignEntityType: foreignEntityType == freezed
+    return _then(_$_InventoryExchange(
+      foreignEntityType: null == foreignEntityType
           ? _value.foreignEntityType
           : foreignEntityType // ignore: cast_nullable_to_non_nullable
               as String,
-      foreignEntityName: foreignEntityName == freezed
+      foreignEntityName: null == foreignEntityName
           ? _value.foreignEntityName
           : foreignEntityName // ignore: cast_nullable_to_non_nullable
               as String,
-      categories: categories == freezed
-          ? _value.categories
+      categories: null == categories
+          ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<InventoryExchangeCategory>,
     ));
@@ -134,19 +119,26 @@ class __$InventoryExchangeCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_InventoryExchange extends _InventoryExchange {
   const _$_InventoryExchange(
       {required this.foreignEntityType,
       required this.foreignEntityName,
-      required this.categories})
-      : super._();
+      required final List<InventoryExchangeCategory> categories})
+      : _categories = categories,
+        super._();
 
   @override
   final String foreignEntityType;
   @override
   final String foreignEntityName;
+  final List<InventoryExchangeCategory> _categories;
   @override
-  final List<InventoryExchangeCategory> categories;
+  List<InventoryExchangeCategory> get categories {
+    if (_categories is EqualUnmodifiableListView) return _categories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categories);
+  }
 
   @override
   String toString() {
@@ -156,67 +148,47 @@ class _$_InventoryExchange extends _InventoryExchange {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _InventoryExchange &&
+        (other.runtimeType == runtimeType &&
+            other is _$_InventoryExchange &&
             (identical(other.foreignEntityType, foreignEntityType) ||
-                const DeepCollectionEquality()
-                    .equals(other.foreignEntityType, foreignEntityType)) &&
+                other.foreignEntityType == foreignEntityType) &&
             (identical(other.foreignEntityName, foreignEntityName) ||
-                const DeepCollectionEquality()
-                    .equals(other.foreignEntityName, foreignEntityName)) &&
-            (identical(other.categories, categories) ||
-                const DeepCollectionEquality()
-                    .equals(other.categories, categories)));
+                other.foreignEntityName == foreignEntityName) &&
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(foreignEntityType) ^
-      const DeepCollectionEquality().hash(foreignEntityName) ^
-      const DeepCollectionEquality().hash(categories);
+  int get hashCode => Object.hash(runtimeType, foreignEntityType,
+      foreignEntityName, const DeepCollectionEquality().hash(_categories));
 
   @JsonKey(ignore: true)
   @override
-  _$InventoryExchangeCopyWith<_InventoryExchange> get copyWith =>
-      __$InventoryExchangeCopyWithImpl<_InventoryExchange>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_InventoryExchangeCopyWith<_$_InventoryExchange> get copyWith =>
+      __$$_InventoryExchangeCopyWithImpl<_$_InventoryExchange>(
+          this, _$identity);
 }
 
 abstract class _InventoryExchange extends InventoryExchange {
   const factory _InventoryExchange(
-          {required String foreignEntityType,
-          required String foreignEntityName,
-          required List<InventoryExchangeCategory> categories}) =
+          {required final String foreignEntityType,
+          required final String foreignEntityName,
+          required final List<InventoryExchangeCategory> categories}) =
       _$_InventoryExchange;
   const _InventoryExchange._() : super._();
 
   @override
-  String get foreignEntityType => throw _privateConstructorUsedError;
+  String get foreignEntityType;
   @override
-  String get foreignEntityName => throw _privateConstructorUsedError;
+  String get foreignEntityName;
   @override
-  List<InventoryExchangeCategory> get categories =>
-      throw _privateConstructorUsedError;
+  List<InventoryExchangeCategory> get categories;
   @override
   @JsonKey(ignore: true)
-  _$InventoryExchangeCopyWith<_InventoryExchange> get copyWith =>
+  _$$_InventoryExchangeCopyWith<_$_InventoryExchange> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$InventoryExchangeCategoryTearOff {
-  const _$InventoryExchangeCategoryTearOff();
-
-  _InventoryExchangeCategory call(
-      {required String name, required List<InventoryExchangeMaterial> items}) {
-    return _InventoryExchangeCategory(
-      name: name,
-      items: items,
-    );
-  }
-}
-
-/// @nodoc
-const $InventoryExchangeCategory = _$InventoryExchangeCategoryTearOff();
 
 /// @nodoc
 mixin _$InventoryExchangeCategory {
@@ -233,71 +205,76 @@ mixin _$InventoryExchangeCategory {
 abstract class $InventoryExchangeCategoryCopyWith<$Res> {
   factory $InventoryExchangeCategoryCopyWith(InventoryExchangeCategory value,
           $Res Function(InventoryExchangeCategory) then) =
-      _$InventoryExchangeCategoryCopyWithImpl<$Res>;
+      _$InventoryExchangeCategoryCopyWithImpl<$Res, InventoryExchangeCategory>;
+  @useResult
   $Res call({String name, List<InventoryExchangeMaterial> items});
 }
 
 /// @nodoc
-class _$InventoryExchangeCategoryCopyWithImpl<$Res>
+class _$InventoryExchangeCategoryCopyWithImpl<$Res,
+        $Val extends InventoryExchangeCategory>
     implements $InventoryExchangeCategoryCopyWith<$Res> {
   _$InventoryExchangeCategoryCopyWithImpl(this._value, this._then);
 
-  final InventoryExchangeCategory _value;
   // ignore: unused_field
-  final $Res Function(InventoryExchangeCategory) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? items = freezed,
+    Object? name = null,
+    Object? items = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      items: items == freezed
+      items: null == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<InventoryExchangeMaterial>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$InventoryExchangeCategoryCopyWith<$Res>
+abstract class _$$_InventoryExchangeCategoryCopyWith<$Res>
     implements $InventoryExchangeCategoryCopyWith<$Res> {
-  factory _$InventoryExchangeCategoryCopyWith(_InventoryExchangeCategory value,
-          $Res Function(_InventoryExchangeCategory) then) =
-      __$InventoryExchangeCategoryCopyWithImpl<$Res>;
+  factory _$$_InventoryExchangeCategoryCopyWith(
+          _$_InventoryExchangeCategory value,
+          $Res Function(_$_InventoryExchangeCategory) then) =
+      __$$_InventoryExchangeCategoryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String name, List<InventoryExchangeMaterial> items});
 }
 
 /// @nodoc
-class __$InventoryExchangeCategoryCopyWithImpl<$Res>
-    extends _$InventoryExchangeCategoryCopyWithImpl<$Res>
-    implements _$InventoryExchangeCategoryCopyWith<$Res> {
-  __$InventoryExchangeCategoryCopyWithImpl(_InventoryExchangeCategory _value,
-      $Res Function(_InventoryExchangeCategory) _then)
-      : super(_value, (v) => _then(v as _InventoryExchangeCategory));
+class __$$_InventoryExchangeCategoryCopyWithImpl<$Res>
+    extends _$InventoryExchangeCategoryCopyWithImpl<$Res,
+        _$_InventoryExchangeCategory>
+    implements _$$_InventoryExchangeCategoryCopyWith<$Res> {
+  __$$_InventoryExchangeCategoryCopyWithImpl(
+      _$_InventoryExchangeCategory _value,
+      $Res Function(_$_InventoryExchangeCategory) _then)
+      : super(_value, _then);
 
-  @override
-  _InventoryExchangeCategory get _value =>
-      super._value as _InventoryExchangeCategory;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? items = freezed,
+    Object? name = null,
+    Object? items = null,
   }) {
-    return _then(_InventoryExchangeCategory(
-      name: name == freezed
+    return _then(_$_InventoryExchangeCategory(
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      items: items == freezed
-          ? _value.items
+      items: null == items
+          ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<InventoryExchangeMaterial>,
     ));
@@ -305,14 +282,23 @@ class __$InventoryExchangeCategoryCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_InventoryExchangeCategory extends _InventoryExchangeCategory {
-  const _$_InventoryExchangeCategory({required this.name, required this.items})
-      : super._();
+  const _$_InventoryExchangeCategory(
+      {required this.name,
+      required final List<InventoryExchangeMaterial> items})
+      : _items = items,
+        super._();
 
   @override
   final String name;
+  final List<InventoryExchangeMaterial> _items;
   @override
-  final List<InventoryExchangeMaterial> items;
+  List<InventoryExchangeMaterial> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
 
   @override
   String toString() {
@@ -322,69 +308,40 @@ class _$_InventoryExchangeCategory extends _InventoryExchangeCategory {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _InventoryExchangeCategory &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.items, items) ||
-                const DeepCollectionEquality().equals(other.items, items)));
+        (other.runtimeType == runtimeType &&
+            other is _$_InventoryExchangeCategory &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(items);
+  int get hashCode => Object.hash(
+      runtimeType, name, const DeepCollectionEquality().hash(_items));
 
   @JsonKey(ignore: true)
   @override
-  _$InventoryExchangeCategoryCopyWith<_InventoryExchangeCategory>
-      get copyWith =>
-          __$InventoryExchangeCategoryCopyWithImpl<_InventoryExchangeCategory>(
-              this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_InventoryExchangeCategoryCopyWith<_$_InventoryExchangeCategory>
+      get copyWith => __$$_InventoryExchangeCategoryCopyWithImpl<
+          _$_InventoryExchangeCategory>(this, _$identity);
 }
 
 abstract class _InventoryExchangeCategory extends InventoryExchangeCategory {
   const factory _InventoryExchangeCategory(
-          {required String name,
-          required List<InventoryExchangeMaterial> items}) =
+          {required final String name,
+          required final List<InventoryExchangeMaterial> items}) =
       _$_InventoryExchangeCategory;
   const _InventoryExchangeCategory._() : super._();
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  List<InventoryExchangeMaterial> get items =>
-      throw _privateConstructorUsedError;
+  List<InventoryExchangeMaterial> get items;
   @override
   @JsonKey(ignore: true)
-  _$InventoryExchangeCategoryCopyWith<_InventoryExchangeCategory>
+  _$$_InventoryExchangeCategoryCopyWith<_$_InventoryExchangeCategory>
       get copyWith => throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$InventoryExchangeMaterialTearOff {
-  const _$InventoryExchangeMaterialTearOff();
-
-  _InventoryExchangeMaterial call(
-      {required String id,
-      required String name,
-      required String image_small,
-      required String image_original,
-      required int ownAmount,
-      required int foreignAmount}) {
-    return _InventoryExchangeMaterial(
-      id: id,
-      name: name,
-      image_small: image_small,
-      image_original: image_original,
-      ownAmount: ownAmount,
-      foreignAmount: foreignAmount,
-    );
-  }
-}
-
-/// @nodoc
-const $InventoryExchangeMaterial = _$InventoryExchangeMaterialTearOff();
 
 /// @nodoc
 mixin _$InventoryExchangeMaterial {
@@ -404,7 +361,8 @@ mixin _$InventoryExchangeMaterial {
 abstract class $InventoryExchangeMaterialCopyWith<$Res> {
   factory $InventoryExchangeMaterialCopyWith(InventoryExchangeMaterial value,
           $Res Function(InventoryExchangeMaterial) then) =
-      _$InventoryExchangeMaterialCopyWithImpl<$Res>;
+      _$InventoryExchangeMaterialCopyWithImpl<$Res, InventoryExchangeMaterial>;
+  @useResult
   $Res call(
       {String id,
       String name,
@@ -415,59 +373,64 @@ abstract class $InventoryExchangeMaterialCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InventoryExchangeMaterialCopyWithImpl<$Res>
+class _$InventoryExchangeMaterialCopyWithImpl<$Res,
+        $Val extends InventoryExchangeMaterial>
     implements $InventoryExchangeMaterialCopyWith<$Res> {
   _$InventoryExchangeMaterialCopyWithImpl(this._value, this._then);
 
-  final InventoryExchangeMaterial _value;
   // ignore: unused_field
-  final $Res Function(InventoryExchangeMaterial) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? image_small = freezed,
-    Object? image_original = freezed,
-    Object? ownAmount = freezed,
-    Object? foreignAmount = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? image_small = null,
+    Object? image_original = null,
+    Object? ownAmount = null,
+    Object? foreignAmount = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      image_small: image_small == freezed
+      image_small: null == image_small
           ? _value.image_small
           : image_small // ignore: cast_nullable_to_non_nullable
               as String,
-      image_original: image_original == freezed
+      image_original: null == image_original
           ? _value.image_original
           : image_original // ignore: cast_nullable_to_non_nullable
               as String,
-      ownAmount: ownAmount == freezed
+      ownAmount: null == ownAmount
           ? _value.ownAmount
           : ownAmount // ignore: cast_nullable_to_non_nullable
               as int,
-      foreignAmount: foreignAmount == freezed
+      foreignAmount: null == foreignAmount
           ? _value.foreignAmount
           : foreignAmount // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$InventoryExchangeMaterialCopyWith<$Res>
+abstract class _$$_InventoryExchangeMaterialCopyWith<$Res>
     implements $InventoryExchangeMaterialCopyWith<$Res> {
-  factory _$InventoryExchangeMaterialCopyWith(_InventoryExchangeMaterial value,
-          $Res Function(_InventoryExchangeMaterial) then) =
-      __$InventoryExchangeMaterialCopyWithImpl<$Res>;
+  factory _$$_InventoryExchangeMaterialCopyWith(
+          _$_InventoryExchangeMaterial value,
+          $Res Function(_$_InventoryExchangeMaterial) then) =
+      __$$_InventoryExchangeMaterialCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String name,
@@ -478,48 +441,47 @@ abstract class _$InventoryExchangeMaterialCopyWith<$Res>
 }
 
 /// @nodoc
-class __$InventoryExchangeMaterialCopyWithImpl<$Res>
-    extends _$InventoryExchangeMaterialCopyWithImpl<$Res>
-    implements _$InventoryExchangeMaterialCopyWith<$Res> {
-  __$InventoryExchangeMaterialCopyWithImpl(_InventoryExchangeMaterial _value,
-      $Res Function(_InventoryExchangeMaterial) _then)
-      : super(_value, (v) => _then(v as _InventoryExchangeMaterial));
+class __$$_InventoryExchangeMaterialCopyWithImpl<$Res>
+    extends _$InventoryExchangeMaterialCopyWithImpl<$Res,
+        _$_InventoryExchangeMaterial>
+    implements _$$_InventoryExchangeMaterialCopyWith<$Res> {
+  __$$_InventoryExchangeMaterialCopyWithImpl(
+      _$_InventoryExchangeMaterial _value,
+      $Res Function(_$_InventoryExchangeMaterial) _then)
+      : super(_value, _then);
 
-  @override
-  _InventoryExchangeMaterial get _value =>
-      super._value as _InventoryExchangeMaterial;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? image_small = freezed,
-    Object? image_original = freezed,
-    Object? ownAmount = freezed,
-    Object? foreignAmount = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? image_small = null,
+    Object? image_original = null,
+    Object? ownAmount = null,
+    Object? foreignAmount = null,
   }) {
-    return _then(_InventoryExchangeMaterial(
-      id: id == freezed
+    return _then(_$_InventoryExchangeMaterial(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      image_small: image_small == freezed
+      image_small: null == image_small
           ? _value.image_small
           : image_small // ignore: cast_nullable_to_non_nullable
               as String,
-      image_original: image_original == freezed
+      image_original: null == image_original
           ? _value.image_original
           : image_original // ignore: cast_nullable_to_non_nullable
               as String,
-      ownAmount: ownAmount == freezed
+      ownAmount: null == ownAmount
           ? _value.ownAmount
           : ownAmount // ignore: cast_nullable_to_non_nullable
               as int,
-      foreignAmount: foreignAmount == freezed
+      foreignAmount: null == foreignAmount
           ? _value.foreignAmount
           : foreignAmount // ignore: cast_nullable_to_non_nullable
               as int,
@@ -528,6 +490,7 @@ class __$InventoryExchangeMaterialCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_InventoryExchangeMaterial extends _InventoryExchangeMaterial {
   const _$_InventoryExchangeMaterial(
       {required this.id,
@@ -559,67 +522,56 @@ class _$_InventoryExchangeMaterial extends _InventoryExchangeMaterial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _InventoryExchangeMaterial &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$_InventoryExchangeMaterial &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.image_small, image_small) ||
-                const DeepCollectionEquality()
-                    .equals(other.image_small, image_small)) &&
+                other.image_small == image_small) &&
             (identical(other.image_original, image_original) ||
-                const DeepCollectionEquality()
-                    .equals(other.image_original, image_original)) &&
+                other.image_original == image_original) &&
             (identical(other.ownAmount, ownAmount) ||
-                const DeepCollectionEquality()
-                    .equals(other.ownAmount, ownAmount)) &&
+                other.ownAmount == ownAmount) &&
             (identical(other.foreignAmount, foreignAmount) ||
-                const DeepCollectionEquality()
-                    .equals(other.foreignAmount, foreignAmount)));
+                other.foreignAmount == foreignAmount));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(image_small) ^
-      const DeepCollectionEquality().hash(image_original) ^
-      const DeepCollectionEquality().hash(ownAmount) ^
-      const DeepCollectionEquality().hash(foreignAmount);
+  int get hashCode => Object.hash(runtimeType, id, name, image_small,
+      image_original, ownAmount, foreignAmount);
 
   @JsonKey(ignore: true)
   @override
-  _$InventoryExchangeMaterialCopyWith<_InventoryExchangeMaterial>
-      get copyWith =>
-          __$InventoryExchangeMaterialCopyWithImpl<_InventoryExchangeMaterial>(
-              this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_InventoryExchangeMaterialCopyWith<_$_InventoryExchangeMaterial>
+      get copyWith => __$$_InventoryExchangeMaterialCopyWithImpl<
+          _$_InventoryExchangeMaterial>(this, _$identity);
 }
 
 abstract class _InventoryExchangeMaterial extends InventoryExchangeMaterial {
   const factory _InventoryExchangeMaterial(
-      {required String id,
-      required String name,
-      required String image_small,
-      required String image_original,
-      required int ownAmount,
-      required int foreignAmount}) = _$_InventoryExchangeMaterial;
+      {required final String id,
+      required final String name,
+      required final String image_small,
+      required final String image_original,
+      required final int ownAmount,
+      required final int foreignAmount}) = _$_InventoryExchangeMaterial;
   const _InventoryExchangeMaterial._() : super._();
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get image_small => throw _privateConstructorUsedError;
+  String get image_small;
   @override
-  String get image_original => throw _privateConstructorUsedError;
+  String get image_original;
   @override
-  int get ownAmount => throw _privateConstructorUsedError;
+  int get ownAmount;
   @override
-  int get foreignAmount => throw _privateConstructorUsedError;
+  int get foreignAmount;
   @override
   @JsonKey(ignore: true)
-  _$InventoryExchangeMaterialCopyWith<_InventoryExchangeMaterial>
+  _$$_InventoryExchangeMaterialCopyWith<_$_InventoryExchangeMaterial>
       get copyWith => throw _privateConstructorUsedError;
 }

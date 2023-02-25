@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'patient.dart';
 
@@ -10,48 +12,7 @@ part of 'patient.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PatientTearOff {
-  const _$PatientTearOff();
-
-  _Patient call(
-      {required String completeDpsCode,
-      required String patientDpsCode,
-      required PatientCurrentPhase currentPhase,
-      required PatientFirstImpression firstImpression,
-      required PatientPersonalData personalData,
-      required PatientInjuries injuries,
-      required String injuryDescription,
-      required String bodyCheckInformation,
-      required String situationOfDiscovery,
-      required String triageCategory,
-      required AppliedMeasures appliedMeasures,
-      required bool isCheckedOut,
-      required bool isAlive,
-      AvailableMeasures? availableMeasures = null}) {
-    return _Patient(
-      completeDpsCode: completeDpsCode,
-      patientDpsCode: patientDpsCode,
-      currentPhase: currentPhase,
-      firstImpression: firstImpression,
-      personalData: personalData,
-      injuries: injuries,
-      injuryDescription: injuryDescription,
-      bodyCheckInformation: bodyCheckInformation,
-      situationOfDiscovery: situationOfDiscovery,
-      triageCategory: triageCategory,
-      appliedMeasures: appliedMeasures,
-      isCheckedOut: isCheckedOut,
-      isAlive: isAlive,
-      availableMeasures: availableMeasures,
-    );
-  }
-}
-
-/// @nodoc
-const $Patient = _$PatientTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Patient {
@@ -81,7 +42,8 @@ mixin _$Patient {
 /// @nodoc
 abstract class $PatientCopyWith<$Res> {
   factory $PatientCopyWith(Patient value, $Res Function(Patient) then) =
-      _$PatientCopyWithImpl<$Res>;
+      _$PatientCopyWithImpl<$Res, Patient>;
+  @useResult
   $Res call(
       {String completeDpsCode,
       String patientDpsCode,
@@ -107,143 +69,154 @@ abstract class $PatientCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PatientCopyWithImpl<$Res> implements $PatientCopyWith<$Res> {
+class _$PatientCopyWithImpl<$Res, $Val extends Patient>
+    implements $PatientCopyWith<$Res> {
   _$PatientCopyWithImpl(this._value, this._then);
 
-  final Patient _value;
   // ignore: unused_field
-  final $Res Function(Patient) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? completeDpsCode = freezed,
-    Object? patientDpsCode = freezed,
-    Object? currentPhase = freezed,
-    Object? firstImpression = freezed,
-    Object? personalData = freezed,
-    Object? injuries = freezed,
-    Object? injuryDescription = freezed,
-    Object? bodyCheckInformation = freezed,
-    Object? situationOfDiscovery = freezed,
-    Object? triageCategory = freezed,
-    Object? appliedMeasures = freezed,
-    Object? isCheckedOut = freezed,
-    Object? isAlive = freezed,
+    Object? completeDpsCode = null,
+    Object? patientDpsCode = null,
+    Object? currentPhase = null,
+    Object? firstImpression = null,
+    Object? personalData = null,
+    Object? injuries = null,
+    Object? injuryDescription = null,
+    Object? bodyCheckInformation = null,
+    Object? situationOfDiscovery = null,
+    Object? triageCategory = null,
+    Object? appliedMeasures = null,
+    Object? isCheckedOut = null,
+    Object? isAlive = null,
     Object? availableMeasures = freezed,
   }) {
     return _then(_value.copyWith(
-      completeDpsCode: completeDpsCode == freezed
+      completeDpsCode: null == completeDpsCode
           ? _value.completeDpsCode
           : completeDpsCode // ignore: cast_nullable_to_non_nullable
               as String,
-      patientDpsCode: patientDpsCode == freezed
+      patientDpsCode: null == patientDpsCode
           ? _value.patientDpsCode
           : patientDpsCode // ignore: cast_nullable_to_non_nullable
               as String,
-      currentPhase: currentPhase == freezed
+      currentPhase: null == currentPhase
           ? _value.currentPhase
           : currentPhase // ignore: cast_nullable_to_non_nullable
               as PatientCurrentPhase,
-      firstImpression: firstImpression == freezed
+      firstImpression: null == firstImpression
           ? _value.firstImpression
           : firstImpression // ignore: cast_nullable_to_non_nullable
               as PatientFirstImpression,
-      personalData: personalData == freezed
+      personalData: null == personalData
           ? _value.personalData
           : personalData // ignore: cast_nullable_to_non_nullable
               as PatientPersonalData,
-      injuries: injuries == freezed
+      injuries: null == injuries
           ? _value.injuries
           : injuries // ignore: cast_nullable_to_non_nullable
               as PatientInjuries,
-      injuryDescription: injuryDescription == freezed
+      injuryDescription: null == injuryDescription
           ? _value.injuryDescription
           : injuryDescription // ignore: cast_nullable_to_non_nullable
               as String,
-      bodyCheckInformation: bodyCheckInformation == freezed
+      bodyCheckInformation: null == bodyCheckInformation
           ? _value.bodyCheckInformation
           : bodyCheckInformation // ignore: cast_nullable_to_non_nullable
               as String,
-      situationOfDiscovery: situationOfDiscovery == freezed
+      situationOfDiscovery: null == situationOfDiscovery
           ? _value.situationOfDiscovery
           : situationOfDiscovery // ignore: cast_nullable_to_non_nullable
               as String,
-      triageCategory: triageCategory == freezed
+      triageCategory: null == triageCategory
           ? _value.triageCategory
           : triageCategory // ignore: cast_nullable_to_non_nullable
               as String,
-      appliedMeasures: appliedMeasures == freezed
+      appliedMeasures: null == appliedMeasures
           ? _value.appliedMeasures
           : appliedMeasures // ignore: cast_nullable_to_non_nullable
               as AppliedMeasures,
-      isCheckedOut: isCheckedOut == freezed
+      isCheckedOut: null == isCheckedOut
           ? _value.isCheckedOut
           : isCheckedOut // ignore: cast_nullable_to_non_nullable
               as bool,
-      isAlive: isAlive == freezed
+      isAlive: null == isAlive
           ? _value.isAlive
           : isAlive // ignore: cast_nullable_to_non_nullable
               as bool,
-      availableMeasures: availableMeasures == freezed
+      availableMeasures: freezed == availableMeasures
           ? _value.availableMeasures
           : availableMeasures // ignore: cast_nullable_to_non_nullable
               as AvailableMeasures?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PatientCurrentPhaseCopyWith<$Res> get currentPhase {
     return $PatientCurrentPhaseCopyWith<$Res>(_value.currentPhase, (value) {
-      return _then(_value.copyWith(currentPhase: value));
+      return _then(_value.copyWith(currentPhase: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PatientFirstImpressionCopyWith<$Res> get firstImpression {
     return $PatientFirstImpressionCopyWith<$Res>(_value.firstImpression,
         (value) {
-      return _then(_value.copyWith(firstImpression: value));
+      return _then(_value.copyWith(firstImpression: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PatientPersonalDataCopyWith<$Res> get personalData {
     return $PatientPersonalDataCopyWith<$Res>(_value.personalData, (value) {
-      return _then(_value.copyWith(personalData: value));
+      return _then(_value.copyWith(personalData: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PatientInjuriesCopyWith<$Res> get injuries {
     return $PatientInjuriesCopyWith<$Res>(_value.injuries, (value) {
-      return _then(_value.copyWith(injuries: value));
+      return _then(_value.copyWith(injuries: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AppliedMeasuresCopyWith<$Res> get appliedMeasures {
     return $AppliedMeasuresCopyWith<$Res>(_value.appliedMeasures, (value) {
-      return _then(_value.copyWith(appliedMeasures: value));
+      return _then(_value.copyWith(appliedMeasures: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AvailableMeasuresCopyWith<$Res>? get availableMeasures {
     if (_value.availableMeasures == null) {
       return null;
     }
 
     return $AvailableMeasuresCopyWith<$Res>(_value.availableMeasures!, (value) {
-      return _then(_value.copyWith(availableMeasures: value));
+      return _then(_value.copyWith(availableMeasures: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$PatientCopyWith<$Res> implements $PatientCopyWith<$Res> {
-  factory _$PatientCopyWith(_Patient value, $Res Function(_Patient) then) =
-      __$PatientCopyWithImpl<$Res>;
+abstract class _$$_PatientCopyWith<$Res> implements $PatientCopyWith<$Res> {
+  factory _$$_PatientCopyWith(
+          _$_Patient value, $Res Function(_$_Patient) then) =
+      __$$_PatientCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String completeDpsCode,
       String patientDpsCode,
@@ -275,85 +248,84 @@ abstract class _$PatientCopyWith<$Res> implements $PatientCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
-    implements _$PatientCopyWith<$Res> {
-  __$PatientCopyWithImpl(_Patient _value, $Res Function(_Patient) _then)
-      : super(_value, (v) => _then(v as _Patient));
+class __$$_PatientCopyWithImpl<$Res>
+    extends _$PatientCopyWithImpl<$Res, _$_Patient>
+    implements _$$_PatientCopyWith<$Res> {
+  __$$_PatientCopyWithImpl(_$_Patient _value, $Res Function(_$_Patient) _then)
+      : super(_value, _then);
 
-  @override
-  _Patient get _value => super._value as _Patient;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? completeDpsCode = freezed,
-    Object? patientDpsCode = freezed,
-    Object? currentPhase = freezed,
-    Object? firstImpression = freezed,
-    Object? personalData = freezed,
-    Object? injuries = freezed,
-    Object? injuryDescription = freezed,
-    Object? bodyCheckInformation = freezed,
-    Object? situationOfDiscovery = freezed,
-    Object? triageCategory = freezed,
-    Object? appliedMeasures = freezed,
-    Object? isCheckedOut = freezed,
-    Object? isAlive = freezed,
+    Object? completeDpsCode = null,
+    Object? patientDpsCode = null,
+    Object? currentPhase = null,
+    Object? firstImpression = null,
+    Object? personalData = null,
+    Object? injuries = null,
+    Object? injuryDescription = null,
+    Object? bodyCheckInformation = null,
+    Object? situationOfDiscovery = null,
+    Object? triageCategory = null,
+    Object? appliedMeasures = null,
+    Object? isCheckedOut = null,
+    Object? isAlive = null,
     Object? availableMeasures = freezed,
   }) {
-    return _then(_Patient(
-      completeDpsCode: completeDpsCode == freezed
+    return _then(_$_Patient(
+      completeDpsCode: null == completeDpsCode
           ? _value.completeDpsCode
           : completeDpsCode // ignore: cast_nullable_to_non_nullable
               as String,
-      patientDpsCode: patientDpsCode == freezed
+      patientDpsCode: null == patientDpsCode
           ? _value.patientDpsCode
           : patientDpsCode // ignore: cast_nullable_to_non_nullable
               as String,
-      currentPhase: currentPhase == freezed
+      currentPhase: null == currentPhase
           ? _value.currentPhase
           : currentPhase // ignore: cast_nullable_to_non_nullable
               as PatientCurrentPhase,
-      firstImpression: firstImpression == freezed
+      firstImpression: null == firstImpression
           ? _value.firstImpression
           : firstImpression // ignore: cast_nullable_to_non_nullable
               as PatientFirstImpression,
-      personalData: personalData == freezed
+      personalData: null == personalData
           ? _value.personalData
           : personalData // ignore: cast_nullable_to_non_nullable
               as PatientPersonalData,
-      injuries: injuries == freezed
+      injuries: null == injuries
           ? _value.injuries
           : injuries // ignore: cast_nullable_to_non_nullable
               as PatientInjuries,
-      injuryDescription: injuryDescription == freezed
+      injuryDescription: null == injuryDescription
           ? _value.injuryDescription
           : injuryDescription // ignore: cast_nullable_to_non_nullable
               as String,
-      bodyCheckInformation: bodyCheckInformation == freezed
+      bodyCheckInformation: null == bodyCheckInformation
           ? _value.bodyCheckInformation
           : bodyCheckInformation // ignore: cast_nullable_to_non_nullable
               as String,
-      situationOfDiscovery: situationOfDiscovery == freezed
+      situationOfDiscovery: null == situationOfDiscovery
           ? _value.situationOfDiscovery
           : situationOfDiscovery // ignore: cast_nullable_to_non_nullable
               as String,
-      triageCategory: triageCategory == freezed
+      triageCategory: null == triageCategory
           ? _value.triageCategory
           : triageCategory // ignore: cast_nullable_to_non_nullable
               as String,
-      appliedMeasures: appliedMeasures == freezed
+      appliedMeasures: null == appliedMeasures
           ? _value.appliedMeasures
           : appliedMeasures // ignore: cast_nullable_to_non_nullable
               as AppliedMeasures,
-      isCheckedOut: isCheckedOut == freezed
+      isCheckedOut: null == isCheckedOut
           ? _value.isCheckedOut
           : isCheckedOut // ignore: cast_nullable_to_non_nullable
               as bool,
-      isAlive: isAlive == freezed
+      isAlive: null == isAlive
           ? _value.isAlive
           : isAlive // ignore: cast_nullable_to_non_nullable
               as bool,
-      availableMeasures: availableMeasures == freezed
+      availableMeasures: freezed == availableMeasures
           ? _value.availableMeasures
           : availableMeasures // ignore: cast_nullable_to_non_nullable
               as AvailableMeasures?,
@@ -362,6 +334,7 @@ class __$PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Patient extends _Patient with DiagnosticableTreeMixin {
   const _$_Patient(
       {required this.completeDpsCode,
@@ -380,9 +353,11 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
       this.availableMeasures = null})
       : super._();
 
-  @override // This is the full DPSCode as provided by the dps naming system.
+// This is the full DPSCode as provided by the dps naming system.
+  @override
   final String completeDpsCode;
-  @override // Short version of dps code, used internally by frontend to identify patient
+// Short version of dps code, used internally by frontend to identify patient
+  @override
   final String patientDpsCode;
   @override
   final PatientCurrentPhase currentPhase;
@@ -406,8 +381,8 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
   final bool isCheckedOut;
   @override
   final bool isAlive;
-  @JsonKey(defaultValue: null)
   @override
+  @JsonKey()
   final AvailableMeasures? availableMeasures;
 
   @override
@@ -439,153 +414,113 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Patient &&
+        (other.runtimeType == runtimeType &&
+            other is _$_Patient &&
             (identical(other.completeDpsCode, completeDpsCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.completeDpsCode, completeDpsCode)) &&
+                other.completeDpsCode == completeDpsCode) &&
             (identical(other.patientDpsCode, patientDpsCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.patientDpsCode, patientDpsCode)) &&
+                other.patientDpsCode == patientDpsCode) &&
             (identical(other.currentPhase, currentPhase) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentPhase, currentPhase)) &&
+                other.currentPhase == currentPhase) &&
             (identical(other.firstImpression, firstImpression) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstImpression, firstImpression)) &&
+                other.firstImpression == firstImpression) &&
             (identical(other.personalData, personalData) ||
-                const DeepCollectionEquality()
-                    .equals(other.personalData, personalData)) &&
+                other.personalData == personalData) &&
             (identical(other.injuries, injuries) ||
-                const DeepCollectionEquality()
-                    .equals(other.injuries, injuries)) &&
+                other.injuries == injuries) &&
             (identical(other.injuryDescription, injuryDescription) ||
-                const DeepCollectionEquality()
-                    .equals(other.injuryDescription, injuryDescription)) &&
+                other.injuryDescription == injuryDescription) &&
             (identical(other.bodyCheckInformation, bodyCheckInformation) ||
-                const DeepCollectionEquality().equals(
-                    other.bodyCheckInformation, bodyCheckInformation)) &&
+                other.bodyCheckInformation == bodyCheckInformation) &&
             (identical(other.situationOfDiscovery, situationOfDiscovery) ||
-                const DeepCollectionEquality().equals(
-                    other.situationOfDiscovery, situationOfDiscovery)) &&
+                other.situationOfDiscovery == situationOfDiscovery) &&
             (identical(other.triageCategory, triageCategory) ||
-                const DeepCollectionEquality()
-                    .equals(other.triageCategory, triageCategory)) &&
+                other.triageCategory == triageCategory) &&
             (identical(other.appliedMeasures, appliedMeasures) ||
-                const DeepCollectionEquality()
-                    .equals(other.appliedMeasures, appliedMeasures)) &&
+                other.appliedMeasures == appliedMeasures) &&
             (identical(other.isCheckedOut, isCheckedOut) ||
-                const DeepCollectionEquality()
-                    .equals(other.isCheckedOut, isCheckedOut)) &&
-            (identical(other.isAlive, isAlive) ||
-                const DeepCollectionEquality()
-                    .equals(other.isAlive, isAlive)) &&
+                other.isCheckedOut == isCheckedOut) &&
+            (identical(other.isAlive, isAlive) || other.isAlive == isAlive) &&
             (identical(other.availableMeasures, availableMeasures) ||
-                const DeepCollectionEquality()
-                    .equals(other.availableMeasures, availableMeasures)));
+                other.availableMeasures == availableMeasures));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(completeDpsCode) ^
-      const DeepCollectionEquality().hash(patientDpsCode) ^
-      const DeepCollectionEquality().hash(currentPhase) ^
-      const DeepCollectionEquality().hash(firstImpression) ^
-      const DeepCollectionEquality().hash(personalData) ^
-      const DeepCollectionEquality().hash(injuries) ^
-      const DeepCollectionEquality().hash(injuryDescription) ^
-      const DeepCollectionEquality().hash(bodyCheckInformation) ^
-      const DeepCollectionEquality().hash(situationOfDiscovery) ^
-      const DeepCollectionEquality().hash(triageCategory) ^
-      const DeepCollectionEquality().hash(appliedMeasures) ^
-      const DeepCollectionEquality().hash(isCheckedOut) ^
-      const DeepCollectionEquality().hash(isAlive) ^
-      const DeepCollectionEquality().hash(availableMeasures);
+  int get hashCode => Object.hash(
+      runtimeType,
+      completeDpsCode,
+      patientDpsCode,
+      currentPhase,
+      firstImpression,
+      personalData,
+      injuries,
+      injuryDescription,
+      bodyCheckInformation,
+      situationOfDiscovery,
+      triageCategory,
+      appliedMeasures,
+      isCheckedOut,
+      isAlive,
+      availableMeasures);
 
   @JsonKey(ignore: true)
   @override
-  _$PatientCopyWith<_Patient> get copyWith =>
-      __$PatientCopyWithImpl<_Patient>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_PatientCopyWith<_$_Patient> get copyWith =>
+      __$$_PatientCopyWithImpl<_$_Patient>(this, _$identity);
 }
 
 abstract class _Patient extends Patient {
   const factory _Patient(
-      {required String completeDpsCode,
-      required String patientDpsCode,
-      required PatientCurrentPhase currentPhase,
-      required PatientFirstImpression firstImpression,
-      required PatientPersonalData personalData,
-      required PatientInjuries injuries,
-      required String injuryDescription,
-      required String bodyCheckInformation,
-      required String situationOfDiscovery,
-      required String triageCategory,
-      required AppliedMeasures appliedMeasures,
-      required bool isCheckedOut,
-      required bool isAlive,
-      AvailableMeasures? availableMeasures}) = _$_Patient;
+      {required final String completeDpsCode,
+      required final String patientDpsCode,
+      required final PatientCurrentPhase currentPhase,
+      required final PatientFirstImpression firstImpression,
+      required final PatientPersonalData personalData,
+      required final PatientInjuries injuries,
+      required final String injuryDescription,
+      required final String bodyCheckInformation,
+      required final String situationOfDiscovery,
+      required final String triageCategory,
+      required final AppliedMeasures appliedMeasures,
+      required final bool isCheckedOut,
+      required final bool isAlive,
+      final AvailableMeasures? availableMeasures}) = _$_Patient;
   const _Patient._() : super._();
 
   @override // This is the full DPSCode as provided by the dps naming system.
-  String get completeDpsCode => throw _privateConstructorUsedError;
+  String get completeDpsCode;
   @override // Short version of dps code, used internally by frontend to identify patient
-  String get patientDpsCode => throw _privateConstructorUsedError;
+  String get patientDpsCode;
   @override
-  PatientCurrentPhase get currentPhase => throw _privateConstructorUsedError;
+  PatientCurrentPhase get currentPhase;
   @override
-  PatientFirstImpression get firstImpression =>
-      throw _privateConstructorUsedError;
+  PatientFirstImpression get firstImpression;
   @override
-  PatientPersonalData get personalData => throw _privateConstructorUsedError;
+  PatientPersonalData get personalData;
   @override
-  PatientInjuries get injuries => throw _privateConstructorUsedError;
+  PatientInjuries get injuries;
   @override
-  String get injuryDescription => throw _privateConstructorUsedError;
+  String get injuryDescription;
   @override
-  String get bodyCheckInformation => throw _privateConstructorUsedError;
+  String get bodyCheckInformation;
   @override
-  String get situationOfDiscovery => throw _privateConstructorUsedError;
+  String get situationOfDiscovery;
   @override
-  String get triageCategory => throw _privateConstructorUsedError;
+  String get triageCategory;
   @override
-  AppliedMeasures get appliedMeasures => throw _privateConstructorUsedError;
+  AppliedMeasures get appliedMeasures;
   @override
-  bool get isCheckedOut => throw _privateConstructorUsedError;
+  bool get isCheckedOut;
   @override
-  bool get isAlive => throw _privateConstructorUsedError;
+  bool get isAlive;
   @override
-  AvailableMeasures? get availableMeasures =>
-      throw _privateConstructorUsedError;
+  AvailableMeasures? get availableMeasures;
   @override
   @JsonKey(ignore: true)
-  _$PatientCopyWith<_Patient> get copyWith =>
+  _$$_PatientCopyWith<_$_Patient> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$PatientCurrentPhaseTearOff {
-  const _$PatientCurrentPhaseTearOff();
-
-  _PatientCurrentPhase call(
-      {required PatientStandardDiagnosticData standardDiagnosticData,
-      required String ekg,
-      required String pulmonary_auscultation,
-      required String blood_pressure,
-      required String spo2,
-      required String spco}) {
-    return _PatientCurrentPhase(
-      standardDiagnosticData: standardDiagnosticData,
-      ekg: ekg,
-      pulmonary_auscultation: pulmonary_auscultation,
-      blood_pressure: blood_pressure,
-      spo2: spo2,
-      spco: spco,
-    );
-  }
-}
-
-/// @nodoc
-const $PatientCurrentPhase = _$PatientCurrentPhaseTearOff();
 
 /// @nodoc
 mixin _$PatientCurrentPhase {
@@ -606,7 +541,8 @@ mixin _$PatientCurrentPhase {
 abstract class $PatientCurrentPhaseCopyWith<$Res> {
   factory $PatientCurrentPhaseCopyWith(
           PatientCurrentPhase value, $Res Function(PatientCurrentPhase) then) =
-      _$PatientCurrentPhaseCopyWithImpl<$Res>;
+      _$PatientCurrentPhaseCopyWithImpl<$Res, PatientCurrentPhase>;
+  @useResult
   $Res call(
       {PatientStandardDiagnosticData standardDiagnosticData,
       String ekg,
@@ -619,67 +555,71 @@ abstract class $PatientCurrentPhaseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PatientCurrentPhaseCopyWithImpl<$Res>
+class _$PatientCurrentPhaseCopyWithImpl<$Res, $Val extends PatientCurrentPhase>
     implements $PatientCurrentPhaseCopyWith<$Res> {
   _$PatientCurrentPhaseCopyWithImpl(this._value, this._then);
 
-  final PatientCurrentPhase _value;
   // ignore: unused_field
-  final $Res Function(PatientCurrentPhase) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? standardDiagnosticData = freezed,
-    Object? ekg = freezed,
-    Object? pulmonary_auscultation = freezed,
-    Object? blood_pressure = freezed,
-    Object? spo2 = freezed,
-    Object? spco = freezed,
+    Object? standardDiagnosticData = null,
+    Object? ekg = null,
+    Object? pulmonary_auscultation = null,
+    Object? blood_pressure = null,
+    Object? spo2 = null,
+    Object? spco = null,
   }) {
     return _then(_value.copyWith(
-      standardDiagnosticData: standardDiagnosticData == freezed
+      standardDiagnosticData: null == standardDiagnosticData
           ? _value.standardDiagnosticData
           : standardDiagnosticData // ignore: cast_nullable_to_non_nullable
               as PatientStandardDiagnosticData,
-      ekg: ekg == freezed
+      ekg: null == ekg
           ? _value.ekg
           : ekg // ignore: cast_nullable_to_non_nullable
               as String,
-      pulmonary_auscultation: pulmonary_auscultation == freezed
+      pulmonary_auscultation: null == pulmonary_auscultation
           ? _value.pulmonary_auscultation
           : pulmonary_auscultation // ignore: cast_nullable_to_non_nullable
               as String,
-      blood_pressure: blood_pressure == freezed
+      blood_pressure: null == blood_pressure
           ? _value.blood_pressure
           : blood_pressure // ignore: cast_nullable_to_non_nullable
               as String,
-      spo2: spo2 == freezed
+      spo2: null == spo2
           ? _value.spo2
           : spo2 // ignore: cast_nullable_to_non_nullable
               as String,
-      spco: spco == freezed
+      spco: null == spco
           ? _value.spco
           : spco // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PatientStandardDiagnosticDataCopyWith<$Res> get standardDiagnosticData {
     return $PatientStandardDiagnosticDataCopyWith<$Res>(
         _value.standardDiagnosticData, (value) {
-      return _then(_value.copyWith(standardDiagnosticData: value));
+      return _then(_value.copyWith(standardDiagnosticData: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$PatientCurrentPhaseCopyWith<$Res>
+abstract class _$$_PatientCurrentPhaseCopyWith<$Res>
     implements $PatientCurrentPhaseCopyWith<$Res> {
-  factory _$PatientCurrentPhaseCopyWith(_PatientCurrentPhase value,
-          $Res Function(_PatientCurrentPhase) then) =
-      __$PatientCurrentPhaseCopyWithImpl<$Res>;
+  factory _$$_PatientCurrentPhaseCopyWith(_$_PatientCurrentPhase value,
+          $Res Function(_$_PatientCurrentPhase) then) =
+      __$$_PatientCurrentPhaseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {PatientStandardDiagnosticData standardDiagnosticData,
       String ekg,
@@ -693,47 +633,45 @@ abstract class _$PatientCurrentPhaseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PatientCurrentPhaseCopyWithImpl<$Res>
-    extends _$PatientCurrentPhaseCopyWithImpl<$Res>
-    implements _$PatientCurrentPhaseCopyWith<$Res> {
-  __$PatientCurrentPhaseCopyWithImpl(
-      _PatientCurrentPhase _value, $Res Function(_PatientCurrentPhase) _then)
-      : super(_value, (v) => _then(v as _PatientCurrentPhase));
+class __$$_PatientCurrentPhaseCopyWithImpl<$Res>
+    extends _$PatientCurrentPhaseCopyWithImpl<$Res, _$_PatientCurrentPhase>
+    implements _$$_PatientCurrentPhaseCopyWith<$Res> {
+  __$$_PatientCurrentPhaseCopyWithImpl(_$_PatientCurrentPhase _value,
+      $Res Function(_$_PatientCurrentPhase) _then)
+      : super(_value, _then);
 
-  @override
-  _PatientCurrentPhase get _value => super._value as _PatientCurrentPhase;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? standardDiagnosticData = freezed,
-    Object? ekg = freezed,
-    Object? pulmonary_auscultation = freezed,
-    Object? blood_pressure = freezed,
-    Object? spo2 = freezed,
-    Object? spco = freezed,
+    Object? standardDiagnosticData = null,
+    Object? ekg = null,
+    Object? pulmonary_auscultation = null,
+    Object? blood_pressure = null,
+    Object? spo2 = null,
+    Object? spco = null,
   }) {
-    return _then(_PatientCurrentPhase(
-      standardDiagnosticData: standardDiagnosticData == freezed
+    return _then(_$_PatientCurrentPhase(
+      standardDiagnosticData: null == standardDiagnosticData
           ? _value.standardDiagnosticData
           : standardDiagnosticData // ignore: cast_nullable_to_non_nullable
               as PatientStandardDiagnosticData,
-      ekg: ekg == freezed
+      ekg: null == ekg
           ? _value.ekg
           : ekg // ignore: cast_nullable_to_non_nullable
               as String,
-      pulmonary_auscultation: pulmonary_auscultation == freezed
+      pulmonary_auscultation: null == pulmonary_auscultation
           ? _value.pulmonary_auscultation
           : pulmonary_auscultation // ignore: cast_nullable_to_non_nullable
               as String,
-      blood_pressure: blood_pressure == freezed
+      blood_pressure: null == blood_pressure
           ? _value.blood_pressure
           : blood_pressure // ignore: cast_nullable_to_non_nullable
               as String,
-      spo2: spo2 == freezed
+      spo2: null == spo2
           ? _value.spo2
           : spo2 // ignore: cast_nullable_to_non_nullable
               as String,
-      spco: spco == freezed
+      spco: null == spco
           ? _value.spco
           : spco // ignore: cast_nullable_to_non_nullable
               as String,
@@ -742,6 +680,7 @@ class __$PatientCurrentPhaseCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_PatientCurrentPhase extends _PatientCurrentPhase
     with DiagnosticableTreeMixin {
   const _$_PatientCurrentPhase(
@@ -789,96 +728,58 @@ class _$_PatientCurrentPhase extends _PatientCurrentPhase
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PatientCurrentPhase &&
+        (other.runtimeType == runtimeType &&
+            other is _$_PatientCurrentPhase &&
             (identical(other.standardDiagnosticData, standardDiagnosticData) ||
-                const DeepCollectionEquality().equals(
-                    other.standardDiagnosticData, standardDiagnosticData)) &&
-            (identical(other.ekg, ekg) ||
-                const DeepCollectionEquality().equals(other.ekg, ekg)) &&
+                other.standardDiagnosticData == standardDiagnosticData) &&
+            (identical(other.ekg, ekg) || other.ekg == ekg) &&
             (identical(other.pulmonary_auscultation, pulmonary_auscultation) ||
-                const DeepCollectionEquality().equals(
-                    other.pulmonary_auscultation, pulmonary_auscultation)) &&
+                other.pulmonary_auscultation == pulmonary_auscultation) &&
             (identical(other.blood_pressure, blood_pressure) ||
-                const DeepCollectionEquality()
-                    .equals(other.blood_pressure, blood_pressure)) &&
-            (identical(other.spo2, spo2) ||
-                const DeepCollectionEquality().equals(other.spo2, spo2)) &&
-            (identical(other.spco, spco) ||
-                const DeepCollectionEquality().equals(other.spco, spco)));
+                other.blood_pressure == blood_pressure) &&
+            (identical(other.spo2, spo2) || other.spo2 == spo2) &&
+            (identical(other.spco, spco) || other.spco == spco));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(standardDiagnosticData) ^
-      const DeepCollectionEquality().hash(ekg) ^
-      const DeepCollectionEquality().hash(pulmonary_auscultation) ^
-      const DeepCollectionEquality().hash(blood_pressure) ^
-      const DeepCollectionEquality().hash(spo2) ^
-      const DeepCollectionEquality().hash(spco);
+  int get hashCode => Object.hash(runtimeType, standardDiagnosticData, ekg,
+      pulmonary_auscultation, blood_pressure, spo2, spco);
 
   @JsonKey(ignore: true)
   @override
-  _$PatientCurrentPhaseCopyWith<_PatientCurrentPhase> get copyWith =>
-      __$PatientCurrentPhaseCopyWithImpl<_PatientCurrentPhase>(
+  @pragma('vm:prefer-inline')
+  _$$_PatientCurrentPhaseCopyWith<_$_PatientCurrentPhase> get copyWith =>
+      __$$_PatientCurrentPhaseCopyWithImpl<_$_PatientCurrentPhase>(
           this, _$identity);
 }
 
 abstract class _PatientCurrentPhase extends PatientCurrentPhase {
   const factory _PatientCurrentPhase(
-      {required PatientStandardDiagnosticData standardDiagnosticData,
-      required String ekg,
-      required String pulmonary_auscultation,
-      required String blood_pressure,
-      required String spo2,
-      required String spco}) = _$_PatientCurrentPhase;
+      {required final PatientStandardDiagnosticData standardDiagnosticData,
+      required final String ekg,
+      required final String pulmonary_auscultation,
+      required final String blood_pressure,
+      required final String spo2,
+      required final String spco}) = _$_PatientCurrentPhase;
   const _PatientCurrentPhase._() : super._();
 
   @override
-  PatientStandardDiagnosticData get standardDiagnosticData =>
-      throw _privateConstructorUsedError;
+  PatientStandardDiagnosticData get standardDiagnosticData;
   @override
-  String get ekg => throw _privateConstructorUsedError;
+  String get ekg;
   @override
-  String get pulmonary_auscultation => throw _privateConstructorUsedError;
+  String get pulmonary_auscultation;
   @override
-  String get blood_pressure => throw _privateConstructorUsedError;
+  String get blood_pressure;
   @override
-  String get spo2 => throw _privateConstructorUsedError;
+  String get spo2;
   @override
-  String get spco => throw _privateConstructorUsedError;
+  String get spco;
   @override
   @JsonKey(ignore: true)
-  _$PatientCurrentPhaseCopyWith<_PatientCurrentPhase> get copyWith =>
+  _$$_PatientCurrentPhaseCopyWith<_$_PatientCurrentPhase> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$PatientStandardDiagnosticDataTearOff {
-  const _$PatientStandardDiagnosticDataTearOff();
-
-  _PatientStandardDiagnosticData call(
-      {required PatientBreathing breathing,
-      required PatientCirculation circulation,
-      required PatientDisability disability,
-      required PatientExposure exposure,
-      required String airway,
-      required String exsang_hemorrhage,
-      required String psyche}) {
-    return _PatientStandardDiagnosticData(
-      breathing: breathing,
-      circulation: circulation,
-      disability: disability,
-      exposure: exposure,
-      airway: airway,
-      exsang_hemorrhage: exsang_hemorrhage,
-      psyche: psyche,
-    );
-  }
-}
-
-/// @nodoc
-const $PatientStandardDiagnosticData = _$PatientStandardDiagnosticDataTearOff();
 
 /// @nodoc
 mixin _$PatientStandardDiagnosticData {
@@ -900,7 +801,9 @@ abstract class $PatientStandardDiagnosticDataCopyWith<$Res> {
   factory $PatientStandardDiagnosticDataCopyWith(
           PatientStandardDiagnosticData value,
           $Res Function(PatientStandardDiagnosticData) then) =
-      _$PatientStandardDiagnosticDataCopyWithImpl<$Res>;
+      _$PatientStandardDiagnosticDataCopyWithImpl<$Res,
+          PatientStandardDiagnosticData>;
+  @useResult
   $Res call(
       {PatientBreathing breathing,
       PatientCirculation circulation,
@@ -917,93 +820,101 @@ abstract class $PatientStandardDiagnosticDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PatientStandardDiagnosticDataCopyWithImpl<$Res>
+class _$PatientStandardDiagnosticDataCopyWithImpl<$Res,
+        $Val extends PatientStandardDiagnosticData>
     implements $PatientStandardDiagnosticDataCopyWith<$Res> {
   _$PatientStandardDiagnosticDataCopyWithImpl(this._value, this._then);
 
-  final PatientStandardDiagnosticData _value;
   // ignore: unused_field
-  final $Res Function(PatientStandardDiagnosticData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? breathing = freezed,
-    Object? circulation = freezed,
-    Object? disability = freezed,
-    Object? exposure = freezed,
-    Object? airway = freezed,
-    Object? exsang_hemorrhage = freezed,
-    Object? psyche = freezed,
+    Object? breathing = null,
+    Object? circulation = null,
+    Object? disability = null,
+    Object? exposure = null,
+    Object? airway = null,
+    Object? exsang_hemorrhage = null,
+    Object? psyche = null,
   }) {
     return _then(_value.copyWith(
-      breathing: breathing == freezed
+      breathing: null == breathing
           ? _value.breathing
           : breathing // ignore: cast_nullable_to_non_nullable
               as PatientBreathing,
-      circulation: circulation == freezed
+      circulation: null == circulation
           ? _value.circulation
           : circulation // ignore: cast_nullable_to_non_nullable
               as PatientCirculation,
-      disability: disability == freezed
+      disability: null == disability
           ? _value.disability
           : disability // ignore: cast_nullable_to_non_nullable
               as PatientDisability,
-      exposure: exposure == freezed
+      exposure: null == exposure
           ? _value.exposure
           : exposure // ignore: cast_nullable_to_non_nullable
               as PatientExposure,
-      airway: airway == freezed
+      airway: null == airway
           ? _value.airway
           : airway // ignore: cast_nullable_to_non_nullable
               as String,
-      exsang_hemorrhage: exsang_hemorrhage == freezed
+      exsang_hemorrhage: null == exsang_hemorrhage
           ? _value.exsang_hemorrhage
           : exsang_hemorrhage // ignore: cast_nullable_to_non_nullable
               as String,
-      psyche: psyche == freezed
+      psyche: null == psyche
           ? _value.psyche
           : psyche // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PatientBreathingCopyWith<$Res> get breathing {
     return $PatientBreathingCopyWith<$Res>(_value.breathing, (value) {
-      return _then(_value.copyWith(breathing: value));
+      return _then(_value.copyWith(breathing: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PatientCirculationCopyWith<$Res> get circulation {
     return $PatientCirculationCopyWith<$Res>(_value.circulation, (value) {
-      return _then(_value.copyWith(circulation: value));
+      return _then(_value.copyWith(circulation: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PatientDisabilityCopyWith<$Res> get disability {
     return $PatientDisabilityCopyWith<$Res>(_value.disability, (value) {
-      return _then(_value.copyWith(disability: value));
+      return _then(_value.copyWith(disability: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PatientExposureCopyWith<$Res> get exposure {
     return $PatientExposureCopyWith<$Res>(_value.exposure, (value) {
-      return _then(_value.copyWith(exposure: value));
+      return _then(_value.copyWith(exposure: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$PatientStandardDiagnosticDataCopyWith<$Res>
+abstract class _$$_PatientStandardDiagnosticDataCopyWith<$Res>
     implements $PatientStandardDiagnosticDataCopyWith<$Res> {
-  factory _$PatientStandardDiagnosticDataCopyWith(
-          _PatientStandardDiagnosticData value,
-          $Res Function(_PatientStandardDiagnosticData) then) =
-      __$PatientStandardDiagnosticDataCopyWithImpl<$Res>;
+  factory _$$_PatientStandardDiagnosticDataCopyWith(
+          _$_PatientStandardDiagnosticData value,
+          $Res Function(_$_PatientStandardDiagnosticData) then) =
+      __$$_PatientStandardDiagnosticDataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {PatientBreathing breathing,
       PatientCirculation circulation,
@@ -1024,54 +935,52 @@ abstract class _$PatientStandardDiagnosticDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PatientStandardDiagnosticDataCopyWithImpl<$Res>
-    extends _$PatientStandardDiagnosticDataCopyWithImpl<$Res>
-    implements _$PatientStandardDiagnosticDataCopyWith<$Res> {
-  __$PatientStandardDiagnosticDataCopyWithImpl(
-      _PatientStandardDiagnosticData _value,
-      $Res Function(_PatientStandardDiagnosticData) _then)
-      : super(_value, (v) => _then(v as _PatientStandardDiagnosticData));
+class __$$_PatientStandardDiagnosticDataCopyWithImpl<$Res>
+    extends _$PatientStandardDiagnosticDataCopyWithImpl<$Res,
+        _$_PatientStandardDiagnosticData>
+    implements _$$_PatientStandardDiagnosticDataCopyWith<$Res> {
+  __$$_PatientStandardDiagnosticDataCopyWithImpl(
+      _$_PatientStandardDiagnosticData _value,
+      $Res Function(_$_PatientStandardDiagnosticData) _then)
+      : super(_value, _then);
 
-  @override
-  _PatientStandardDiagnosticData get _value =>
-      super._value as _PatientStandardDiagnosticData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? breathing = freezed,
-    Object? circulation = freezed,
-    Object? disability = freezed,
-    Object? exposure = freezed,
-    Object? airway = freezed,
-    Object? exsang_hemorrhage = freezed,
-    Object? psyche = freezed,
+    Object? breathing = null,
+    Object? circulation = null,
+    Object? disability = null,
+    Object? exposure = null,
+    Object? airway = null,
+    Object? exsang_hemorrhage = null,
+    Object? psyche = null,
   }) {
-    return _then(_PatientStandardDiagnosticData(
-      breathing: breathing == freezed
+    return _then(_$_PatientStandardDiagnosticData(
+      breathing: null == breathing
           ? _value.breathing
           : breathing // ignore: cast_nullable_to_non_nullable
               as PatientBreathing,
-      circulation: circulation == freezed
+      circulation: null == circulation
           ? _value.circulation
           : circulation // ignore: cast_nullable_to_non_nullable
               as PatientCirculation,
-      disability: disability == freezed
+      disability: null == disability
           ? _value.disability
           : disability // ignore: cast_nullable_to_non_nullable
               as PatientDisability,
-      exposure: exposure == freezed
+      exposure: null == exposure
           ? _value.exposure
           : exposure // ignore: cast_nullable_to_non_nullable
               as PatientExposure,
-      airway: airway == freezed
+      airway: null == airway
           ? _value.airway
           : airway // ignore: cast_nullable_to_non_nullable
               as String,
-      exsang_hemorrhage: exsang_hemorrhage == freezed
+      exsang_hemorrhage: null == exsang_hemorrhage
           ? _value.exsang_hemorrhage
           : exsang_hemorrhage // ignore: cast_nullable_to_non_nullable
               as String,
-      psyche: psyche == freezed
+      psyche: null == psyche
           ? _value.psyche
           : psyche // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1080,6 +989,7 @@ class __$PatientStandardDiagnosticDataCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_PatientStandardDiagnosticData extends _PatientStandardDiagnosticData
     with DiagnosticableTreeMixin {
   const _$_PatientStandardDiagnosticData(
@@ -1129,104 +1039,69 @@ class _$_PatientStandardDiagnosticData extends _PatientStandardDiagnosticData
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PatientStandardDiagnosticData &&
+        (other.runtimeType == runtimeType &&
+            other is _$_PatientStandardDiagnosticData &&
             (identical(other.breathing, breathing) ||
-                const DeepCollectionEquality()
-                    .equals(other.breathing, breathing)) &&
+                other.breathing == breathing) &&
             (identical(other.circulation, circulation) ||
-                const DeepCollectionEquality()
-                    .equals(other.circulation, circulation)) &&
+                other.circulation == circulation) &&
             (identical(other.disability, disability) ||
-                const DeepCollectionEquality()
-                    .equals(other.disability, disability)) &&
+                other.disability == disability) &&
             (identical(other.exposure, exposure) ||
-                const DeepCollectionEquality()
-                    .equals(other.exposure, exposure)) &&
-            (identical(other.airway, airway) ||
-                const DeepCollectionEquality().equals(other.airway, airway)) &&
+                other.exposure == exposure) &&
+            (identical(other.airway, airway) || other.airway == airway) &&
             (identical(other.exsang_hemorrhage, exsang_hemorrhage) ||
-                const DeepCollectionEquality()
-                    .equals(other.exsang_hemorrhage, exsang_hemorrhage)) &&
-            (identical(other.psyche, psyche) ||
-                const DeepCollectionEquality().equals(other.psyche, psyche)));
+                other.exsang_hemorrhage == exsang_hemorrhage) &&
+            (identical(other.psyche, psyche) || other.psyche == psyche));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(breathing) ^
-      const DeepCollectionEquality().hash(circulation) ^
-      const DeepCollectionEquality().hash(disability) ^
-      const DeepCollectionEquality().hash(exposure) ^
-      const DeepCollectionEquality().hash(airway) ^
-      const DeepCollectionEquality().hash(exsang_hemorrhage) ^
-      const DeepCollectionEquality().hash(psyche);
+  int get hashCode => Object.hash(runtimeType, breathing, circulation,
+      disability, exposure, airway, exsang_hemorrhage, psyche);
 
   @JsonKey(ignore: true)
   @override
-  _$PatientStandardDiagnosticDataCopyWith<_PatientStandardDiagnosticData>
-      get copyWith => __$PatientStandardDiagnosticDataCopyWithImpl<
-          _PatientStandardDiagnosticData>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_PatientStandardDiagnosticDataCopyWith<_$_PatientStandardDiagnosticData>
+      get copyWith => __$$_PatientStandardDiagnosticDataCopyWithImpl<
+          _$_PatientStandardDiagnosticData>(this, _$identity);
 }
 
 abstract class _PatientStandardDiagnosticData
     extends PatientStandardDiagnosticData {
   const factory _PatientStandardDiagnosticData(
-      {required PatientBreathing breathing,
-      required PatientCirculation circulation,
-      required PatientDisability disability,
-      required PatientExposure exposure,
-      required String airway,
-      required String exsang_hemorrhage,
-      required String psyche}) = _$_PatientStandardDiagnosticData;
+      {required final PatientBreathing breathing,
+      required final PatientCirculation circulation,
+      required final PatientDisability disability,
+      required final PatientExposure exposure,
+      required final String airway,
+      required final String exsang_hemorrhage,
+      required final String psyche}) = _$_PatientStandardDiagnosticData;
   const _PatientStandardDiagnosticData._() : super._();
 
   @override
-  PatientBreathing get breathing => throw _privateConstructorUsedError;
+  PatientBreathing get breathing;
   @override
-  PatientCirculation get circulation => throw _privateConstructorUsedError;
+  PatientCirculation get circulation;
   @override
-  PatientDisability get disability => throw _privateConstructorUsedError;
+  PatientDisability get disability;
   @override
-  PatientExposure get exposure => throw _privateConstructorUsedError;
+  PatientExposure get exposure;
   @override
-  String get airway => throw _privateConstructorUsedError;
+  String get airway;
   @override
-  String get exsang_hemorrhage => throw _privateConstructorUsedError;
+  String get exsang_hemorrhage;
   @override
-  String get psyche => throw _privateConstructorUsedError;
+  String get psyche;
   @override
   @JsonKey(ignore: true)
-  _$PatientStandardDiagnosticDataCopyWith<_PatientStandardDiagnosticData>
+  _$$_PatientStandardDiagnosticDataCopyWith<_$_PatientStandardDiagnosticData>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 PatientBreathing _$PatientBreathingFromJson(Map<String, dynamic> json) {
   return _PatientBreathing.fromJson(json);
 }
-
-/// @nodoc
-class _$PatientBreathingTearOff {
-  const _$PatientBreathingTearOff();
-
-  _PatientBreathing call(
-      {required String pattern,
-      required String frequency,
-      required bool has_cyanosis}) {
-    return _PatientBreathing(
-      pattern: pattern,
-      frequency: frequency,
-      has_cyanosis: has_cyanosis,
-    );
-  }
-
-  PatientBreathing fromJson(Map<String, Object> json) {
-    return PatientBreathing.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PatientBreathing = _$PatientBreathingTearOff();
 
 /// @nodoc
 mixin _$PatientBreathing {
@@ -1244,79 +1119,81 @@ mixin _$PatientBreathing {
 abstract class $PatientBreathingCopyWith<$Res> {
   factory $PatientBreathingCopyWith(
           PatientBreathing value, $Res Function(PatientBreathing) then) =
-      _$PatientBreathingCopyWithImpl<$Res>;
+      _$PatientBreathingCopyWithImpl<$Res, PatientBreathing>;
+  @useResult
   $Res call({String pattern, String frequency, bool has_cyanosis});
 }
 
 /// @nodoc
-class _$PatientBreathingCopyWithImpl<$Res>
+class _$PatientBreathingCopyWithImpl<$Res, $Val extends PatientBreathing>
     implements $PatientBreathingCopyWith<$Res> {
   _$PatientBreathingCopyWithImpl(this._value, this._then);
 
-  final PatientBreathing _value;
   // ignore: unused_field
-  final $Res Function(PatientBreathing) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pattern = freezed,
-    Object? frequency = freezed,
-    Object? has_cyanosis = freezed,
+    Object? pattern = null,
+    Object? frequency = null,
+    Object? has_cyanosis = null,
   }) {
     return _then(_value.copyWith(
-      pattern: pattern == freezed
+      pattern: null == pattern
           ? _value.pattern
           : pattern // ignore: cast_nullable_to_non_nullable
               as String,
-      frequency: frequency == freezed
+      frequency: null == frequency
           ? _value.frequency
           : frequency // ignore: cast_nullable_to_non_nullable
               as String,
-      has_cyanosis: has_cyanosis == freezed
+      has_cyanosis: null == has_cyanosis
           ? _value.has_cyanosis
           : has_cyanosis // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$PatientBreathingCopyWith<$Res>
+abstract class _$$_PatientBreathingCopyWith<$Res>
     implements $PatientBreathingCopyWith<$Res> {
-  factory _$PatientBreathingCopyWith(
-          _PatientBreathing value, $Res Function(_PatientBreathing) then) =
-      __$PatientBreathingCopyWithImpl<$Res>;
+  factory _$$_PatientBreathingCopyWith(
+          _$_PatientBreathing value, $Res Function(_$_PatientBreathing) then) =
+      __$$_PatientBreathingCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String pattern, String frequency, bool has_cyanosis});
 }
 
 /// @nodoc
-class __$PatientBreathingCopyWithImpl<$Res>
-    extends _$PatientBreathingCopyWithImpl<$Res>
-    implements _$PatientBreathingCopyWith<$Res> {
-  __$PatientBreathingCopyWithImpl(
-      _PatientBreathing _value, $Res Function(_PatientBreathing) _then)
-      : super(_value, (v) => _then(v as _PatientBreathing));
+class __$$_PatientBreathingCopyWithImpl<$Res>
+    extends _$PatientBreathingCopyWithImpl<$Res, _$_PatientBreathing>
+    implements _$$_PatientBreathingCopyWith<$Res> {
+  __$$_PatientBreathingCopyWithImpl(
+      _$_PatientBreathing _value, $Res Function(_$_PatientBreathing) _then)
+      : super(_value, _then);
 
-  @override
-  _PatientBreathing get _value => super._value as _PatientBreathing;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pattern = freezed,
-    Object? frequency = freezed,
-    Object? has_cyanosis = freezed,
+    Object? pattern = null,
+    Object? frequency = null,
+    Object? has_cyanosis = null,
   }) {
-    return _then(_PatientBreathing(
-      pattern: pattern == freezed
+    return _then(_$_PatientBreathing(
+      pattern: null == pattern
           ? _value.pattern
           : pattern // ignore: cast_nullable_to_non_nullable
               as String,
-      frequency: frequency == freezed
+      frequency: null == frequency
           ? _value.frequency
           : frequency // ignore: cast_nullable_to_non_nullable
               as String,
-      has_cyanosis: has_cyanosis == freezed
+      has_cyanosis: null == has_cyanosis
           ? _value.has_cyanosis
           : has_cyanosis // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -1324,9 +1201,8 @@ class __$PatientBreathingCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PatientBreathing
     with DiagnosticableTreeMixin
     implements _PatientBreathing {
@@ -1336,7 +1212,7 @@ class _$_PatientBreathing
       required this.has_cyanosis});
 
   factory _$_PatientBreathing.fromJson(Map<String, dynamic> json) =>
-      _$_$_PatientBreathingFromJson(json);
+      _$$_PatientBreathingFromJson(json);
 
   @override
   final String pattern;
@@ -1363,85 +1239,58 @@ class _$_PatientBreathing
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PatientBreathing &&
-            (identical(other.pattern, pattern) ||
-                const DeepCollectionEquality()
-                    .equals(other.pattern, pattern)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$_PatientBreathing &&
+            (identical(other.pattern, pattern) || other.pattern == pattern) &&
             (identical(other.frequency, frequency) ||
-                const DeepCollectionEquality()
-                    .equals(other.frequency, frequency)) &&
+                other.frequency == frequency) &&
             (identical(other.has_cyanosis, has_cyanosis) ||
-                const DeepCollectionEquality()
-                    .equals(other.has_cyanosis, has_cyanosis)));
+                other.has_cyanosis == has_cyanosis));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(pattern) ^
-      const DeepCollectionEquality().hash(frequency) ^
-      const DeepCollectionEquality().hash(has_cyanosis);
 
   @JsonKey(ignore: true)
   @override
-  _$PatientBreathingCopyWith<_PatientBreathing> get copyWith =>
-      __$PatientBreathingCopyWithImpl<_PatientBreathing>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, pattern, frequency, has_cyanosis);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PatientBreathingCopyWith<_$_PatientBreathing> get copyWith =>
+      __$$_PatientBreathingCopyWithImpl<_$_PatientBreathing>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PatientBreathingToJson(this);
+    return _$$_PatientBreathingToJson(
+      this,
+    );
   }
 }
 
 abstract class _PatientBreathing implements PatientBreathing {
   const factory _PatientBreathing(
-      {required String pattern,
-      required String frequency,
-      required bool has_cyanosis}) = _$_PatientBreathing;
+      {required final String pattern,
+      required final String frequency,
+      required final bool has_cyanosis}) = _$_PatientBreathing;
 
   factory _PatientBreathing.fromJson(Map<String, dynamic> json) =
       _$_PatientBreathing.fromJson;
 
   @override
-  String get pattern => throw _privateConstructorUsedError;
+  String get pattern;
   @override
-  String get frequency => throw _privateConstructorUsedError;
+  String get frequency;
   @override
-  bool get has_cyanosis => throw _privateConstructorUsedError;
+  bool get has_cyanosis;
   @override
   @JsonKey(ignore: true)
-  _$PatientBreathingCopyWith<_PatientBreathing> get copyWith =>
+  _$$_PatientBreathingCopyWith<_$_PatientBreathing> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 PatientCirculation _$PatientCirculationFromJson(Map<String, dynamic> json) {
   return _PatientCirculation.fromJson(json);
 }
-
-/// @nodoc
-class _$PatientCirculationTearOff {
-  const _$PatientCirculationTearOff();
-
-  _PatientCirculation call(
-      {required String rhythm,
-      required String pulse,
-      required String pulse_place,
-      required String recap}) {
-    return _PatientCirculation(
-      rhythm: rhythm,
-      pulse: pulse,
-      pulse_place: pulse_place,
-      recap: recap,
-    );
-  }
-
-  PatientCirculation fromJson(Map<String, Object> json) {
-    return PatientCirculation.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PatientCirculation = _$PatientCirculationTearOff();
 
 /// @nodoc
 mixin _$PatientCirculation {
@@ -1460,89 +1309,91 @@ mixin _$PatientCirculation {
 abstract class $PatientCirculationCopyWith<$Res> {
   factory $PatientCirculationCopyWith(
           PatientCirculation value, $Res Function(PatientCirculation) then) =
-      _$PatientCirculationCopyWithImpl<$Res>;
+      _$PatientCirculationCopyWithImpl<$Res, PatientCirculation>;
+  @useResult
   $Res call({String rhythm, String pulse, String pulse_place, String recap});
 }
 
 /// @nodoc
-class _$PatientCirculationCopyWithImpl<$Res>
+class _$PatientCirculationCopyWithImpl<$Res, $Val extends PatientCirculation>
     implements $PatientCirculationCopyWith<$Res> {
   _$PatientCirculationCopyWithImpl(this._value, this._then);
 
-  final PatientCirculation _value;
   // ignore: unused_field
-  final $Res Function(PatientCirculation) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? rhythm = freezed,
-    Object? pulse = freezed,
-    Object? pulse_place = freezed,
-    Object? recap = freezed,
+    Object? rhythm = null,
+    Object? pulse = null,
+    Object? pulse_place = null,
+    Object? recap = null,
   }) {
     return _then(_value.copyWith(
-      rhythm: rhythm == freezed
+      rhythm: null == rhythm
           ? _value.rhythm
           : rhythm // ignore: cast_nullable_to_non_nullable
               as String,
-      pulse: pulse == freezed
+      pulse: null == pulse
           ? _value.pulse
           : pulse // ignore: cast_nullable_to_non_nullable
               as String,
-      pulse_place: pulse_place == freezed
+      pulse_place: null == pulse_place
           ? _value.pulse_place
           : pulse_place // ignore: cast_nullable_to_non_nullable
               as String,
-      recap: recap == freezed
+      recap: null == recap
           ? _value.recap
           : recap // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$PatientCirculationCopyWith<$Res>
+abstract class _$$_PatientCirculationCopyWith<$Res>
     implements $PatientCirculationCopyWith<$Res> {
-  factory _$PatientCirculationCopyWith(
-          _PatientCirculation value, $Res Function(_PatientCirculation) then) =
-      __$PatientCirculationCopyWithImpl<$Res>;
+  factory _$$_PatientCirculationCopyWith(_$_PatientCirculation value,
+          $Res Function(_$_PatientCirculation) then) =
+      __$$_PatientCirculationCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String rhythm, String pulse, String pulse_place, String recap});
 }
 
 /// @nodoc
-class __$PatientCirculationCopyWithImpl<$Res>
-    extends _$PatientCirculationCopyWithImpl<$Res>
-    implements _$PatientCirculationCopyWith<$Res> {
-  __$PatientCirculationCopyWithImpl(
-      _PatientCirculation _value, $Res Function(_PatientCirculation) _then)
-      : super(_value, (v) => _then(v as _PatientCirculation));
+class __$$_PatientCirculationCopyWithImpl<$Res>
+    extends _$PatientCirculationCopyWithImpl<$Res, _$_PatientCirculation>
+    implements _$$_PatientCirculationCopyWith<$Res> {
+  __$$_PatientCirculationCopyWithImpl(
+      _$_PatientCirculation _value, $Res Function(_$_PatientCirculation) _then)
+      : super(_value, _then);
 
-  @override
-  _PatientCirculation get _value => super._value as _PatientCirculation;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? rhythm = freezed,
-    Object? pulse = freezed,
-    Object? pulse_place = freezed,
-    Object? recap = freezed,
+    Object? rhythm = null,
+    Object? pulse = null,
+    Object? pulse_place = null,
+    Object? recap = null,
   }) {
-    return _then(_PatientCirculation(
-      rhythm: rhythm == freezed
+    return _then(_$_PatientCirculation(
+      rhythm: null == rhythm
           ? _value.rhythm
           : rhythm // ignore: cast_nullable_to_non_nullable
               as String,
-      pulse: pulse == freezed
+      pulse: null == pulse
           ? _value.pulse
           : pulse // ignore: cast_nullable_to_non_nullable
               as String,
-      pulse_place: pulse_place == freezed
+      pulse_place: null == pulse_place
           ? _value.pulse_place
           : pulse_place // ignore: cast_nullable_to_non_nullable
               as String,
-      recap: recap == freezed
+      recap: null == recap
           ? _value.recap
           : recap // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1550,9 +1401,8 @@ class __$PatientCirculationCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PatientCirculation
     with DiagnosticableTreeMixin
     implements _PatientCirculation {
@@ -1563,7 +1413,7 @@ class _$_PatientCirculation
       required this.recap});
 
   factory _$_PatientCirculation.fromJson(Map<String, dynamic> json) =>
-      _$_$_PatientCirculationFromJson(json);
+      _$$_PatientCirculationFromJson(json);
 
   @override
   final String rhythm;
@@ -1593,89 +1443,62 @@ class _$_PatientCirculation
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PatientCirculation &&
-            (identical(other.rhythm, rhythm) ||
-                const DeepCollectionEquality().equals(other.rhythm, rhythm)) &&
-            (identical(other.pulse, pulse) ||
-                const DeepCollectionEquality().equals(other.pulse, pulse)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$_PatientCirculation &&
+            (identical(other.rhythm, rhythm) || other.rhythm == rhythm) &&
+            (identical(other.pulse, pulse) || other.pulse == pulse) &&
             (identical(other.pulse_place, pulse_place) ||
-                const DeepCollectionEquality()
-                    .equals(other.pulse_place, pulse_place)) &&
-            (identical(other.recap, recap) ||
-                const DeepCollectionEquality().equals(other.recap, recap)));
+                other.pulse_place == pulse_place) &&
+            (identical(other.recap, recap) || other.recap == recap));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(rhythm) ^
-      const DeepCollectionEquality().hash(pulse) ^
-      const DeepCollectionEquality().hash(pulse_place) ^
-      const DeepCollectionEquality().hash(recap);
 
   @JsonKey(ignore: true)
   @override
-  _$PatientCirculationCopyWith<_PatientCirculation> get copyWith =>
-      __$PatientCirculationCopyWithImpl<_PatientCirculation>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, rhythm, pulse, pulse_place, recap);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PatientCirculationCopyWith<_$_PatientCirculation> get copyWith =>
+      __$$_PatientCirculationCopyWithImpl<_$_PatientCirculation>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PatientCirculationToJson(this);
+    return _$$_PatientCirculationToJson(
+      this,
+    );
   }
 }
 
 abstract class _PatientCirculation implements PatientCirculation {
   const factory _PatientCirculation(
-      {required String rhythm,
-      required String pulse,
-      required String pulse_place,
-      required String recap}) = _$_PatientCirculation;
+      {required final String rhythm,
+      required final String pulse,
+      required final String pulse_place,
+      required final String recap}) = _$_PatientCirculation;
 
   factory _PatientCirculation.fromJson(Map<String, dynamic> json) =
       _$_PatientCirculation.fromJson;
 
   @override
-  String get rhythm => throw _privateConstructorUsedError;
+  String get rhythm;
   @override
-  String get pulse => throw _privateConstructorUsedError;
+  String get pulse;
   @override
-  String get pulse_place => throw _privateConstructorUsedError;
+  String get pulse_place;
   @override
-  String get recap => throw _privateConstructorUsedError;
+  String get recap;
   @override
   @JsonKey(ignore: true)
-  _$PatientCirculationCopyWith<_PatientCirculation> get copyWith =>
+  _$$_PatientCirculationCopyWith<_$_PatientCirculation> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 PatientDisability _$PatientDisabilityFromJson(Map<String, dynamic> json) {
   return _PatientDisability.fromJson(json);
 }
-
-/// @nodoc
-class _$PatientDisabilityTearOff {
-  const _$PatientDisabilityTearOff();
-
-  _PatientDisability call(
-      {required String pupils,
-      required int gcs_eyes,
-      required int gcs_language,
-      required int gcs_motoric_behaviour}) {
-    return _PatientDisability(
-      pupils: pupils,
-      gcs_eyes: gcs_eyes,
-      gcs_language: gcs_language,
-      gcs_motoric_behaviour: gcs_motoric_behaviour,
-    );
-  }
-
-  PatientDisability fromJson(Map<String, Object> json) {
-    return PatientDisability.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PatientDisability = _$PatientDisabilityTearOff();
 
 /// @nodoc
 mixin _$PatientDisability {
@@ -1694,7 +1517,8 @@ mixin _$PatientDisability {
 abstract class $PatientDisabilityCopyWith<$Res> {
   factory $PatientDisabilityCopyWith(
           PatientDisability value, $Res Function(PatientDisability) then) =
-      _$PatientDisabilityCopyWithImpl<$Res>;
+      _$PatientDisabilityCopyWithImpl<$Res, PatientDisability>;
+  @useResult
   $Res call(
       {String pupils,
       int gcs_eyes,
@@ -1703,49 +1527,52 @@ abstract class $PatientDisabilityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PatientDisabilityCopyWithImpl<$Res>
+class _$PatientDisabilityCopyWithImpl<$Res, $Val extends PatientDisability>
     implements $PatientDisabilityCopyWith<$Res> {
   _$PatientDisabilityCopyWithImpl(this._value, this._then);
 
-  final PatientDisability _value;
   // ignore: unused_field
-  final $Res Function(PatientDisability) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pupils = freezed,
-    Object? gcs_eyes = freezed,
-    Object? gcs_language = freezed,
-    Object? gcs_motoric_behaviour = freezed,
+    Object? pupils = null,
+    Object? gcs_eyes = null,
+    Object? gcs_language = null,
+    Object? gcs_motoric_behaviour = null,
   }) {
     return _then(_value.copyWith(
-      pupils: pupils == freezed
+      pupils: null == pupils
           ? _value.pupils
           : pupils // ignore: cast_nullable_to_non_nullable
               as String,
-      gcs_eyes: gcs_eyes == freezed
+      gcs_eyes: null == gcs_eyes
           ? _value.gcs_eyes
           : gcs_eyes // ignore: cast_nullable_to_non_nullable
               as int,
-      gcs_language: gcs_language == freezed
+      gcs_language: null == gcs_language
           ? _value.gcs_language
           : gcs_language // ignore: cast_nullable_to_non_nullable
               as int,
-      gcs_motoric_behaviour: gcs_motoric_behaviour == freezed
+      gcs_motoric_behaviour: null == gcs_motoric_behaviour
           ? _value.gcs_motoric_behaviour
           : gcs_motoric_behaviour // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$PatientDisabilityCopyWith<$Res>
+abstract class _$$_PatientDisabilityCopyWith<$Res>
     implements $PatientDisabilityCopyWith<$Res> {
-  factory _$PatientDisabilityCopyWith(
-          _PatientDisability value, $Res Function(_PatientDisability) then) =
-      __$PatientDisabilityCopyWithImpl<$Res>;
+  factory _$$_PatientDisabilityCopyWith(_$_PatientDisability value,
+          $Res Function(_$_PatientDisability) then) =
+      __$$_PatientDisabilityCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String pupils,
       int gcs_eyes,
@@ -1754,37 +1581,35 @@ abstract class _$PatientDisabilityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PatientDisabilityCopyWithImpl<$Res>
-    extends _$PatientDisabilityCopyWithImpl<$Res>
-    implements _$PatientDisabilityCopyWith<$Res> {
-  __$PatientDisabilityCopyWithImpl(
-      _PatientDisability _value, $Res Function(_PatientDisability) _then)
-      : super(_value, (v) => _then(v as _PatientDisability));
+class __$$_PatientDisabilityCopyWithImpl<$Res>
+    extends _$PatientDisabilityCopyWithImpl<$Res, _$_PatientDisability>
+    implements _$$_PatientDisabilityCopyWith<$Res> {
+  __$$_PatientDisabilityCopyWithImpl(
+      _$_PatientDisability _value, $Res Function(_$_PatientDisability) _then)
+      : super(_value, _then);
 
-  @override
-  _PatientDisability get _value => super._value as _PatientDisability;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pupils = freezed,
-    Object? gcs_eyes = freezed,
-    Object? gcs_language = freezed,
-    Object? gcs_motoric_behaviour = freezed,
+    Object? pupils = null,
+    Object? gcs_eyes = null,
+    Object? gcs_language = null,
+    Object? gcs_motoric_behaviour = null,
   }) {
-    return _then(_PatientDisability(
-      pupils: pupils == freezed
+    return _then(_$_PatientDisability(
+      pupils: null == pupils
           ? _value.pupils
           : pupils // ignore: cast_nullable_to_non_nullable
               as String,
-      gcs_eyes: gcs_eyes == freezed
+      gcs_eyes: null == gcs_eyes
           ? _value.gcs_eyes
           : gcs_eyes // ignore: cast_nullable_to_non_nullable
               as int,
-      gcs_language: gcs_language == freezed
+      gcs_language: null == gcs_language
           ? _value.gcs_language
           : gcs_language // ignore: cast_nullable_to_non_nullable
               as int,
-      gcs_motoric_behaviour: gcs_motoric_behaviour == freezed
+      gcs_motoric_behaviour: null == gcs_motoric_behaviour
           ? _value.gcs_motoric_behaviour
           : gcs_motoric_behaviour // ignore: cast_nullable_to_non_nullable
               as int,
@@ -1792,9 +1617,8 @@ class __$PatientDisabilityCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PatientDisability
     with DiagnosticableTreeMixin
     implements _PatientDisability {
@@ -1805,7 +1629,7 @@ class _$_PatientDisability
       required this.gcs_motoric_behaviour});
 
   factory _$_PatientDisability.fromJson(Map<String, dynamic> json) =>
-      _$_$_PatientDisabilityFromJson(json);
+      _$$_PatientDisabilityFromJson(json);
 
   @override
   final String pupils;
@@ -1836,85 +1660,64 @@ class _$_PatientDisability
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PatientDisability &&
-            (identical(other.pupils, pupils) ||
-                const DeepCollectionEquality().equals(other.pupils, pupils)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$_PatientDisability &&
+            (identical(other.pupils, pupils) || other.pupils == pupils) &&
             (identical(other.gcs_eyes, gcs_eyes) ||
-                const DeepCollectionEquality()
-                    .equals(other.gcs_eyes, gcs_eyes)) &&
+                other.gcs_eyes == gcs_eyes) &&
             (identical(other.gcs_language, gcs_language) ||
-                const DeepCollectionEquality()
-                    .equals(other.gcs_language, gcs_language)) &&
+                other.gcs_language == gcs_language) &&
             (identical(other.gcs_motoric_behaviour, gcs_motoric_behaviour) ||
-                const DeepCollectionEquality().equals(
-                    other.gcs_motoric_behaviour, gcs_motoric_behaviour)));
+                other.gcs_motoric_behaviour == gcs_motoric_behaviour));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(pupils) ^
-      const DeepCollectionEquality().hash(gcs_eyes) ^
-      const DeepCollectionEquality().hash(gcs_language) ^
-      const DeepCollectionEquality().hash(gcs_motoric_behaviour);
 
   @JsonKey(ignore: true)
   @override
-  _$PatientDisabilityCopyWith<_PatientDisability> get copyWith =>
-      __$PatientDisabilityCopyWithImpl<_PatientDisability>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType, pupils, gcs_eyes, gcs_language, gcs_motoric_behaviour);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PatientDisabilityCopyWith<_$_PatientDisability> get copyWith =>
+      __$$_PatientDisabilityCopyWithImpl<_$_PatientDisability>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PatientDisabilityToJson(this);
+    return _$$_PatientDisabilityToJson(
+      this,
+    );
   }
 }
 
 abstract class _PatientDisability implements PatientDisability {
   const factory _PatientDisability(
-      {required String pupils,
-      required int gcs_eyes,
-      required int gcs_language,
-      required int gcs_motoric_behaviour}) = _$_PatientDisability;
+      {required final String pupils,
+      required final int gcs_eyes,
+      required final int gcs_language,
+      required final int gcs_motoric_behaviour}) = _$_PatientDisability;
 
   factory _PatientDisability.fromJson(Map<String, dynamic> json) =
       _$_PatientDisability.fromJson;
 
   @override
-  String get pupils => throw _privateConstructorUsedError;
+  String get pupils;
   @override
-  int get gcs_eyes => throw _privateConstructorUsedError;
+  int get gcs_eyes;
   @override
-  int get gcs_language => throw _privateConstructorUsedError;
+  int get gcs_language;
   @override
-  int get gcs_motoric_behaviour => throw _privateConstructorUsedError;
+  int get gcs_motoric_behaviour;
   @override
   @JsonKey(ignore: true)
-  _$PatientDisabilityCopyWith<_PatientDisability> get copyWith =>
+  _$$_PatientDisabilityCopyWith<_$_PatientDisability> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 PatientExposure _$PatientExposureFromJson(Map<String, dynamic> json) {
   return _PatientExposure.fromJson(json);
 }
-
-/// @nodoc
-class _$PatientExposureTearOff {
-  const _$PatientExposureTearOff();
-
-  _PatientExposure call({required String pain, required String skin}) {
-    return _PatientExposure(
-      pain: pain,
-      skin: skin,
-    );
-  }
-
-  PatientExposure fromJson(Map<String, Object> json) {
-    return PatientExposure.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PatientExposure = _$PatientExposureTearOff();
 
 /// @nodoc
 mixin _$PatientExposure {
@@ -1931,69 +1734,71 @@ mixin _$PatientExposure {
 abstract class $PatientExposureCopyWith<$Res> {
   factory $PatientExposureCopyWith(
           PatientExposure value, $Res Function(PatientExposure) then) =
-      _$PatientExposureCopyWithImpl<$Res>;
+      _$PatientExposureCopyWithImpl<$Res, PatientExposure>;
+  @useResult
   $Res call({String pain, String skin});
 }
 
 /// @nodoc
-class _$PatientExposureCopyWithImpl<$Res>
+class _$PatientExposureCopyWithImpl<$Res, $Val extends PatientExposure>
     implements $PatientExposureCopyWith<$Res> {
   _$PatientExposureCopyWithImpl(this._value, this._then);
 
-  final PatientExposure _value;
   // ignore: unused_field
-  final $Res Function(PatientExposure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pain = freezed,
-    Object? skin = freezed,
+    Object? pain = null,
+    Object? skin = null,
   }) {
     return _then(_value.copyWith(
-      pain: pain == freezed
+      pain: null == pain
           ? _value.pain
           : pain // ignore: cast_nullable_to_non_nullable
               as String,
-      skin: skin == freezed
+      skin: null == skin
           ? _value.skin
           : skin // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$PatientExposureCopyWith<$Res>
+abstract class _$$_PatientExposureCopyWith<$Res>
     implements $PatientExposureCopyWith<$Res> {
-  factory _$PatientExposureCopyWith(
-          _PatientExposure value, $Res Function(_PatientExposure) then) =
-      __$PatientExposureCopyWithImpl<$Res>;
+  factory _$$_PatientExposureCopyWith(
+          _$_PatientExposure value, $Res Function(_$_PatientExposure) then) =
+      __$$_PatientExposureCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String pain, String skin});
 }
 
 /// @nodoc
-class __$PatientExposureCopyWithImpl<$Res>
-    extends _$PatientExposureCopyWithImpl<$Res>
-    implements _$PatientExposureCopyWith<$Res> {
-  __$PatientExposureCopyWithImpl(
-      _PatientExposure _value, $Res Function(_PatientExposure) _then)
-      : super(_value, (v) => _then(v as _PatientExposure));
+class __$$_PatientExposureCopyWithImpl<$Res>
+    extends _$PatientExposureCopyWithImpl<$Res, _$_PatientExposure>
+    implements _$$_PatientExposureCopyWith<$Res> {
+  __$$_PatientExposureCopyWithImpl(
+      _$_PatientExposure _value, $Res Function(_$_PatientExposure) _then)
+      : super(_value, _then);
 
-  @override
-  _PatientExposure get _value => super._value as _PatientExposure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pain = freezed,
-    Object? skin = freezed,
+    Object? pain = null,
+    Object? skin = null,
   }) {
-    return _then(_PatientExposure(
-      pain: pain == freezed
+    return _then(_$_PatientExposure(
+      pain: null == pain
           ? _value.pain
           : pain // ignore: cast_nullable_to_non_nullable
               as String,
-      skin: skin == freezed
+      skin: null == skin
           ? _value.skin
           : skin // ignore: cast_nullable_to_non_nullable
               as String,
@@ -2001,16 +1806,15 @@ class __$PatientExposureCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PatientExposure
     with DiagnosticableTreeMixin
     implements _PatientExposure {
   const _$_PatientExposure({required this.pain, required this.skin});
 
   factory _$_PatientExposure.fromJson(Map<String, dynamic> json) =>
-      _$_$_PatientExposureFromJson(json);
+      _$$_PatientExposureFromJson(json);
 
   @override
   final String pain;
@@ -2034,79 +1838,51 @@ class _$_PatientExposure
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PatientExposure &&
-            (identical(other.pain, pain) ||
-                const DeepCollectionEquality().equals(other.pain, pain)) &&
-            (identical(other.skin, skin) ||
-                const DeepCollectionEquality().equals(other.skin, skin)));
+        (other.runtimeType == runtimeType &&
+            other is _$_PatientExposure &&
+            (identical(other.pain, pain) || other.pain == pain) &&
+            (identical(other.skin, skin) || other.skin == skin));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(pain) ^
-      const DeepCollectionEquality().hash(skin);
 
   @JsonKey(ignore: true)
   @override
-  _$PatientExposureCopyWith<_PatientExposure> get copyWith =>
-      __$PatientExposureCopyWithImpl<_PatientExposure>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, pain, skin);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PatientExposureCopyWith<_$_PatientExposure> get copyWith =>
+      __$$_PatientExposureCopyWithImpl<_$_PatientExposure>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PatientExposureToJson(this);
+    return _$$_PatientExposureToJson(
+      this,
+    );
   }
 }
 
 abstract class _PatientExposure implements PatientExposure {
-  const factory _PatientExposure({required String pain, required String skin}) =
-      _$_PatientExposure;
+  const factory _PatientExposure(
+      {required final String pain,
+      required final String skin}) = _$_PatientExposure;
 
   factory _PatientExposure.fromJson(Map<String, dynamic> json) =
       _$_PatientExposure.fromJson;
 
   @override
-  String get pain => throw _privateConstructorUsedError;
+  String get pain;
   @override
-  String get skin => throw _privateConstructorUsedError;
+  String get skin;
   @override
   @JsonKey(ignore: true)
-  _$PatientExposureCopyWith<_PatientExposure> get copyWith =>
+  _$$_PatientExposureCopyWith<_$_PatientExposure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 PatientPersonalData _$PatientPersonalDataFromJson(Map<String, dynamic> json) {
   return _PatientPersonalData.fromJson(json);
 }
-
-/// @nodoc
-class _$PatientPersonalDataTearOff {
-  const _$PatientPersonalDataTearOff();
-
-  _PatientPersonalData call(
-      {required String name,
-      required String address,
-      required String birth_date,
-      required int age,
-      required String gender,
-      required String biometrics}) {
-    return _PatientPersonalData(
-      name: name,
-      address: address,
-      birth_date: birth_date,
-      age: age,
-      gender: gender,
-      biometrics: biometrics,
-    );
-  }
-
-  PatientPersonalData fromJson(Map<String, Object> json) {
-    return PatientPersonalData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PatientPersonalData = _$PatientPersonalDataTearOff();
 
 /// @nodoc
 mixin _$PatientPersonalData {
@@ -2127,7 +1903,8 @@ mixin _$PatientPersonalData {
 abstract class $PatientPersonalDataCopyWith<$Res> {
   factory $PatientPersonalDataCopyWith(
           PatientPersonalData value, $Res Function(PatientPersonalData) then) =
-      _$PatientPersonalDataCopyWithImpl<$Res>;
+      _$PatientPersonalDataCopyWithImpl<$Res, PatientPersonalData>;
+  @useResult
   $Res call(
       {String name,
       String address,
@@ -2138,59 +1915,62 @@ abstract class $PatientPersonalDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PatientPersonalDataCopyWithImpl<$Res>
+class _$PatientPersonalDataCopyWithImpl<$Res, $Val extends PatientPersonalData>
     implements $PatientPersonalDataCopyWith<$Res> {
   _$PatientPersonalDataCopyWithImpl(this._value, this._then);
 
-  final PatientPersonalData _value;
   // ignore: unused_field
-  final $Res Function(PatientPersonalData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? address = freezed,
-    Object? birth_date = freezed,
-    Object? age = freezed,
-    Object? gender = freezed,
-    Object? biometrics = freezed,
+    Object? name = null,
+    Object? address = null,
+    Object? birth_date = null,
+    Object? age = null,
+    Object? gender = null,
+    Object? biometrics = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      birth_date: birth_date == freezed
+      birth_date: null == birth_date
           ? _value.birth_date
           : birth_date // ignore: cast_nullable_to_non_nullable
               as String,
-      age: age == freezed
+      age: null == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as int,
-      gender: gender == freezed
+      gender: null == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String,
-      biometrics: biometrics == freezed
+      biometrics: null == biometrics
           ? _value.biometrics
           : biometrics // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$PatientPersonalDataCopyWith<$Res>
+abstract class _$$_PatientPersonalDataCopyWith<$Res>
     implements $PatientPersonalDataCopyWith<$Res> {
-  factory _$PatientPersonalDataCopyWith(_PatientPersonalData value,
-          $Res Function(_PatientPersonalData) then) =
-      __$PatientPersonalDataCopyWithImpl<$Res>;
+  factory _$$_PatientPersonalDataCopyWith(_$_PatientPersonalData value,
+          $Res Function(_$_PatientPersonalData) then) =
+      __$$_PatientPersonalDataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String name,
       String address,
@@ -2201,47 +1981,45 @@ abstract class _$PatientPersonalDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PatientPersonalDataCopyWithImpl<$Res>
-    extends _$PatientPersonalDataCopyWithImpl<$Res>
-    implements _$PatientPersonalDataCopyWith<$Res> {
-  __$PatientPersonalDataCopyWithImpl(
-      _PatientPersonalData _value, $Res Function(_PatientPersonalData) _then)
-      : super(_value, (v) => _then(v as _PatientPersonalData));
+class __$$_PatientPersonalDataCopyWithImpl<$Res>
+    extends _$PatientPersonalDataCopyWithImpl<$Res, _$_PatientPersonalData>
+    implements _$$_PatientPersonalDataCopyWith<$Res> {
+  __$$_PatientPersonalDataCopyWithImpl(_$_PatientPersonalData _value,
+      $Res Function(_$_PatientPersonalData) _then)
+      : super(_value, _then);
 
-  @override
-  _PatientPersonalData get _value => super._value as _PatientPersonalData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? address = freezed,
-    Object? birth_date = freezed,
-    Object? age = freezed,
-    Object? gender = freezed,
-    Object? biometrics = freezed,
+    Object? name = null,
+    Object? address = null,
+    Object? birth_date = null,
+    Object? age = null,
+    Object? gender = null,
+    Object? biometrics = null,
   }) {
-    return _then(_PatientPersonalData(
-      name: name == freezed
+    return _then(_$_PatientPersonalData(
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      birth_date: birth_date == freezed
+      birth_date: null == birth_date
           ? _value.birth_date
           : birth_date // ignore: cast_nullable_to_non_nullable
               as String,
-      age: age == freezed
+      age: null == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as int,
-      gender: gender == freezed
+      gender: null == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String,
-      biometrics: biometrics == freezed
+      biometrics: null == biometrics
           ? _value.biometrics
           : biometrics // ignore: cast_nullable_to_non_nullable
               as String,
@@ -2249,9 +2027,8 @@ class __$PatientPersonalDataCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PatientPersonalData
     with DiagnosticableTreeMixin
     implements _PatientPersonalData {
@@ -2264,7 +2041,7 @@ class _$_PatientPersonalData
       required this.biometrics});
 
   factory _$_PatientPersonalData.fromJson(Map<String, dynamic> json) =>
-      _$_$_PatientPersonalDataFromJson(json);
+      _$$_PatientPersonalDataFromJson(json);
 
   @override
   final String name;
@@ -2300,73 +2077,65 @@ class _$_PatientPersonalData
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PatientPersonalData &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.address, address) ||
-                const DeepCollectionEquality()
-                    .equals(other.address, address)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$_PatientPersonalData &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.address, address) || other.address == address) &&
             (identical(other.birth_date, birth_date) ||
-                const DeepCollectionEquality()
-                    .equals(other.birth_date, birth_date)) &&
-            (identical(other.age, age) ||
-                const DeepCollectionEquality().equals(other.age, age)) &&
-            (identical(other.gender, gender) ||
-                const DeepCollectionEquality().equals(other.gender, gender)) &&
+                other.birth_date == birth_date) &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.biometrics, biometrics) ||
-                const DeepCollectionEquality()
-                    .equals(other.biometrics, biometrics)));
+                other.biometrics == biometrics));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(address) ^
-      const DeepCollectionEquality().hash(birth_date) ^
-      const DeepCollectionEquality().hash(age) ^
-      const DeepCollectionEquality().hash(gender) ^
-      const DeepCollectionEquality().hash(biometrics);
 
   @JsonKey(ignore: true)
   @override
-  _$PatientPersonalDataCopyWith<_PatientPersonalData> get copyWith =>
-      __$PatientPersonalDataCopyWithImpl<_PatientPersonalData>(
+  int get hashCode => Object.hash(
+      runtimeType, name, address, birth_date, age, gender, biometrics);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PatientPersonalDataCopyWith<_$_PatientPersonalData> get copyWith =>
+      __$$_PatientPersonalDataCopyWithImpl<_$_PatientPersonalData>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PatientPersonalDataToJson(this);
+    return _$$_PatientPersonalDataToJson(
+      this,
+    );
   }
 }
 
 abstract class _PatientPersonalData implements PatientPersonalData {
   const factory _PatientPersonalData(
-      {required String name,
-      required String address,
-      required String birth_date,
-      required int age,
-      required String gender,
-      required String biometrics}) = _$_PatientPersonalData;
+      {required final String name,
+      required final String address,
+      required final String birth_date,
+      required final int age,
+      required final String gender,
+      required final String biometrics}) = _$_PatientPersonalData;
 
   factory _PatientPersonalData.fromJson(Map<String, dynamic> json) =
       _$_PatientPersonalData.fromJson;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get address => throw _privateConstructorUsedError;
+  String get address;
   @override
-  String get birth_date => throw _privateConstructorUsedError;
+  String get birth_date;
   @override
-  int get age => throw _privateConstructorUsedError;
+  int get age;
   @override
-  String get gender => throw _privateConstructorUsedError;
+  String get gender;
   @override
-  String get biometrics => throw _privateConstructorUsedError;
+  String get biometrics;
   @override
   @JsonKey(ignore: true)
-  _$PatientPersonalDataCopyWith<_PatientPersonalData> get copyWith =>
+  _$$_PatientPersonalDataCopyWith<_$_PatientPersonalData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2374,33 +2143,6 @@ PatientFirstImpression _$PatientFirstImpressionFromJson(
     Map<String, dynamic> json) {
   return _PatientFirstImpression.fromJson(json);
 }
-
-/// @nodoc
-class _$PatientFirstImpressionTearOff {
-  const _$PatientFirstImpressionTearOff();
-
-  _PatientFirstImpression call(
-      {required bool can_walk,
-      required bool is_bleeding,
-      required bool is_bleeding_critically,
-      required bool is_motionless,
-      required bool has_cyanosis}) {
-    return _PatientFirstImpression(
-      can_walk: can_walk,
-      is_bleeding: is_bleeding,
-      is_bleeding_critically: is_bleeding_critically,
-      is_motionless: is_motionless,
-      has_cyanosis: has_cyanosis,
-    );
-  }
-
-  PatientFirstImpression fromJson(Map<String, Object> json) {
-    return PatientFirstImpression.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PatientFirstImpression = _$PatientFirstImpressionTearOff();
 
 /// @nodoc
 mixin _$PatientFirstImpression {
@@ -2420,7 +2162,8 @@ mixin _$PatientFirstImpression {
 abstract class $PatientFirstImpressionCopyWith<$Res> {
   factory $PatientFirstImpressionCopyWith(PatientFirstImpression value,
           $Res Function(PatientFirstImpression) then) =
-      _$PatientFirstImpressionCopyWithImpl<$Res>;
+      _$PatientFirstImpressionCopyWithImpl<$Res, PatientFirstImpression>;
+  @useResult
   $Res call(
       {bool can_walk,
       bool is_bleeding,
@@ -2430,54 +2173,58 @@ abstract class $PatientFirstImpressionCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PatientFirstImpressionCopyWithImpl<$Res>
+class _$PatientFirstImpressionCopyWithImpl<$Res,
+        $Val extends PatientFirstImpression>
     implements $PatientFirstImpressionCopyWith<$Res> {
   _$PatientFirstImpressionCopyWithImpl(this._value, this._then);
 
-  final PatientFirstImpression _value;
   // ignore: unused_field
-  final $Res Function(PatientFirstImpression) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? can_walk = freezed,
-    Object? is_bleeding = freezed,
-    Object? is_bleeding_critically = freezed,
-    Object? is_motionless = freezed,
-    Object? has_cyanosis = freezed,
+    Object? can_walk = null,
+    Object? is_bleeding = null,
+    Object? is_bleeding_critically = null,
+    Object? is_motionless = null,
+    Object? has_cyanosis = null,
   }) {
     return _then(_value.copyWith(
-      can_walk: can_walk == freezed
+      can_walk: null == can_walk
           ? _value.can_walk
           : can_walk // ignore: cast_nullable_to_non_nullable
               as bool,
-      is_bleeding: is_bleeding == freezed
+      is_bleeding: null == is_bleeding
           ? _value.is_bleeding
           : is_bleeding // ignore: cast_nullable_to_non_nullable
               as bool,
-      is_bleeding_critically: is_bleeding_critically == freezed
+      is_bleeding_critically: null == is_bleeding_critically
           ? _value.is_bleeding_critically
           : is_bleeding_critically // ignore: cast_nullable_to_non_nullable
               as bool,
-      is_motionless: is_motionless == freezed
+      is_motionless: null == is_motionless
           ? _value.is_motionless
           : is_motionless // ignore: cast_nullable_to_non_nullable
               as bool,
-      has_cyanosis: has_cyanosis == freezed
+      has_cyanosis: null == has_cyanosis
           ? _value.has_cyanosis
           : has_cyanosis // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$PatientFirstImpressionCopyWith<$Res>
+abstract class _$$_PatientFirstImpressionCopyWith<$Res>
     implements $PatientFirstImpressionCopyWith<$Res> {
-  factory _$PatientFirstImpressionCopyWith(_PatientFirstImpression value,
-          $Res Function(_PatientFirstImpression) then) =
-      __$PatientFirstImpressionCopyWithImpl<$Res>;
+  factory _$$_PatientFirstImpressionCopyWith(_$_PatientFirstImpression value,
+          $Res Function(_$_PatientFirstImpression) then) =
+      __$$_PatientFirstImpressionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool can_walk,
       bool is_bleeding,
@@ -2487,42 +2234,41 @@ abstract class _$PatientFirstImpressionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PatientFirstImpressionCopyWithImpl<$Res>
-    extends _$PatientFirstImpressionCopyWithImpl<$Res>
-    implements _$PatientFirstImpressionCopyWith<$Res> {
-  __$PatientFirstImpressionCopyWithImpl(_PatientFirstImpression _value,
-      $Res Function(_PatientFirstImpression) _then)
-      : super(_value, (v) => _then(v as _PatientFirstImpression));
+class __$$_PatientFirstImpressionCopyWithImpl<$Res>
+    extends _$PatientFirstImpressionCopyWithImpl<$Res,
+        _$_PatientFirstImpression>
+    implements _$$_PatientFirstImpressionCopyWith<$Res> {
+  __$$_PatientFirstImpressionCopyWithImpl(_$_PatientFirstImpression _value,
+      $Res Function(_$_PatientFirstImpression) _then)
+      : super(_value, _then);
 
-  @override
-  _PatientFirstImpression get _value => super._value as _PatientFirstImpression;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? can_walk = freezed,
-    Object? is_bleeding = freezed,
-    Object? is_bleeding_critically = freezed,
-    Object? is_motionless = freezed,
-    Object? has_cyanosis = freezed,
+    Object? can_walk = null,
+    Object? is_bleeding = null,
+    Object? is_bleeding_critically = null,
+    Object? is_motionless = null,
+    Object? has_cyanosis = null,
   }) {
-    return _then(_PatientFirstImpression(
-      can_walk: can_walk == freezed
+    return _then(_$_PatientFirstImpression(
+      can_walk: null == can_walk
           ? _value.can_walk
           : can_walk // ignore: cast_nullable_to_non_nullable
               as bool,
-      is_bleeding: is_bleeding == freezed
+      is_bleeding: null == is_bleeding
           ? _value.is_bleeding
           : is_bleeding // ignore: cast_nullable_to_non_nullable
               as bool,
-      is_bleeding_critically: is_bleeding_critically == freezed
+      is_bleeding_critically: null == is_bleeding_critically
           ? _value.is_bleeding_critically
           : is_bleeding_critically // ignore: cast_nullable_to_non_nullable
               as bool,
-      is_motionless: is_motionless == freezed
+      is_motionless: null == is_motionless
           ? _value.is_motionless
           : is_motionless // ignore: cast_nullable_to_non_nullable
               as bool,
-      has_cyanosis: has_cyanosis == freezed
+      has_cyanosis: null == has_cyanosis
           ? _value.has_cyanosis
           : has_cyanosis // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -2530,9 +2276,8 @@ class __$PatientFirstImpressionCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PatientFirstImpression
     with DiagnosticableTreeMixin
     implements _PatientFirstImpression {
@@ -2544,7 +2289,7 @@ class _$_PatientFirstImpression
       required this.has_cyanosis});
 
   factory _$_PatientFirstImpression.fromJson(Map<String, dynamic> json) =>
-      _$_$_PatientFirstImpressionFromJson(json);
+      _$$_PatientFirstImpressionFromJson(json);
 
   @override
   final bool can_walk;
@@ -2578,93 +2323,70 @@ class _$_PatientFirstImpression
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PatientFirstImpression &&
+        (other.runtimeType == runtimeType &&
+            other is _$_PatientFirstImpression &&
             (identical(other.can_walk, can_walk) ||
-                const DeepCollectionEquality()
-                    .equals(other.can_walk, can_walk)) &&
+                other.can_walk == can_walk) &&
             (identical(other.is_bleeding, is_bleeding) ||
-                const DeepCollectionEquality()
-                    .equals(other.is_bleeding, is_bleeding)) &&
+                other.is_bleeding == is_bleeding) &&
             (identical(other.is_bleeding_critically, is_bleeding_critically) ||
-                const DeepCollectionEquality().equals(
-                    other.is_bleeding_critically, is_bleeding_critically)) &&
+                other.is_bleeding_critically == is_bleeding_critically) &&
             (identical(other.is_motionless, is_motionless) ||
-                const DeepCollectionEquality()
-                    .equals(other.is_motionless, is_motionless)) &&
+                other.is_motionless == is_motionless) &&
             (identical(other.has_cyanosis, has_cyanosis) ||
-                const DeepCollectionEquality()
-                    .equals(other.has_cyanosis, has_cyanosis)));
+                other.has_cyanosis == has_cyanosis));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(can_walk) ^
-      const DeepCollectionEquality().hash(is_bleeding) ^
-      const DeepCollectionEquality().hash(is_bleeding_critically) ^
-      const DeepCollectionEquality().hash(is_motionless) ^
-      const DeepCollectionEquality().hash(has_cyanosis);
 
   @JsonKey(ignore: true)
   @override
-  _$PatientFirstImpressionCopyWith<_PatientFirstImpression> get copyWith =>
-      __$PatientFirstImpressionCopyWithImpl<_PatientFirstImpression>(
+  int get hashCode => Object.hash(runtimeType, can_walk, is_bleeding,
+      is_bleeding_critically, is_motionless, has_cyanosis);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PatientFirstImpressionCopyWith<_$_PatientFirstImpression> get copyWith =>
+      __$$_PatientFirstImpressionCopyWithImpl<_$_PatientFirstImpression>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PatientFirstImpressionToJson(this);
+    return _$$_PatientFirstImpressionToJson(
+      this,
+    );
   }
 }
 
 abstract class _PatientFirstImpression implements PatientFirstImpression {
   const factory _PatientFirstImpression(
-      {required bool can_walk,
-      required bool is_bleeding,
-      required bool is_bleeding_critically,
-      required bool is_motionless,
-      required bool has_cyanosis}) = _$_PatientFirstImpression;
+      {required final bool can_walk,
+      required final bool is_bleeding,
+      required final bool is_bleeding_critically,
+      required final bool is_motionless,
+      required final bool has_cyanosis}) = _$_PatientFirstImpression;
 
   factory _PatientFirstImpression.fromJson(Map<String, dynamic> json) =
       _$_PatientFirstImpression.fromJson;
 
   @override
-  bool get can_walk => throw _privateConstructorUsedError;
+  bool get can_walk;
   @override
-  bool get is_bleeding => throw _privateConstructorUsedError;
+  bool get is_bleeding;
   @override
-  bool get is_bleeding_critically => throw _privateConstructorUsedError;
+  bool get is_bleeding_critically;
   @override
-  bool get is_motionless => throw _privateConstructorUsedError;
+  bool get is_motionless;
   @override
-  bool get has_cyanosis => throw _privateConstructorUsedError;
+  bool get has_cyanosis;
   @override
   @JsonKey(ignore: true)
-  _$PatientFirstImpressionCopyWith<_PatientFirstImpression> get copyWith =>
+  _$$_PatientFirstImpressionCopyWith<_$_PatientFirstImpression> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 PatientInjuries _$PatientInjuriesFromJson(Map<String, dynamic> json) {
   return _PatientInjuries.fromJson(json);
 }
-
-/// @nodoc
-class _$PatientInjuriesTearOff {
-  const _$PatientInjuriesTearOff();
-
-  _PatientInjuries call({required List<dynamic> injuries}) {
-    return _PatientInjuries(
-      injuries: injuries,
-    );
-  }
-
-  PatientInjuries fromJson(Map<String, Object> json) {
-    return PatientInjuries.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PatientInjuries = _$PatientInjuriesTearOff();
 
 /// @nodoc
 mixin _$PatientInjuries {
@@ -2680,77 +2402,85 @@ mixin _$PatientInjuries {
 abstract class $PatientInjuriesCopyWith<$Res> {
   factory $PatientInjuriesCopyWith(
           PatientInjuries value, $Res Function(PatientInjuries) then) =
-      _$PatientInjuriesCopyWithImpl<$Res>;
+      _$PatientInjuriesCopyWithImpl<$Res, PatientInjuries>;
+  @useResult
   $Res call({List<dynamic> injuries});
 }
 
 /// @nodoc
-class _$PatientInjuriesCopyWithImpl<$Res>
+class _$PatientInjuriesCopyWithImpl<$Res, $Val extends PatientInjuries>
     implements $PatientInjuriesCopyWith<$Res> {
   _$PatientInjuriesCopyWithImpl(this._value, this._then);
 
-  final PatientInjuries _value;
   // ignore: unused_field
-  final $Res Function(PatientInjuries) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? injuries = freezed,
+    Object? injuries = null,
   }) {
     return _then(_value.copyWith(
-      injuries: injuries == freezed
+      injuries: null == injuries
           ? _value.injuries
           : injuries // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$PatientInjuriesCopyWith<$Res>
+abstract class _$$_PatientInjuriesCopyWith<$Res>
     implements $PatientInjuriesCopyWith<$Res> {
-  factory _$PatientInjuriesCopyWith(
-          _PatientInjuries value, $Res Function(_PatientInjuries) then) =
-      __$PatientInjuriesCopyWithImpl<$Res>;
+  factory _$$_PatientInjuriesCopyWith(
+          _$_PatientInjuries value, $Res Function(_$_PatientInjuries) then) =
+      __$$_PatientInjuriesCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<dynamic> injuries});
 }
 
 /// @nodoc
-class __$PatientInjuriesCopyWithImpl<$Res>
-    extends _$PatientInjuriesCopyWithImpl<$Res>
-    implements _$PatientInjuriesCopyWith<$Res> {
-  __$PatientInjuriesCopyWithImpl(
-      _PatientInjuries _value, $Res Function(_PatientInjuries) _then)
-      : super(_value, (v) => _then(v as _PatientInjuries));
+class __$$_PatientInjuriesCopyWithImpl<$Res>
+    extends _$PatientInjuriesCopyWithImpl<$Res, _$_PatientInjuries>
+    implements _$$_PatientInjuriesCopyWith<$Res> {
+  __$$_PatientInjuriesCopyWithImpl(
+      _$_PatientInjuries _value, $Res Function(_$_PatientInjuries) _then)
+      : super(_value, _then);
 
-  @override
-  _PatientInjuries get _value => super._value as _PatientInjuries;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? injuries = freezed,
+    Object? injuries = null,
   }) {
-    return _then(_PatientInjuries(
-      injuries: injuries == freezed
-          ? _value.injuries
+    return _then(_$_PatientInjuries(
+      injuries: null == injuries
+          ? _value._injuries
           : injuries // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PatientInjuries extends _PatientInjuries with DiagnosticableTreeMixin {
-  const _$_PatientInjuries({required this.injuries}) : super._();
+  const _$_PatientInjuries({required final List<dynamic> injuries})
+      : _injuries = injuries,
+        super._();
 
   factory _$_PatientInjuries.fromJson(Map<String, dynamic> json) =>
-      _$_$_PatientInjuriesFromJson(json);
+      _$$_PatientInjuriesFromJson(json);
 
+  final List<dynamic> _injuries;
   @override
-  final List<dynamic> injuries;
+  List<dynamic> get injuries {
+    if (_injuries is EqualUnmodifiableListView) return _injuries;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_injuries);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -2768,29 +2498,32 @@ class _$_PatientInjuries extends _PatientInjuries with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PatientInjuries &&
-            (identical(other.injuries, injuries) ||
-                const DeepCollectionEquality()
-                    .equals(other.injuries, injuries)));
+        (other.runtimeType == runtimeType &&
+            other is _$_PatientInjuries &&
+            const DeepCollectionEquality().equals(other._injuries, _injuries));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(injuries);
 
   @JsonKey(ignore: true)
   @override
-  _$PatientInjuriesCopyWith<_PatientInjuries> get copyWith =>
-      __$PatientInjuriesCopyWithImpl<_PatientInjuries>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_injuries));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PatientInjuriesCopyWith<_$_PatientInjuries> get copyWith =>
+      __$$_PatientInjuriesCopyWithImpl<_$_PatientInjuries>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PatientInjuriesToJson(this);
+    return _$$_PatientInjuriesToJson(
+      this,
+    );
   }
 }
 
 abstract class _PatientInjuries extends PatientInjuries {
-  const factory _PatientInjuries({required List<dynamic> injuries}) =
+  const factory _PatientInjuries({required final List<dynamic> injuries}) =
       _$_PatientInjuries;
   const _PatientInjuries._() : super._();
 
@@ -2798,9 +2531,9 @@ abstract class _PatientInjuries extends PatientInjuries {
       _$_PatientInjuries.fromJson;
 
   @override
-  List<dynamic> get injuries => throw _privateConstructorUsedError;
+  List<dynamic> get injuries;
   @override
   @JsonKey(ignore: true)
-  _$PatientInjuriesCopyWith<_PatientInjuries> get copyWith =>
+  _$$_PatientInjuriesCopyWith<_$_PatientInjuries> get copyWith =>
       throw _privateConstructorUsedError;
 }

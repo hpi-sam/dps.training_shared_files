@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'inventory.dart';
 
@@ -10,26 +12,7 @@ part of 'inventory.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$InventoryTearOff {
-  const _$InventoryTearOff();
-
-  _Inventory call(
-      {required String entityType,
-      required String entityName,
-      required List<DPSMaterialCategory> categories}) {
-    return _Inventory(
-      entityType: entityType,
-      entityName: entityName,
-      categories: categories,
-    );
-  }
-}
-
-/// @nodoc
-const $Inventory = _$InventoryTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Inventory {
@@ -46,7 +29,8 @@ mixin _$Inventory {
 /// @nodoc
 abstract class $InventoryCopyWith<$Res> {
   factory $InventoryCopyWith(Inventory value, $Res Function(Inventory) then) =
-      _$InventoryCopyWithImpl<$Res>;
+      _$InventoryCopyWithImpl<$Res, Inventory>;
+  @useResult
   $Res call(
       {String entityType,
       String entityName,
@@ -54,42 +38,46 @@ abstract class $InventoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InventoryCopyWithImpl<$Res> implements $InventoryCopyWith<$Res> {
+class _$InventoryCopyWithImpl<$Res, $Val extends Inventory>
+    implements $InventoryCopyWith<$Res> {
   _$InventoryCopyWithImpl(this._value, this._then);
 
-  final Inventory _value;
   // ignore: unused_field
-  final $Res Function(Inventory) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? entityType = freezed,
-    Object? entityName = freezed,
-    Object? categories = freezed,
+    Object? entityType = null,
+    Object? entityName = null,
+    Object? categories = null,
   }) {
     return _then(_value.copyWith(
-      entityType: entityType == freezed
+      entityType: null == entityType
           ? _value.entityType
           : entityType // ignore: cast_nullable_to_non_nullable
               as String,
-      entityName: entityName == freezed
+      entityName: null == entityName
           ? _value.entityName
           : entityName // ignore: cast_nullable_to_non_nullable
               as String,
-      categories: categories == freezed
+      categories: null == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<DPSMaterialCategory>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$InventoryCopyWith<$Res> implements $InventoryCopyWith<$Res> {
-  factory _$InventoryCopyWith(
-          _Inventory value, $Res Function(_Inventory) then) =
-      __$InventoryCopyWithImpl<$Res>;
+abstract class _$$_InventoryCopyWith<$Res> implements $InventoryCopyWith<$Res> {
+  factory _$$_InventoryCopyWith(
+          _$_Inventory value, $Res Function(_$_Inventory) then) =
+      __$$_InventoryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String entityType,
       String entityName,
@@ -97,31 +85,31 @@ abstract class _$InventoryCopyWith<$Res> implements $InventoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InventoryCopyWithImpl<$Res> extends _$InventoryCopyWithImpl<$Res>
-    implements _$InventoryCopyWith<$Res> {
-  __$InventoryCopyWithImpl(_Inventory _value, $Res Function(_Inventory) _then)
-      : super(_value, (v) => _then(v as _Inventory));
+class __$$_InventoryCopyWithImpl<$Res>
+    extends _$InventoryCopyWithImpl<$Res, _$_Inventory>
+    implements _$$_InventoryCopyWith<$Res> {
+  __$$_InventoryCopyWithImpl(
+      _$_Inventory _value, $Res Function(_$_Inventory) _then)
+      : super(_value, _then);
 
-  @override
-  _Inventory get _value => super._value as _Inventory;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? entityType = freezed,
-    Object? entityName = freezed,
-    Object? categories = freezed,
+    Object? entityType = null,
+    Object? entityName = null,
+    Object? categories = null,
   }) {
-    return _then(_Inventory(
-      entityType: entityType == freezed
+    return _then(_$_Inventory(
+      entityType: null == entityType
           ? _value.entityType
           : entityType // ignore: cast_nullable_to_non_nullable
               as String,
-      entityName: entityName == freezed
+      entityName: null == entityName
           ? _value.entityName
           : entityName // ignore: cast_nullable_to_non_nullable
               as String,
-      categories: categories == freezed
-          ? _value.categories
+      categories: null == categories
+          ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<DPSMaterialCategory>,
     ));
@@ -129,19 +117,26 @@ class __$InventoryCopyWithImpl<$Res> extends _$InventoryCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Inventory extends _Inventory {
   const _$_Inventory(
       {required this.entityType,
       required this.entityName,
-      required this.categories})
-      : super._();
+      required final List<DPSMaterialCategory> categories})
+      : _categories = categories,
+        super._();
 
   @override
   final String entityType;
   @override
   final String entityName;
+  final List<DPSMaterialCategory> _categories;
   @override
-  final List<DPSMaterialCategory> categories;
+  List<DPSMaterialCategory> get categories {
+    if (_categories is EqualUnmodifiableListView) return _categories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categories);
+  }
 
   @override
   String toString() {
@@ -151,66 +146,45 @@ class _$_Inventory extends _Inventory {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Inventory &&
+        (other.runtimeType == runtimeType &&
+            other is _$_Inventory &&
             (identical(other.entityType, entityType) ||
-                const DeepCollectionEquality()
-                    .equals(other.entityType, entityType)) &&
+                other.entityType == entityType) &&
             (identical(other.entityName, entityName) ||
-                const DeepCollectionEquality()
-                    .equals(other.entityName, entityName)) &&
-            (identical(other.categories, categories) ||
-                const DeepCollectionEquality()
-                    .equals(other.categories, categories)));
+                other.entityName == entityName) &&
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(entityType) ^
-      const DeepCollectionEquality().hash(entityName) ^
-      const DeepCollectionEquality().hash(categories);
+  int get hashCode => Object.hash(runtimeType, entityType, entityName,
+      const DeepCollectionEquality().hash(_categories));
 
   @JsonKey(ignore: true)
   @override
-  _$InventoryCopyWith<_Inventory> get copyWith =>
-      __$InventoryCopyWithImpl<_Inventory>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_InventoryCopyWith<_$_Inventory> get copyWith =>
+      __$$_InventoryCopyWithImpl<_$_Inventory>(this, _$identity);
 }
 
 abstract class _Inventory extends Inventory {
   const factory _Inventory(
-      {required String entityType,
-      required String entityName,
-      required List<DPSMaterialCategory> categories}) = _$_Inventory;
+      {required final String entityType,
+      required final String entityName,
+      required final List<DPSMaterialCategory> categories}) = _$_Inventory;
   const _Inventory._() : super._();
 
   @override
-  String get entityType => throw _privateConstructorUsedError;
+  String get entityType;
   @override
-  String get entityName => throw _privateConstructorUsedError;
+  String get entityName;
   @override
-  List<DPSMaterialCategory> get categories =>
-      throw _privateConstructorUsedError;
+  List<DPSMaterialCategory> get categories;
   @override
   @JsonKey(ignore: true)
-  _$InventoryCopyWith<_Inventory> get copyWith =>
+  _$$_InventoryCopyWith<_$_Inventory> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$DPSMaterialCategoryTearOff {
-  const _$DPSMaterialCategoryTearOff();
-
-  _DPSMaterialCategory call(
-      {required String name, required List<DPSMaterial> items}) {
-    return _DPSMaterialCategory(
-      name: name,
-      items: items,
-    );
-  }
-}
-
-/// @nodoc
-const $DPSMaterialCategory = _$DPSMaterialCategoryTearOff();
 
 /// @nodoc
 mixin _$DPSMaterialCategory {
@@ -226,70 +200,72 @@ mixin _$DPSMaterialCategory {
 abstract class $DPSMaterialCategoryCopyWith<$Res> {
   factory $DPSMaterialCategoryCopyWith(
           DPSMaterialCategory value, $Res Function(DPSMaterialCategory) then) =
-      _$DPSMaterialCategoryCopyWithImpl<$Res>;
+      _$DPSMaterialCategoryCopyWithImpl<$Res, DPSMaterialCategory>;
+  @useResult
   $Res call({String name, List<DPSMaterial> items});
 }
 
 /// @nodoc
-class _$DPSMaterialCategoryCopyWithImpl<$Res>
+class _$DPSMaterialCategoryCopyWithImpl<$Res, $Val extends DPSMaterialCategory>
     implements $DPSMaterialCategoryCopyWith<$Res> {
   _$DPSMaterialCategoryCopyWithImpl(this._value, this._then);
 
-  final DPSMaterialCategory _value;
   // ignore: unused_field
-  final $Res Function(DPSMaterialCategory) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? items = freezed,
+    Object? name = null,
+    Object? items = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      items: items == freezed
+      items: null == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<DPSMaterial>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$DPSMaterialCategoryCopyWith<$Res>
+abstract class _$$_DPSMaterialCategoryCopyWith<$Res>
     implements $DPSMaterialCategoryCopyWith<$Res> {
-  factory _$DPSMaterialCategoryCopyWith(_DPSMaterialCategory value,
-          $Res Function(_DPSMaterialCategory) then) =
-      __$DPSMaterialCategoryCopyWithImpl<$Res>;
+  factory _$$_DPSMaterialCategoryCopyWith(_$_DPSMaterialCategory value,
+          $Res Function(_$_DPSMaterialCategory) then) =
+      __$$_DPSMaterialCategoryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String name, List<DPSMaterial> items});
 }
 
 /// @nodoc
-class __$DPSMaterialCategoryCopyWithImpl<$Res>
-    extends _$DPSMaterialCategoryCopyWithImpl<$Res>
-    implements _$DPSMaterialCategoryCopyWith<$Res> {
-  __$DPSMaterialCategoryCopyWithImpl(
-      _DPSMaterialCategory _value, $Res Function(_DPSMaterialCategory) _then)
-      : super(_value, (v) => _then(v as _DPSMaterialCategory));
+class __$$_DPSMaterialCategoryCopyWithImpl<$Res>
+    extends _$DPSMaterialCategoryCopyWithImpl<$Res, _$_DPSMaterialCategory>
+    implements _$$_DPSMaterialCategoryCopyWith<$Res> {
+  __$$_DPSMaterialCategoryCopyWithImpl(_$_DPSMaterialCategory _value,
+      $Res Function(_$_DPSMaterialCategory) _then)
+      : super(_value, _then);
 
-  @override
-  _DPSMaterialCategory get _value => super._value as _DPSMaterialCategory;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? items = freezed,
+    Object? name = null,
+    Object? items = null,
   }) {
-    return _then(_DPSMaterialCategory(
-      name: name == freezed
+    return _then(_$_DPSMaterialCategory(
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      items: items == freezed
-          ? _value.items
+      items: null == items
+          ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<DPSMaterial>,
     ));
@@ -297,14 +273,22 @@ class __$DPSMaterialCategoryCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_DPSMaterialCategory extends _DPSMaterialCategory {
-  const _$_DPSMaterialCategory({required this.name, required this.items})
-      : super._();
+  const _$_DPSMaterialCategory(
+      {required this.name, required final List<DPSMaterial> items})
+      : _items = items,
+        super._();
 
   @override
   final String name;
+  final List<DPSMaterial> _items;
   @override
-  final List<DPSMaterial> items;
+  List<DPSMaterial> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
 
   @override
   String toString() {
@@ -314,66 +298,39 @@ class _$_DPSMaterialCategory extends _DPSMaterialCategory {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _DPSMaterialCategory &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.items, items) ||
-                const DeepCollectionEquality().equals(other.items, items)));
+        (other.runtimeType == runtimeType &&
+            other is _$_DPSMaterialCategory &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(items);
+  int get hashCode => Object.hash(
+      runtimeType, name, const DeepCollectionEquality().hash(_items));
 
   @JsonKey(ignore: true)
   @override
-  _$DPSMaterialCategoryCopyWith<_DPSMaterialCategory> get copyWith =>
-      __$DPSMaterialCategoryCopyWithImpl<_DPSMaterialCategory>(
+  @pragma('vm:prefer-inline')
+  _$$_DPSMaterialCategoryCopyWith<_$_DPSMaterialCategory> get copyWith =>
+      __$$_DPSMaterialCategoryCopyWithImpl<_$_DPSMaterialCategory>(
           this, _$identity);
 }
 
 abstract class _DPSMaterialCategory extends DPSMaterialCategory {
   const factory _DPSMaterialCategory(
-      {required String name,
-      required List<DPSMaterial> items}) = _$_DPSMaterialCategory;
+      {required final String name,
+      required final List<DPSMaterial> items}) = _$_DPSMaterialCategory;
   const _DPSMaterialCategory._() : super._();
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  List<DPSMaterial> get items => throw _privateConstructorUsedError;
+  List<DPSMaterial> get items;
   @override
   @JsonKey(ignore: true)
-  _$DPSMaterialCategoryCopyWith<_DPSMaterialCategory> get copyWith =>
+  _$$_DPSMaterialCategoryCopyWith<_$_DPSMaterialCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$DPSMaterialTearOff {
-  const _$DPSMaterialTearOff();
-
-  _DPSMaterial call(
-      {required String id,
-      required String name,
-      required String image_small,
-      required String image_original,
-      required int amount,
-      required int duration}) {
-    return _DPSMaterial(
-      id: id,
-      name: name,
-      image_small: image_small,
-      image_original: image_original,
-      amount: amount,
-      duration: duration,
-    );
-  }
-}
-
-/// @nodoc
-const $DPSMaterial = _$DPSMaterialTearOff();
 
 /// @nodoc
 mixin _$DPSMaterial {
@@ -393,7 +350,8 @@ mixin _$DPSMaterial {
 abstract class $DPSMaterialCopyWith<$Res> {
   factory $DPSMaterialCopyWith(
           DPSMaterial value, $Res Function(DPSMaterial) then) =
-      _$DPSMaterialCopyWithImpl<$Res>;
+      _$DPSMaterialCopyWithImpl<$Res, DPSMaterial>;
+  @useResult
   $Res call(
       {String id,
       String name,
@@ -404,58 +362,62 @@ abstract class $DPSMaterialCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DPSMaterialCopyWithImpl<$Res> implements $DPSMaterialCopyWith<$Res> {
+class _$DPSMaterialCopyWithImpl<$Res, $Val extends DPSMaterial>
+    implements $DPSMaterialCopyWith<$Res> {
   _$DPSMaterialCopyWithImpl(this._value, this._then);
 
-  final DPSMaterial _value;
   // ignore: unused_field
-  final $Res Function(DPSMaterial) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? image_small = freezed,
-    Object? image_original = freezed,
-    Object? amount = freezed,
-    Object? duration = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? image_small = null,
+    Object? image_original = null,
+    Object? amount = null,
+    Object? duration = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      image_small: image_small == freezed
+      image_small: null == image_small
           ? _value.image_small
           : image_small // ignore: cast_nullable_to_non_nullable
               as String,
-      image_original: image_original == freezed
+      image_original: null == image_original
           ? _value.image_original
           : image_original // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as int,
-      duration: duration == freezed
+      duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$DPSMaterialCopyWith<$Res>
+abstract class _$$_DPSMaterialCopyWith<$Res>
     implements $DPSMaterialCopyWith<$Res> {
-  factory _$DPSMaterialCopyWith(
-          _DPSMaterial value, $Res Function(_DPSMaterial) then) =
-      __$DPSMaterialCopyWithImpl<$Res>;
+  factory _$$_DPSMaterialCopyWith(
+          _$_DPSMaterial value, $Res Function(_$_DPSMaterial) then) =
+      __$$_DPSMaterialCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String name,
@@ -466,46 +428,45 @@ abstract class _$DPSMaterialCopyWith<$Res>
 }
 
 /// @nodoc
-class __$DPSMaterialCopyWithImpl<$Res> extends _$DPSMaterialCopyWithImpl<$Res>
-    implements _$DPSMaterialCopyWith<$Res> {
-  __$DPSMaterialCopyWithImpl(
-      _DPSMaterial _value, $Res Function(_DPSMaterial) _then)
-      : super(_value, (v) => _then(v as _DPSMaterial));
+class __$$_DPSMaterialCopyWithImpl<$Res>
+    extends _$DPSMaterialCopyWithImpl<$Res, _$_DPSMaterial>
+    implements _$$_DPSMaterialCopyWith<$Res> {
+  __$$_DPSMaterialCopyWithImpl(
+      _$_DPSMaterial _value, $Res Function(_$_DPSMaterial) _then)
+      : super(_value, _then);
 
-  @override
-  _DPSMaterial get _value => super._value as _DPSMaterial;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? image_small = freezed,
-    Object? image_original = freezed,
-    Object? amount = freezed,
-    Object? duration = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? image_small = null,
+    Object? image_original = null,
+    Object? amount = null,
+    Object? duration = null,
   }) {
-    return _then(_DPSMaterial(
-      id: id == freezed
+    return _then(_$_DPSMaterial(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      image_small: image_small == freezed
+      image_small: null == image_small
           ? _value.image_small
           : image_small // ignore: cast_nullable_to_non_nullable
               as String,
-      image_original: image_original == freezed
+      image_original: null == image_original
           ? _value.image_original
           : image_original // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as int,
-      duration: duration == freezed
+      duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int,
@@ -514,6 +475,7 @@ class __$DPSMaterialCopyWithImpl<$Res> extends _$DPSMaterialCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_DPSMaterial extends _DPSMaterial {
   const _$_DPSMaterial(
       {required this.id,
@@ -545,64 +507,54 @@ class _$_DPSMaterial extends _DPSMaterial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _DPSMaterial &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$_DPSMaterial &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.image_small, image_small) ||
-                const DeepCollectionEquality()
-                    .equals(other.image_small, image_small)) &&
+                other.image_small == image_small) &&
             (identical(other.image_original, image_original) ||
-                const DeepCollectionEquality()
-                    .equals(other.image_original, image_original)) &&
-            (identical(other.amount, amount) ||
-                const DeepCollectionEquality().equals(other.amount, amount)) &&
+                other.image_original == image_original) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.duration, duration) ||
-                const DeepCollectionEquality()
-                    .equals(other.duration, duration)));
+                other.duration == duration));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(image_small) ^
-      const DeepCollectionEquality().hash(image_original) ^
-      const DeepCollectionEquality().hash(amount) ^
-      const DeepCollectionEquality().hash(duration);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, image_small, image_original, amount, duration);
 
   @JsonKey(ignore: true)
   @override
-  _$DPSMaterialCopyWith<_DPSMaterial> get copyWith =>
-      __$DPSMaterialCopyWithImpl<_DPSMaterial>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_DPSMaterialCopyWith<_$_DPSMaterial> get copyWith =>
+      __$$_DPSMaterialCopyWithImpl<_$_DPSMaterial>(this, _$identity);
 }
 
 abstract class _DPSMaterial extends DPSMaterial {
   const factory _DPSMaterial(
-      {required String id,
-      required String name,
-      required String image_small,
-      required String image_original,
-      required int amount,
-      required int duration}) = _$_DPSMaterial;
+      {required final String id,
+      required final String name,
+      required final String image_small,
+      required final String image_original,
+      required final int amount,
+      required final int duration}) = _$_DPSMaterial;
   const _DPSMaterial._() : super._();
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get image_small => throw _privateConstructorUsedError;
+  String get image_small;
   @override
-  String get image_original => throw _privateConstructorUsedError;
+  String get image_original;
   @override
-  int get amount => throw _privateConstructorUsedError;
+  int get amount;
   @override
-  int get duration => throw _privateConstructorUsedError;
+  int get duration;
   @override
   @JsonKey(ignore: true)
-  _$DPSMaterialCopyWith<_DPSMaterial> get copyWith =>
+  _$$_DPSMaterialCopyWith<_$_DPSMaterial> get copyWith =>
       throw _privateConstructorUsedError;
 }
