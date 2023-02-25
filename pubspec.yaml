@@ -1,6 +1,6 @@
 name: dps.training_shared_files
 description: This package provides functionality shared across both the trainee and trainer App of the digital dPS.
-version: 0.0.8
+version: 0.0.9
 homepage:
 publish_to: none
 
