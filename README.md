@@ -4,6 +4,9 @@
 
 This repository contains Widgets, data models, API-Routes and utility functions for both the [trainer](https://github.com/hpi-sam/dps.training_trainer) and the [helper](https://github.com/hpi-sam/dps.training_player) app of our digital MCI simulation.
 
+## Important
+To make changes apply to other projects that import this package via a git reference (and probably via any other referencing technique) you have to increase the version number in the `pubspec.yaml` file!
+
 ## Project repositories
 This digital MCI simulation is distributed over several repositories. They are:
 - [dps.training_server](https://github.com/hpi-sam/dps.training-server): The backend of the MCI simulation, written in Python with the Django Framework.
