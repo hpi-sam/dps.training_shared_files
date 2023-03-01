@@ -1,37 +1,45 @@
 name: dps.training_shared_files
 description: This package provides functionality shared across both the trainee and trainer App of the digital dPS.
-version: 0.0.9
-homepage:
+version: 0.0.10
 publish_to: none
 
+
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=2.19.2 <3.0.0"
+  flutter: ">=3.7.5"
+
 
 dependencies:
+  # flutter specific dependencies
   flutter:
     sdk: flutter
-  font_awesome_flutter: ^9.0.0
-  intl:
-  http: ^0.13.1
-  shared_preferences: ^2.0.5
-  freezed_annotation: ^2.2.0
-  json_serializable: ^6.6.1
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
+  # general dependencies
+  http: ^0.13.5
+  shared_preferences: ^2.0.18
   json_annotation: ^4.8.0
+  freezed_annotation: ^2.2.0
+  font_awesome_flutter: ^10.4.0
+  
 
 dev_dependencies:
+  # flutter specific dependencies
   flutter_test:
     sdk: flutter
   build_runner: ^2.3.3
-  freezed: ^2.3.2
-  import_sorter: ^4.4.3
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+  # general dependencies
+  json_serializable: ^6.6.1
+  freezed: ^2.3.2
+  flutter_lints: ^2.0.1
+  import_sorter: ^4.6.0
+
 
 # The following section is specific to Flutter.
 flutter:
-
   assets:
     - assets/icons/bleeding_icon.png
     - assets/icons/critical_bleeding_icon.png
