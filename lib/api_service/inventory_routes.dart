@@ -284,11 +284,12 @@ Future<Inventory> fetchForeignInventoryRoute({required String entityID}) async {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
       if (responseJson != null)
         return Inventory.fromJson(responseJson);
-      else
+      else {
         throw Exception(
             "Error ${response.statusCode} - Das Inventar der Entität ${entityID} kann nicht geladen werden. "
             "Womöglich ist diese Entität nicht in der Datenbank vorhanden. Bitte"
             " stelle sicher, dass der gescannte QR-Code korrekt ist.");
+      }
     } else {
       if (response.statusCode == 404) {
         // error is in German because it might be relevant to the player.

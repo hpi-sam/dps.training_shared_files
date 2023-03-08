@@ -34,13 +34,11 @@ class BackendRoute {
   String name;
   Function? _function;
   Map<Symbol, dynamic> _params = {};
-  late final DateTime _dateTime;
-  late final String _formattedTime;
+  final DateTime _dateTime = DateTime.now();
+  
+  String get _formattedTime => DateFormat('hh:mm:ss').format(_dateTime);
 
-  BackendRoute(this.name, this._function, this._params) {
-    this._dateTime = DateTime.now();
-    this._formattedTime = DateFormat('hh:mm:ss').format(_dateTime);
-  }
+  BackendRoute(this.name, this._function, this._params);
 
   /// Calls the [_function] of this [BackendRoute] with the named parameters [_params].
   ///

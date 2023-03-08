@@ -2,8 +2,7 @@
 /// purposes.
 const Map<String, String> PREDEFINED_URLS = {
   "Deployment-Server": "http://www.dps.training/",
-  "Lehrstuhl-Server": "http://fb14srv8.hpi.uni-potsdam.de:8000",
-  "Localhost": "10.0.2.2:8000",
+  "Localhost": "localhost:8000",
 };
 
 String selectedServer = "Localhost";
@@ -98,7 +97,7 @@ String getTriageAccuracyUrl({required int roomID}) =>
 String getExerciseLogUrl({required int roomID}) =>
     getServerUrlHttp() + '/evaluation/rooms/$roomID/logs/';
 String getActiveRoomUrl() => getServerUrlHttp() + '/rooms/active/';
-String getQrCodeUrl() => getServerUrlHttp() + '/static_images/patients.pdf';
+String getQrCodeUrl() => getServerUrlHttp() + '/static/patients.pdf';
 
 String connectWebsocketUrl({required String invitationCode}) =>
     getServerUrlWebsocket() + '/rooms/$invitationCode/player/';
