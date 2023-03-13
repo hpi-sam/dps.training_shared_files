@@ -1,5 +1,8 @@
-import 'package:dps.training_shared_files/api/rest/urls.dart';
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
+import 'package:dps.training_shared_files/api/core/urls.dart';
 
 part 'running_measure.freezed.dart';
 

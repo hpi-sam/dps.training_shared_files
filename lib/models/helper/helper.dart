@@ -1,8 +1,10 @@
 // Package imports:
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
 import 'package:dps.training_shared_files/models/inventory/inventory.dart';
 import 'package:dps.training_shared_files/models/patient/patient.dart';
 import 'package:dps.training_shared_files/models/running_measure/running_measure.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'helper.freezed.dart';
 

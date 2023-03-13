@@ -1,9 +1,11 @@
 // Flutter imports:
-// Project imports:
-import 'package:dps.training_shared_files/models/patient/patient.dart';
+
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// Project imports:
+import 'package:dps.training_shared_files/models/patient/patient.dart';
 import 'body_part_widget.dart';
 
 /// Builds a visual representation of the patient.

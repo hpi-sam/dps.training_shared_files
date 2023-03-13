@@ -9,7 +9,7 @@ export 'api/rest/patient_routes.dart';
 export 'api/rest/dps_http_client.dart';
 export 'api/rest/session_routes.dart';
 export 'api/rest/trainer_routes.dart';
-export 'api/rest/urls.dart';
+export 'api/core/urls.dart';
 export 'api/websocket/player_web_socket.dart';
 export 'api/websocket/websocket_service.dart';
 export 'dps_shared_files.dart';

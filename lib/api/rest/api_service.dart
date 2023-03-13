@@ -1,14 +1,14 @@
 // Dart imports:
 import 'dart:collection';
 
-// Project imports:
-import 'package:dps.training_shared_files/api/rest/urls.dart';
-import 'package:dps.training_shared_files/api/rest/patient_routes.dart';
-import 'package:dps.training_shared_files/api/rest/session_routes.dart';
 // Package imports:
-import 'package:dps.training_shared_files/api/rest/trainer_routes.dart';
 import 'package:intl/intl.dart';
 
+// Project imports:
+import 'package:dps.training_shared_files/api/core/urls.dart';
+import 'package:dps.training_shared_files/api/rest/patient_routes.dart';
+import 'package:dps.training_shared_files/api/rest/session_routes.dart';
+import 'package:dps.training_shared_files/api/rest/trainer_routes.dart';
 import 'inventory_routes.dart';
 import 'measures_routes.dart';
 

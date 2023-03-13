@@ -1,8 +1,11 @@
 // Flutter imports:
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
 // Project imports:
 import 'package:dps.training_shared_files/l10n/localized_strings.dart';
 import 'package:dps.training_shared_files/models/patient/patient.dart';
-import 'package:flutter/material.dart';
 
 /// Displays a legend of the icons used for injuries in the patient visualization
 class PatientVisualizationLegend extends StatelessWidget {

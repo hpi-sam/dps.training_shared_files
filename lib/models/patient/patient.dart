@@ -1,9 +1,12 @@
 // Flutter imports:
-import 'package:dps.training_shared_files/models/applied_measures/applied_measures.dart';
-import 'package:dps.training_shared_files/models/available_measures/available_measures.dart';
 import 'package:flutter/foundation.dart';
+
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
+import 'package:dps.training_shared_files/models/applied_measures/applied_measures.dart';
+import 'package:dps.training_shared_files/models/available_measures/available_measures.dart';
 
 part 'patient.freezed.dart';
 part 'patient.g.dart';

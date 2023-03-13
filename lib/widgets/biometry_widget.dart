@@ -1,11 +1,11 @@
 // Flutter imports:
-import 'package:dps.training_shared_files/l10n/localized_strings.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:intl/intl.dart';
 
 // Project imports:
+import 'package:dps.training_shared_files/l10n/localized_strings.dart';
 import 'package:dps.training_shared_files/models/patient/patient.dart';
 
 /// Builds a description of the biometry data of a patient.

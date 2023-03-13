@@ -1,12 +1,14 @@
+// Dart imports:
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+// Package imports:
 import 'package:web_socket_channel/web_socket_channel.dart';
 
+// Project imports:
 import 'package:dps.training_shared_files/api/core/exceptions.dart';
-import 'package:dps.training_shared_files/api/rest/urls.dart';
-import 'package:dps.training_shared_files/api/rest/dps_http_client.dart';
+import 'package:dps.training_shared_files/api/core/urls.dart';
 
 typedef JsonCallback = void Function(String json);
 
@@ -53,7 +55,7 @@ class PlayerWebSocket {
   static Future<PlayerWebSocket> startWebSocket({
     required JsonCallback jsonCallback,
     required String invitationCode,
-    String? playerToken,
+    required String playerToken,
     int? helperAmount,
   }) async {
     final WebSocketChannel channel = WebSocketChannel.connect(
@@ -78,15 +80,7 @@ class PlayerWebSocket {
       completer: completer,
     );
 
-    final String joinRoomMessage;
-    try {
-      joinRoomMessage = _constructJoinRoomMessage(playerToken: playerToken);
-    } finally {
-      // if there was no playerToken provided and none was stored locally
-      // we clean up the WebSocketChannel by closing it using the sink.
-      // Since we don't catch the exception it will handed upwards.
-      await channel.sink.close();
-    }
+    final String joinRoomMessage = _constructJoinRoomMessage(playerToken: playerToken);
     channel.sink.add(joinRoomMessage);
 
     final int initializedHelperAmount = await completer.future;
@@ -96,7 +90,7 @@ class PlayerWebSocket {
       channel: channel,
       streamSubscription: streamSubscription,
       invitationCode: invitationCode,
-      playerToken: playerToken!,
+      playerToken: playerToken,
       initializedHelperAmount: initializedHelperAmount,
     );
   }
@@ -132,16 +126,10 @@ class PlayerWebSocket {
   /// The [playerToken] must either be provided or it will be tried to
   /// load it from local storage. If it isn't available an
   /// [AuthenticationException] will be thrown.
-  static String _constructJoinRoomMessage({String? playerToken}) {
-    String? playerTokenUpdated = playerToken ?? Session.getInvitationCode();
-
-    if (playerTokenUpdated == null) {
-      throw AuthenticationException('Token missing');
-    }
-
+  static String _constructJoinRoomMessage({required String playerToken}) {
     final Map<String, dynamic> json = {
       'type': 'room.join',
-      'token': playerTokenUpdated,
+      'token': playerToken,
     };
 
     return jsonEncode(json);

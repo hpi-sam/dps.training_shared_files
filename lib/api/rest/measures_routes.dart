@@ -2,8 +2,8 @@
 import 'dart:convert';
 
 // Project imports:
+import 'package:dps.training_shared_files/api/core/urls.dart';
 import 'package:dps.training_shared_files/api/rest/dps_http_client.dart';
-import 'package:dps.training_shared_files/api/rest/urls.dart';
 import 'package:dps.training_shared_files/models/applied_measures/applied_measures.dart';
 import 'package:dps.training_shared_files/models/available_measures/available_measures.dart';
 import 'package:dps.training_shared_files/models/running_measure/running_measure.dart';

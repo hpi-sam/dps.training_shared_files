@@ -1,9 +1,13 @@
 // Flutter imports:
-// Project imports:
-import 'package:dps.training_shared_files/api/rest/urls.dart';
+
+// Flutter imports:
 import 'package:flutter/foundation.dart';
+
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
+import 'package:dps.training_shared_files/api/core/urls.dart';
 
 part 'applied_measures.freezed.dart';
 

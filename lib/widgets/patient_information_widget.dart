@@ -1,4 +1,9 @@
 // Flutter imports:
+
+// Flutter imports:
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 // Project imports:
 import 'package:dps.training_shared_files/l10n/localized_strings.dart';
 import 'package:dps.training_shared_files/models/patient/patient.dart';
@@ -7,9 +12,6 @@ import 'package:dps.training_shared_files/widgets/first_impression_widget.dart';
 import 'package:dps.training_shared_files/widgets/patient_visualization_legend_widget.dart';
 import 'package:dps.training_shared_files/widgets/patient_visualization_widget.dart';
 import 'package:dps.training_shared_files/widgets/phase_information_widget.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
 import 'general_information_widget.dart';
 
 /// Displays the patient information for the given [patient]. This always includes

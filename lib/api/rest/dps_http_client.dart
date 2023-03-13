@@ -1,6 +1,8 @@
 // Package imports:
-import 'package:dps.training_shared_files/api/rest/urls.dart';
 import 'package:dio/dio.dart';
+
+// Project imports:
+import 'package:dps.training_shared_files/api/core/urls.dart';
 
 /// HttpClient to handle all the communication to the backend DPS server
 ///

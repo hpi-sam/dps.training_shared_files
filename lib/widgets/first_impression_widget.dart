@@ -1,8 +1,10 @@
 // Flutter imports:
-// Project imports:
-import 'package:dps.training_shared_files/models/patient/patient.dart';
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Project imports:
+import 'package:dps.training_shared_files/models/patient/patient.dart';
 import '../l10n/localized_strings.dart';
 import 'first_impression_field_widget.dart';
 

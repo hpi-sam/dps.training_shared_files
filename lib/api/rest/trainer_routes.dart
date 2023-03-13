@@ -1,7 +1,9 @@
+// Dart imports:
 import 'dart:convert';
 
+// Project imports:
+import 'package:dps.training_shared_files/api/core/urls.dart';
 import 'package:dps.training_shared_files/api/rest/dps_http_client.dart';
-import 'package:dps.training_shared_files/api/rest/urls.dart';
 import 'package:dps.training_shared_files/models/exercise_log/exercise_log.dart';
 import 'package:dps.training_shared_files/models/players/players.dart';
 import 'package:dps.training_shared_files/models/simplified_patients/simplified_patients.dart';
