@@ -23,32 +23,35 @@ Uri patientDataUrl({
 }) =>
     Uri(path: '/patients/$dpsCode/helper/$helperNr/');
 
-Uri foreignInventoryDataUrl({required String entityID}) =>
-    Uri(path: '/entities/$entityID/inventory/');
+Uri foreignInventoryDataUrl({required String entityId}) =>
+    Uri(path: '/entities/$entityId/inventory/');
 
 Uri ownInventoryDataUrl({required int helperNr}) =>
     Uri(path: '/own/inventory/helper/$helperNr/');
 
 Uri inventoryExchangeUrl({
-  required String entityID,
+  required String entityId,
   required int helperNr,
 }) =>
     Uri(
-        path: '/entities/$entityID/inventory/exchange/helper/$helperNr/');
+      path: '/entities/$entityId/inventory/exchange/helper/$helperNr/',
+    );
 
 Uri availableMeasuresUrl({
   required String dpsCode,
   required int helperNr,
 }) =>
     Uri(
-        path: '/patients/$dpsCode/measures/available/helper/$helperNr/');
+      path: '/patients/$dpsCode/measures/available/helper/$helperNr/',
+    );
 
 Uri startNewMeasureUrl({
   required String dpsCode,
   required int helperNr,
 }) =>
     Uri(
-        path: '/patients/$dpsCode/measures/start/helper/$helperNr/');
+      path: '/patients/$dpsCode/measures/start/helper/$helperNr/',
+    );
 
 Uri cancelCurrentMeasureUrl({required int helperNr}) =>
     Uri(path: '/own/currentmeasure/cancel/helper/$helperNr/');
@@ -59,13 +62,16 @@ Uri appliedMeasuresUrl({required String dpsCode}) =>
 Uri removeAppliedMeasureUrl({
   required String dpsCode,
   required int helperNr,
-  required int measureID,
+  required int measureId,
 }) =>
     Uri(
-        path:
-            '/patients/$dpsCode/measures/$measureID/remove/helper/$helperNr/');
+      path: '/patients/$dpsCode/measures/$measureId/remove/helper/$helperNr/',
+    );
 
-Uri triageUrl({required String dpsCode, required int helperNr,}) =>
+Uri triageUrl({
+  required String dpsCode,
+  required int helperNr,
+}) =>
     Uri(path: '/patients/$dpsCode/triage/helper/$helperNr/');
 
 Uri playersSignUpUrl() => Uri(path: '/players/signup/');
@@ -79,13 +85,14 @@ Uri joinRoomUrl({
   required int helperAmount,
 }) =>
     Uri(
-        path: '/rooms/$invitationCode/join/helpercount_$helperAmount/');
+      path: '/rooms/$invitationCode/join/helpercount_$helperAmount/',
+    );
 
 Uri leaveRoomUrl() => Uri(path: '/rooms/leave/');
 
 Uri simulationTimeUrl() => Uri(path: '/rooms/time/');
 
-Uri helperIDUrl({required int helperNr}) =>
+Uri helperIdUrl({required int helperNr}) =>
     Uri(path: '/own/id/helper/$helperNr/');
 
 Uri checkHelperBusyUrl({required int helperNr}) =>
@@ -93,58 +100,54 @@ Uri checkHelperBusyUrl({required int helperNr}) =>
 
 Uri helperCountUrl() => Uri(path: '/own/helpercount/');
 
-Uri getRoomUrl({required int roomID}) =>
-    Uri(path: '/rooms/$roomID/');
+Uri getRoomUrl({required int roomId}) => Uri(path: '/rooms/$roomId/');
 
-Uri getPatientListUrl({required int roomID}) =>
-    Uri(path: '/rooms/$roomID/patients/');
+Uri getPatientListUrl({required int roomId}) =>
+    Uri(path: '/rooms/$roomId/patients/');
 
-Uri getPlayerListUrl({required int roomID}) =>
-    Uri(path: '/rooms/$roomID/players/');
+Uri getPlayerListUrl({required int roomId}) =>
+    Uri(path: '/rooms/$roomId/players/');
 
 Uri pauseRoomUrl() => Uri(path: '/rooms/pause/');
 
 Uri resumeRoomUrl() => Uri(path: '/rooms/resume/');
 
-Uri startRoomUrl({required int roomID}) =>
-    Uri(path: '/rooms/$roomID/start/');
+Uri startRoomUrl({required int roomId}) => Uri(path: '/rooms/$roomId/start/');
 
 Uri finishRoomUrl() => Uri(path: '/rooms/finish/');
 
 Uri changePhaseUrl() => Uri(path: '/rooms/changephase/');
 
-Uri changeRoomConfigUrl({required int roomID}) =>
-    Uri(path: '/rooms/$roomID/change_configuration/');
+Uri changeRoomConfigUrl({required int roomId}) =>
+    Uri(path: '/rooms/$roomId/change_configuration/');
 
 Uri createRoomUrl() => Uri(path: '/rooms/create/');
 
 Uri nextPhaseChangeUrl() => Uri(path: '/rooms/phasechange/');
 
-Uri modifyPhaseChangeUrl() =>
-    Uri(path: '/rooms/phasechange/modify/');
+Uri modifyPhaseChangeUrl() => Uri(path: '/rooms/phasechange/modify/');
 
-Uri roomStateUrl({required int roomID}) =>
-    Uri(path: '/rooms/$roomID/state/');
+Uri roomStateUrl({required int roomId}) => Uri(path: '/rooms/$roomId/state/');
 
 Uri patientDataTrainerUrl({required String dpsCode}) =>
     Uri(path: '/patients/$dpsCode/');
 
 Uri addPatientTrainerUrl({
   required String dpsCode,
-  required int roomID,
+  required int roomId,
 }) =>
-    Uri(path: '/qrcodes/rooms/$roomID/add/$dpsCode/');
+    Uri(path: '/qrcodes/rooms/$roomId/add/$dpsCode/');
 
 Uri checkoutPatientUrl({required String dpsCode}) =>
     Uri(path: '/patients/$dpsCode/checkout/');
 
 Uri addEventUrl() => Uri(path: '/rooms/events/add/');
 
-Uri getTriageAccuracyUrl({required int roomID}) =>
-    Uri(path: '/evaluation/rooms/$roomID/triage/accuracy/');
+Uri getTriageAccuracyUrl({required int roomId}) =>
+    Uri(path: '/evaluation/rooms/$roomId/triage/accuracy/');
 
-Uri getExerciseLogUrl({required int roomID}) =>
-    Uri(path: '/evaluation/rooms/$roomID/logs/');
+Uri getExerciseLogUrl({required int roomId}) =>
+    Uri(path: '/evaluation/rooms/$roomId/logs/');
 
 Uri getActiveRoomUrl() => Uri(path: '/rooms/active/');
 

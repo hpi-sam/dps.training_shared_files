@@ -1,266 +1,247 @@
-// Dart imports:
-import 'dart:convert';
-
 // Project imports:
 import 'package:dps.training_shared_files/api/core/urls.dart';
 import 'package:dps.training_shared_files/api/rest/dps_http_client.dart';
 import 'package:dps.training_shared_files/models/exercise_log/exercise_log.dart';
 import 'package:dps.training_shared_files/models/players/players.dart';
+import 'package:dps.training_shared_files/models/room/room.dart';
 import 'package:dps.training_shared_files/models/simplified_patients/simplified_patients.dart';
+import 'package:dps.training_shared_files/models/triage/triage_accuracy.dart';
 
-Future<PlayerList> getPlayerListRoute({required int roomID}) async {
-  try {
-    final response = await Session.get(getPlayerListUrl(roomID: roomID));
-    if (response.statusCode == 200) {
-      final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      return PlayerList.fromJson(responseJson);
-    } else {
-      throw Exception(
-          "Error retrieving the player list of room $roomID: ${response.statusCode}");
-    }
-  } on Exception catch (e) {
-    throw (e);
+class TrainerRepository {
+  final DpsHttpClient client;
+
+  TrainerRepository({required this.client});
+
+  /// TODO add description
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<PlayerList> getPlayerListRoute({required int roomId}) async {
+    final Uri uri = getPlayerListUrl(roomId: roomId);
+
+    final DpsResponse response = await client.get(uri: uri);
+
+    return PlayerList.fromJson(response.data!);
   }
-}
 
-Future<SimplifiedPatientList> getPatientListRoute({required int roomID}) async {
-  try {
-    final response = await Session.get(getPatientListUrl(roomID: roomID));
-    if (response.statusCode == 200) {
-      final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      return SimplifiedPatientList.fromJson(responseJson);
-    } else {
-      throw Exception(
-          "Error retrieving the patient list of room $roomID: ${response.statusCode}");
-    }
-  } on Exception catch (e) {
-    throw (e);
+  /// TODO add description
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<SimplifiedPatientList> getPatientListRoute({
+    required int roomID,
+  }) async {
+    final Uri uri = getPatientListUrl(roomId: roomID);
+
+    final DpsResponse response = await client.get(uri: uri);
+
+    return SimplifiedPatientList.fromJson(response.data!);
   }
-}
 
-Future<void> pauseRoomRoute() async {
-  try {
-    final response = await Session.get(pauseRoomUrl());
-    if (response.statusCode != 200) {
-      throw Exception("Error pausing room: ${response.statusCode}");
-    }
-  } on Exception catch (e) {
-    throw (e);
+  /// Pauses the current room.
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<void> pauseRoomRoute() async {
+    final Uri uri = pauseRoomUrl();
+
+    await client.get(uri: uri);
   }
-}
 
-Future<void> resumeRoomRoute() async {
-  try {
-    final response = await Session.get(resumeRoomUrl());
-    if (response.statusCode != 200) {
-      throw Exception("Error resuming room: ${response.statusCode}");
-    }
-  } on Exception catch (e) {
-    throw (e);
+  /// Resumes the current room;
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<void> resumeRoomRoute() async {
+    final Uri uri = resumeRoomUrl();
+
+    await client.get(uri: uri);
   }
-}
 
-Future<void> startRoomRoute({required int roomID}) async {
-  try {
-    final response = await Session.get(startRoomUrl(roomID: roomID));
-    if (response.statusCode != 200) {
-      throw Exception("Error starting room: ${response.statusCode}");
-    }
-  } on Exception catch (e) {
-    throw (e);
+  /// Start the room with the given [roomId].
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<void> startRoomRoute({required int roomId}) async {
+    // TODO why does this route need the roomId while the resume and pause routes don't?
+    final Uri uri = startRoomUrl(roomId: roomId);
+
+    await client.get(uri: uri);
   }
-}
 
-Future<void> finishRoomRoute() async {
-  try {
-    final response = await Session.get(finishRoomUrl());
-    if (response.statusCode != 200) {
-      throw Exception("Error finishing room: ${response.statusCode}");
-    }
-  } on Exception catch (e) {
-    throw (e);
+  /// Finish the current room.
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<void> finishRoomRoute() async {
+    final Uri uri = finishRoomUrl();
+
+    await client.get(uri: uri);
   }
-}
 
-Future<void> changePhaseRoute() async {
-  try {
-    final response = await Session.get(changePhaseUrl());
-    if (response.statusCode != 200) {
-      throw Exception(
-          "Error changing patient phase(s): ${response.statusCode}");
-    }
-  } on Exception catch (e) {
-    throw (e);
+  /// Change the phase of the current room.
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<void> changePhaseRoute() async {
+    final Uri uri = changePhaseUrl();
+
+    await client.get(uri: uri);
   }
-}
 
-Future<Map<String, dynamic>> createRoomRoute() async {
-  try {
-    final response = await Session.post(createRoomUrl(), jsonEncode({}));
-    if (response.statusCode != 200) {
-      throw Exception("Error creating new room: ${response.statusCode}");
+  /// Creates a new room with the given [room] configuration.
+  ///
+  /// If [room] is null, the default configuration will be used.
+  /// The function can throw an [DioException] if the request fails.
+  Future<Room> createRoomRoute({
+    int? defaultPhaseLength,
+    int? waitingTimePatient,
+    int? expiringTimePatient,
+  }) async {
+    final bool allNull = defaultPhaseLength == null &&
+        waitingTimePatient == null &&
+        expiringTimePatient == null;
+    final bool allNotNull = defaultPhaseLength != null &&
+        waitingTimePatient != null &&
+        expiringTimePatient != null;
+    assert(
+      allNull || allNotNull,
+      'All parameters must be null or none of them must be null',
+    );
+
+    final Uri uri = createRoomUrl();
+    Map<String, dynamic> json = {};
+    if (allNotNull) {
+      json = {
+        'default_phase_length': defaultPhaseLength,
+        'waiting_time_patient': waitingTimePatient,
+        'expiring_time_patient': expiringTimePatient,
+      };
     }
-    return jsonDecode(utf8.decode(response.bodyBytes));
-  } on Exception catch (e) {
-    throw (e);
+
+    final DpsResponse response = await client.post(
+      uri: uri,
+      data: json,
+    );
+
+    return Room.fromJson(response.data!);
   }
-}
 
-Future<int> nextPhaseChangeRoute() async {
-  try {
-    final response = await Session.get(nextPhaseChangeUrl());
-    if (response.statusCode != 200) {
-      throw Exception(
-          "Error fetching next phase change: ${response.statusCode}");
-    }
-    final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-    return responseJson["next_phase_change"];
-  } on Exception catch (e) {
-    throw (e);
+  /// Returns the next phase change in seconds.
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<int> nextPhaseChangeRoute() async {
+    final Uri uri = nextPhaseChangeUrl();
+
+    final DpsResponse response = await client.get(uri: uri);
+
+    return response.data!['next_phase_change'];
   }
-}
 
-Future<int> modifyPhaseChangeRoute({required int seconds}) async {
-  try {
-    final response = await Session.post(
-        modifyPhaseChangeUrl(), jsonEncode({"seconds": seconds}));
+  /// Modifies when the next phase change will be executed in seconds.
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<int> modifyPhaseChangeRoute({required int seconds}) async {
+    final Uri uri = modifyPhaseChangeUrl();
+    final Map<String, dynamic> json = {
+      'seconds': seconds,
+    };
 
-    if (response.statusCode != 200) {
-      throw Exception(
-          "Error modifying time of phase change: ${response.statusCode}");
-    }
-    final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-    return responseJson["next_phase_change"];
-  } on Exception catch (e) {
-    throw (e);
+    final DpsResponse response = await client.post(
+      uri: uri,
+      data: json,
+    );
+
+    return response.data!['next_phase_change'];
   }
-}
 
-Future<void> changeRoomConfigRoute(
-    {required int roomID,
-    required int phaseChangeTime,
+  /// Changes the room configuration with the given [room] configuration.
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<void> changeRoomConfigRoute({
+    required int roomId,
+    required int defaultPhaseLength,
     required int waitingTimePatient,
-    required int expiringTimePatient}) async {
-  try {
-    final response = await Session.post(
-        changeRoomConfigUrl(roomID: roomID),
-        jsonEncode({
-          "default_phase_length": phaseChangeTime,
-          "waiting_time_patient": waitingTimePatient,
-          "expiring_time_patient": expiringTimePatient,
-        }));
-    if (response.statusCode != 200) {
-      throw Exception(
-          "Error changing room configuration: ${response.statusCode}");
-    }
-  } on Exception catch (e) {
-    throw (e);
+    required int expiringTimePatient,
+  }) async {
+    final Uri uri = changeRoomConfigUrl(roomId: roomId);
+    Map<String, dynamic> json = {
+      'default_phase_length': defaultPhaseLength,
+      'waiting_time_patient': waitingTimePatient,
+      'expiring_time_patient': expiringTimePatient,
+    };
+
+    await client.post(
+      uri: uri,
+      data: json,
+    );
   }
-}
 
-// Future<Patient> fetchPatientTrainerRoute({required String dpsCode}) async {
-//   try {
-//     final response = await Session.get(patientDataTrainerUrl(dpsCode: dpsCode));
-//     if (response.statusCode == 200) {
-//       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-//       return Patient.fromJson(responseJson, dpsCode);
-//     } else {
-//       if (response.statusCode == 404) {
-//         // error is in German because it might be relevant to the player.
-//         throw Exception(
-//             "Error ${response.statusCode} - Der Patient ${dpsCode} kann nicht geladen werden. "
-//             "Womöglich ist dieser Patient nicht in der Datenbank vorhanden. Bitte"
-//             " stelle sicher, dass der gescannte QR-Code korrekt ist.");
-//       }
-//       throw Exception(
-//           "Error ${response.statusCode} - Could not load patient ${dpsCode}.");
-//     }
-//   } on Exception catch (e) {
-//     print("ERROR FETCHING PATIENT: " + e.toString());
-//     throw (e);
-//   }
-// }
+  /// TODO add description
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<void> addPatientTrainerRoute({
+    required String dpsCode,
+    required int roomId,
+  }) async {
+    final Uri uri = addPatientTrainerUrl(
+      dpsCode: dpsCode,
+      roomId: roomId,
+    );
 
-Future<void> addPatientTrainerRoute(
-    {required String dpsCode, required int roomID}) async {
-  try {
-    final response = await Session.get(
-        addPatientTrainerUrl(dpsCode: dpsCode, roomID: roomID));
-    if (response.statusCode != 200) {
-      throw Exception("Error adding patient $dpsCode: ${response.statusCode}");
-    }
-  } on Exception catch (e) {
-    throw (e);
+    await client.get(uri: uri);
   }
-}
 
-Future<void> checkoutPatientRoute({required String dpsCode}) async {
-  try {
-    final response = await Session.get(checkoutPatientUrl(dpsCode: dpsCode));
-    if (response.statusCode != 200) {
-      throw Exception(
-          "Error checking out patient $dpsCode: ${response.statusCode}");
-    }
-  } on Exception catch (e) {
-    throw (e);
+  /// TODO add description
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<void> checkoutPatientRoute({required String dpsCode}) async {
+    final Uri uri = checkoutPatientUrl(dpsCode: dpsCode);
+
+    await client.get(uri: uri);
   }
-}
 
-Future<void> addEventRoute({required String type, String? details}) async {
-  try {
-    final response = await Session.post(
-        addEventUrl(),
-        jsonEncode({
-          "type": type,
-          if (details != null) "details": details,
-        }));
-    if (response.statusCode != 201) {
-      throw Exception(
-          "Error adding event of type: $type with details: $details - ${response.statusCode}");
-    }
-  } on Exception catch (e) {
-    throw (e);
+  /// TODO add description
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<void> addEventRoute({required String type, String? details}) async {
+    final Uri uri = addEventUrl();
+    final Map<String, dynamic> json = {
+      'type': type,
+      if (details != null) 'details': details,
+    };
+
+    await client.post(
+      uri: uri,
+      data: json,
+    );
   }
-}
 
-//todo: implement and return triage accuracy data model
-Future<Map<String, dynamic>> fetchTriageAccuracyRoute(
-    {required int roomID}) async {
-  try {
-    final response = await Session.get(getTriageAccuracyUrl(roomID: roomID));
-    if (response.statusCode != 200) {
-      throw Exception(
-          "Error fetching triage accuracy for room $roomID: ${response.statusCode}");
-    }
-    return jsonDecode(utf8.decode(response.bodyBytes));
-  } on Exception catch (e) {
-    throw (e);
+  /// TODO add description
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<TriageAccuracy> fetchTriageAccuracyRoute({
+    required int roomId,
+  }) async {
+    final Uri uri = getTriageAccuracyUrl(roomId: roomId);
+
+    final DpsResponse response = await client.get(uri: uri);
+
+    return TriageAccuracy.fromJson(response.data!);
   }
-}
 
-Future<ExerciseLog> fetchExerciseLogRoute({required int roomID}) async {
-  try {
-    final response = await Session.get(getExerciseLogUrl(roomID: roomID));
-    if (response.statusCode != 200) {
-      throw Exception(
-          "Error fetching exercise evaluation log for room $roomID: ${response.statusCode}");
-    }
-    final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-    return ExerciseLog.fromJson(responseJson);
-  } on Exception catch (e) {
-    throw (e);
+  /// TODO add description
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<ExerciseLog> fetchExerciseLogRoute({required int roomId}) async {
+    final Uri uri = getExerciseLogUrl(roomId: roomId);
+
+    final DpsResponse response = await client.get(uri: uri);
+
+    return ExerciseLog.fromJson(response.data!);
   }
-}
 
-Future<Map<String, dynamic>> getActiveRoomRoute() async {
-  try {
-    final response = await Session.get(getActiveRoomUrl());
-    if (response.statusCode != 200) {
-      throw Exception(
-          "Error trying to check if an active room exists for this trainer: ${response.statusCode}");
-    }
-    return jsonDecode(utf8.decode(response.bodyBytes));
-  } on Exception catch (e) {
-    throw (e);
+  /// TODO add description
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<Room> getActiveRoomRoute() async {
+    final Uri uri = getActiveRoomUrl();
+
+    final DpsResponse response = await client.get(uri: uri);
+
+    return Room.fromJson(response.data!);
   }
 }

@@ -164,10 +164,10 @@ class PlayerWebSocket {
   }
 
   /// Setting up the stream callbacks to handle the different types of messages
-  /// 
+  ///
   /// The onData callback is set to call the [jsonCallback] which is provided.
   /// Also a default onError callback is set to throw an [Exception] some goes
-  /// for the onDone callback. 
+  /// for the onDone callback.
   /// After that the stream is resumed to start processing the messages.
   void _setupStream() {
     _streamSubscription.onData((json) => jsonCallback(json));

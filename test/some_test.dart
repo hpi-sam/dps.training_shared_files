@@ -4,11 +4,11 @@ import 'dart:io';
 
 // Package imports:
 import 'package:dio/dio.dart';
-import 'package:dps.training_shared_files/api/websocket/player_web_socket.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 // Project imports:
 import 'package:dps.training_shared_files/api/rest/dps_http_client.dart';
+import 'package:dps.training_shared_files/api/websocket/player_web_socket.dart';
 
 void main() {
   test('HTTP client single password test', () async {

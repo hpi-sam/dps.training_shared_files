@@ -34,13 +34,9 @@ class FirstImpressionWidget extends StatelessWidget {
         ),
         FirstImpressionField.icon(
           icon: Image.asset('assets/icons/bleeding_icon.png',
-              package: 'dps.training_shared_files',
-              height: 50,
-              width: 50),
+              package: 'dps.training_shared_files', height: 50, width: 50),
           alternateIcon: Image.asset('assets/icons/critical_bleeding_icon.png',
-              package: 'dps.training_shared_files',
-              height: 50,
-              width: 50),
+              package: 'dps.training_shared_files', height: 50, width: 50),
           description: LocalizedStrings
               .firstImpressionRow_firstImpressionfields_bleeding,
           isActive: patientFirstImpression.is_bleeding ||

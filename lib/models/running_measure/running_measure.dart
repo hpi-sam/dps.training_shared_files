@@ -24,6 +24,7 @@ part 'running_measure.freezed.dart';
 @freezed
 class RunningMeasure with _$RunningMeasure {
   const RunningMeasure._();
+
   const factory RunningMeasure({
     required String name,
     required Uri image_small,
@@ -32,14 +33,17 @@ class RunningMeasure with _$RunningMeasure {
     required int finish_time,
     required bool requires_two_helpers,
   }) = _RunningMeasure;
-  
-  factory RunningMeasure.fromJson({required Map<String, dynamic> json}) {
+
+  const factory RunningMeasure.none() = _RunningMeasureNone;
+
+  factory RunningMeasure.fromJson(Map<String, dynamic> json) {
     return RunningMeasure(
-        name: json["name"],
-        image_small: baseUri.replace(path: '${json["image"]["small"]}'),
-        image_original: baseUri.replace(path: '${json["image"]["original"]}'),
-        start_time: json["start_time"],
-        finish_time: json["finish_time"],
-        requires_two_helpers: json["requires_two_helpers"],);
+      name: json["name"],
+      image_small: baseUri.replace(path: '${json["image"]["small"]}'),
+      image_original: baseUri.replace(path: '${json["image"]["original"]}'),
+      start_time: json["start_time"],
+      finish_time: json["finish_time"],
+      requires_two_helpers: json["requires_two_helpers"],
+    );
   }
 }

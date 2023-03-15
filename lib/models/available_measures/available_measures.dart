@@ -34,7 +34,8 @@ class AvailableMeasures with _$AvailableMeasures {
 
   /// Parses multiple categories of available measures in the given [json] into a
   /// list of [AvailableMeasuresCategory].
-  static List<AvailableMeasuresCategory> parseCategories(Map<String, dynamic> json) {
+  static List<AvailableMeasuresCategory> parseCategories(
+      Map<String, dynamic> json) {
     final parsed = json["categories"].cast<Map<String, dynamic>>();
     return parsed
         .map<AvailableMeasuresCategory>(

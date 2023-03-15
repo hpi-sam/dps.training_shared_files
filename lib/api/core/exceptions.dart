@@ -8,3 +8,14 @@ class AuthenticationException implements Exception {
     return 'AuthenticationException: $message';
   }
 }
+
+class EntityException implements Exception {
+  final String message;
+
+  EntityException([this.message = 'Entity not found']);
+
+  @override
+  String toString() {
+    return 'EntityException: $message';
+  }
+}

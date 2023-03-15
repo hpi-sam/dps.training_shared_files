@@ -43,8 +43,6 @@ class Inventory with _$Inventory {
   }
 }
 
-
-
 /// Model of a category of materials containing a category name and a List of
 /// [DPSMaterial] belonging to this category.
 @freezed

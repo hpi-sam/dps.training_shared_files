@@ -74,9 +74,7 @@ class FirstImpressionField extends StatelessWidget {
   }
 
   Image? _buildIcon() {
-    return useAlternateIcon
-        ? alternateIcon
-        : icon;
+    return useAlternateIcon ? alternateIcon : icon;
   }
 
   Text _buildText() {

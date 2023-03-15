@@ -4,6 +4,11 @@ import 'package:dio/dio.dart';
 // Project imports:
 import 'package:dps.training_shared_files/api/core/urls.dart';
 
+/// A [Response] with a json [Map] as its body.
+///
+/// We use this type since the DPS server  API always returns json.
+typedef DpsResponse = Response<Map<String, dynamic>>;
+
 /// HttpClient to handle all the communication to the backend DPS server
 ///
 /// All of our server requests use the methods provided by
@@ -100,49 +105,29 @@ class DpsHttpClient {
   static DpsHttpClient restore({required String token}) {
     final Dio dio = Dio(_dioBaseOptions);
     dio.options.headers.addAll(_constructAuthHeader(token: token));
-    
+
     return DpsHttpClient._internal(
       dioClient: dio,
       token: token,
     );
   }
 
-  Future<Response> get<T>({required Uri uri}) {
-    return _dioClient.getUri<T>(uri);
+  /// GET request that includes session information in its header.
+  ///
+  /// This method is used to retrieve data from the DPS server. The response
+  /// data will automatically be parsed into a [DpsResponse].
+  Future<DpsResponse> get({required Uri uri}) {
+    return _dioClient.getUri<Map<String, dynamic>>(uri);
   }
 
-  Future<Response> post<T>({required Uri uri, Object? data}) {
-    return _dioClient.postUri<T>(uri, data: data);
+  /// POST request that includes session information in its header.
+  ///
+  /// This method is used to send data to the DPS server. The response
+  /// data will automatically be parsed into a [DpsResponse].
+  Future<DpsResponse> post({required Uri uri, Object? data}) {
+    return _dioClient.postUri<Map<String, dynamic>>(uri, data: data);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // abstract class Session {
 //   static String? _token;
