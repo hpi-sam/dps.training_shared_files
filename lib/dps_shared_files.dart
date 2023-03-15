@@ -11,7 +11,7 @@ export 'api/rest/session_routes.dart';
 export 'api/rest/trainer_routes.dart';
 export 'api/core/urls.dart';
 export 'api/websocket/player_web_socket.dart';
-export 'api/websocket/websocket_service.dart';
+export 'api/websocket/player_web_socket.dart';
 export 'dps_shared_files.dart';
 export 'l10n/localized_strings.dart';
 export 'models/applied_measures/applied_measures.dart';

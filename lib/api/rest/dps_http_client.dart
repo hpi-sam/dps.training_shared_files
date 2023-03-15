@@ -71,8 +71,7 @@ class DpsHttpClient {
   }) async {
     Map<String, dynamic> json = {
       'username': username,
-      'password1': password,
-      'password2': password,
+      'password': password,
       'email': email,
     };
 

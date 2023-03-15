@@ -10,18 +10,24 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:dps.training_shared_files/api/core/exceptions.dart';
 import 'package:dps.training_shared_files/api/core/urls.dart';
 
+/// typedef for a callback that is called when JSON data is received
 typedef JsonCallback = void Function(String json);
 
+/// Manages WebSocket communication
 class PlayerWebSocket {
   final WebSocketChannel _channel;
   final StreamSubscription<String> _streamSubscription;
 
+  /// The invitation code of the room
   final String invitationCode;
+
+  /// The player token which identifies and authenticates the player
   final String playerToken;
 
   /// The amount of helpers the server returned when WebSocket was started
   final int initializedHelperAmount;
 
+  /// Callback for when JSON data is received from the WebSocket
   final JsonCallback jsonCallback;
 
   PlayerWebSocket._internal({
@@ -74,13 +80,17 @@ class PlayerWebSocket {
       throw Exception("Something went wrong");
     }
 
+    // using a Completer to retrieve the amount of helpers from the server
+    // as a Future that will be completed inside [_processJoinRoomResponse]
     final Completer<int> completer = Completer();
-    final StreamSubscription<String> streamSubscription = _authAndJoinRoom(
+    final StreamSubscription<String> streamSubscription =
+        _setupStreamForJoinRoom(
       channel: channel,
       completer: completer,
     );
 
-    final String joinRoomMessage = _constructJoinRoomMessage(playerToken: playerToken);
+    final String joinRoomMessage =
+        _constructJoinRoomMessage(playerToken: playerToken);
     channel.sink.add(joinRoomMessage);
 
     final int initializedHelperAmount = await completer.future;
@@ -95,7 +105,8 @@ class PlayerWebSocket {
     );
   }
 
-  static StreamSubscription<String> _authAndJoinRoom({
+  /// Setup the stream callbacks to handle the first message of type `join.room`
+  static StreamSubscription<String> _setupStreamForJoinRoom({
     required WebSocketChannel channel,
     required Completer completer,
   }) {
@@ -152,6 +163,12 @@ class PlayerWebSocket {
     initializedHelperAmountCompleter.complete(initializedHelperAmount);
   }
 
+  /// Setting up the stream callbacks to handle the different types of messages
+  /// 
+  /// The onData callback is set to call the [jsonCallback] which is provided.
+  /// Also a default onError callback is set to throw an [Exception] some goes
+  /// for the onDone callback. 
+  /// After that the stream is resumed to start processing the messages.
   void _setupStream() {
     _streamSubscription.onData((json) => jsonCallback(json));
     _streamSubscription.onError((Object error, StackTrace? stackTrace) {
@@ -166,7 +183,128 @@ class PlayerWebSocket {
     _streamSubscription.resume();
   }
 
-  void send(String json) {
-    _channel.sink.add(json);
+  /// Encodes the [json] as [String] and adds it to the WebSocket sink.
+  void _send(Map<String, dynamic> json) {
+    final String encodedJson = jsonEncode(json);
+    _channel.sink.add(encodedJson);
+  }
+
+  // The following methods:
+  // just wrap the different types of messages that can be sent
+
+  void createHelpers({required int amount}) {
+    final Map<String, dynamic> json = {
+      "type": "helper.create",
+      "amount": amount,
+    };
+
+    _send(json);
+  }
+
+  void subscribeToPatient({
+    required int helperNr,
+    required String dpsCode,
+  }) {
+    final Map<String, dynamic> json = {
+      "type": "patient.subscribe",
+      "helper_nr": helperNr,
+      "dps_code": dpsCode
+    };
+
+    _send(json);
+  }
+
+  void applyTriage({
+    required int helperNr,
+    required String triageCategory,
+  }) {
+    final Map<String, dynamic> json = {
+      "type": "patient.triage",
+      "helper_nr": helperNr,
+      "triage_color": triageCategory
+    };
+
+    _send(json);
+  }
+
+  void getAvailableMeasures({required int helperNr}) {
+    final Map<String, dynamic> json = {
+      "type": "available.measures",
+      "helper_nr": helperNr
+    };
+
+    _send(json);
+  }
+
+  void applyMeasure({
+    required int helperNr,
+    required String measureID,
+  }) {
+    final Map<String, dynamic> json = {
+      "type": "patient.apply",
+      "helper_nr": helperNr,
+      "measure_id": measureID
+    };
+
+    _send(json);
+  }
+
+  void cancelMeasure({required int helperNr}) {
+    final Map<String, dynamic> json = {
+      "type": "cancel.measure",
+      "helper_nr": helperNr
+    };
+
+    _send(json);
+  }
+
+  void removeMeasure({
+    required int helperNr,
+    required int measureID,
+  }) {
+    final Map<String, dynamic> json = {
+      "type": "remove.material",
+      "helper_nr": helperNr,
+      "measure_id": measureID
+    };
+
+    _send(json);
+  }
+
+  void openInventory({
+    required int helperNr,
+    required String inventoryID,
+  }) {
+    final Map<String, dynamic> json = {
+      "type": "inventory.open",
+      "helper_nr": helperNr,
+      "other_entity_key": inventoryID
+    };
+
+    _send(json);
+  }
+
+  void exchangeMaterial({
+    required int helperNr,
+    required String materialID,
+    required int amount,
+  }) {
+    final Map<String, dynamic> json = {
+      "type": "inventory.exchange",
+      "helper_nr": helperNr,
+      "material_id": materialID,
+      "amount": amount
+    };
+
+    _send(json);
+  }
+
+  void resendOwnInventory({required int helperNr}) {
+    final Map<String, dynamic> json = {
+      "type": "resend.inventory",
+      "helper_nr": helperNr
+    };
+
+    _send(json);
   }
 }
