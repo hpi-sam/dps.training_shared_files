@@ -8,7 +8,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 
 // Project imports:
 import 'package:dps.training_shared_files/api/core/exceptions.dart';
-import 'package:dps.training_shared_files/api/core/urls.dart';
+import 'package:dps.training_shared_files/api/core/uris.dart';
 
 /// typedef for a callback that is called when JSON data is received
 typedef JsonCallback = void Function(String json);
@@ -65,7 +65,7 @@ class PlayerWebSocket {
     int? helperAmount,
   }) async {
     final WebSocketChannel channel = WebSocketChannel.connect(
-      webSocketUrl(
+      webSocketUri(
         invitationCode: invitationCode,
       ),
     );

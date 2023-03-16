@@ -1,5 +1,5 @@
 // Project imports:
-import 'package:dps.training_shared_files/api/core/urls.dart';
+import 'package:dps.training_shared_files/api/core/uris.dart';
 import 'package:dps.training_shared_files/api/rest/dps_http_client.dart';
 import 'package:dps.training_shared_files/models/exercise_log/exercise_log.dart';
 import 'package:dps.training_shared_files/models/players/players.dart';
@@ -15,8 +15,8 @@ class TrainerRepository {
   /// TODO add description
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<PlayerList> getPlayerListRoute({required int roomId}) async {
-    final Uri uri = getPlayerListUrl(roomId: roomId);
+  Future<PlayerList> getPlayerList({required int roomId}) async {
+    final Uri uri = getPlayerListUri(roomId: roomId);
 
     final DpsResponse response = await client.get(uri: uri);
 
@@ -26,10 +26,10 @@ class TrainerRepository {
   /// TODO add description
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<SimplifiedPatientList> getPatientListRoute({
-    required int roomID,
+  Future<SimplifiedPatientList> getPatientList({
+    required int roomId,
   }) async {
-    final Uri uri = getPatientListUrl(roomId: roomID);
+    final Uri uri = getPatientListUri(roomId: roomId);
 
     final DpsResponse response = await client.get(uri: uri);
 
@@ -39,8 +39,8 @@ class TrainerRepository {
   /// Pauses the current room.
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> pauseRoomRoute() async {
-    final Uri uri = pauseRoomUrl();
+  Future<void> pauseRoom() async {
+    final Uri uri = pauseRoomUri();
 
     await client.get(uri: uri);
   }
@@ -48,8 +48,8 @@ class TrainerRepository {
   /// Resumes the current room;
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> resumeRoomRoute() async {
-    final Uri uri = resumeRoomUrl();
+  Future<void> resumeRoom() async {
+    final Uri uri = resumeRoomUri();
 
     await client.get(uri: uri);
   }
@@ -57,9 +57,9 @@ class TrainerRepository {
   /// Start the room with the given [roomId].
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> startRoomRoute({required int roomId}) async {
+  Future<void> startRoom({required int roomId}) async {
     // TODO why does this route need the roomId while the resume and pause routes don't?
-    final Uri uri = startRoomUrl(roomId: roomId);
+    final Uri uri = startRoomUri(roomId: roomId);
 
     await client.get(uri: uri);
   }
@@ -67,8 +67,8 @@ class TrainerRepository {
   /// Finish the current room.
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> finishRoomRoute() async {
-    final Uri uri = finishRoomUrl();
+  Future<void> finishRoom() async {
+    final Uri uri = finishRoomUri();
 
     await client.get(uri: uri);
   }
@@ -76,8 +76,8 @@ class TrainerRepository {
   /// Change the phase of the current room.
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> changePhaseRoute() async {
-    final Uri uri = changePhaseUrl();
+  Future<void> changePhase() async {
+    final Uri uri = changePhaseUri();
 
     await client.get(uri: uri);
   }
@@ -86,7 +86,7 @@ class TrainerRepository {
   ///
   /// If [room] is null, the default configuration will be used.
   /// The function can throw an [DioException] if the request fails.
-  Future<Room> createRoomRoute({
+  Future<Room> createRoom({
     int? defaultPhaseLength,
     int? waitingTimePatient,
     int? expiringTimePatient,
@@ -102,7 +102,7 @@ class TrainerRepository {
       'All parameters must be null or none of them must be null',
     );
 
-    final Uri uri = createRoomUrl();
+    final Uri uri = createRoomUri();
     Map<String, dynamic> json = {};
     if (allNotNull) {
       json = {
@@ -123,8 +123,8 @@ class TrainerRepository {
   /// Returns the next phase change in seconds.
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<int> nextPhaseChangeRoute() async {
-    final Uri uri = nextPhaseChangeUrl();
+  Future<int> nextPhaseChange() async {
+    final Uri uri = nextPhaseChangeUri();
 
     final DpsResponse response = await client.get(uri: uri);
 
@@ -134,8 +134,8 @@ class TrainerRepository {
   /// Modifies when the next phase change will be executed in seconds.
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<int> modifyPhaseChangeRoute({required int seconds}) async {
-    final Uri uri = modifyPhaseChangeUrl();
+  Future<int> modifyPhaseChange({required int seconds}) async {
+    final Uri uri = modifyPhaseChangeUri();
     final Map<String, dynamic> json = {
       'seconds': seconds,
     };
@@ -151,13 +151,13 @@ class TrainerRepository {
   /// Changes the room configuration with the given [room] configuration.
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> changeRoomConfigRoute({
+  Future<void> changeRoomConfig({
     required int roomId,
     required int defaultPhaseLength,
     required int waitingTimePatient,
     required int expiringTimePatient,
   }) async {
-    final Uri uri = changeRoomConfigUrl(roomId: roomId);
+    final Uri uri = changeRoomConfigUri(roomId: roomId);
     Map<String, dynamic> json = {
       'default_phase_length': defaultPhaseLength,
       'waiting_time_patient': waitingTimePatient,
@@ -173,11 +173,11 @@ class TrainerRepository {
   /// TODO add description
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> addPatientTrainerRoute({
+  Future<void> addPatientTrainer({
     required String dpsCode,
     required int roomId,
   }) async {
-    final Uri uri = addPatientTrainerUrl(
+    final Uri uri = addPatientTrainerUri(
       dpsCode: dpsCode,
       roomId: roomId,
     );
@@ -188,8 +188,8 @@ class TrainerRepository {
   /// TODO add description
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> checkoutPatientRoute({required String dpsCode}) async {
-    final Uri uri = checkoutPatientUrl(dpsCode: dpsCode);
+  Future<void> checkoutPatient({required String dpsCode}) async {
+    final Uri uri = checkoutPatientUri(dpsCode: dpsCode);
 
     await client.get(uri: uri);
   }
@@ -197,8 +197,11 @@ class TrainerRepository {
   /// TODO add description
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> addEventRoute({required String type, String? details}) async {
-    final Uri uri = addEventUrl();
+  Future<void> addEvent({
+    required String type,
+    String? details,
+  }) async {
+    final Uri uri = addEventUri();
     final Map<String, dynamic> json = {
       'type': type,
       if (details != null) 'details': details,
@@ -213,10 +216,10 @@ class TrainerRepository {
   /// TODO add description
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<TriageAccuracy> fetchTriageAccuracyRoute({
+  Future<TriageAccuracy> fetchTriageAccuracy({
     required int roomId,
   }) async {
-    final Uri uri = getTriageAccuracyUrl(roomId: roomId);
+    final Uri uri = getTriageAccuracyUri(roomId: roomId);
 
     final DpsResponse response = await client.get(uri: uri);
 
@@ -226,8 +229,8 @@ class TrainerRepository {
   /// TODO add description
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<ExerciseLog> fetchExerciseLogRoute({required int roomId}) async {
-    final Uri uri = getExerciseLogUrl(roomId: roomId);
+  Future<ExerciseLog> fetchExerciseLog({required int roomId}) async {
+    final Uri uri = getExerciseLogUri(roomId: roomId);
 
     final DpsResponse response = await client.get(uri: uri);
 
@@ -237,8 +240,8 @@ class TrainerRepository {
   /// TODO add description
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<Room> getActiveRoomRoute() async {
-    final Uri uri = getActiveRoomUrl();
+  Future<Room> getActiveRoom() async {
+    final Uri uri = getActiveRoomUri();
 
     final DpsResponse response = await client.get(uri: uri);
 

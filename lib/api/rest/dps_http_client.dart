@@ -2,7 +2,7 @@
 import 'package:dio/dio.dart';
 
 // Project imports:
-import 'package:dps.training_shared_files/api/core/urls.dart';
+import 'package:dps.training_shared_files/api/core/uris.dart';
 
 /// A [Response] with a json [Map] as its body.
 ///
@@ -62,7 +62,7 @@ class DpsHttpClient {
     };
 
     final DpsHttpClient client = await _sendAuthRequest(
-      uri: trainerLogInUrl(),
+      uri: trainerLogInUri(),
       json: json,
     );
 
@@ -81,7 +81,7 @@ class DpsHttpClient {
     };
 
     final DpsHttpClient client = await _sendAuthRequest(
-      uri: trainerSignUpUrl(),
+      uri: trainerSignUpUri(),
       json: json,
     );
 
@@ -95,7 +95,7 @@ class DpsHttpClient {
     }
 
     final DpsHttpClient client = await _sendAuthRequest(
-      uri: playersSignUpUrl(),
+      uri: playersSignUpUri(),
       json: json,
     );
 

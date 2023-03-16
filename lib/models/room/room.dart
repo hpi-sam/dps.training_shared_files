@@ -5,8 +5,6 @@ part 'room.freezed.dart';
 
 @freezed
 class Room with _$Room {
-  const Room._();
-
   const factory Room({
     required int id,
     required String invitationCode,
@@ -14,12 +12,6 @@ class Room with _$Room {
     int? waitingTimePatient,
     int? expiringTimePatient,
   }) = _Room;
-
-  const factory Room.updateConfigurations({
-    required int defaultPhaseLength,
-    required int waitingTimePatient,
-    required int expiringTimePatient,
-  }) = _RoomUpdateConfigurations;
 
   const factory Room.noneActive() = _RoomNoneActive;
 

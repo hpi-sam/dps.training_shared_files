@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
-import 'package:dps.training_shared_files/api/core/urls.dart';
+import 'package:dps.training_shared_files/api/core/uris.dart';
 
 part 'applied_measures.freezed.dart';
 

@@ -9,6 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 // Project imports:
 import 'package:dps.training_shared_files/api/rest/dps_http_client.dart';
 import 'package:dps.training_shared_files/api/websocket/player_web_socket.dart';
+import 'package:dps.training_shared_files/models/room/room.dart';
 
 void main() {
   test('HTTP client single password test', () async {
@@ -50,5 +51,16 @@ void main() {
       await Future.delayed(const Duration(seconds: 10));
       return true;
     });
+  });
+
+  test('some more data test', () {
+    Room room = Room(
+      id: 123,
+      invitationCode: "adsf",
+    );
+
+    //room = Room.noneActive();
+
+    room.map((room) => print(room.runtimeType), noneActive: (room) => print('hello'));
   });
 }

@@ -1,4 +1,4 @@
-enum RoomState {
+enum RoomStateEnum {
   configuration,
   running,
   paused,
