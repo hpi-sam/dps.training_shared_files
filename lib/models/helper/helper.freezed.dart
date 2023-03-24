@@ -230,37 +230,32 @@ class __$$_HelperCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Helper extends _Helper {
+class _$_Helper implements _Helper {
   const _$_Helper(
-      {this.patientDpsCode = null,
-      this.runningMeasure = null,
-      this.inventory = null,
-      this.patient = null,
+      {this.patientDpsCode,
+      this.runningMeasure,
+      this.inventory,
+      this.patient,
       required this.helperNr,
       required this.role,
-      this.entityID = null})
-      : super._();
+      this.entityID});
 
   /// The ID of the patient a helper has most recently scanned. Null if no patient
   /// has been scanned by the helper yet.
   @override
-  @JsonKey()
   final String? patientDpsCode;
 
   /// The measure a helper is currently implementing. Null if the helper is currently
   /// not implementing a measure.
   @override
-  @JsonKey()
   final RunningMeasure? runningMeasure;
 
   /// The inventory of the helper
   @override
-  @JsonKey()
   final Inventory? inventory;
 
   /// The instance of the last scanned patient
   @override
-  @JsonKey()
   final Patient? patient;
 
   /// The identifying number of this helper that is used for any helper-specific
@@ -275,7 +270,6 @@ class _$_Helper extends _Helper {
   /// The entityID of this helper that is displayed in its QR-Code. **Caution:** This is **not** the ID used in helper-specific
   /// API calls. For that, see [helperNr].
   @override
-  @JsonKey()
   final int? entityID;
 
   @override
@@ -313,7 +307,7 @@ class _$_Helper extends _Helper {
       __$$_HelperCopyWithImpl<_$_Helper>(this, _$identity);
 }
 
-abstract class _Helper extends Helper {
+abstract class _Helper implements Helper {
   const factory _Helper(
       {final String? patientDpsCode,
       final RunningMeasure? runningMeasure,
@@ -322,7 +316,6 @@ abstract class _Helper extends Helper {
       required final int helperNr,
       required final HelperRole role,
       final int? entityID}) = _$_Helper;
-  const _Helper._() : super._();
 
   @override
 

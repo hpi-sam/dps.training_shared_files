@@ -41,24 +41,17 @@ enum AppliedMeasureState {
 @freezed
 class AppliedMeasures with _$AppliedMeasures {
   const AppliedMeasures._();
-  const factory AppliedMeasures(
-      {required List<AppliedMeasure> appliedMeasures}) = _AppliedMeasures;
+  const factory AppliedMeasures({
+    
+    required List<AppliedMeasure> appliedMeasures,
+  }) = _AppliedMeasures;
 
   factory AppliedMeasures.fromJson(Map<String, dynamic> json) {
-    if ((json["appliedMeasures"] as List).isNotEmpty) {
-      return AppliedMeasures(appliedMeasures: parseAppliedMeasures(json));
-    } else
-      return AppliedMeasures(appliedMeasures: []);
+    final parsed = json['applied_measures'].cast<Map<String, dynamic>>();
+    return parsed
+        .map<AppliedMeasure>((json) => AppliedMeasure.fromJson(json))
+        .toList();
   }
-}
-
-/// Parses multiple applied measures in the given [json] into a list of [AppliedMeasure].
-List<AppliedMeasure> parseAppliedMeasures(Map<String, dynamic> json) {
-  print(json);
-  final parsed = json["appliedMeasures"].cast<Map<String, dynamic>>();
-  return parsed
-      .map<AppliedMeasure>((json) => AppliedMeasure.fromJson(json))
-      .toList();
 }
 
 /// Model that contains all relevant information of a single [AppliedMeasure].

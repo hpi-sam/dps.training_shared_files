@@ -3,9 +3,9 @@
 // Project imports:
 import 'package:dps.training_shared_files/api/core/uris.dart';
 import 'package:dps.training_shared_files/api/rest/dps_http_client.dart';
-import 'package:dps.training_shared_files/models/room/room_state_enum.dart';
+import 'package:dps.training_shared_files/models/room/room.dart';
 import 'package:dps.training_shared_files/models/running_measure/running_measure.dart';
-import 'package:dps.training_shared_files/models/simulation_time/simulation_time.dart';
+import 'package:dps.training_shared_files/models/web_socket_dto/simulation_time.dart';
 
 class SessionRepository {
   final DpsHttpClient client;
@@ -97,7 +97,7 @@ class SessionRepository {
           response.data!['current_measure'];
       return RunningMeasure.fromJson(measureJson);
     } else {
-      return const RunningMeasure.none();
+      return RunningMeasure.none(helperNr: helperNr);
     }
   }
 

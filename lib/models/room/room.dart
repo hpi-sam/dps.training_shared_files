@@ -3,6 +3,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'room.freezed.dart';
 
+enum RoomStateEnum {
+  configuration,
+  running,
+  paused,
+  finished,
+}
+
 @freezed
 class Room with _$Room {
   const factory Room({

@@ -5,6 +5,8 @@ linter:
     package_names: false
 
 analyzer:
+  language:
+  
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"

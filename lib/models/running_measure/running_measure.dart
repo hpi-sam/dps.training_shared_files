@@ -23,9 +23,8 @@ part 'running_measure.freezed.dart';
 /// Model that contains all relevant information about a currently running measure.
 @freezed
 class RunningMeasure with _$RunningMeasure {
-  const RunningMeasure._();
-
   const factory RunningMeasure({
+    required int helperNr,
     required String name,
     required Uri image_small,
     required Uri image_original,
@@ -34,16 +33,19 @@ class RunningMeasure with _$RunningMeasure {
     required bool requires_two_helpers,
   }) = _RunningMeasure;
 
-  const factory RunningMeasure.none() = _RunningMeasureNone;
+  const factory RunningMeasure.none({
+    required int helperNr,
+  }) = _RunningMeasureNone;
 
   factory RunningMeasure.fromJson(Map<String, dynamic> json) {
     return RunningMeasure(
-      name: json["name"],
-      image_small: baseUri.replace(path: '${json["image"]["small"]}'),
-      image_original: baseUri.replace(path: '${json["image"]["original"]}'),
-      start_time: json["start_time"],
-      finish_time: json["finish_time"],
-      requires_two_helpers: json["requires_two_helpers"],
+      helperNr: json['helperNr'],
+      name: json['name'],
+      image_small: baseUri.replace(path: '${json['image']['small']}'),
+      image_original: baseUri.replace(path: '${json['image']['original']}'),
+      start_time: json['start_time'],
+      finish_time: json['finish_time'],
+      requires_two_helpers: json['requires_two_helpers'],
     );
   }
 }

@@ -20,23 +20,28 @@ part 'inventory.freezed.dart';
 /// https://pub.dev/packages/freezed
 @freezed
 class Inventory with _$Inventory {
-  const Inventory._();
-  const factory Inventory(
-      {required String entityType,
-      required String entityName,
-      required List<DPSMaterialCategory> categories}) = _Inventory;
+  const factory Inventory({
+    required int helperNr,
+    required String entityType,
+    required String entityName,
+    required List<DPSMaterialCategory> categories,
+  }) = _Inventory;
 
   factory Inventory.fromJson(Map<String, dynamic> json) {
+    final Map<String, dynamic> jsonContentPart = json['content'];
+
     return Inventory(
-        categories: parseCategories(json),
-        entityType: json["entity_type"],
-        entityName: json["entity_name"]);
+      helperNr: json['helper'],
+      categories: parseCategories(jsonContentPart),
+      entityType: jsonContentPart['entity_type'],
+      entityName: jsonContentPart['entity_name'],
+    );
   }
 
   /// Parses multiple categories of materials in the given [json]
   /// into a list of [DPSMaterialCategory].
   static List<DPSMaterialCategory> parseCategories(Map<String, dynamic> json) {
-    final parsed = json["categories"].cast<Map<String, dynamic>>();
+    final parsed = json['categories'].cast<Map<String, dynamic>>();
     return parsed
         .map<DPSMaterialCategory>((json) => DPSMaterialCategory.fromJson(json))
         .toList();

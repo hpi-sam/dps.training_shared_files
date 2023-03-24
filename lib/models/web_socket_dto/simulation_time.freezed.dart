@@ -14,16 +14,11 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-SimulationTime _$SimulationTimeFromJson(Map<String, dynamic> json) {
-  return _SimulationTime.fromJson(json);
-}
-
 /// @nodoc
 mixin _$SimulationTime {
   int get time => throw _privateConstructorUsedError;
-  String get state => throw _privateConstructorUsedError;
+  SimulationStateEnum get state => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SimulationTimeCopyWith<SimulationTime> get copyWith =>
       throw _privateConstructorUsedError;
@@ -35,7 +30,7 @@ abstract class $SimulationTimeCopyWith<$Res> {
           SimulationTime value, $Res Function(SimulationTime) then) =
       _$SimulationTimeCopyWithImpl<$Res, SimulationTime>;
   @useResult
-  $Res call({int time, String state});
+  $Res call({int time, SimulationStateEnum state});
 }
 
 /// @nodoc
@@ -62,7 +57,7 @@ class _$SimulationTimeCopyWithImpl<$Res, $Val extends SimulationTime>
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as String,
+              as SimulationStateEnum,
     ) as $Val);
   }
 }
@@ -75,7 +70,7 @@ abstract class _$$_SimulationTimeCopyWith<$Res>
       __$$_SimulationTimeCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int time, String state});
+  $Res call({int time, SimulationStateEnum state});
 }
 
 /// @nodoc
@@ -100,23 +95,20 @@ class __$$_SimulationTimeCopyWithImpl<$Res>
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as String,
+              as SimulationStateEnum,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_SimulationTime implements _SimulationTime {
   const _$_SimulationTime({required this.time, required this.state});
-
-  factory _$_SimulationTime.fromJson(Map<String, dynamic> json) =>
-      _$$_SimulationTimeFromJson(json);
 
   @override
   final int time;
   @override
-  final String state;
+  final SimulationStateEnum state;
 
   @override
   String toString() {
@@ -132,7 +124,6 @@ class _$_SimulationTime implements _SimulationTime {
             (identical(other.state, state) || other.state == state));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, time, state);
 
@@ -141,27 +132,17 @@ class _$_SimulationTime implements _SimulationTime {
   @pragma('vm:prefer-inline')
   _$$_SimulationTimeCopyWith<_$_SimulationTime> get copyWith =>
       __$$_SimulationTimeCopyWithImpl<_$_SimulationTime>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_SimulationTimeToJson(
-      this,
-    );
-  }
 }
 
 abstract class _SimulationTime implements SimulationTime {
   const factory _SimulationTime(
       {required final int time,
-      required final String state}) = _$_SimulationTime;
-
-  factory _SimulationTime.fromJson(Map<String, dynamic> json) =
-      _$_SimulationTime.fromJson;
+      required final SimulationStateEnum state}) = _$_SimulationTime;
 
   @override
   int get time;
   @override
-  String get state;
+  SimulationStateEnum get state;
   @override
   @JsonKey(ignore: true)
   _$$_SimulationTimeCopyWith<_$_SimulationTime> get copyWith =>

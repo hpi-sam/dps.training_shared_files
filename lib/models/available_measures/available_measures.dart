@@ -1,6 +1,4 @@
 // Package imports:
-
-// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
@@ -23,13 +21,20 @@ part 'available_measures.freezed.dart';
 ///
 @freezed
 class AvailableMeasures with _$AvailableMeasures {
-  const AvailableMeasures._();
-  const factory AvailableMeasures(
-          {required List<AvailableMeasuresCategory> categories}) =
-      _AvailableMeasures;
+  const factory AvailableMeasures({
+    required int helperNr,
+    required String patientDpsCode,
+    required List<AvailableMeasuresCategory> categories,
+  }) = _AvailableMeasures;
 
   factory AvailableMeasures.fromJson(Map<String, dynamic> json) {
-    return AvailableMeasures(categories: parseCategories(json));
+    final Map<String, dynamic> jsonContentPart = json['content'];
+    
+    return AvailableMeasures(
+      helperNr: json['helper_nr'],
+      patientDpsCode: json['patient_dps_code'],
+      categories: parseCategories(jsonContentPart),
+    );
   }
 
   /// Parses multiple categories of available measures in the given [json] into a
@@ -48,7 +53,6 @@ class AvailableMeasures with _$AvailableMeasures {
 /// List of [AvailableMeasure] belonging to this category.
 @freezed
 class AvailableMeasuresCategory with _$AvailableMeasuresCategory {
-  const AvailableMeasuresCategory._();
   const factory AvailableMeasuresCategory({
     required String name,
     required List<AvailableMeasure> measures,
@@ -77,8 +81,6 @@ List<AvailableMeasure> parseAvailableMeasuresForCategory(
 /// Model that contains all relevant information of a single [AvailableMeasure].
 @freezed
 class AvailableMeasure with _$AvailableMeasure {
-  const AvailableMeasure._();
-
   const factory AvailableMeasure({
     required String name,
     required String id,

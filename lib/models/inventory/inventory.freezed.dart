@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Inventory {
+  int get helperNr => throw _privateConstructorUsedError;
   String get entityType => throw _privateConstructorUsedError;
   String get entityName => throw _privateConstructorUsedError;
   List<DPSMaterialCategory> get categories =>
@@ -32,7 +33,8 @@ abstract class $InventoryCopyWith<$Res> {
       _$InventoryCopyWithImpl<$Res, Inventory>;
   @useResult
   $Res call(
-      {String entityType,
+      {int helperNr,
+      String entityType,
       String entityName,
       List<DPSMaterialCategory> categories});
 }
@@ -50,11 +52,16 @@ class _$InventoryCopyWithImpl<$Res, $Val extends Inventory>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? helperNr = null,
     Object? entityType = null,
     Object? entityName = null,
     Object? categories = null,
   }) {
     return _then(_value.copyWith(
+      helperNr: null == helperNr
+          ? _value.helperNr
+          : helperNr // ignore: cast_nullable_to_non_nullable
+              as int,
       entityType: null == entityType
           ? _value.entityType
           : entityType // ignore: cast_nullable_to_non_nullable
@@ -79,7 +86,8 @@ abstract class _$$_InventoryCopyWith<$Res> implements $InventoryCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String entityType,
+      {int helperNr,
+      String entityType,
       String entityName,
       List<DPSMaterialCategory> categories});
 }
@@ -95,11 +103,16 @@ class __$$_InventoryCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? helperNr = null,
     Object? entityType = null,
     Object? entityName = null,
     Object? categories = null,
   }) {
     return _then(_$_Inventory(
+      helperNr: null == helperNr
+          ? _value.helperNr
+          : helperNr // ignore: cast_nullable_to_non_nullable
+              as int,
       entityType: null == entityType
           ? _value.entityType
           : entityType // ignore: cast_nullable_to_non_nullable
@@ -118,14 +131,16 @@ class __$$_InventoryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Inventory extends _Inventory {
+class _$_Inventory implements _Inventory {
   const _$_Inventory(
-      {required this.entityType,
+      {required this.helperNr,
+      required this.entityType,
       required this.entityName,
       required final List<DPSMaterialCategory> categories})
-      : _categories = categories,
-        super._();
+      : _categories = categories;
 
+  @override
+  final int helperNr;
   @override
   final String entityType;
   @override
@@ -140,7 +155,7 @@ class _$_Inventory extends _Inventory {
 
   @override
   String toString() {
-    return 'Inventory(entityType: $entityType, entityName: $entityName, categories: $categories)';
+    return 'Inventory(helperNr: $helperNr, entityType: $entityType, entityName: $entityName, categories: $categories)';
   }
 
   @override
@@ -148,6 +163,8 @@ class _$_Inventory extends _Inventory {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Inventory &&
+            (identical(other.helperNr, helperNr) ||
+                other.helperNr == helperNr) &&
             (identical(other.entityType, entityType) ||
                 other.entityType == entityType) &&
             (identical(other.entityName, entityName) ||
@@ -157,7 +174,7 @@ class _$_Inventory extends _Inventory {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, entityType, entityName,
+  int get hashCode => Object.hash(runtimeType, helperNr, entityType, entityName,
       const DeepCollectionEquality().hash(_categories));
 
   @JsonKey(ignore: true)
@@ -167,13 +184,15 @@ class _$_Inventory extends _Inventory {
       __$$_InventoryCopyWithImpl<_$_Inventory>(this, _$identity);
 }
 
-abstract class _Inventory extends Inventory {
+abstract class _Inventory implements Inventory {
   const factory _Inventory(
-      {required final String entityType,
+      {required final int helperNr,
+      required final String entityType,
       required final String entityName,
       required final List<DPSMaterialCategory> categories}) = _$_Inventory;
-  const _Inventory._() : super._();
 
+  @override
+  int get helperNr;
   @override
   String get entityType;
   @override

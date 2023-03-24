@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AvailableMeasures {
+  int get helperNr => throw _privateConstructorUsedError;
+  String get patientDpsCode => throw _privateConstructorUsedError;
   List<AvailableMeasuresCategory> get categories =>
       throw _privateConstructorUsedError;
 
@@ -30,7 +32,10 @@ abstract class $AvailableMeasuresCopyWith<$Res> {
           AvailableMeasures value, $Res Function(AvailableMeasures) then) =
       _$AvailableMeasuresCopyWithImpl<$Res, AvailableMeasures>;
   @useResult
-  $Res call({List<AvailableMeasuresCategory> categories});
+  $Res call(
+      {int helperNr,
+      String patientDpsCode,
+      List<AvailableMeasuresCategory> categories});
 }
 
 /// @nodoc
@@ -46,9 +51,19 @@ class _$AvailableMeasuresCopyWithImpl<$Res, $Val extends AvailableMeasures>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? helperNr = null,
+    Object? patientDpsCode = null,
     Object? categories = null,
   }) {
     return _then(_value.copyWith(
+      helperNr: null == helperNr
+          ? _value.helperNr
+          : helperNr // ignore: cast_nullable_to_non_nullable
+              as int,
+      patientDpsCode: null == patientDpsCode
+          ? _value.patientDpsCode
+          : patientDpsCode // ignore: cast_nullable_to_non_nullable
+              as String,
       categories: null == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
@@ -65,7 +80,10 @@ abstract class _$$_AvailableMeasuresCopyWith<$Res>
       __$$_AvailableMeasuresCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<AvailableMeasuresCategory> categories});
+  $Res call(
+      {int helperNr,
+      String patientDpsCode,
+      List<AvailableMeasuresCategory> categories});
 }
 
 /// @nodoc
@@ -79,9 +97,19 @@ class __$$_AvailableMeasuresCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? helperNr = null,
+    Object? patientDpsCode = null,
     Object? categories = null,
   }) {
     return _then(_$_AvailableMeasures(
+      helperNr: null == helperNr
+          ? _value.helperNr
+          : helperNr // ignore: cast_nullable_to_non_nullable
+              as int,
+      patientDpsCode: null == patientDpsCode
+          ? _value.patientDpsCode
+          : patientDpsCode // ignore: cast_nullable_to_non_nullable
+              as String,
       categories: null == categories
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
@@ -92,12 +120,17 @@ class __$$_AvailableMeasuresCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AvailableMeasures extends _AvailableMeasures {
+class _$_AvailableMeasures implements _AvailableMeasures {
   const _$_AvailableMeasures(
-      {required final List<AvailableMeasuresCategory> categories})
-      : _categories = categories,
-        super._();
+      {required this.helperNr,
+      required this.patientDpsCode,
+      required final List<AvailableMeasuresCategory> categories})
+      : _categories = categories;
 
+  @override
+  final int helperNr;
+  @override
+  final String patientDpsCode;
   final List<AvailableMeasuresCategory> _categories;
   @override
   List<AvailableMeasuresCategory> get categories {
@@ -108,7 +141,7 @@ class _$_AvailableMeasures extends _AvailableMeasures {
 
   @override
   String toString() {
-    return 'AvailableMeasures(categories: $categories)';
+    return 'AvailableMeasures(helperNr: $helperNr, patientDpsCode: $patientDpsCode, categories: $categories)';
   }
 
   @override
@@ -116,13 +149,17 @@ class _$_AvailableMeasures extends _AvailableMeasures {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AvailableMeasures &&
+            (identical(other.helperNr, helperNr) ||
+                other.helperNr == helperNr) &&
+            (identical(other.patientDpsCode, patientDpsCode) ||
+                other.patientDpsCode == patientDpsCode) &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_categories));
+  int get hashCode => Object.hash(runtimeType, helperNr, patientDpsCode,
+      const DeepCollectionEquality().hash(_categories));
 
   @JsonKey(ignore: true)
   @override
@@ -132,12 +169,17 @@ class _$_AvailableMeasures extends _AvailableMeasures {
           this, _$identity);
 }
 
-abstract class _AvailableMeasures extends AvailableMeasures {
+abstract class _AvailableMeasures implements AvailableMeasures {
   const factory _AvailableMeasures(
-          {required final List<AvailableMeasuresCategory> categories}) =
+          {required final int helperNr,
+          required final String patientDpsCode,
+          required final List<AvailableMeasuresCategory> categories}) =
       _$_AvailableMeasures;
-  const _AvailableMeasures._() : super._();
 
+  @override
+  int get helperNr;
+  @override
+  String get patientDpsCode;
   @override
   List<AvailableMeasuresCategory> get categories;
   @override
@@ -238,11 +280,10 @@ class __$$_AvailableMeasuresCategoryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AvailableMeasuresCategory extends _AvailableMeasuresCategory {
+class _$_AvailableMeasuresCategory implements _AvailableMeasuresCategory {
   const _$_AvailableMeasuresCategory(
       {required this.name, required final List<AvailableMeasure> measures})
-      : _measures = measures,
-        super._();
+      : _measures = measures;
 
   @override
   final String name;
@@ -280,12 +321,11 @@ class _$_AvailableMeasuresCategory extends _AvailableMeasuresCategory {
           _$_AvailableMeasuresCategory>(this, _$identity);
 }
 
-abstract class _AvailableMeasuresCategory extends AvailableMeasuresCategory {
+abstract class _AvailableMeasuresCategory implements AvailableMeasuresCategory {
   const factory _AvailableMeasuresCategory(
           {required final String name,
           required final List<AvailableMeasure> measures}) =
       _$_AvailableMeasuresCategory;
-  const _AvailableMeasuresCategory._() : super._();
 
   @override
   String get name;
@@ -428,14 +468,13 @@ class __$$_AvailableMeasureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AvailableMeasure extends _AvailableMeasure {
+class _$_AvailableMeasure implements _AvailableMeasure {
   const _$_AvailableMeasure(
       {required this.name,
       required this.id,
       required this.image,
       required this.duration,
-      required this.requires_two_helpers})
-      : super._();
+      required this.requires_two_helpers});
 
   @override
   final String name;
@@ -478,14 +517,13 @@ class _$_AvailableMeasure extends _AvailableMeasure {
       __$$_AvailableMeasureCopyWithImpl<_$_AvailableMeasure>(this, _$identity);
 }
 
-abstract class _AvailableMeasure extends AvailableMeasure {
+abstract class _AvailableMeasure implements AvailableMeasure {
   const factory _AvailableMeasure(
       {required final String name,
       required final String id,
       required final Uri image,
       required final int duration,
       required final bool requires_two_helpers}) = _$_AvailableMeasure;
-  const _AvailableMeasure._() : super._();
 
   @override
   String get name;

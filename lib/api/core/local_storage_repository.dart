@@ -5,9 +5,11 @@ const String tokenStorageKey = 'token';
 const String invitationCodeStorageKey = 'invitationCode';
 
 class LocalStorageRepository {
-  final SharedPreferences sharedPreferences;
+  final SharedPreferences _sharedPreferences;
 
-  LocalStorageRepository._internal({required this.sharedPreferences});
+  LocalStorageRepository._internal({
+    required SharedPreferences sharedPreferences,
+  }) : _sharedPreferences = sharedPreferences;
 
   static Future<LocalStorageRepository> getInstance() async {
     final sharedPreferences = await SharedPreferences.getInstance();
@@ -17,18 +19,18 @@ class LocalStorageRepository {
   }
 
   bool containsKey(String key) {
-    return sharedPreferences.containsKey(key);
+    return _sharedPreferences.containsKey(key);
   }
 
   String getString(String key) {
-    return sharedPreferences.get(key) as String;
+    return _sharedPreferences.get(key) as String;
   }
 
   Future<bool> saveString(String key, String value) {
-    return sharedPreferences.setString(key, value);
+    return _sharedPreferences.setString(key, value);
   }
 
   Future<bool> deleteKey(String key) {
-    return sharedPreferences.remove(key);
+    return _sharedPreferences.remove(key);
   }
 }

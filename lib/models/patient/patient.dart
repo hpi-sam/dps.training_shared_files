@@ -27,6 +27,7 @@ part 'patient.g.dart';
 class Patient with _$Patient {
   const Patient._();
   const factory Patient({
+    required int helperNr,
     // This is the full DPSCode as provided by the dps naming system.
     required String completeDpsCode,
     // Short version of dps code, used internally by frontend to identify patient
@@ -54,14 +55,14 @@ class Patient with _$Patient {
 
   /// Creates a [Patient] from the given [patientJson]. The [patientJson] must conform to our
   /// API specification (https://github.com/hpi-sam/BPMANV-Server/blob/dev/api_spezification.md)
-  factory Patient.fromJson({
-    required Map<String, dynamic> patientJson,
-    required Map<String, dynamic> appliedMeasuresJson,
-    required String patientDpsCode,
-  }) {
+  factory Patient.fromJson(Map<String, dynamic> json) {
+    final Map<String, dynamic> patientJson = json['content']['patient'];
+    final Map<String, dynamic> jsonContentPart = json['content'];
+
     return Patient(
+      helperNr: json['helper_nr'],
       completeDpsCode: patientJson["static_data"]["dps_code"],
-      patientDpsCode: patientDpsCode,
+      patientDpsCode: json['patient_dps_code'],
       currentPhase: PatientCurrentPhase.fromJson(
         patientJson["current_phase"],
       ),
@@ -73,7 +74,7 @@ class Patient with _$Patient {
       ),
       injuries: PatientInjuries.fromJson(
         // a bit hacky to work with lists, see: https://github.com/rrousselGit/freezed/issues/173
-        {'injuries': patientJson["static_data"]["injuries"]},
+        {'injuries': patientJson["static_data"]["injuries"],},
       ),
       injuryDescription: patientJson["static_data"]["injury_description"],
       bodyCheckInformation: patientJson["static_data"]
@@ -81,7 +82,7 @@ class Patient with _$Patient {
       situationOfDiscovery: patientJson["static_data"]
           ["situation_of_discovery"],
       triageCategory: patientJson["triage"],
-      appliedMeasures: AppliedMeasures.fromJson(appliedMeasuresJson),
+      appliedMeasures: AppliedMeasures.fromJson(jsonContentPart),
       isCheckedOut: patientJson["is_checked_out"],
       isAlive: patientJson["is_alive"],
     );

@@ -16,6 +16,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  meta: any
 
   # general dependencies
   dio: ^5.0.2

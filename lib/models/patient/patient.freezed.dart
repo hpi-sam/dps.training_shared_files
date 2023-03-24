@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Patient {
-// This is the full DPSCode as provided by the dps naming system.
+  int get helperNr =>
+      throw _privateConstructorUsedError; // This is the full DPSCode as provided by the dps naming system.
   String get completeDpsCode =>
       throw _privateConstructorUsedError; // Short version of dps code, used internally by frontend to identify patient
   String get patientDpsCode => throw _privateConstructorUsedError;
@@ -45,7 +46,8 @@ abstract class $PatientCopyWith<$Res> {
       _$PatientCopyWithImpl<$Res, Patient>;
   @useResult
   $Res call(
-      {String completeDpsCode,
+      {int helperNr,
+      String completeDpsCode,
       String patientDpsCode,
       PatientCurrentPhase currentPhase,
       PatientFirstImpression firstImpression,
@@ -81,6 +83,7 @@ class _$PatientCopyWithImpl<$Res, $Val extends Patient>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? helperNr = null,
     Object? completeDpsCode = null,
     Object? patientDpsCode = null,
     Object? currentPhase = null,
@@ -97,6 +100,10 @@ class _$PatientCopyWithImpl<$Res, $Val extends Patient>
     Object? availableMeasures = freezed,
   }) {
     return _then(_value.copyWith(
+      helperNr: null == helperNr
+          ? _value.helperNr
+          : helperNr // ignore: cast_nullable_to_non_nullable
+              as int,
       completeDpsCode: null == completeDpsCode
           ? _value.completeDpsCode
           : completeDpsCode // ignore: cast_nullable_to_non_nullable
@@ -218,7 +225,8 @@ abstract class _$$_PatientCopyWith<$Res> implements $PatientCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String completeDpsCode,
+      {int helperNr,
+      String completeDpsCode,
       String patientDpsCode,
       PatientCurrentPhase currentPhase,
       PatientFirstImpression firstImpression,
@@ -257,6 +265,7 @@ class __$$_PatientCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? helperNr = null,
     Object? completeDpsCode = null,
     Object? patientDpsCode = null,
     Object? currentPhase = null,
@@ -273,6 +282,10 @@ class __$$_PatientCopyWithImpl<$Res>
     Object? availableMeasures = freezed,
   }) {
     return _then(_$_Patient(
+      helperNr: null == helperNr
+          ? _value.helperNr
+          : helperNr // ignore: cast_nullable_to_non_nullable
+              as int,
       completeDpsCode: null == completeDpsCode
           ? _value.completeDpsCode
           : completeDpsCode // ignore: cast_nullable_to_non_nullable
@@ -337,7 +350,8 @@ class __$$_PatientCopyWithImpl<$Res>
 
 class _$_Patient extends _Patient with DiagnosticableTreeMixin {
   const _$_Patient(
-      {required this.completeDpsCode,
+      {required this.helperNr,
+      required this.completeDpsCode,
       required this.patientDpsCode,
       required this.currentPhase,
       required this.firstImpression,
@@ -353,6 +367,8 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
       this.availableMeasures = null})
       : super._();
 
+  @override
+  final int helperNr;
 // This is the full DPSCode as provided by the dps naming system.
   @override
   final String completeDpsCode;
@@ -387,7 +403,7 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Patient(completeDpsCode: $completeDpsCode, patientDpsCode: $patientDpsCode, currentPhase: $currentPhase, firstImpression: $firstImpression, personalData: $personalData, injuries: $injuries, injuryDescription: $injuryDescription, bodyCheckInformation: $bodyCheckInformation, situationOfDiscovery: $situationOfDiscovery, triageCategory: $triageCategory, appliedMeasures: $appliedMeasures, isCheckedOut: $isCheckedOut, isAlive: $isAlive, availableMeasures: $availableMeasures)';
+    return 'Patient(helperNr: $helperNr, completeDpsCode: $completeDpsCode, patientDpsCode: $patientDpsCode, currentPhase: $currentPhase, firstImpression: $firstImpression, personalData: $personalData, injuries: $injuries, injuryDescription: $injuryDescription, bodyCheckInformation: $bodyCheckInformation, situationOfDiscovery: $situationOfDiscovery, triageCategory: $triageCategory, appliedMeasures: $appliedMeasures, isCheckedOut: $isCheckedOut, isAlive: $isAlive, availableMeasures: $availableMeasures)';
   }
 
   @override
@@ -395,6 +411,7 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Patient'))
+      ..add(DiagnosticsProperty('helperNr', helperNr))
       ..add(DiagnosticsProperty('completeDpsCode', completeDpsCode))
       ..add(DiagnosticsProperty('patientDpsCode', patientDpsCode))
       ..add(DiagnosticsProperty('currentPhase', currentPhase))
@@ -416,6 +433,8 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Patient &&
+            (identical(other.helperNr, helperNr) ||
+                other.helperNr == helperNr) &&
             (identical(other.completeDpsCode, completeDpsCode) ||
                 other.completeDpsCode == completeDpsCode) &&
             (identical(other.patientDpsCode, patientDpsCode) ||
@@ -448,6 +467,7 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      helperNr,
       completeDpsCode,
       patientDpsCode,
       currentPhase,
@@ -472,7 +492,8 @@ class _$_Patient extends _Patient with DiagnosticableTreeMixin {
 
 abstract class _Patient extends Patient {
   const factory _Patient(
-      {required final String completeDpsCode,
+      {required final int helperNr,
+      required final String completeDpsCode,
       required final String patientDpsCode,
       required final PatientCurrentPhase currentPhase,
       required final PatientFirstImpression firstImpression,
@@ -488,6 +509,8 @@ abstract class _Patient extends Patient {
       final AvailableMeasures? availableMeasures}) = _$_Patient;
   const _Patient._() : super._();
 
+  @override
+  int get helperNr;
   @override // This is the full DPSCode as provided by the dps naming system.
   String get completeDpsCode;
   @override // Short version of dps code, used internally by frontend to identify patient

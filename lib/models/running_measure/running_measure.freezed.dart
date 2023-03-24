@@ -16,28 +16,47 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$RunningMeasure {
+  int get helperNr => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String name, Uri image_small, Uri image_original,
-            int start_time, int finish_time, bool requires_two_helpers)
+    TResult Function(
+            int helperNr,
+            String name,
+            Uri image_small,
+            Uri image_original,
+            int start_time,
+            int finish_time,
+            bool requires_two_helpers)
         $default, {
-    required TResult Function() none,
+    required TResult Function(int helperNr) none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String name, Uri image_small, Uri image_original,
-            int start_time, int finish_time, bool requires_two_helpers)?
+    TResult? Function(
+            int helperNr,
+            String name,
+            Uri image_small,
+            Uri image_original,
+            int start_time,
+            int finish_time,
+            bool requires_two_helpers)?
         $default, {
-    TResult? Function()? none,
+    TResult? Function(int helperNr)? none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String name, Uri image_small, Uri image_original,
-            int start_time, int finish_time, bool requires_two_helpers)?
+    TResult Function(
+            int helperNr,
+            String name,
+            Uri image_small,
+            Uri image_original,
+            int start_time,
+            int finish_time,
+            bool requires_two_helpers)?
         $default, {
-    TResult Function()? none,
+    TResult Function(int helperNr)? none,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +79,10 @@ mixin _$RunningMeasure {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $RunningMeasureCopyWith<RunningMeasure> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -67,6 +90,8 @@ abstract class $RunningMeasureCopyWith<$Res> {
   factory $RunningMeasureCopyWith(
           RunningMeasure value, $Res Function(RunningMeasure) then) =
       _$RunningMeasureCopyWithImpl<$Res, RunningMeasure>;
+  @useResult
+  $Res call({int helperNr});
 }
 
 /// @nodoc
@@ -78,16 +103,32 @@ class _$RunningMeasureCopyWithImpl<$Res, $Val extends RunningMeasure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? helperNr = null,
+  }) {
+    return _then(_value.copyWith(
+      helperNr: null == helperNr
+          ? _value.helperNr
+          : helperNr // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_RunningMeasureCopyWith<$Res> {
+abstract class _$$_RunningMeasureCopyWith<$Res>
+    implements $RunningMeasureCopyWith<$Res> {
   factory _$$_RunningMeasureCopyWith(
           _$_RunningMeasure value, $Res Function(_$_RunningMeasure) then) =
       __$$_RunningMeasureCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call(
-      {String name,
+      {int helperNr,
+      String name,
       Uri image_small,
       Uri image_original,
       int start_time,
@@ -106,6 +147,7 @@ class __$$_RunningMeasureCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? helperNr = null,
     Object? name = null,
     Object? image_small = null,
     Object? image_original = null,
@@ -114,6 +156,10 @@ class __$$_RunningMeasureCopyWithImpl<$Res>
     Object? requires_two_helpers = null,
   }) {
     return _then(_$_RunningMeasure(
+      helperNr: null == helperNr
+          ? _value.helperNr
+          : helperNr // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -144,16 +190,18 @@ class __$$_RunningMeasureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RunningMeasure extends _RunningMeasure {
+class _$_RunningMeasure implements _RunningMeasure {
   const _$_RunningMeasure(
-      {required this.name,
+      {required this.helperNr,
+      required this.name,
       required this.image_small,
       required this.image_original,
       required this.start_time,
       required this.finish_time,
-      required this.requires_two_helpers})
-      : super._();
+      required this.requires_two_helpers});
 
+  @override
+  final int helperNr;
   @override
   final String name;
   @override
@@ -169,7 +217,7 @@ class _$_RunningMeasure extends _RunningMeasure {
 
   @override
   String toString() {
-    return 'RunningMeasure(name: $name, image_small: $image_small, image_original: $image_original, start_time: $start_time, finish_time: $finish_time, requires_two_helpers: $requires_two_helpers)';
+    return 'RunningMeasure(helperNr: $helperNr, name: $name, image_small: $image_small, image_original: $image_original, start_time: $start_time, finish_time: $finish_time, requires_two_helpers: $requires_two_helpers)';
   }
 
   @override
@@ -177,6 +225,8 @@ class _$_RunningMeasure extends _RunningMeasure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RunningMeasure &&
+            (identical(other.helperNr, helperNr) ||
+                other.helperNr == helperNr) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.image_small, image_small) ||
                 other.image_small == image_small) &&
@@ -191,7 +241,7 @@ class _$_RunningMeasure extends _RunningMeasure {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, image_small,
+  int get hashCode => Object.hash(runtimeType, helperNr, name, image_small,
       image_original, start_time, finish_time, requires_two_helpers);
 
   @JsonKey(ignore: true)
@@ -203,38 +253,56 @@ class _$_RunningMeasure extends _RunningMeasure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String name, Uri image_small, Uri image_original,
-            int start_time, int finish_time, bool requires_two_helpers)
+    TResult Function(
+            int helperNr,
+            String name,
+            Uri image_small,
+            Uri image_original,
+            int start_time,
+            int finish_time,
+            bool requires_two_helpers)
         $default, {
-    required TResult Function() none,
+    required TResult Function(int helperNr) none,
   }) {
-    return $default(name, image_small, image_original, start_time, finish_time,
-        requires_two_helpers);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String name, Uri image_small, Uri image_original,
-            int start_time, int finish_time, bool requires_two_helpers)?
-        $default, {
-    TResult? Function()? none,
-  }) {
-    return $default?.call(name, image_small, image_original, start_time,
+    return $default(helperNr, name, image_small, image_original, start_time,
         finish_time, requires_two_helpers);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String name, Uri image_small, Uri image_original,
-            int start_time, int finish_time, bool requires_two_helpers)?
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            int helperNr,
+            String name,
+            Uri image_small,
+            Uri image_original,
+            int start_time,
+            int finish_time,
+            bool requires_two_helpers)?
         $default, {
-    TResult Function()? none,
+    TResult? Function(int helperNr)? none,
+  }) {
+    return $default?.call(helperNr, name, image_small, image_original,
+        start_time, finish_time, requires_two_helpers);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            int helperNr,
+            String name,
+            Uri image_small,
+            Uri image_original,
+            int start_time,
+            int finish_time,
+            bool requires_two_helpers)?
+        $default, {
+    TResult Function(int helperNr)? none,
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default(name, image_small, image_original, start_time,
+      return $default(helperNr, name, image_small, image_original, start_time,
           finish_time, requires_two_helpers);
     }
     return orElse();
@@ -272,32 +340,39 @@ class _$_RunningMeasure extends _RunningMeasure {
   }
 }
 
-abstract class _RunningMeasure extends RunningMeasure {
+abstract class _RunningMeasure implements RunningMeasure {
   const factory _RunningMeasure(
-      {required final String name,
+      {required final int helperNr,
+      required final String name,
       required final Uri image_small,
       required final Uri image_original,
       required final int start_time,
       required final int finish_time,
       required final bool requires_two_helpers}) = _$_RunningMeasure;
-  const _RunningMeasure._() : super._();
 
+  @override
+  int get helperNr;
   String get name;
   Uri get image_small;
   Uri get image_original;
   int get start_time;
   int get finish_time;
   bool get requires_two_helpers;
+  @override
   @JsonKey(ignore: true)
   _$$_RunningMeasureCopyWith<_$_RunningMeasure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_RunningMeasureNoneCopyWith<$Res> {
+abstract class _$$_RunningMeasureNoneCopyWith<$Res>
+    implements $RunningMeasureCopyWith<$Res> {
   factory _$$_RunningMeasureNoneCopyWith(_$_RunningMeasureNone value,
           $Res Function(_$_RunningMeasureNone) then) =
       __$$_RunningMeasureNoneCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int helperNr});
 }
 
 /// @nodoc
@@ -307,60 +382,104 @@ class __$$_RunningMeasureNoneCopyWithImpl<$Res>
   __$$_RunningMeasureNoneCopyWithImpl(
       _$_RunningMeasureNone _value, $Res Function(_$_RunningMeasureNone) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? helperNr = null,
+  }) {
+    return _then(_$_RunningMeasureNone(
+      helperNr: null == helperNr
+          ? _value.helperNr
+          : helperNr // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_RunningMeasureNone extends _RunningMeasureNone {
-  const _$_RunningMeasureNone() : super._();
+class _$_RunningMeasureNone implements _RunningMeasureNone {
+  const _$_RunningMeasureNone({required this.helperNr});
+
+  @override
+  final int helperNr;
 
   @override
   String toString() {
-    return 'RunningMeasure.none()';
+    return 'RunningMeasure.none(helperNr: $helperNr)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_RunningMeasureNone);
+        (other.runtimeType == runtimeType &&
+            other is _$_RunningMeasureNone &&
+            (identical(other.helperNr, helperNr) ||
+                other.helperNr == helperNr));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, helperNr);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RunningMeasureNoneCopyWith<_$_RunningMeasureNone> get copyWith =>
+      __$$_RunningMeasureNoneCopyWithImpl<_$_RunningMeasureNone>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String name, Uri image_small, Uri image_original,
-            int start_time, int finish_time, bool requires_two_helpers)
+    TResult Function(
+            int helperNr,
+            String name,
+            Uri image_small,
+            Uri image_original,
+            int start_time,
+            int finish_time,
+            bool requires_two_helpers)
         $default, {
-    required TResult Function() none,
+    required TResult Function(int helperNr) none,
   }) {
-    return none();
+    return none(helperNr);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String name, Uri image_small, Uri image_original,
-            int start_time, int finish_time, bool requires_two_helpers)?
+    TResult? Function(
+            int helperNr,
+            String name,
+            Uri image_small,
+            Uri image_original,
+            int start_time,
+            int finish_time,
+            bool requires_two_helpers)?
         $default, {
-    TResult? Function()? none,
+    TResult? Function(int helperNr)? none,
   }) {
-    return none?.call();
+    return none?.call(helperNr);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String name, Uri image_small, Uri image_original,
-            int start_time, int finish_time, bool requires_two_helpers)?
+    TResult Function(
+            int helperNr,
+            String name,
+            Uri image_small,
+            Uri image_original,
+            int start_time,
+            int finish_time,
+            bool requires_two_helpers)?
         $default, {
-    TResult Function()? none,
+    TResult Function(int helperNr)? none,
     required TResult orElse(),
   }) {
     if (none != null) {
-      return none();
+      return none(helperNr);
     }
     return orElse();
   }
@@ -397,7 +516,14 @@ class _$_RunningMeasureNone extends _RunningMeasureNone {
   }
 }
 
-abstract class _RunningMeasureNone extends RunningMeasure {
-  const factory _RunningMeasureNone() = _$_RunningMeasureNone;
-  const _RunningMeasureNone._() : super._();
+abstract class _RunningMeasureNone implements RunningMeasure {
+  const factory _RunningMeasureNone({required final int helperNr}) =
+      _$_RunningMeasureNone;
+
+  @override
+  int get helperNr;
+  @override
+  @JsonKey(ignore: true)
+  _$$_RunningMeasureNoneCopyWith<_$_RunningMeasureNone> get copyWith =>
+      throw _privateConstructorUsedError;
 }
