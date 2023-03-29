@@ -1,8 +1,10 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 // Project imports:
-import 'package:dps.training_shared_files/l10n/localized_strings.dart';
 import 'package:dps.training_shared_files/models/patient/patient.dart';
 
 /// Builds a widget displaying general patient data (injury and situation of discovery)
@@ -14,14 +16,15 @@ class GeneralInformationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final data = _getGeneralInformation();
+    AppLocalizations localization = AppLocalizations.of(context)!;
+    final data = _getGeneralInformation(localization);
 
     return Card(
       child: Column(
         children: [
           Text(
-            LocalizedStrings.generalInformationWidget_title,
-            style: Theme.of(context).textTheme.headline5,
+            AppLocalizations.of(context)!.generalInformationWidget_title,
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
@@ -33,36 +36,36 @@ class GeneralInformationWidget extends StatelessWidget {
   }
 
   Container _buildInformationFields(Map<String, String> data) {
-    List<Widget> _fieldWidgets = [];
+    List<Widget> fieldWidgets = [];
     data.forEach((key, value) {
-      _fieldWidgets
+      fieldWidgets
           .add(Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Expanded(
-          child: Text(key, style: TextStyle(fontWeight: FontWeight.bold)),
           flex: 1,
+          child: Text(key, style: const TextStyle(fontWeight: FontWeight.bold)),
         ),
         Expanded(
-          child: Text(value),
           flex: 2,
+          child: Text(value),
         ),
       ]));
-      _fieldWidgets.add(Padding(
+      fieldWidgets.add(const Padding(
         padding: EdgeInsets.only(top: 8),
       ));
     });
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         color: Colors.white,
         child: Column(
-          children: _fieldWidgets,
+          children: fieldWidgets,
         ));
   }
 
-  Map<String, String> _getGeneralInformation() {
+  Map<String, String> _getGeneralInformation(AppLocalizations localization) {
     return {
-      LocalizedStrings.generalInformationWidget_injuries_title:
+      localization.generalInformationWidget_injuries_title:
           patient.injuryDescription,
-      LocalizedStrings.generalInformationWidget_situationOfDiscovery_title:
+      localization.generalInformationWidget_situationOfDiscovery_title:
           patient.situationOfDiscovery,
     };
   }
