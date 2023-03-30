@@ -1,12 +1,11 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // Project imports:
+import 'package:dps.training_shared_files/l10n/shared_files_localizations.dart';
 import 'package:dps.training_shared_files/models/patient/patient.dart';
-import 'first_impression_field_widget.dart';
+import 'package:dps.training_shared_files/widgets/first_impression_field_widget.dart';
 
 /// Draws the four first impression fields of a patient.
 ///
@@ -26,7 +25,7 @@ class FirstImpressionWidget extends StatelessWidget {
       children: [
         FirstImpressionField.character(
           character: 'G',
-          description: AppLocalizations.of(context)!
+          description: SharedFilesLocalizations.of(context)!
               .firstImpressionRow_firstImpressionfields_canWalk,
           isActive: patientFirstImpression.can_walk,
           textColor: Colors.deepPurple[700]!,
@@ -38,7 +37,7 @@ class FirstImpressionWidget extends StatelessWidget {
               package: 'dps.training_shared_files', height: 50, width: 50),
           alternateIcon: Image.asset('assets/icons/critical_bleeding_icon.png',
               package: 'dps.training_shared_files', height: 50, width: 50),
-          description: AppLocalizations.of(context)!
+          description: SharedFilesLocalizations.of(context)!
               .firstImpressionRow_firstImpressionfields_bleeding,
           isActive: patientFirstImpression.is_bleeding ||
               patientFirstImpression.is_bleeding_critically,
@@ -49,7 +48,7 @@ class FirstImpressionWidget extends StatelessWidget {
         ),
         FirstImpressionField.character(
           character: 'R',
-          description: AppLocalizations.of(context)!
+          description: SharedFilesLocalizations.of(context)!
               .firstImpressionRow_firstImpressionfields_motionless,
           isActive: patientFirstImpression.is_motionless,
           textColor: Colors.orange[700]!,
@@ -58,7 +57,7 @@ class FirstImpressionWidget extends StatelessWidget {
         ),
         FirstImpressionField.character(
           character: 'Z',
-          description: AppLocalizations.of(context)!
+          description: SharedFilesLocalizations.of(context)!
               .firstImpressionRow_firstImpressionfields_cyanosis,
           isActive: patientFirstImpression.has_cyanosis,
           textColor: Colors.blue[800]!,
