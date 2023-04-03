@@ -1,11 +1,11 @@
 // Flutter imports:
-
-// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 // Project imports:
-import 'package:dps.training_shared_files/l10n/localized_strings.dart';
 import 'package:dps.training_shared_files/models/patient/patient.dart';
 import 'package:dps.training_shared_files/widgets/biometry_widget.dart';
 import 'package:dps.training_shared_files/widgets/first_impression_widget.dart';
@@ -23,80 +23,68 @@ class PatientInformationWidget extends StatefulWidget {
   final Widget? appliedMeasuresWidget;
   final Widget? availableMeasuresWidget;
 
-  PatientInformationWidget(
-      {required this.patient,
+  const PatientInformationWidget(
+      {super.key, required this.patient,
       this.triageChooserWidget,
       this.appliedMeasuresWidget,
       this.availableMeasuresWidget});
 
   @override
-  _PatientInformationWidgetState createState() =>
+  State<PatientInformationWidget> createState() =>
       _PatientInformationWidgetState();
 }
 
 class _PatientInformationWidgetState extends State<PatientInformationWidget> {
-  @override
-  initState() {
-    super.initState();
-    _initializeLocalization();
-  }
-
-  /// this is an simplified version of the implementation used in : https:github.com/jhomlala/catcher/blob/master/lib/core/catcher.dart
-  Future<void> _initializeLocalization() async {
-    LocalizedStrings.buildDefaultGermanStrings();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: CupertinoScrollbar(
           child: ListView(shrinkWrap: false, children: <Widget>[
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(top: 10),
         ),
         LayoutBuilder(builder: (context, constraints) {
-          return Container(
-            child: Stack(
-              alignment: Alignment.bottomLeft,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                        flex: 12,
-                        child: PatientVisualization(
-                            patient: widget.patient,
-                            width: constraints.maxWidth)),
-                    Expanded(flex: 3, child: Container()),
-                    Expanded(
-                        flex: 5,
-                        child: FirstImpressionWidget(
-                          patientFirstImpression:
-                              widget.patient.firstImpression,
-                          width: constraints.maxWidth,
-                        )),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: constraints.maxWidth / 9 * 4,
-                        ),
-                        PatientVisualizationLegend(
+          return Stack(
+            alignment: Alignment.bottomLeft,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                      flex: 12,
+                      child: PatientVisualization(
                           patient: widget.patient,
-                          width: constraints.maxWidth / 4,
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: constraints.maxWidth / 6),
-                  ],
-                ),
-              ],
-            ),
+                          width: constraints.maxWidth)),
+                  Expanded(flex: 3, child: Container()),
+                  Expanded(
+                      flex: 5,
+                      child: FirstImpressionWidget(
+                        patientFirstImpression:
+                            widget.patient.firstImpression,
+                        width: constraints.maxWidth,
+                      )),
+                ],
+              ),
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: constraints.maxWidth / 9 * 4,
+                      ),
+                      PatientVisualizationLegend(
+                        patient: widget.patient,
+                        width: constraints.maxWidth / 4,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: constraints.maxWidth / 6),
+                ],
+              ),
+            ],
           );
         }),
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(top: 10),
         ),
         (widget.appliedMeasuresWidget != null)
@@ -132,11 +120,11 @@ class _PatientInformationWidgetState extends State<PatientInformationWidget> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
-                    LocalizedStrings.phaseInformationWidget_dead_patient,
-                    style: Theme.of(context).textTheme.headline5,
+                    AppLocalizations.of(context)!.phaseInformationWidget_dead_patient,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),
-                Divider()
+                const Divider()
               ],
             ),
           ),

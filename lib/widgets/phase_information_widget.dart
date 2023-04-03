@@ -1,16 +1,17 @@
 // Flutter imports:
-
-// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // Project imports:
 import 'package:dps.training_shared_files/models/patient/patient.dart';
-import '../l10n/localized_strings.dart';
 
 /// Displays the information of the current phase of a patient.
 class PhaseInformation extends StatelessWidget {
   final Patient patient;
-  PhaseInformation({required this.patient});
+
+  const PhaseInformation({super.key, required this.patient});
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +29,12 @@ class PhaseInformation extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildExsangInformation(context),
-                      Padding(padding: EdgeInsets.only(top: 5)),
-                      _buildAirwayInformation(context),
-                      Padding(padding: EdgeInsets.only(top: 5)),
-                      _buildBreathingInformation(context),
-                      Padding(padding: EdgeInsets.only(top: 5)),
+                      _buildXInformation(context),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
+                      _buildAInformation(context),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
+                      _buildBInformation(context),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
                       _buildCirculationInformation(context),
                     ],
                   ),
@@ -46,9 +47,9 @@ class PhaseInformation extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _buildDisabilityInformation(context),
-                      Padding(padding: EdgeInsets.only(top: 5)),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
                       _buildExposureInformation(context),
-                      Padding(padding: EdgeInsets.only(top: 5)),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
                       _buildPsycheInformation(context),
                     ],
                   ),
@@ -58,7 +59,7 @@ class PhaseInformation extends StatelessWidget {
             Padding(
               padding:
                   EdgeInsets.symmetric(horizontal: constraints.maxWidth / 40),
-              child: Divider(color: Colors.black),
+              child: const Divider(color: Colors.black),
             ),
             Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Container(
@@ -69,9 +70,9 @@ class PhaseInformation extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _buildEKGInformation(context),
-                      Padding(padding: EdgeInsets.only(top: 5)),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
                       _buildBloodPressureInformation(context),
-                      Padding(padding: EdgeInsets.only(top: 5)),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
                       _buildSPO2Information(context),
                     ]),
               ),
@@ -83,9 +84,9 @@ class PhaseInformation extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _buildLungsInformation(context),
-                        Padding(padding: EdgeInsets.only(top: 5)),
+                        const Padding(padding: EdgeInsets.only(top: 5)),
                         _buildSPCOInformation(context),
-                        Padding(padding: EdgeInsets.only(top: 5)),
+                        const Padding(padding: EdgeInsets.only(top: 5)),
                         _buildBodyCheckInformation(context),
                       ])),
             ])
@@ -98,67 +99,71 @@ class PhaseInformation extends StatelessWidget {
   Widget _buildInformationTitle(String title) {
     return Text(
       title,
-      style: TextStyle(
+      style: const TextStyle(
           decoration: TextDecoration.underline, fontWeight: FontWeight.bold),
     );
   }
 
   Widget _buildHiddenInformation(BuildContext context) {
     return Text(
-      LocalizedStrings.phaseInformationWidget_hiddenInformation_title,
-      style: TextStyle(color: Colors.redAccent),
+      AppLocalizations.of(context)!
+          .phaseInformationWidget_hiddenInformation_title,
+      style: const TextStyle(color: Colors.redAccent),
     );
   }
 
   Widget _buildNotMeasurableInformation(BuildContext context) {
     return Text(
-      LocalizedStrings.phaseInformationWidget_notMeasurableInformation_title,
-      style: TextStyle(color: Colors.redAccent),
+      AppLocalizations.of(context)!
+          .phaseInformationWidget_notMeasurableInformation_title,
+      style: const TextStyle(color: Colors.redAccent),
     );
   }
 
   Widget _buildNoValueInformation(BuildContext context) {
     return Text(
-      LocalizedStrings.phaseInformationWidget_noValueInformation_title,
-      style: TextStyle(color: Colors.redAccent),
+      AppLocalizations.of(context)!
+          .phaseInformationWidget_noValueInformation_title,
+      style: const TextStyle(color: Colors.redAccent),
     );
   }
 
-  Widget _buildExsangInformation(BuildContext context) {
-    var exsang = patient.currentPhase.standardDiagnosticData.exsang_hemorrhage;
+  Widget _buildXInformation(BuildContext context) {
+    var critical =
+        patient.currentPhase.standardDiagnosticData.exsang_hemorrhage;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(
-            LocalizedStrings.phaseInformationWidget_exsangInformation_title),
-        Text(exsang),
+        _buildInformationTitle(AppLocalizations.of(context)!
+            .phaseInformationWidget_exsangInformation_title),
+        Text(critical),
       ],
     );
   }
 
-  Widget _buildAirwayInformation(BuildContext context) {
+  Widget _buildAInformation(BuildContext context) {
     var airway = patient.currentPhase.standardDiagnosticData.airway;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(
-            LocalizedStrings.phaseInformationWidget_airwayInformation_title),
+        _buildInformationTitle(AppLocalizations.of(context)!
+            .phaseInformationWidget_airwayInformation_title),
         Text(airway),
       ],
     );
   }
 
-  Widget _buildBreathingInformation(BuildContext context) {
+  Widget _buildBInformation(BuildContext context) {
     var breathing = patient.currentPhase.standardDiagnosticData.breathing;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(
-            LocalizedStrings.phaseInformationWidget_breathingInformation_title),
+        _buildInformationTitle(AppLocalizations.of(context)!
+            .phaseInformationWidget_breathingInformation_title),
         Text(breathing.pattern),
         breathing.has_cyanosis
             ? Text(breathing.frequency.toString() +
-                LocalizedStrings
+                AppLocalizations.of(context)!
                     .phaseInformationWidget_breathingInformation_cyanosis)
             : Text(breathing.frequency.toString())
       ],
@@ -170,10 +175,10 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(LocalizedStrings
+        _buildInformationTitle(AppLocalizations.of(context)!
             .phaseInformationWidget_circulationInformation_title),
-        Text(circulation.pulse.toString() + " " + circulation.rhythm),
-        Text(circulation.pulse_place + "; Recap: " + circulation.recap),
+        Text("${circulation.pulse} ${circulation.rhythm}"),
+        Text("${circulation.pulse_place}; Recap: ${circulation.recap}"),
       ],
     );
   }
@@ -183,12 +188,12 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(LocalizedStrings
+        _buildInformationTitle(AppLocalizations.of(context)!
             .phaseInformationWidget_disabilityInformation_title),
-        Text(LocalizedStrings
+        Text(AppLocalizations.of(context)!
                 .phaseInformationWidget_disabilityInformation_pupils +
             disability.pupils),
-        Text(LocalizedStrings
+        Text(AppLocalizations.of(context)!
                 .phaseInformationWidget_disabilityInformation_gcs_title +
             (disability.gcs_eyes +
                     disability.gcs_language +
@@ -199,7 +204,7 @@ class PhaseInformation extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(LocalizedStrings
+                Text(AppLocalizations.of(context)!
                     .phaseInformationWidget_disabilityInformation_gcs_eye),
                 Text(disability.gcs_eyes.toString()),
               ],
@@ -207,7 +212,7 @@ class PhaseInformation extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(LocalizedStrings
+                Text(AppLocalizations.of(context)!
                     .phaseInformationWidget_disabilityInformation_gcs_verbal),
                 Text(disability.gcs_language.toString()),
               ],
@@ -215,7 +220,7 @@ class PhaseInformation extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(LocalizedStrings
+                Text(AppLocalizations.of(context)!
                     .phaseInformationWidget_disabilityInformation_gcs_motor),
                 Text(disability.gcs_motoric_behaviour.toString()),
               ],
@@ -231,11 +236,13 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(
-            LocalizedStrings.phaseInformationWidget_exposureInformation_title),
-        Text(LocalizedStrings.phaseInformationWidget_exposureInformation_pain +
+        _buildInformationTitle(AppLocalizations.of(context)!
+            .phaseInformationWidget_exposureInformation_title),
+        Text(AppLocalizations.of(context)!
+                .phaseInformationWidget_exposureInformation_pain +
             exposure.pain),
-        Text(LocalizedStrings.phaseInformationWidget_exposureInformation_skin +
+        Text(AppLocalizations.of(context)!
+                .phaseInformationWidget_exposureInformation_skin +
             exposure.skin),
       ],
     );
@@ -246,8 +253,8 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(
-            LocalizedStrings.phaseInformationWidget_psycheInformation_title),
+        _buildInformationTitle(AppLocalizations.of(context)!
+            .phaseInformationWidget_psycheInformation_title),
         Text(psyche),
       ],
     );
@@ -258,8 +265,8 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(
-            LocalizedStrings.phaseInformationWidget_ekgInformation_title),
+        _buildInformationTitle(AppLocalizations.of(context)!
+            .phaseInformationWidget_ekgInformation_title),
         _buildFormattedRaisedInformation(context: context, value: ekg)
       ],
     );
@@ -270,7 +277,7 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(LocalizedStrings
+        _buildInformationTitle(AppLocalizations.of(context)!
             .phaseInformationWidget_bloodPressureInformation_title),
         _buildFormattedRaisedInformation(context: context, value: bloodPressure)
       ],
@@ -282,8 +289,8 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(
-            LocalizedStrings.phaseInformationWidget_lungsInformation_title),
+        _buildInformationTitle(AppLocalizations.of(context)!
+            .phaseInformationWidget_lungsInformation_title),
         _buildFormattedRaisedInformation(
             context: context, value: pulmonaryAuscultation)
       ],
@@ -291,25 +298,25 @@ class PhaseInformation extends StatelessWidget {
   }
 
   Widget _buildSPO2Information(BuildContext context) {
-    var spo2 = patient.currentPhase.spo2;
+    var o2Saturation = patient.currentPhase.spo2;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(
-            LocalizedStrings.phaseInformationWidget_spo2Information_title),
-        _buildFormattedRaisedInformation(context: context, value: spo2)
+        _buildInformationTitle(AppLocalizations.of(context)!
+            .phaseInformationWidget_spo2Information_title),
+        _buildFormattedRaisedInformation(context: context, value: o2Saturation)
       ],
     );
   }
 
   Widget _buildSPCOInformation(BuildContext context) {
-    var spco = patient.currentPhase.spco;
+    var coSaturation = patient.currentPhase.spco;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(
-            LocalizedStrings.phaseInformationWidget_spcoInformation_title),
-        _buildFormattedRaisedInformation(context: context, value: spco)
+        _buildInformationTitle(AppLocalizations.of(context)!
+            .phaseInformationWidget_spcoInformation_title),
+        _buildFormattedRaisedInformation(context: context, value: coSaturation)
       ],
     );
   }
@@ -319,8 +326,8 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(
-            LocalizedStrings.phaseInformationWidget_bodyCheckInformation_title),
+        _buildInformationTitle(AppLocalizations.of(context)!
+            .phaseInformationWidget_bodyCheckInformation_title),
         _buildFormattedRaisedInformation(context: context, value: bodyCheck),
       ],
     );

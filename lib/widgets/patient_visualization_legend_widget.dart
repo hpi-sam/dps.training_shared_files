@@ -1,10 +1,10 @@
 // Flutter imports:
-
-// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 // Project imports:
-import 'package:dps.training_shared_files/l10n/localized_strings.dart';
 import 'package:dps.training_shared_files/models/patient/patient.dart';
 
 /// Displays a legend of the icons used for injuries in the patient visualization
@@ -18,11 +18,11 @@ class PatientVisualizationLegend extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final iconSize = Theme.of(context).textTheme.caption!.fontSize! * 1.5;
-    final spaceBetweenIconAndLabel = 8.0;
-    final labelWidth = this.width - iconSize - spaceBetweenIconAndLabel;
-    return Container(
-      width: this.width,
+    final iconSize = Theme.of(context).textTheme.bodySmall!.fontSize! * 1.5;
+    const spaceBetweenIconAndLabel = 8.0;
+    final labelWidth = width - iconSize - spaceBetweenIconAndLabel;
+    return SizedBox(
+      width: width,
       child: Column(
         children: [
           patient.injuries.injuries
@@ -33,18 +33,18 @@ class PatientVisualizationLegend extends StatelessWidget {
                       height: iconSize,
                       width: iconSize),
                   Container(
-                    padding: EdgeInsets.only(left: spaceBetweenIconAndLabel),
+                    padding: const EdgeInsets.only(left: spaceBetweenIconAndLabel),
                     width: labelWidth,
                     child: Text(
-                      LocalizedStrings
+                      AppLocalizations.of(context)!
                           .patientVisualizationLegendWidget_bleeding,
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                       overflow: TextOverflow.ellipsis,
                     ),
                   )
                 ])
               : Container(),
-          SizedBox(height: 3.0),
+          const SizedBox(height: 3.0),
           patient.injuries.injuries.any(
                   (element) => element["injury_type"] == "critical bleeding")
               ? Row(children: [
@@ -53,19 +53,19 @@ class PatientVisualizationLegend extends StatelessWidget {
                       height: iconSize,
                       width: iconSize),
                   Container(
-                    padding: EdgeInsets.only(left: spaceBetweenIconAndLabel),
+                    padding: const EdgeInsets.only(left: spaceBetweenIconAndLabel),
                     width: labelWidth,
                     child: Text(
-                      LocalizedStrings
+                      AppLocalizations.of(context)!
                           .patientVisualizationLegendWidget_bleedingSplattering,
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                     ),
                   )
                 ])
               : Container(),
-          SizedBox(height: 3.0),
+          const SizedBox(height: 3.0),
           patient.injuries.injuries
                   .any((element) => element["injury_type"] == "fracture")
               ? Row(children: [
@@ -74,12 +74,12 @@ class PatientVisualizationLegend extends StatelessWidget {
                       height: iconSize,
                       width: iconSize),
                   Container(
-                    padding: EdgeInsets.only(left: spaceBetweenIconAndLabel),
+                    padding: const EdgeInsets.only(left: spaceBetweenIconAndLabel),
                     width: labelWidth,
                     child: Text(
-                      LocalizedStrings
+                      AppLocalizations.of(context)!
                           .patientVisualizationLegendWidget_fracture,
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                       overflow: TextOverflow.ellipsis,
                     ),
                   )
