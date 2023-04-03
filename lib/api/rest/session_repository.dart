@@ -51,7 +51,7 @@ class SessionRepository {
   ///
   /// The function can throw an [DioException] if the request fails.
   Future<RoomStateEnum> roomState({required int roomId}) async {
-    final Uri uri = roomStateUri(roomId: roomId);
+    final Uri uri = getRoomStateAndTimeUri(roomId: roomId);
 
     final DpsResponse response = await client.get(uri: uri);
     final String state = response.data!['state'];

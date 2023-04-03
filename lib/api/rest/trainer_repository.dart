@@ -26,9 +26,7 @@ class TrainerRepository {
   /// TODO add description
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<SimplifiedPatientList> getPatientList({
-    required int roomId,
-  }) async {
+  Future<SimplifiedPatientList> getPatientList({required int roomId}) async {
     final Uri uri = getPatientListUri(roomId: roomId);
 
     final DpsResponse response = await client.get(uri: uri);
@@ -39,8 +37,8 @@ class TrainerRepository {
   /// Pauses the current room.
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> pauseRoom() async {
-    final Uri uri = pauseRoomUri();
+  Future<void> pauseRoom({required int roomId}) async {
+    final Uri uri = pauseRoomUri(roomId: roomId);
 
     await client.get(uri: uri);
   }
@@ -48,8 +46,8 @@ class TrainerRepository {
   /// Resumes the current room;
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> resumeRoom() async {
-    final Uri uri = resumeRoomUri();
+  Future<void> resumeRoom({required int roomId}) async {
+    final Uri uri = resumeRoomUri(roomId: roomId);
 
     await client.get(uri: uri);
   }
@@ -67,8 +65,8 @@ class TrainerRepository {
   /// Finish the current room.
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> finishRoom() async {
-    final Uri uri = finishRoomUri();
+  Future<void> finishRoom({required int roomId}) async {
+    final Uri uri = finishRoomUri(roomId: roomId);
 
     await client.get(uri: uri);
   }
@@ -76,8 +74,8 @@ class TrainerRepository {
   /// Change the phase of the current room.
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> changePhase() async {
-    final Uri uri = changePhaseUri();
+  Future<void> performPhaseChange({required int roomId}) async {
+    final Uri uri = performPhaseChangeUri(roomId: roomId);
 
     await client.get(uri: uri);
   }
@@ -123,8 +121,8 @@ class TrainerRepository {
   /// Returns the next phase change in seconds.
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<int> nextPhaseChange() async {
-    final Uri uri = nextPhaseChangeUri();
+  Future<int> getPhaseChangeTime({required int roomId}) async {
+    final Uri uri = getPhaseChangeTimeUri(roomId: roomId);
 
     final DpsResponse response = await client.get(uri: uri);
 
@@ -134,16 +132,17 @@ class TrainerRepository {
   /// Modifies when the next phase change will be executed in seconds.
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<int> modifyPhaseChange({required int seconds}) async {
-    final Uri uri = modifyPhaseChangeUri();
+  Future<int> modifyPhaseChangeTime({
+    required int roomId,
+    required int seconds,
+  }) async {
+    final Uri uri = modifyPhaseChangeTimeUri(roomId: roomId);
+
     final Map<String, dynamic> json = {
       'seconds': seconds,
     };
 
-    final DpsResponse response = await client.post(
-      uri: uri,
-      data: json,
-    );
+    final DpsResponse response = await client.post(uri: uri, data: json);
 
     return response.data!['next_phase_change'];
   }
@@ -174,12 +173,12 @@ class TrainerRepository {
   ///
   /// The function can throw an [DioException] if the request fails.
   Future<void> addPatientTrainer({
-    required String dpsCode,
     required int roomId,
+    required String dpsCode,
   }) async {
     final Uri uri = addPatientTrainerUri(
-      dpsCode: dpsCode,
       roomId: roomId,
+      dpsCode: dpsCode,
     );
 
     await client.get(uri: uri);
@@ -188,8 +187,14 @@ class TrainerRepository {
   /// TODO add description
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> checkoutPatient({required String dpsCode}) async {
-    final Uri uri = checkoutPatientUri(dpsCode: dpsCode);
+  Future<void> checkoutPatient({
+    required int roomId,
+    required String dpsCode,
+  }) async {
+    final Uri uri = checkoutPatientUri(
+      roomId: roomId,
+      dpsCode: dpsCode,
+    );
 
     await client.get(uri: uri);
   }
@@ -197,11 +202,12 @@ class TrainerRepository {
   /// TODO add description
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<void> addEvent({
+  Future<void> addLogEvent({
+    required int roomId,
     required String type,
     String? details,
   }) async {
-    final Uri uri = addEventUri();
+    final Uri uri = addLogEventUri(roomId: roomId);
     final Map<String, dynamic> json = {
       'type': type,
       if (details != null) 'details': details,
@@ -240,8 +246,8 @@ class TrainerRepository {
   /// TODO add description
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<Room> getActiveRoom() async {
-    final Uri uri = getActiveRoomUri();
+  Future<Room> getOwnRooms() async {
+    final Uri uri = getOwnRoomsUri();
 
     final DpsResponse response = await client.get(uri: uri);
 
