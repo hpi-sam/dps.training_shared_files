@@ -2,17 +2,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-// Package imports:
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // Project imports:
+import 'package:dps.training_shared_files/l10n/shared_files_localizations.dart';
 import 'package:dps.training_shared_files/models/patient/patient.dart';
 import 'package:dps.training_shared_files/widgets/biometry_widget.dart';
 import 'package:dps.training_shared_files/widgets/first_impression_widget.dart';
 import 'package:dps.training_shared_files/widgets/patient_visualization_legend_widget.dart';
 import 'package:dps.training_shared_files/widgets/patient_visualization_widget.dart';
 import 'package:dps.training_shared_files/widgets/phase_information_widget.dart';
-import 'general_information_widget.dart';
+import 'package:dps.training_shared_files/widgets/general_information_widget.dart';
 
 /// Displays the patient information for the given [patient]. This always includes
 /// visualization and static and dynamic patient data. It can also optionally include
@@ -24,7 +23,8 @@ class PatientInformationWidget extends StatefulWidget {
   final Widget? availableMeasuresWidget;
 
   const PatientInformationWidget(
-      {super.key, required this.patient,
+      {super.key,
+      required this.patient,
       this.triageChooserWidget,
       this.appliedMeasuresWidget,
       this.availableMeasuresWidget});
@@ -35,7 +35,6 @@ class PatientInformationWidget extends StatefulWidget {
 }
 
 class _PatientInformationWidgetState extends State<PatientInformationWidget> {
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -59,8 +58,7 @@ class _PatientInformationWidgetState extends State<PatientInformationWidget> {
                   Expanded(
                       flex: 5,
                       child: FirstImpressionWidget(
-                        patientFirstImpression:
-                            widget.patient.firstImpression,
+                        patientFirstImpression: widget.patient.firstImpression,
                         width: constraints.maxWidth,
                       )),
                 ],
@@ -120,7 +118,8 @@ class _PatientInformationWidgetState extends State<PatientInformationWidget> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
-                    AppLocalizations.of(context)!.phaseInformationWidget_dead_patient,
+                    SharedFilesLocalizations.of(context)!
+                        .phaseInformationWidget_dead_patient,
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),

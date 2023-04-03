@@ -1,5 +1,5 @@
 arb-dir: lib/l10n
-template-arb-file: app_de.arb
-output-localization-file: shared_files_localizations.dart
+template-arb-file: shared_files_de.arb
 output-class: SharedFilesLocalizations
+output-localization-file: shared_files_localizations.dart
 synthetic-package: false

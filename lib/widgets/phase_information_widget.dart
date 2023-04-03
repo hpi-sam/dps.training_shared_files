@@ -1,10 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 // Project imports:
+import 'package:dps.training_shared_files/l10n/shared_files_localizations.dart';
 import 'package:dps.training_shared_files/models/patient/patient.dart';
 
 /// Displays the information of the current phase of a patient.
@@ -106,7 +104,7 @@ class PhaseInformation extends StatelessWidget {
 
   Widget _buildHiddenInformation(BuildContext context) {
     return Text(
-      AppLocalizations.of(context)!
+      SharedFilesLocalizations.of(context)!
           .phaseInformationWidget_hiddenInformation_title,
       style: const TextStyle(color: Colors.redAccent),
     );
@@ -114,7 +112,7 @@ class PhaseInformation extends StatelessWidget {
 
   Widget _buildNotMeasurableInformation(BuildContext context) {
     return Text(
-      AppLocalizations.of(context)!
+      SharedFilesLocalizations.of(context)!
           .phaseInformationWidget_notMeasurableInformation_title,
       style: const TextStyle(color: Colors.redAccent),
     );
@@ -122,7 +120,7 @@ class PhaseInformation extends StatelessWidget {
 
   Widget _buildNoValueInformation(BuildContext context) {
     return Text(
-      AppLocalizations.of(context)!
+      SharedFilesLocalizations.of(context)!
           .phaseInformationWidget_noValueInformation_title,
       style: const TextStyle(color: Colors.redAccent),
     );
@@ -134,7 +132,7 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(AppLocalizations.of(context)!
+        _buildInformationTitle(SharedFilesLocalizations.of(context)!
             .phaseInformationWidget_exsangInformation_title),
         Text(critical),
       ],
@@ -146,7 +144,7 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(AppLocalizations.of(context)!
+        _buildInformationTitle(SharedFilesLocalizations.of(context)!
             .phaseInformationWidget_airwayInformation_title),
         Text(airway),
       ],
@@ -158,12 +156,12 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(AppLocalizations.of(context)!
+        _buildInformationTitle(SharedFilesLocalizations.of(context)!
             .phaseInformationWidget_breathingInformation_title),
         Text(breathing.pattern),
         breathing.has_cyanosis
             ? Text(breathing.frequency.toString() +
-                AppLocalizations.of(context)!
+                SharedFilesLocalizations.of(context)!
                     .phaseInformationWidget_breathingInformation_cyanosis)
             : Text(breathing.frequency.toString())
       ],
@@ -175,7 +173,7 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(AppLocalizations.of(context)!
+        _buildInformationTitle(SharedFilesLocalizations.of(context)!
             .phaseInformationWidget_circulationInformation_title),
         Text("${circulation.pulse} ${circulation.rhythm}"),
         Text("${circulation.pulse_place}; Recap: ${circulation.recap}"),
@@ -188,12 +186,12 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(AppLocalizations.of(context)!
+        _buildInformationTitle(SharedFilesLocalizations.of(context)!
             .phaseInformationWidget_disabilityInformation_title),
-        Text(AppLocalizations.of(context)!
+        Text(SharedFilesLocalizations.of(context)!
                 .phaseInformationWidget_disabilityInformation_pupils +
             disability.pupils),
-        Text(AppLocalizations.of(context)!
+        Text(SharedFilesLocalizations.of(context)!
                 .phaseInformationWidget_disabilityInformation_gcs_title +
             (disability.gcs_eyes +
                     disability.gcs_language +
@@ -204,7 +202,7 @@ class PhaseInformation extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(AppLocalizations.of(context)!
+                Text(SharedFilesLocalizations.of(context)!
                     .phaseInformationWidget_disabilityInformation_gcs_eye),
                 Text(disability.gcs_eyes.toString()),
               ],
@@ -212,7 +210,7 @@ class PhaseInformation extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(AppLocalizations.of(context)!
+                Text(SharedFilesLocalizations.of(context)!
                     .phaseInformationWidget_disabilityInformation_gcs_verbal),
                 Text(disability.gcs_language.toString()),
               ],
@@ -220,7 +218,7 @@ class PhaseInformation extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(AppLocalizations.of(context)!
+                Text(SharedFilesLocalizations.of(context)!
                     .phaseInformationWidget_disabilityInformation_gcs_motor),
                 Text(disability.gcs_motoric_behaviour.toString()),
               ],
@@ -236,12 +234,12 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(AppLocalizations.of(context)!
+        _buildInformationTitle(SharedFilesLocalizations.of(context)!
             .phaseInformationWidget_exposureInformation_title),
-        Text(AppLocalizations.of(context)!
+        Text(SharedFilesLocalizations.of(context)!
                 .phaseInformationWidget_exposureInformation_pain +
             exposure.pain),
-        Text(AppLocalizations.of(context)!
+        Text(SharedFilesLocalizations.of(context)!
                 .phaseInformationWidget_exposureInformation_skin +
             exposure.skin),
       ],
@@ -253,7 +251,7 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(AppLocalizations.of(context)!
+        _buildInformationTitle(SharedFilesLocalizations.of(context)!
             .phaseInformationWidget_psycheInformation_title),
         Text(psyche),
       ],
@@ -265,7 +263,7 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(AppLocalizations.of(context)!
+        _buildInformationTitle(SharedFilesLocalizations.of(context)!
             .phaseInformationWidget_ekgInformation_title),
         _buildFormattedRaisedInformation(context: context, value: ekg)
       ],
@@ -277,7 +275,7 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(AppLocalizations.of(context)!
+        _buildInformationTitle(SharedFilesLocalizations.of(context)!
             .phaseInformationWidget_bloodPressureInformation_title),
         _buildFormattedRaisedInformation(context: context, value: bloodPressure)
       ],
@@ -289,7 +287,7 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(AppLocalizations.of(context)!
+        _buildInformationTitle(SharedFilesLocalizations.of(context)!
             .phaseInformationWidget_lungsInformation_title),
         _buildFormattedRaisedInformation(
             context: context, value: pulmonaryAuscultation)
@@ -302,7 +300,7 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(AppLocalizations.of(context)!
+        _buildInformationTitle(SharedFilesLocalizations.of(context)!
             .phaseInformationWidget_spo2Information_title),
         _buildFormattedRaisedInformation(context: context, value: o2Saturation)
       ],
@@ -314,7 +312,7 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(AppLocalizations.of(context)!
+        _buildInformationTitle(SharedFilesLocalizations.of(context)!
             .phaseInformationWidget_spcoInformation_title),
         _buildFormattedRaisedInformation(context: context, value: coSaturation)
       ],
@@ -326,7 +324,7 @@ class PhaseInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInformationTitle(AppLocalizations.of(context)!
+        _buildInformationTitle(SharedFilesLocalizations.of(context)!
             .phaseInformationWidget_bodyCheckInformation_title),
         _buildFormattedRaisedInformation(context: context, value: bodyCheck),
       ],
