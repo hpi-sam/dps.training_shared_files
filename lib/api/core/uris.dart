@@ -75,7 +75,7 @@ Uri getOwnRoomsUri() =>
     Uri(path: '/rooms/own/');
 
 Uri getPatientQrCodeUri() =>
-    Uri(path: '/static/patients.pdf');
+    Uri(path: '/static/patients_a4.pdf');
 
 Uri webSocketUri({required String invitationCode}) => baseUri.replace(
       scheme: 'ws',
