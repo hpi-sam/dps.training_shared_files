@@ -1,10 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 // Project imports:
+import 'package:dps.training_shared_files/l10n/shared_files_localizations.dart';
 import 'package:dps.training_shared_files/models/patient/patient.dart';
 
 /// Displays a legend of the icons used for injuries in the patient visualization
@@ -33,10 +31,11 @@ class PatientVisualizationLegend extends StatelessWidget {
                       height: iconSize,
                       width: iconSize),
                   Container(
-                    padding: const EdgeInsets.only(left: spaceBetweenIconAndLabel),
+                    padding:
+                        const EdgeInsets.only(left: spaceBetweenIconAndLabel),
                     width: labelWidth,
                     child: Text(
-                      AppLocalizations.of(context)!
+                      SharedFilesLocalizations.of(context)!
                           .patientVisualizationLegendWidget_bleeding,
                       style: Theme.of(context).textTheme.bodySmall,
                       overflow: TextOverflow.ellipsis,
@@ -53,10 +52,11 @@ class PatientVisualizationLegend extends StatelessWidget {
                       height: iconSize,
                       width: iconSize),
                   Container(
-                    padding: const EdgeInsets.only(left: spaceBetweenIconAndLabel),
+                    padding:
+                        const EdgeInsets.only(left: spaceBetweenIconAndLabel),
                     width: labelWidth,
                     child: Text(
-                      AppLocalizations.of(context)!
+                      SharedFilesLocalizations.of(context)!
                           .patientVisualizationLegendWidget_bleedingSplattering,
                       style: Theme.of(context).textTheme.bodySmall,
                       overflow: TextOverflow.ellipsis,
@@ -74,10 +74,11 @@ class PatientVisualizationLegend extends StatelessWidget {
                       height: iconSize,
                       width: iconSize),
                   Container(
-                    padding: const EdgeInsets.only(left: spaceBetweenIconAndLabel),
+                    padding:
+                        const EdgeInsets.only(left: spaceBetweenIconAndLabel),
                     width: labelWidth,
                     child: Text(
-                      AppLocalizations.of(context)!
+                      SharedFilesLocalizations.of(context)!
                           .patientVisualizationLegendWidget_fracture,
                       style: Theme.of(context).textTheme.bodySmall,
                       overflow: TextOverflow.ellipsis,

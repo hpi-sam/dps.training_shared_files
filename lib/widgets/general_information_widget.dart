@@ -1,10 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 // Project imports:
+import 'package:dps.training_shared_files/l10n/shared_files_localizations.dart';
 import 'package:dps.training_shared_files/models/patient/patient.dart';
 
 /// Builds a widget displaying general patient data (injury and situation of discovery)
@@ -16,14 +14,14 @@ class GeneralInformationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppLocalizations localization = AppLocalizations.of(context)!;
+    SharedFilesLocalizations localization = SharedFilesLocalizations.of(context)!;
     final data = _getGeneralInformation(localization);
 
     return Card(
       child: Column(
         children: [
           Text(
-            AppLocalizations.of(context)!.generalInformationWidget_title,
+            SharedFilesLocalizations.of(context)!.generalInformationWidget_title,
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           Padding(
@@ -61,7 +59,8 @@ class GeneralInformationWidget extends StatelessWidget {
         ));
   }
 
-  Map<String, String> _getGeneralInformation(AppLocalizations localization) {
+  Map<String, String> _getGeneralInformation(
+      SharedFilesLocalizations localization) {
     return {
       localization.generalInformationWidget_injuries_title:
           patient.injuryDescription,

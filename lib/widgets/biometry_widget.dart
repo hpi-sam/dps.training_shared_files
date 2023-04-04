@@ -1,10 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 // Project imports:
+import 'package:dps.training_shared_files/l10n/shared_files_localizations.dart';
 import 'package:dps.training_shared_files/models/patient/patient.dart';
 
 /// Builds a description of the biometry data of a patient.
@@ -15,7 +13,7 @@ class Biometry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppLocalizations localization = AppLocalizations.of(context)!;
+    SharedFilesLocalizations localization = SharedFilesLocalizations.of(context)!;
     Map<String, String> biometryData = _getPatientBiometry(localization);
 
     return Card(
@@ -63,7 +61,8 @@ class Biometry extends StatelessWidget {
 
   /// Parses the raw biometry data of the patient to a different structure for
   /// better displaying purposes.
-  Map<String, String> _getPatientBiometry(AppLocalizations localization) {
+  Map<String, String> _getPatientBiometry(
+      SharedFilesLocalizations localization) {
     return {
       localization.biometryWidget_name: patient.name,
       localization.biometryWidget_address: patient.address,
@@ -76,15 +75,15 @@ class Biometry extends StatelessWidget {
   }
 
   String _formatGender(
-      String unformattedGender, AppLocalizations localization) {
+      String unformattedGender, SharedFilesLocalizations localization) {
     if (unformattedGender == 'W') return localization.female;
     if (unformattedGender == 'M') return localization.male;
     return localization.diverse;
   }
 
   /// Returns the [unformattedBirthDate] and [age] in the localized date format
-  String _formatBirthDate(
-      String unformattedBirthDate, int age, AppLocalizations localization) {
+  String _formatBirthDate(String unformattedBirthDate, int age,
+      SharedFilesLocalizations localization) {
     int day = int.parse(unformattedBirthDate.split('.')[0]);
     int month = int.parse(unformattedBirthDate.split('.')[1]);
 
