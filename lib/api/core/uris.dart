@@ -36,6 +36,9 @@ Uri startRoomUri({required int roomId}) => Uri(path: '/rooms/$roomId/start/');
 
 Uri finishRoomUri({required int roomId}) => Uri(path: '/rooms/$roomId/finish/');
 
+Uri getRoomConfigUri({required int roomId}) =>
+    Uri(path: '/rooms/$roomId/configuration/');
+
 Uri changeRoomConfigUri({required int roomId}) =>
     Uri(path: '/rooms/$roomId/configuration/modify/');
 

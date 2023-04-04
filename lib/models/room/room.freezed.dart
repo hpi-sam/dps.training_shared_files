@@ -14,58 +14,38 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Room _$RoomFromJson(Map<String, dynamic> json) {
+  return _Room.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Room {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(int id, String invitationCode, int? defaultPhaseLength,
-            int? waitingTimePatient, int? expiringTimePatient)
-        $default, {
-    required TResult Function() noneActive,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int id, String invitationCode, int? defaultPhaseLength,
-            int? waitingTimePatient, int? expiringTimePatient)?
-        $default, {
-    TResult? Function()? noneActive,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int id, String invitationCode, int? defaultPhaseLength,
-            int? waitingTimePatient, int? expiringTimePatient)?
-        $default, {
-    TResult Function()? noneActive,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Room value) $default, {
-    required TResult Function(_RoomNoneActive value) noneActive,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_Room value)? $default, {
-    TResult? Function(_RoomNoneActive value)? noneActive,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_Room value)? $default, {
-    TResult Function(_RoomNoneActive value)? noneActive,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'invitation_code')
+  String get invitationCode => throw _privateConstructorUsedError;
+  @JsonKey(name: 'default_phase_length')
+  int? get defaultPhaseLength => throw _privateConstructorUsedError;
+  @JsonKey(name: 'waiting_time_patient')
+  int? get waitingTimePatient => throw _privateConstructorUsedError;
+  @JsonKey(name: 'expiring_time_patient')
+  int? get expiringTimePatient => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $RoomCopyWith<Room> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RoomCopyWith<$Res> {
   factory $RoomCopyWith(Room value, $Res Function(Room) then) =
       _$RoomCopyWithImpl<$Res, Room>;
+  @useResult
+  $Res call(
+      {int id,
+      @JsonKey(name: 'invitation_code') String invitationCode,
+      @JsonKey(name: 'default_phase_length') int? defaultPhaseLength,
+      @JsonKey(name: 'waiting_time_patient') int? waitingTimePatient,
+      @JsonKey(name: 'expiring_time_patient') int? expiringTimePatient});
 }
 
 /// @nodoc
@@ -77,19 +57,53 @@ class _$RoomCopyWithImpl<$Res, $Val extends Room>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? invitationCode = null,
+    Object? defaultPhaseLength = freezed,
+    Object? waitingTimePatient = freezed,
+    Object? expiringTimePatient = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      invitationCode: null == invitationCode
+          ? _value.invitationCode
+          : invitationCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      defaultPhaseLength: freezed == defaultPhaseLength
+          ? _value.defaultPhaseLength
+          : defaultPhaseLength // ignore: cast_nullable_to_non_nullable
+              as int?,
+      waitingTimePatient: freezed == waitingTimePatient
+          ? _value.waitingTimePatient
+          : waitingTimePatient // ignore: cast_nullable_to_non_nullable
+              as int?,
+      expiringTimePatient: freezed == expiringTimePatient
+          ? _value.expiringTimePatient
+          : expiringTimePatient // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_RoomCopyWith<$Res> {
+abstract class _$$_RoomCopyWith<$Res> implements $RoomCopyWith<$Res> {
   factory _$$_RoomCopyWith(_$_Room value, $Res Function(_$_Room) then) =
       __$$_RoomCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call(
       {int id,
-      String invitationCode,
-      int? defaultPhaseLength,
-      int? waitingTimePatient,
-      int? expiringTimePatient});
+      @JsonKey(name: 'invitation_code') String invitationCode,
+      @JsonKey(name: 'default_phase_length') int? defaultPhaseLength,
+      @JsonKey(name: 'waiting_time_patient') int? waitingTimePatient,
+      @JsonKey(name: 'expiring_time_patient') int? expiringTimePatient});
 }
 
 /// @nodoc
@@ -133,24 +147,30 @@ class __$$_RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res, _$_Room>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Room implements _Room {
   const _$_Room(
       {required this.id,
-      required this.invitationCode,
-      this.defaultPhaseLength,
-      this.waitingTimePatient,
-      this.expiringTimePatient});
+      @JsonKey(name: 'invitation_code') required this.invitationCode,
+      @JsonKey(name: 'default_phase_length') this.defaultPhaseLength,
+      @JsonKey(name: 'waiting_time_patient') this.waitingTimePatient,
+      @JsonKey(name: 'expiring_time_patient') this.expiringTimePatient});
+
+  factory _$_Room.fromJson(Map<String, dynamic> json) => _$$_RoomFromJson(json);
 
   @override
   final int id;
   @override
+  @JsonKey(name: 'invitation_code')
   final String invitationCode;
   @override
+  @JsonKey(name: 'default_phase_length')
   final int? defaultPhaseLength;
   @override
+  @JsonKey(name: 'waiting_time_patient')
   final int? waitingTimePatient;
   @override
+  @JsonKey(name: 'expiring_time_patient')
   final int? expiringTimePatient;
 
   @override
@@ -174,6 +194,7 @@ class _$_Room implements _Room {
                 other.expiringTimePatient == expiringTimePatient));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, invitationCode,
       defaultPhaseLength, waitingTimePatient, expiringTimePatient);
@@ -185,198 +206,42 @@ class _$_Room implements _Room {
       __$$_RoomCopyWithImpl<_$_Room>(this, _$identity);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(int id, String invitationCode, int? defaultPhaseLength,
-            int? waitingTimePatient, int? expiringTimePatient)
-        $default, {
-    required TResult Function() noneActive,
-  }) {
-    return $default(id, invitationCode, defaultPhaseLength, waitingTimePatient,
-        expiringTimePatient);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int id, String invitationCode, int? defaultPhaseLength,
-            int? waitingTimePatient, int? expiringTimePatient)?
-        $default, {
-    TResult? Function()? noneActive,
-  }) {
-    return $default?.call(id, invitationCode, defaultPhaseLength,
-        waitingTimePatient, expiringTimePatient);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int id, String invitationCode, int? defaultPhaseLength,
-            int? waitingTimePatient, int? expiringTimePatient)?
-        $default, {
-    TResult Function()? noneActive,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(id, invitationCode, defaultPhaseLength,
-          waitingTimePatient, expiringTimePatient);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Room value) $default, {
-    required TResult Function(_RoomNoneActive value) noneActive,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_Room value)? $default, {
-    TResult? Function(_RoomNoneActive value)? noneActive,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_Room value)? $default, {
-    TResult Function(_RoomNoneActive value)? noneActive,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
+  Map<String, dynamic> toJson() {
+    return _$$_RoomToJson(
+      this,
+    );
   }
 }
 
 abstract class _Room implements Room {
   const factory _Room(
       {required final int id,
-      required final String invitationCode,
-      final int? defaultPhaseLength,
-      final int? waitingTimePatient,
-      final int? expiringTimePatient}) = _$_Room;
+      @JsonKey(name: 'invitation_code')
+          required final String invitationCode,
+      @JsonKey(name: 'default_phase_length')
+          final int? defaultPhaseLength,
+      @JsonKey(name: 'waiting_time_patient')
+          final int? waitingTimePatient,
+      @JsonKey(name: 'expiring_time_patient')
+          final int? expiringTimePatient}) = _$_Room;
 
+  factory _Room.fromJson(Map<String, dynamic> json) = _$_Room.fromJson;
+
+  @override
   int get id;
+  @override
+  @JsonKey(name: 'invitation_code')
   String get invitationCode;
+  @override
+  @JsonKey(name: 'default_phase_length')
   int? get defaultPhaseLength;
+  @override
+  @JsonKey(name: 'waiting_time_patient')
   int? get waitingTimePatient;
+  @override
+  @JsonKey(name: 'expiring_time_patient')
   int? get expiringTimePatient;
+  @override
   @JsonKey(ignore: true)
   _$$_RoomCopyWith<_$_Room> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_RoomNoneActiveCopyWith<$Res> {
-  factory _$$_RoomNoneActiveCopyWith(
-          _$_RoomNoneActive value, $Res Function(_$_RoomNoneActive) then) =
-      __$$_RoomNoneActiveCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_RoomNoneActiveCopyWithImpl<$Res>
-    extends _$RoomCopyWithImpl<$Res, _$_RoomNoneActive>
-    implements _$$_RoomNoneActiveCopyWith<$Res> {
-  __$$_RoomNoneActiveCopyWithImpl(
-      _$_RoomNoneActive _value, $Res Function(_$_RoomNoneActive) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_RoomNoneActive implements _RoomNoneActive {
-  const _$_RoomNoneActive();
-
-  @override
-  String toString() {
-    return 'Room.noneActive()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_RoomNoneActive);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(int id, String invitationCode, int? defaultPhaseLength,
-            int? waitingTimePatient, int? expiringTimePatient)
-        $default, {
-    required TResult Function() noneActive,
-  }) {
-    return noneActive();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int id, String invitationCode, int? defaultPhaseLength,
-            int? waitingTimePatient, int? expiringTimePatient)?
-        $default, {
-    TResult? Function()? noneActive,
-  }) {
-    return noneActive?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int id, String invitationCode, int? defaultPhaseLength,
-            int? waitingTimePatient, int? expiringTimePatient)?
-        $default, {
-    TResult Function()? noneActive,
-    required TResult orElse(),
-  }) {
-    if (noneActive != null) {
-      return noneActive();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Room value) $default, {
-    required TResult Function(_RoomNoneActive value) noneActive,
-  }) {
-    return noneActive(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_Room value)? $default, {
-    TResult? Function(_RoomNoneActive value)? noneActive,
-  }) {
-    return noneActive?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_Room value)? $default, {
-    TResult Function(_RoomNoneActive value)? noneActive,
-    required TResult orElse(),
-  }) {
-    if (noneActive != null) {
-      return noneActive(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RoomNoneActive implements Room {
-  const factory _RoomNoneActive() = _$_RoomNoneActive;
 }

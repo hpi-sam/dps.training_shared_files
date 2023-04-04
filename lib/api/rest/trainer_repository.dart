@@ -4,6 +4,8 @@ import 'package:dps.training_shared_files/api/rest/dps_http_client.dart';
 import 'package:dps.training_shared_files/models/exercise_log/exercise_log.dart';
 import 'package:dps.training_shared_files/models/players/players.dart';
 import 'package:dps.training_shared_files/models/room/room.dart';
+import 'package:dps.training_shared_files/models/room_config/room_config.dart';
+import 'package:dps.training_shared_files/models/rooms/own_rooms.dart';
 import 'package:dps.training_shared_files/models/simplified_patients/simplified_patients.dart';
 import 'package:dps.training_shared_files/models/triage/triage_accuracy.dart';
 
@@ -147,6 +149,17 @@ class TrainerRepository {
     return response.data!['next_phase_change'];
   }
 
+  /// Acquires the room configuration for the given [roomId] and returns it in
+  /// the form of a [Map<String, int>] object.
+  ///
+  /// The function can throw an [DioException] if the request fails.
+  Future<RoomConfig> getRoomConfig({required int roomId}) async {
+    final Uri uri = getRoomConfigUri(roomId: roomId);
+    var response = await client.get(uri: uri);
+
+    return RoomConfig.fromJson(response.data!);
+  }
+
   /// Changes the room configuration with the given [room] configuration.
   ///
   /// The function can throw an [DioException] if the request fails.
@@ -246,11 +259,11 @@ class TrainerRepository {
   /// TODO add description
   ///
   /// The function can throw an [DioException] if the request fails.
-  Future<Room> getOwnRooms() async {
+  Future<OwnRoomList> getOwnRooms() async {
     final Uri uri = getOwnRoomsUri();
 
     final DpsResponse response = await client.get(uri: uri);
 
-    return Room.fromJson(response.data!);
+    return OwnRoomList.fromJson(response.data!);
   }
 }
