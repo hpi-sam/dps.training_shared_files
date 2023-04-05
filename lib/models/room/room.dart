@@ -2,6 +2,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'room.freezed.dart';
+part 'room.g.dart';
 
 enum RoomStateEnum {
   configuration,
@@ -14,25 +15,16 @@ enum RoomStateEnum {
 class Room with _$Room {
   const factory Room({
     required int id,
+    @JsonKey(name: 'invitation_code')
     required String invitationCode,
+    @JsonKey(name: 'default_phase_length')
     int? defaultPhaseLength,
+    @JsonKey(name: 'waiting_time_patient')
     int? waitingTimePatient,
+    @JsonKey(name: 'expiring_time_patient')
     int? expiringTimePatient,
   }) = _Room;
 
-  const factory Room.noneActive() = _RoomNoneActive;
-
-  factory Room.fromJson(Map<String, dynamic> json) {
-    if (json.containsKey('is_a_room_active') && !json['is_a_room_active']) {
-      return const Room.noneActive();
-    }
-
-    return Room(
-      id: json['id'],
-      invitationCode: json['invitation_code'],
-      defaultPhaseLength: json['default_phase_length'],
-      waitingTimePatient: json['waiting_time_patient'],
-      expiringTimePatient: json['expiring_time_patient'],
-    );
-  }
+  factory Room.fromJson(Map<String, dynamic> json) =>
+      _$RoomFromJson(json);
 }

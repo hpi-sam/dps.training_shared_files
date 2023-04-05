@@ -11,94 +11,14 @@ Uri baseUri = Uri.parse(servers[selectedServerKey]!);
 // Following configure all possible routes
 // according to backend specifications
 
-Uri uncoverPatientUri({
-  required String dpsCode,
-  required int helperNr,
-}) =>
-    Uri(path: '/patients/$dpsCode/uncover/helper/$helperNr/');
+Uri playersSignUpUri() =>
+    Uri(path: '/players/signup/');
 
-Uri patientDataUri({
-  required String dpsCode,
-  required int helperNr,
-}) =>
-    Uri(path: '/patients/$dpsCode/helper/$helperNr/');
+Uri trainerSignUpUri() =>
+    Uri(path: '/trainers/signup/');
 
-Uri foreignInventoryDataUri({required String entityId}) =>
-    Uri(path: '/entities/$entityId/inventory/');
-
-Uri ownInventoryDataUri({required int helperNr}) =>
-    Uri(path: '/own/inventory/helper/$helperNr/');
-
-Uri inventoryExchangeUri({
-  required String entityId,
-  required int helperNr,
-}) =>
-    Uri(
-      path: '/entities/$entityId/inventory/exchange/helper/$helperNr/',
-    );
-
-Uri availableMeasuresUri({
-  required String dpsCode,
-  required int helperNr,
-}) =>
-    Uri(
-      path: '/patients/$dpsCode/measures/available/helper/$helperNr/',
-    );
-
-Uri startNewMeasureUri({
-  required String dpsCode,
-  required int helperNr,
-}) =>
-    Uri(
-      path: '/patients/$dpsCode/measures/start/helper/$helperNr/',
-    );
-
-Uri cancelCurrentMeasureUri({required int helperNr}) =>
-    Uri(path: '/own/currentmeasure/cancel/helper/$helperNr/');
-
-Uri appliedMeasuresUri({required String dpsCode}) =>
-    Uri(path: '/patients/$dpsCode/measures/applied/');
-
-Uri removeAppliedMeasureUri({
-  required String dpsCode,
-  required int helperNr,
-  required int measureId,
-}) =>
-    Uri(
-      path: '/patients/$dpsCode/measures/$measureId/remove/helper/$helperNr/',
-    );
-
-Uri triageUri({
-  required String dpsCode,
-  required int helperNr,
-}) =>
-    Uri(path: '/patients/$dpsCode/triage/helper/$helperNr/');
-
-Uri playersSignUpUri() => Uri(path: '/players/signup/');
-
-Uri trainerSignUpUri() => Uri(path: '/trainers/signup/');
-
-Uri trainerLogInUri() => Uri(path: '/trainers/login/');
-
-Uri joinRoomUri({
-  required String invitationCode,
-  required int helperAmount,
-}) =>
-    Uri(
-      path: '/rooms/$invitationCode/join/helpercount_$helperAmount/',
-    );
-
-Uri leaveRoomUri() => Uri(path: '/rooms/leave/');
-
-Uri simulationTimeUri() => Uri(path: '/rooms/time/');
-
-Uri helperIdUri({required int helperNr}) =>
-    Uri(path: '/own/id/helper/$helperNr/');
-
-Uri checkHelperBusyUri({required int helperNr}) =>
-    Uri(path: '/own/busy/helper/$helperNr/');
-
-Uri helperCountUri() => Uri(path: '/own/helpercount/');
+Uri trainerLogInUri() =>
+    Uri(path: '/trainers/login/');
 
 Uri getRoomUri({required int roomId}) => Uri(path: '/rooms/$roomId/');
 
@@ -108,52 +28,160 @@ Uri getPatientListUri({required int roomId}) =>
 Uri getPlayerListUri({required int roomId}) =>
     Uri(path: '/rooms/$roomId/players/');
 
-Uri pauseRoomUri() => Uri(path: '/rooms/pause/');
+Uri pauseRoomUri({required int roomId}) => Uri(path: '/rooms/$roomId/pause/');
 
-Uri resumeRoomUri() => Uri(path: '/rooms/resume/');
+Uri resumeRoomUri({required int roomId}) => Uri(path: '/rooms/$roomId/resume/');
 
 Uri startRoomUri({required int roomId}) => Uri(path: '/rooms/$roomId/start/');
 
-Uri finishRoomUri() => Uri(path: '/rooms/finish/');
+Uri finishRoomUri({required int roomId}) => Uri(path: '/rooms/$roomId/finish/');
 
-Uri changePhaseUri() => Uri(path: '/rooms/changephase/');
+Uri getRoomConfigUri({required int roomId}) =>
+    Uri(path: '/rooms/$roomId/configuration/');
 
 Uri changeRoomConfigUri({required int roomId}) =>
-    Uri(path: '/rooms/$roomId/change_configuration/');
+    Uri(path: '/rooms/$roomId/configuration/modify/');
 
 Uri createRoomUri() => Uri(path: '/rooms/create/');
 
-Uri nextPhaseChangeUri() => Uri(path: '/rooms/phasechange/');
+Uri performPhaseChangeUri({required int roomId}) =>
+    Uri(path: '/rooms/$roomId/phasechange/perform/');
 
-Uri modifyPhaseChangeUri() => Uri(path: '/rooms/phasechange/modify/');
+Uri getPhaseChangeTimeUri({required int roomId}) =>
+    Uri(path: '/rooms/$roomId/phasechange/');
 
-Uri roomStateUri({required int roomId}) => Uri(path: '/rooms/$roomId/state/');
+Uri modifyPhaseChangeTimeUri({required int roomId}) =>
+    Uri(path: '/rooms/$roomId/phasechange/modify/');
 
-Uri patientDataTrainerUri({required String dpsCode}) =>
-    Uri(path: '/patients/$dpsCode/');
+Uri getRoomStateAndTimeUri({required int roomId}) =>
+    Uri(path: '/rooms/$roomId/state/');
 
-Uri addPatientTrainerUri({
-  required String dpsCode,
-  required int roomId,
-}) =>
-    Uri(path: '/qrcodes/rooms/$roomId/add/$dpsCode/');
+Uri patientDataTrainerUri({required int roomId, required String dpsCode}) =>
+    Uri(path: 'rooms/$roomId/patients/$dpsCode/');
 
-Uri checkoutPatientUri({required String dpsCode}) =>
-    Uri(path: '/patients/$dpsCode/checkout/');
+Uri addPatientTrainerUri({required int roomId, required String dpsCode}) =>
+    Uri(path: 'rooms/$roomId/patients/$dpsCode/add/');
 
-Uri addEventUri() => Uri(path: '/rooms/events/add/');
+Uri checkoutPatientUri({required int roomId, required String dpsCode}) =>
+    Uri(path: 'rooms/$roomId/patients/$dpsCode/checkout/');
+
+Uri addLogEventUri({required int roomId}) =>
+    Uri(path: '/rooms/$roomId/events/add/');
 
 Uri getTriageAccuracyUri({required int roomId}) =>
-    Uri(path: '/evaluation/rooms/$roomId/triage/accuracy/');
+    Uri(path: '/rooms/$roomId/evaluation/triageaccuracy/');
 
 Uri getExerciseLogUri({required int roomId}) =>
-    Uri(path: '/evaluation/rooms/$roomId/logs/');
+    Uri(path: '/rooms/$roomId/events/');
 
-Uri getActiveRoomUri() => Uri(path: '/rooms/active/');
+Uri getOwnRoomsUri() =>
+    Uri(path: '/rooms/own/');
 
-Uri getQrCodeUri() => Uri(path: '/static/patients.pdf');
+Uri getPatientQrCodeUri() =>
+    Uri(path: '/static/patients_a4.pdf');
 
 Uri webSocketUri({required String invitationCode}) => baseUri.replace(
       scheme: 'ws',
       path: '/rooms/$invitationCode/player/',
     );
+
+// // /////////////////////////////////////////////////////////////// // //
+// // //////////          DEPRECATED TRAINER URIs          ////////// // //
+// // /////////////////////////////////////////////////////////////// // //
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri uncoverPatientUri({
+  required String dpsCode,
+  required int helperNr,
+}) =>
+    Uri(path: '/patients/$dpsCode/uncover/helper/$helperNr/');
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri patientDataUri({
+  required String dpsCode,
+  required int helperNr,
+}) =>
+    Uri(path: '/patients/$dpsCode/helper/$helperNr/');
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri foreignInventoryDataUri({required String entityId}) =>
+    Uri(path: '/entities/$entityId/inventory/');
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri ownInventoryDataUri({required int helperNr}) =>
+    Uri(path: '/own/inventory/helper/$helperNr/');
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri inventoryExchangeUri({
+  required String entityId,
+  required int helperNr,
+}) =>
+    Uri(
+      path: '/entities/$entityId/inventory/exchange/helper/$helperNr/',
+    );
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri availableMeasuresUri({
+  required String dpsCode,
+  required int helperNr,
+}) =>
+    Uri(
+      path: '/patients/$dpsCode/measures/available/helper/$helperNr/',
+    );
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri startNewMeasureUri({
+  required String dpsCode,
+  required int helperNr,
+}) =>
+    Uri(
+      path: '/patients/$dpsCode/measures/start/helper/$helperNr/',
+    );
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri cancelCurrentMeasureUri({required int helperNr}) =>
+    Uri(path: '/own/currentmeasure/cancel/helper/$helperNr/');
+
+Uri appliedMeasuresUri({required String dpsCode}) =>
+    Uri(path: '/patients/$dpsCode/measures/applied/');
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri removeAppliedMeasureUri({
+  required String dpsCode,
+  required int helperNr,
+  required int measureId,
+}) =>
+    Uri(
+      path: '/patients/$dpsCode/measures/$measureId/remove/helper/$helperNr/',
+    );
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri triageUri({
+  required String dpsCode,
+  required int helperNr,
+}) =>
+    Uri(path: '/patients/$dpsCode/triage/helper/$helperNr/');
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri joinRoomUri({
+  required String invitationCode,
+  required int helperAmount,
+}) =>
+    Uri(path: '/rooms/$invitationCode/join/helpercount_$helperAmount/');
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri leaveRoomUri() => Uri(path: '/rooms/leave/');
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri simulationTimeUri() => Uri(path: '/rooms/time/');
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri helperIdUri({required int helperNr}) =>
+    Uri(path: '/own/id/helper/$helperNr/');
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri checkHelperBusyUri({required int helperNr}) =>
+    Uri(path: '/own/busy/helper/$helperNr/');
+
+@Deprecated("Deprecated! URL belongs to unused REST player API.")
+Uri helperCountUri() => Uri(path: '/own/helpercount/');
