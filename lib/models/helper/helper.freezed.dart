@@ -37,10 +37,6 @@ mixin _$Helper {
   /// The role of this helper.
   HelperRole get role => throw _privateConstructorUsedError;
 
-  /// The entityID of this helper that is displayed in its QR-Code. **Caution:** This is **not** the ID used in helper-specific
-  /// API calls. For that, see [helperNr].
-  int? get entityID => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $HelperCopyWith<Helper> get copyWith => throw _privateConstructorUsedError;
 }
@@ -56,8 +52,7 @@ abstract class $HelperCopyWith<$Res> {
       Inventory? inventory,
       Patient? patient,
       int helperNr,
-      HelperRole role,
-      int? entityID});
+      HelperRole role});
 
   $RunningMeasureCopyWith<$Res>? get runningMeasure;
   $InventoryCopyWith<$Res>? get inventory;
@@ -83,7 +78,6 @@ class _$HelperCopyWithImpl<$Res, $Val extends Helper>
     Object? patient = freezed,
     Object? helperNr = null,
     Object? role = null,
-    Object? entityID = freezed,
   }) {
     return _then(_value.copyWith(
       patientDpsCode: freezed == patientDpsCode
@@ -110,10 +104,6 @@ class _$HelperCopyWithImpl<$Res, $Val extends Helper>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as HelperRole,
-      entityID: freezed == entityID
-          ? _value.entityID
-          : entityID // ignore: cast_nullable_to_non_nullable
-              as int?,
     ) as $Val);
   }
 
@@ -166,8 +156,7 @@ abstract class _$$_HelperCopyWith<$Res> implements $HelperCopyWith<$Res> {
       Inventory? inventory,
       Patient? patient,
       int helperNr,
-      HelperRole role,
-      int? entityID});
+      HelperRole role});
 
   @override
   $RunningMeasureCopyWith<$Res>? get runningMeasure;
@@ -193,7 +182,6 @@ class __$$_HelperCopyWithImpl<$Res>
     Object? patient = freezed,
     Object? helperNr = null,
     Object? role = null,
-    Object? entityID = freezed,
   }) {
     return _then(_$_Helper(
       patientDpsCode: freezed == patientDpsCode
@@ -220,10 +208,6 @@ class __$$_HelperCopyWithImpl<$Res>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as HelperRole,
-      entityID: freezed == entityID
-          ? _value.entityID
-          : entityID // ignore: cast_nullable_to_non_nullable
-              as int?,
     ));
   }
 }
@@ -237,8 +221,7 @@ class _$_Helper implements _Helper {
       this.inventory,
       this.patient,
       required this.helperNr,
-      required this.role,
-      this.entityID});
+      required this.role});
 
   /// The ID of the patient a helper has most recently scanned. Null if no patient
   /// has been scanned by the helper yet.
@@ -267,14 +250,9 @@ class _$_Helper implements _Helper {
   @override
   final HelperRole role;
 
-  /// The entityID of this helper that is displayed in its QR-Code. **Caution:** This is **not** the ID used in helper-specific
-  /// API calls. For that, see [helperNr].
-  @override
-  final int? entityID;
-
   @override
   String toString() {
-    return 'Helper(patientDpsCode: $patientDpsCode, runningMeasure: $runningMeasure, inventory: $inventory, patient: $patient, helperNr: $helperNr, role: $role, entityID: $entityID)';
+    return 'Helper(patientDpsCode: $patientDpsCode, runningMeasure: $runningMeasure, inventory: $inventory, patient: $patient, helperNr: $helperNr, role: $role)';
   }
 
   @override
@@ -291,14 +269,12 @@ class _$_Helper implements _Helper {
             (identical(other.patient, patient) || other.patient == patient) &&
             (identical(other.helperNr, helperNr) ||
                 other.helperNr == helperNr) &&
-            (identical(other.role, role) || other.role == role) &&
-            (identical(other.entityID, entityID) ||
-                other.entityID == entityID));
+            (identical(other.role, role) || other.role == role));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, patientDpsCode, runningMeasure,
-      inventory, patient, helperNr, role, entityID);
+      inventory, patient, helperNr, role);
 
   @JsonKey(ignore: true)
   @override
@@ -314,8 +290,7 @@ abstract class _Helper implements Helper {
       final Inventory? inventory,
       final Patient? patient,
       required final int helperNr,
-      required final HelperRole role,
-      final int? entityID}) = _$_Helper;
+      required final HelperRole role}) = _$_Helper;
 
   @override
 
@@ -344,11 +319,6 @@ abstract class _Helper implements Helper {
 
   /// The role of this helper.
   HelperRole get role;
-  @override
-
-  /// The entityID of this helper that is displayed in its QR-Code. **Caution:** This is **not** the ID used in helper-specific
-  /// API calls. For that, see [helperNr].
-  int? get entityID;
   @override
   @JsonKey(ignore: true)
   _$$_HelperCopyWith<_$_Helper> get copyWith =>

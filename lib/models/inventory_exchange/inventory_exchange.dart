@@ -22,8 +22,7 @@ part 'inventory_exchange.freezed.dart';
 class InventoryExchange with _$InventoryExchange {
   const InventoryExchange._();
   const factory InventoryExchange({
-    required String foreignEntityType,
-    required String foreignEntityName,
+    required String foreignName,
     required List<InventoryExchangeCategory> categories,
   }) = _InventoryExchange;
 
@@ -87,9 +86,9 @@ class InventoryExchange with _$InventoryExchange {
           name: ownInventory.categories[i].name, items: exchangeMaterialList));
     }
     return InventoryExchange(
-        categories: categoryList,
-        foreignEntityName: foreignInventory.entityName,
-        foreignEntityType: foreignInventory.entityType);
+      categories: categoryList,
+      foreignName: foreignInventory.name,
+    );
   }
 
   /// Returns the item with [materialID] in this InventoryExchange.

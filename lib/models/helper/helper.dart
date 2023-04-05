@@ -37,10 +37,5 @@ class Helper with _$Helper {
 
     /// The role of this helper.
     required HelperRole role,
-
-    /// The entityID of this helper that is displayed in its QR-Code. **Caution:** This is **not** the ID used in helper-specific
-    /// API calls. For that, see [helperNr].
-
-    int? entityID,
   }) = _Helper;
 }

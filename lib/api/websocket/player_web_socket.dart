@@ -113,8 +113,8 @@ class PlayerWebSocket extends DpsWebSocket with PlayerWebSocketMethods {
 
     switch (json['type']) {
       // helper amount
-      case 'helper.amount':
-        _processHelperAmount(json);
+      case 'helper.own':
+        _processOwnHelper(json);
         break;
 
       // helper and inventory
@@ -169,7 +169,7 @@ class PlayerWebSocket extends DpsWebSocket with PlayerWebSocketMethods {
     }
   }
 
-  void _processHelperAmount(Map<String, dynamic> json) {
+  void _processOwnHelper(Map<String, dynamic> json) {
     final HelperAmount helperAmount = HelperAmount.fromJson(json);
     _helperAmountController.add(helperAmount);
   }

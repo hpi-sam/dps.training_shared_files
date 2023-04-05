@@ -10,9 +10,11 @@ class HelperAmount with _$HelperAmount {
   }) = _HelperAmount;
 
   factory HelperAmount.fromJson(Map<String, dynamic> json) {
+    Map<String, dynamic> jsonContentPart = json['content'];
+
     return HelperAmount(
-      amount: json['amount'],
-      ids: List<int>.from(json['ids']),
+      amount: jsonContentPart['amount'],
+      ids: List<int>.from(jsonContentPart['ids']),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 // Package imports:
+import 'package:dps.training_shared_files/models/web_socket_dto/helper_amount.dart';
 import 'package:meta/meta.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
@@ -30,13 +31,12 @@ class DpsWebSocket {
     _setupStream();
   }
 
-
   /// Starts the WebSocket communication with the Server.
   ///
   /// This starts the websocket connection with the server. When a [playerToken]
   /// is provided it tries to connect with the given [playerToken] otherwise
   /// it tries to restore an old playerToken from memory to restore the session.
-  /// While connecting a [WebSocketException] or [WebSocketChannelException] 
+  /// While connecting a [WebSocketException] or [WebSocketChannelException]
   /// can be thrown when the room doesn't exist (mostly wrong [invitationCode]).
   /// Also a [SocketException] can be thrown which mostly
   /// indicates that there is some kind of network error. When something else
@@ -151,9 +151,9 @@ class DpsWebSocket {
     required Completer initializedHelperAmountCompleter,
   }) {
     final Map<String, dynamic> decodedJson = jsonDecode(json);
-    final int initializedHelperAmount = decodedJson['amount'] as int;
+    final HelperAmount helperAmount = HelperAmount.fromJson(decodedJson);
     streamSubscription.pause();
-    initializedHelperAmountCompleter.complete(initializedHelperAmount);
+    initializedHelperAmountCompleter.complete(helperAmount.amount);
   }
 
   /// Setting up the stream callbacks to handle the different types of messages

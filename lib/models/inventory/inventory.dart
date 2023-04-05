@@ -22,8 +22,7 @@ part 'inventory.freezed.dart';
 class Inventory with _$Inventory {
   const factory Inventory({
     required int helperNr,
-    required String entityType,
-    required String entityName,
+    required String name,
     required List<DPSMaterialCategory> categories,
   }) = _Inventory;
 
@@ -33,8 +32,7 @@ class Inventory with _$Inventory {
     return Inventory(
       helperNr: json['helper'],
       categories: parseCategories(jsonContentPart),
-      entityType: jsonContentPart['entity_type'],
-      entityName: jsonContentPart['entity_name'],
+      name: jsonContentPart['name'],
     );
   }
 
