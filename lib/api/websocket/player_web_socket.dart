@@ -140,6 +140,7 @@ class PlayerWebSocket extends DpsWebSocket with PlayerWebSocketMethods {
         break;
 
       // measures
+      // TODO change to 'patient.measure.current' once the server is updated
       case 'current.measure':
         _processMeasureCurrent(json);
         break;
@@ -165,7 +166,7 @@ class PlayerWebSocket extends DpsWebSocket with PlayerWebSocketMethods {
         break;
 
       default:
-        throw UnsupportedError('Unknown message type: ${json['type']}');
+        throw UnsupportedError('Unknown message type: ${json['type']}\n\nMessage: $encodedJson');
     }
   }
 

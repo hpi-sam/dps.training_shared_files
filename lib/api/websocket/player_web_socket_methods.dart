@@ -3,8 +3,8 @@ import 'package:dps.training_shared_files/api/websocket/dps_web_socket.dart';
 mixin PlayerWebSocketMethods on DpsWebSocket {
   void createHelpers({required int amount}) {
     final Map<String, dynamic> json = {
-      "type": "helper.create",
-      "amount": amount,
+      'type': 'helper.create',
+      'amount': amount,
     };
 
     send(json);
@@ -15,9 +15,9 @@ mixin PlayerWebSocketMethods on DpsWebSocket {
     required String dpsCode,
   }) {
     final Map<String, dynamic> json = {
-      "type": "patient.subscribe",
-      "helper_nr": helperNr,
-      "dps_code": dpsCode
+      'type': 'patient.subscribe',
+      'helper': helperNr,
+      'dps_code': dpsCode
     };
 
     send(json);
@@ -28,9 +28,9 @@ mixin PlayerWebSocketMethods on DpsWebSocket {
     required String triageCategory,
   }) {
     final Map<String, dynamic> json = {
-      "type": "patient.triage",
-      "helper_nr": helperNr,
-      "triage_color": triageCategory
+      'type': 'patient.triage.apply',
+      'helper': helperNr,
+      'triage_color': triageCategory
     };
 
     send(json);
@@ -38,8 +38,8 @@ mixin PlayerWebSocketMethods on DpsWebSocket {
 
   void getAvailableMeasures({required int helperNr}) {
     final Map<String, dynamic> json = {
-      "type": "available.measures",
-      "helper_nr": helperNr
+      'type': 'patient.measures.available',
+      'helper': helperNr
     };
 
     send(json);
@@ -50,9 +50,9 @@ mixin PlayerWebSocketMethods on DpsWebSocket {
     required String measureID,
   }) {
     final Map<String, dynamic> json = {
-      "type": "patient.apply",
-      "helper_nr": helperNr,
-      "measure_id": measureID
+      'type': 'patient.measure.apply',
+      'helper': helperNr,
+      'measure_id': measureID
     };
 
     send(json);
@@ -60,8 +60,8 @@ mixin PlayerWebSocketMethods on DpsWebSocket {
 
   void cancelMeasure({required int helperNr}) {
     final Map<String, dynamic> json = {
-      "type": "cancel.measure",
-      "helper_nr": helperNr
+      'type': 'patient.measure.cancel',
+      'helper': helperNr
     };
 
     send(json);
@@ -72,22 +72,37 @@ mixin PlayerWebSocketMethods on DpsWebSocket {
     required int measureID,
   }) {
     final Map<String, dynamic> json = {
-      "type": "remove.material",
-      "helper_nr": helperNr,
-      "measure_id": measureID
+      'type': 'patient.measure.remove',
+      'helper': helperNr,
+      'measure_id': measureID
     };
 
     send(json);
   }
 
-  void openInventory({
+  void openHelperInventory({
     required int helperNr,
-    required String inventoryID,
+    required int otherHelperNr,
   }) {
     final Map<String, dynamic> json = {
-      "type": "inventory.open",
-      "helper_nr": helperNr,
-      "other_entity_key": inventoryID
+      'type': 'inventory.helper.open',
+      'helper': helperNr,
+      'other_helper': otherHelperNr,
+    };
+
+    send(json);
+  }
+
+  void openContainerInventory({
+    required int helperNr,
+    required int containerSet,
+    required int containerInstance,
+  }) {
+    final Map<String, dynamic> json = {
+      'type': 'container.inventory.open',
+      'helper': helperNr,
+      'container_set': containerSet,
+      'container_instance': containerInstance,
     };
 
     send(json);
@@ -99,10 +114,10 @@ mixin PlayerWebSocketMethods on DpsWebSocket {
     required int amount,
   }) {
     final Map<String, dynamic> json = {
-      "type": "inventory.exchange",
-      "helper_nr": helperNr,
-      "material_id": materialID,
-      "amount": amount
+      'type': 'inventory.exchange',
+      'helper': helperNr,
+      'material_id': materialID,
+      'amount': amount
     };
 
     send(json);
@@ -110,8 +125,8 @@ mixin PlayerWebSocketMethods on DpsWebSocket {
 
   void resendOwnInventory({required int helperNr}) {
     final Map<String, dynamic> json = {
-      "type": "resend.inventory",
-      "helper_nr": helperNr
+      'type': 'helper.inventory.resend',
+      'helper': helperNr
     };
 
     send(json);

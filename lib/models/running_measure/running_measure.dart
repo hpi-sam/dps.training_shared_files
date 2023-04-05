@@ -38,14 +38,18 @@ class RunningMeasure with _$RunningMeasure {
   }) = _RunningMeasureNone;
 
   factory RunningMeasure.fromJson(Map<String, dynamic> json) {
+    Map<String, dynamic> jsonContentPart = json['content'];
+
     return RunningMeasure(
-      helperNr: json['helperNr'],
-      name: json['name'],
-      image_small: baseUri.replace(path: '${json['image']['small']}'),
-      image_original: baseUri.replace(path: '${json['image']['original']}'),
-      start_time: json['start_time'],
-      finish_time: json['finish_time'],
-      requires_two_helpers: json['requires_two_helpers'],
+      helperNr: json['helper'],
+      name: jsonContentPart['name'],
+      image_small:
+          baseUri.replace(path: '${jsonContentPart['image']['small']}'),
+      image_original:
+          baseUri.replace(path: '${jsonContentPart['image']['original']}'),
+      start_time: jsonContentPart['start_time'],
+      finish_time: jsonContentPart['finish_time'],
+      requires_two_helpers: jsonContentPart['requires_two_helpers'],
     );
   }
 }
