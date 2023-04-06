@@ -92,11 +92,12 @@ class __$$_AppliedMeasuresCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppliedMeasures extends _AppliedMeasures with DiagnosticableTreeMixin {
+class _$_AppliedMeasures
+    with DiagnosticableTreeMixin
+    implements _AppliedMeasures {
   const _$_AppliedMeasures(
       {required final List<AppliedMeasure> appliedMeasures})
-      : _appliedMeasures = appliedMeasures,
-        super._();
+      : _appliedMeasures = appliedMeasures;
 
   final List<AppliedMeasure> _appliedMeasures;
   @override
@@ -139,11 +140,10 @@ class _$_AppliedMeasures extends _AppliedMeasures with DiagnosticableTreeMixin {
       __$$_AppliedMeasuresCopyWithImpl<_$_AppliedMeasures>(this, _$identity);
 }
 
-abstract class _AppliedMeasures extends AppliedMeasures {
+abstract class _AppliedMeasures implements AppliedMeasures {
   const factory _AppliedMeasures(
           {required final List<AppliedMeasure> appliedMeasures}) =
       _$_AppliedMeasures;
-  const _AppliedMeasures._() : super._();
 
   @override
   List<AppliedMeasure> get appliedMeasures;
@@ -340,7 +340,9 @@ class __$$_AppliedMeasureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppliedMeasure extends _AppliedMeasure with DiagnosticableTreeMixin {
+class _$_AppliedMeasure
+    with DiagnosticableTreeMixin
+    implements _AppliedMeasure {
   const _$_AppliedMeasure(
       {required this.name,
       required this.id,
@@ -350,8 +352,7 @@ class _$_AppliedMeasure extends _AppliedMeasure with DiagnosticableTreeMixin {
       required this.start_time,
       required this.finish_time,
       required this.state,
-      required this.measureTypeID})
-      : super._();
+      required this.measureTypeID});
 
   @override
   final String name;
@@ -439,7 +440,7 @@ class _$_AppliedMeasure extends _AppliedMeasure with DiagnosticableTreeMixin {
       __$$_AppliedMeasureCopyWithImpl<_$_AppliedMeasure>(this, _$identity);
 }
 
-abstract class _AppliedMeasure extends AppliedMeasure {
+abstract class _AppliedMeasure implements AppliedMeasure {
   const factory _AppliedMeasure(
       {required final String name,
       required final int id,
@@ -450,7 +451,6 @@ abstract class _AppliedMeasure extends AppliedMeasure {
       required final int finish_time,
       required final AppliedMeasureState state,
       required final String measureTypeID}) = _$_AppliedMeasure;
-  const _AppliedMeasure._() : super._();
 
   @override
   String get name;

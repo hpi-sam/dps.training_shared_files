@@ -7,7 +7,6 @@ import 'package:dps.training_shared_files/models/patient/patient.dart';
 import 'package:dps.training_shared_files/models/running_measure/running_measure.dart';
 import 'package:dps.training_shared_files/models/web_socket_dto/helper_amount.dart';
 import 'package:dps.training_shared_files/models/web_socket_dto/inventory_update.dart';
-import 'package:dps.training_shared_files/models/web_socket_dto/measure_applied_canceled.dart';
 import 'package:dps.training_shared_files/models/web_socket_dto/measure_applied_update.dart';
 import 'package:dps.training_shared_files/models/web_socket_dto/patient_triage_update.dart';
 import 'package:dps.training_shared_files/models/web_socket_dto/simulation_time.dart';
@@ -69,8 +68,6 @@ class PlayerWebSocket extends DpsWebSocket with PlayerWebSocketMethods {
       StreamController.broadcast();
   final StreamController<MeasureAppliedUpdate> _measureAppliedUpdateController =
       StreamController.broadcast();
-  final StreamController<MeasureAppliedCanceled>
-      _measureAppliedCanceledController = StreamController.broadcast();
   final StreamController<RunningMeasure> _currentMeasureCanceledController =
       StreamController.broadcast();
 
@@ -82,8 +79,6 @@ class PlayerWebSocket extends DpsWebSocket with PlayerWebSocketMethods {
       _availableMeasuresController.stream;
   Stream<MeasureAppliedUpdate> get measureAppliedUpdateStream =>
       _measureAppliedUpdateController.stream;
-  Stream<MeasureAppliedCanceled> get measureAppliedCanceledStream =>
-      _measureAppliedCanceledController.stream;
   Stream<RunningMeasure> get currentMeasureCanceledStream =>
       _currentMeasureCanceledController.stream;
 
@@ -119,18 +114,21 @@ class PlayerWebSocket extends DpsWebSocket with PlayerWebSocketMethods {
 
       // helper and inventory
       case 'helper.inventory':
-        _processHelperInventory(json);
+        _processOwnHelperInventory(json);
         break;
-      case 'own.inventory.update':
+      case 'helper.inventory.update':
         _processInventoryOwnUpdate(json);
         break;
-      case 'other.inventory.all':
-        _processInventoryOtherAll(json);
+      case 'inventory.helper':
+        _processOtherInventory(json);
         break;
-      case 'other.inventory.update':
-        _processInventoryOtherUpdate(json);
+      case 'inventory.container':
+        _processContainerInventory(json);
         break;
-
+      case 'inventory.update':
+        _processOtherInventoryUpdate(json);
+        break;
+      
       // patient
       case 'patient.information':
         _processPatientInformation(json);
@@ -140,24 +138,17 @@ class PlayerWebSocket extends DpsWebSocket with PlayerWebSocketMethods {
         break;
 
       // measures
-      // TODO change to 'patient.measure.current' once the server is updated
-      case 'current.measure':
+      case 'patient.measure.current':
         _processMeasureCurrent(json);
         break;
-      case 'measure.finished':
+      case 'patient.measure.finished':
         _processMeasureFinished(json);
         break;
-      case 'available.measures':
+      case 'patient.measures.available':
         _processMeasureAvailable(json);
         break;
-      case 'applied.measures.update':
+      case 'patient.measures.update':
         _processMeasureAppliedUpdate(json);
-        break;
-      case 'applied.measures.canceled':
-        _processMeasureAppliedCanceled(json);
-        break;
-      case 'success':
-        _processMeasureCurrentCanceled(json);
         break;
 
       // room
@@ -165,8 +156,24 @@ class PlayerWebSocket extends DpsWebSocket with PlayerWebSocketMethods {
         _processRoomState(json);
         break;
 
+      // generic success
+      case 'success':
+        _processSuccess(json);
+        break;
+      
       default:
-        throw UnsupportedError('Unknown message type: ${json['type']}\n\nMessage: $encodedJson');
+        throw UnsupportedError('Unknown message type: ${json['type']} - WebSocket message: $json');
+    }
+  }
+
+  _processSuccess(Map<String, dynamic> json) {
+    switch (json['request']) {
+      case 'cancel.measure':
+        _processMeasureCurrentCanceled(json);
+        break;
+      
+      default:
+        throw UnsupportedError('Unknown success type: ${json['type']} - WebSocket message: $json');
     }
   }
 
@@ -175,7 +182,7 @@ class PlayerWebSocket extends DpsWebSocket with PlayerWebSocketMethods {
     _helperAmountController.add(helperAmount);
   }
 
-  void _processHelperInventory(Map<String, dynamic> json) {
+  void _processOwnHelperInventory(Map<String, dynamic> json) {
     final Inventory inventory = Inventory.fromJson(json);
     _ownInventoryAllController.add(inventory);
   }
@@ -185,12 +192,18 @@ class PlayerWebSocket extends DpsWebSocket with PlayerWebSocketMethods {
     _ownInventoryUpdateController.add(inventoryUpdate);
   }
 
-  void _processInventoryOtherAll(Map<String, dynamic> json) {
+  void _processOtherInventory(Map<String, dynamic> json) {
     final Inventory otherInventory = Inventory.fromJson(json);
     _otherInventoryAllController.add(otherInventory);
   }
 
-  void _processInventoryOtherUpdate(Map<String, dynamic> json) {
+  // TODO update this to work properly with container inventory
+  void _processContainerInventory(Map<String, dynamic> json) {
+    final Inventory containerInventory = Inventory.fromJson(json);
+    _otherInventoryAllController.add(containerInventory);
+  }
+
+  void _processOtherInventoryUpdate(Map<String, dynamic> json) {
     final InventoryUpdate inventoryUpdate = InventoryUpdate.fromJson(json);
     _otherInventoryUpdateController.add(inventoryUpdate);
   }
@@ -231,16 +244,7 @@ class PlayerWebSocket extends DpsWebSocket with PlayerWebSocketMethods {
     _measureAppliedUpdateController.add(measureAppliedUpdate);
   }
 
-  void _processMeasureAppliedCanceled(Map<String, dynamic> json) {
-    final MeasureAppliedCanceled measureAppliedCanceled =
-        MeasureAppliedCanceled.fromJson(json);
-    _measureAppliedCanceledController.add(measureAppliedCanceled);
-  }
-
   void _processMeasureCurrentCanceled(Map<String, dynamic> json) {
-    // TODO make the type more specific - backend question
-    if (json['request'] != 'cancel.measure') return;
-
     final int helperNumber = json['helper'];
     final RunningMeasure runningMeasure =
         RunningMeasure.none(helperNr: helperNumber);

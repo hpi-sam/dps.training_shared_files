@@ -60,31 +60,32 @@ class Patient with _$Patient {
     final Map<String, dynamic> jsonContentPart = json['content'];
 
     return Patient(
-      helperNr: json['helper_nr'],
-      completeDpsCode: patientJson["static_data"]["dps_code"],
-      patientDpsCode: json['patient_dps_code'],
+      helperNr: json['helper'],
+      completeDpsCode: patientJson['static_data']['dps_code'],
+      patientDpsCode: json['patient'],
       currentPhase: PatientCurrentPhase.fromJson(
-        patientJson["current_phase"],
+        patientJson['current_phase'],
       ),
       firstImpression: PatientFirstImpression.fromJson(
-        patientJson["static_data"]["first_impression"],
+        patientJson['static_data']['first_impression'],
       ),
       personalData: PatientPersonalData.fromJson(
-        patientJson["static_data"]["personal_data"],
+        patientJson['static_data']['personal_data'],
       ),
       injuries: PatientInjuries.fromJson(
+        // TODO make this more elegant don't use hacks!
         // a bit hacky to work with lists, see: https://github.com/rrousselGit/freezed/issues/173
-        {'injuries': patientJson["static_data"]["injuries"],},
+        {'injuries': patientJson['static_data']['injuries'],},
       ),
-      injuryDescription: patientJson["static_data"]["injury_description"],
-      bodyCheckInformation: patientJson["static_data"]
-          ["body_check_information"],
-      situationOfDiscovery: patientJson["static_data"]
-          ["situation_of_discovery"],
-      triageCategory: patientJson["triage"],
+      injuryDescription: patientJson['static_data']['injury_description'],
+      bodyCheckInformation: patientJson['static_data']
+          ['body_check_information'],
+      situationOfDiscovery: patientJson['static_data']
+          ['situation_of_discovery'],
+      triageCategory: patientJson['triage'],
       appliedMeasures: AppliedMeasures.fromJson(jsonContentPart),
-      isCheckedOut: patientJson["is_checked_out"],
-      isAlive: patientJson["is_alive"],
+      isCheckedOut: patientJson['is_checked_out'],
+      isAlive: patientJson['is_alive'],
     );
   }
 }
@@ -107,12 +108,12 @@ class PatientCurrentPhase with _$PatientCurrentPhase {
   factory PatientCurrentPhase.fromJson(Map<String, dynamic> json) {
     return PatientCurrentPhase(
       standardDiagnosticData:
-          PatientStandardDiagnosticData.fromJson(json["standard_diagnostic"]),
-      ekg: json["ekg"],
-      pulmonary_auscultation: json["pulmonary_auscultation"],
-      blood_pressure: json["blood_pressure"],
-      spo2: json["spo2"],
-      spco: json["spco"],
+          PatientStandardDiagnosticData.fromJson(json['standard_diagnostic']),
+      ekg: json['ekg'],
+      pulmonary_auscultation: json['pulmonary_auscultation'],
+      blood_pressure: json['blood_pressure'],
+      spo2: json['spo2'],
+      spco: json['spco'],
     );
   }
 }
@@ -135,13 +136,13 @@ class PatientStandardDiagnosticData with _$PatientStandardDiagnosticData {
 
   factory PatientStandardDiagnosticData.fromJson(Map<String, dynamic> json) {
     return PatientStandardDiagnosticData(
-      breathing: PatientBreathing.fromJson(json["breathing"]),
-      circulation: PatientCirculation.fromJson(json["circulation"]),
-      disability: PatientDisability.fromJson(json["disability"]),
-      exposure: PatientExposure.fromJson(json["exposure"]),
-      airway: json["airway"],
-      exsang_hemorrhage: json["exsang_hemorrhage"],
-      psyche: json["psyche"],
+      breathing: PatientBreathing.fromJson(json['breathing']),
+      circulation: PatientCirculation.fromJson(json['circulation']),
+      disability: PatientDisability.fromJson(json['disability']),
+      exposure: PatientExposure.fromJson(json['exposure']),
+      airway: json['airway'],
+      exsang_hemorrhage: json['exsang_hemorrhage'],
+      psyche: json['psyche'],
     );
   }
 }
@@ -235,9 +236,11 @@ class PatientFirstImpression with _$PatientFirstImpression {
 @freezed
 class PatientInjuries with _$PatientInjuries {
   const PatientInjuries._();
+  
   const factory PatientInjuries({
     required List injuries,
   }) = _PatientInjuries;
+
   factory PatientInjuries.fromJson(Map<String, dynamic> json) =>
       _$PatientInjuriesFromJson(json);
 
@@ -245,21 +248,21 @@ class PatientInjuries with _$PatientInjuries {
     List<String> result = [];
 
     injuries.forEach((injury) {
-      if (injury["location"] == location) {
-        result.add(injury["injury_type"]);
+      if (injury['location'] == location) {
+        result.add(injury['injury_type']);
       }
     });
 
     return result;
   }
 
-  get head => _injuriesOf("head");
-  get left_arm => _injuriesOf("left arm");
-  get right_arm => _injuriesOf("right arm");
-  get thorax => _injuriesOf("thorax");
-  get abdomen => _injuriesOf("abdomen");
-  get pelvis => _injuriesOf("pelvis");
-  get left_leg => _injuriesOf("left leg");
-  get right_leg => _injuriesOf("right leg");
-  get neck => _injuriesOf("neck");
+  get head => _injuriesOf('head');
+  get left_arm => _injuriesOf('left arm');
+  get right_arm => _injuriesOf('right arm');
+  get thorax => _injuriesOf('thorax');
+  get abdomen => _injuriesOf('abdomen');
+  get pelvis => _injuriesOf('pelvis');
+  get left_leg => _injuriesOf('left leg');
+  get right_leg => _injuriesOf('right leg');
+  get neck => _injuriesOf('neck');
 }

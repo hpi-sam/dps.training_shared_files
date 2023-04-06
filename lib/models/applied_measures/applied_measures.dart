@@ -23,7 +23,7 @@ enum AppliedMeasureState {
   removed,
   expired,
   removing,
-  waiting_for_second_helper
+  waiting_for_second_helper,
 }
 
 ///  Defines the applied measures data model.
@@ -40,24 +40,23 @@ enum AppliedMeasureState {
 /// https://pub.dev/packages/freezed
 @freezed
 class AppliedMeasures with _$AppliedMeasures {
-  const AppliedMeasures._();
   const factory AppliedMeasures({
-    
     required List<AppliedMeasure> appliedMeasures,
   }) = _AppliedMeasures;
 
   factory AppliedMeasures.fromJson(Map<String, dynamic> json) {
     final parsed = json['applied_measures'].cast<Map<String, dynamic>>();
-    return parsed
+    final List<AppliedMeasure> appliedMeasures = parsed
         .map<AppliedMeasure>((json) => AppliedMeasure.fromJson(json))
         .toList();
+    
+    return AppliedMeasures(appliedMeasures: appliedMeasures);
   }
 }
 
 /// Model that contains all relevant information of a single [AppliedMeasure].
 @freezed
 class AppliedMeasure with _$AppliedMeasure {
-  const AppliedMeasure._();
   const factory AppliedMeasure({
     required String name,
     required int id,

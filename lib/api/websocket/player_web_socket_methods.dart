@@ -99,7 +99,7 @@ mixin PlayerWebSocketMethods on DpsWebSocket {
     required int containerInstance,
   }) {
     final Map<String, dynamic> json = {
-      'type': 'container.inventory.open',
+      'type': 'inventory.container.open',
       'helper': helperNr,
       'container_set': containerSet,
       'container_instance': containerInstance,
@@ -126,6 +126,24 @@ mixin PlayerWebSocketMethods on DpsWebSocket {
   void resendOwnInventory({required int helperNr}) {
     final Map<String, dynamic> json = {
       'type': 'helper.inventory.resend',
+      'helper': helperNr
+    };
+
+    send(json);
+  }
+
+  void resendPatientInformation({required int helperNr}) {
+    final Map<String, dynamic> json = {
+      'type': 'patient.information.resend',
+      'helper': helperNr
+    };
+
+    send(json);
+  }
+
+  void resendCurrentMeasure({required int helperNr}) {
+    final Map<String, dynamic> json = {
+      'type': 'patient.measure.resend',
       'helper': helperNr
     };
 
