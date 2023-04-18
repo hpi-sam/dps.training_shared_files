@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SimulationTime {
   int get time => throw _privateConstructorUsedError;
-  SimulationStateEnum get state => throw _privateConstructorUsedError;
+  RoomStateEnum get state => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SimulationTimeCopyWith<SimulationTime> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $SimulationTimeCopyWith<$Res> {
           SimulationTime value, $Res Function(SimulationTime) then) =
       _$SimulationTimeCopyWithImpl<$Res, SimulationTime>;
   @useResult
-  $Res call({int time, SimulationStateEnum state});
+  $Res call({int time, RoomStateEnum state});
 }
 
 /// @nodoc
@@ -57,7 +57,7 @@ class _$SimulationTimeCopyWithImpl<$Res, $Val extends SimulationTime>
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as SimulationStateEnum,
+              as RoomStateEnum,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$_SimulationTimeCopyWith<$Res>
       __$$_SimulationTimeCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int time, SimulationStateEnum state});
+  $Res call({int time, RoomStateEnum state});
 }
 
 /// @nodoc
@@ -95,7 +95,7 @@ class __$$_SimulationTimeCopyWithImpl<$Res>
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as SimulationStateEnum,
+              as RoomStateEnum,
     ));
   }
 }
@@ -108,7 +108,7 @@ class _$_SimulationTime implements _SimulationTime {
   @override
   final int time;
   @override
-  final SimulationStateEnum state;
+  final RoomStateEnum state;
 
   @override
   String toString() {
@@ -137,12 +137,12 @@ class _$_SimulationTime implements _SimulationTime {
 abstract class _SimulationTime implements SimulationTime {
   const factory _SimulationTime(
       {required final int time,
-      required final SimulationStateEnum state}) = _$_SimulationTime;
+      required final RoomStateEnum state}) = _$_SimulationTime;
 
   @override
   int get time;
   @override
-  SimulationStateEnum get state;
+  RoomStateEnum get state;
   @override
   @JsonKey(ignore: true)
   _$$_SimulationTimeCopyWith<_$_SimulationTime> get copyWith =>

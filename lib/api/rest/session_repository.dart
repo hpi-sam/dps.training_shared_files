@@ -14,9 +14,9 @@ class SessionRepository {
 
   /// TODO add description
   ///
-  /// The function can throw an [DioException] if the request fails.
-  Future<void> doesRoomExist({required int roomID}) async {
-    final Uri uri = getRoomUri(roomId: roomID);
+  /// The function can throw a [DioException] if the request fails.
+  Future<void> doesRoomExist({required int roomId}) async {
+    final Uri uri = getRoomUri(roomId: roomId);
 
     // TODO this route was declared to be accessible to all users (no auth required) but why???
     final DpsResponse response = await client.get(uri: uri);
@@ -24,7 +24,7 @@ class SessionRepository {
 
   /// TODO add description
   ///
-  /// The function can throw an [DioException] if the request fails.
+  /// The function can throw a [DioException] if the request fails.
   Future<void> joinRoom({
     required String invitationCode,
     required int helperAmount,
@@ -39,29 +39,18 @@ class SessionRepository {
 
   /// TODO add description
   ///
-  /// The function can throw an [DioException] if the request fails.
-  Future<SimulationTime> simulationTime() async {
-    final Uri uri = simulationTimeUri();
-
-    final DpsResponse response = await client.get(uri: uri);
-    return SimulationTime.fromJson(response.data!);
-  }
-
-  /// TODO add description
-  ///
-  /// The function can throw an [DioException] if the request fails.
-  Future<RoomStateEnum> roomState({required int roomId}) async {
+  /// The function can throw a [DioException] if the request fails.
+  Future<SimulationTime> simulationTimeAndState({required int roomId}) async {
     final Uri uri = getRoomStateAndTimeUri(roomId: roomId);
 
     final DpsResponse response = await client.get(uri: uri);
-    final String state = response.data!['state'];
 
-    return RoomStateEnum.values.byName(state);
+    return SimulationTime.fromJson({'content': response.data!});
   }
 
   /// TODO add description
   ///
-  /// The function can throw an [DioException] if the request fails.
+  /// The function can throw a [DioException] if the request fails.
   Future<int> fetchOwnEntityId({required int helperNr}) async {
     final Uri uri = helperIdUri(helperNr: helperNr);
 
@@ -73,7 +62,7 @@ class SessionRepository {
 
   /// TODO add description
   ///
-  /// The function can throw an [DioException] if the request fails.
+  /// The function can throw a [DioException] if the request fails.
   Future<void> leaveRoom() async {
     final Uri uri = leaveRoomUri();
 
@@ -82,7 +71,7 @@ class SessionRepository {
 
   /// TODO add description
   ///
-  /// The function can throw an [DioException] if the request fails.
+  /// The function can throw a [DioException] if the request fails.
   Future<RunningMeasure> checkHelperBusy({
     required int helperNr,
     String? dpsCode,
@@ -103,7 +92,7 @@ class SessionRepository {
 
   /// TODO add description
   ///
-  /// The function can throw an [DioException] if the request fails.
+  /// The function can throw a [DioException] if the request fails.
   Future<int> getHelperCount() async {
     final Uri uri = helperCountUri();
 
