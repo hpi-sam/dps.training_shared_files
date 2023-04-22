@@ -24,9 +24,9 @@ dependencies:
   shared_preferences: ^2.0.18
   json_annotation: ^4.8.0
   freezed_annotation: ^2.2.0
+  mockito: ^5.4.0
   font_awesome_flutter: ^10.4.0
 
-  
 
 dev_dependencies:
   # flutter specific dependencies
