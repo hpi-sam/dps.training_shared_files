@@ -193,4 +193,9 @@ class DpsWebSocket {
     final String encodedJson = jsonEncode(json);
     _channel.sink.add(encodedJson);
   }
+
+  /// Send the WebSocket sink.
+  void close() {
+    _channel.sink.close();
+  }
 }
