@@ -2,14 +2,35 @@ name: Continuous Integration
 
 on:
   push:
-    branches:
-      - dev
-  
+    branches: [ main, master, dev ]
+  pull_request:
+    branches: [ main, master, dev ]
+
 jobs:
+  lint:
+    runs-on: self-hosted
+    steps:
+
+    # Setup the git environment
+    - uses: actions/checkout@v3
+        
+    # Setup the flutter environment.
+    - uses: subosito/flutter-action@v2
+      with:
+        channel: 'stable'
+    
+    # print flutter version for debugging/documentation
+    - name: Flutter version
+      run: flutter --version
+
+    # Statically analyze the Dart code for any errors.
+    - name: Statically analyze flutter code
+      continue-on-error: true
+      run: flutter analyze .
+
   build:
     # This job will run on ubuntu virtual machine
-    runs-on: ubuntu-latest
-    timeout-minutes: 8
+    runs-on: self-hosted
     steps:
 
     # Setup the git environment
@@ -20,6 +41,7 @@ jobs:
       with:
         distribution: 'zulu'
         java-version: '11'
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
     
     # Setup the flutter environment.
     - uses: subosito/flutter-action@v2
@@ -38,3 +60,7 @@ jobs:
     - name: Statically analyze flutter code
       continue-on-error: true
       run: flutter analyze .
+
+    # Run the tests
+    - name: Run tests
+      run: flutter test --reporter github
